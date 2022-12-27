@@ -8,17 +8,17 @@
 
 ### Minimum
 
-* 1-core CPU
-* 4 GB of RAM
-* at least 200 GB of free storage (SSD not necessary)
-* 10 Mbps download Internet service
+- 1-core CPU
+- 4 GB of RAM
+- at least 200 GB of free storage (SSD not necessary)
+- 10 Mbps download Internet service
 
 ### Recommended
 
-* 4+ core CPU
-* 16 GB of RAM
-* 200+ GB of free storage on a fast device (SSD, RAID array, etc)
-* 50+ Mbps up/download Internet service
+- 4+ core CPU
+- 16 GB of RAM
+- 200+ GB of free storage on a fast device (SSD, RAID array, etc)
+- 50+ Mbps up/download Internet service
 
 ## Install Rust and Cargo
 
@@ -28,17 +28,20 @@ Fortunately, Rust's package manager Cargo is _very_ easy to use, and most likely
 
 Follow the [instructions](https://doc.rust-lang.org/cargo/getting-started/installation.html) from the official Cargo Book to get started. Make sure that the `cargo` command is available and of the latest version:
 
-<pre class="language-shell-session"><code class="lang-shell-session">cargo version
-<strong>
-</strong>cargo 1.65.0 (4bc8f24d3 2022-10-20)
-</code></pre>
+```shell-session
+cargo version
+```
+
+```
+cargo 1.65.0 (4bc8f24d3 2022-10-20)
+```
 
 ## Compile and install melnode
 
 Simply run the following command:
 
 ```shell-session
-$ cargo install --locked melnode
+cargo install --locked melnode
 ```
 
 {% hint style="info" %}
@@ -60,4 +63,3 @@ This should kick off a fairly long build process, but eventually you should see 
    Compiling melnode v0.14.0
     Finished release [optimized] target(s) in 1m 29
 ```
-

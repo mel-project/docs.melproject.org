@@ -13,32 +13,35 @@ description: Running a replica node with melnode
 Simply running the `melnode` command without any arguments starts an instance running on the mainnet. You will see output looking something like this:
 
 ```shell-session
-$ melnode                                                                                                                                            
-[2022-12-12T16:40:48Z INFO  melnode] melnode v0.13.2 initializing...                                                                              
-[2022-12-12T16:40:48Z DEBUG melnode::args] database opened at "/home/user/.melnode/"                                                       
-[2022-12-12T16:40:48Z INFO  melnode::storage::storage] HIGHEST AT 0                                                                                     
-[2022-12-12T16:40:48Z DEBUG melnode::args] node storage opened                                                                                          
-[2022-12-12T16:40:48Z INFO  melnode] bootstrapping with [185.177.126.98:41814]                                                                          
-[2022-12-12T16:40:48Z DEBUG melnode::protocols::node] starting to listen at 0.0.0.0:41814                                                               
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 1 of length 215 in 1.08ms (insert 9.54ms)                                          
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 2 of length 215 in 0.51ms (insert 0.26ms)                                          
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 3 of length 215 in 0.43ms (insert 0.21ms)                                          
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 4 of length 215 in 0.45ms (insert 0.22ms)                                          
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 5 of length 215 in 0.43ms (insert 0.24ms)                                          
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 6 of length 215 in 0.44ms (insert 0.23ms)                                          
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 7 of length 215 in 0.44ms (insert 0.24ms)                                          
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 8 of length 215 in 0.46ms (insert 0.18ms)                                          
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 9 of length 215 in 0.46ms (insert 0.15ms)                                          
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 10 of length 215 in 0.46ms (insert 0.16ms)                                         
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 11 of length 215 in 0.46ms (insert 0.16ms)                                         
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 12 of length 215 in 0.44ms (insert 0.25ms)                                         
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 13 of length 215 in 0.46ms (insert 0.20ms)                                         
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 14 of length 215 in 0.64ms (insert 0.25ms)                                         
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 15 of length 215 in 0.46ms (insert 0.22ms)                                         
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 16 of length 215 in 0.47ms (insert 0.13ms)                                         
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 17 of length 215 in 0.48ms (insert 0.13ms)                                         
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 18 of length 215 in 0.47ms (insert 0.23ms)                                         
-[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 19 of length 215 in 0.48ms (insert 0.13ms)                      
+melnode
+```
+
+```shell-session
+[2022-12-12T16:40:48Z INFO  melnode] melnode v0.13.2 initializing...
+[2022-12-12T16:40:48Z DEBUG melnode::args] database opened at "/home/user/.melnode/"
+[2022-12-12T16:40:48Z INFO  melnode::storage::storage] HIGHEST AT 0
+[2022-12-12T16:40:48Z DEBUG melnode::args] node storage opened
+[2022-12-12T16:40:48Z INFO  melnode] bootstrapping with [185.177.126.98:41814]
+[2022-12-12T16:40:48Z DEBUG melnode::protocols::node] starting to listen at 0.0.0.0:41814
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 1 of length 215 in 1.08ms (insert 9.54ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 2 of length 215 in 0.51ms (insert 0.26ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 3 of length 215 in 0.43ms (insert 0.21ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 4 of length 215 in 0.45ms (insert 0.22ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 5 of length 215 in 0.43ms (insert 0.24ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 6 of length 215 in 0.44ms (insert 0.23ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 7 of length 215 in 0.44ms (insert 0.24ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 8 of length 215 in 0.46ms (insert 0.18ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 9 of length 215 in 0.46ms (insert 0.15ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 10 of length 215 in 0.46ms (insert 0.16ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 11 of length 215 in 0.46ms (insert 0.16ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 12 of length 215 in 0.44ms (insert 0.25ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 13 of length 215 in 0.46ms (insert 0.20ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 14 of length 215 in 0.64ms (insert 0.25ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 15 of length 215 in 0.46ms (insert 0.22ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 16 of length 215 in 0.47ms (insert 0.13ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 17 of length 215 in 0.48ms (insert 0.13ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 18 of length 215 in 0.47ms (insert 0.23ms)
+[2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 19 of length 215 in 0.48ms (insert 0.13ms)
 ```
 
 It will take _quite_ a long time to synchronize all the blocks from the network (usually, around half a day or so).&#x20;
@@ -59,12 +62,12 @@ $ melnode --listen [::1]:41814 --advertise auto
 
 We add two flags:
 
-* `--listen [::1]:41814` listens on port 41814 on all network interfaces
-* `--advertise auto` automatically guesses our public IP address for incoming connections on the P2P network.
+- `--listen [::1]:41814` listens on port 41814 on all network interfaces
+- `--advertise auto` automatically guesses our public IP address for incoming connections on the P2P network.
 
 If this works, you should soon see output like:
 
-```
+```shell-session
 [2022-12-12T16:40:48Z DEBUG melnode::network] incoming connection from 100.64.3.2!
 ```
 
@@ -77,7 +80,7 @@ indicating that you are helping other nodes connect to the network.
 Replicating testnet blocks is as easy as adding `--network testnet` to any command:
 
 ```shell-session
-$ melnode --network testnet
+melnode --network testnet
 ```
 
 ### Faucets and staking

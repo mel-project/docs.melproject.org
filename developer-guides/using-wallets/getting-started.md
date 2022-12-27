@@ -10,14 +10,14 @@ This is a basic guide to `melwallet-cli`, Themelio's reference CLI wallet. We wi
 
 ### Prerequisites
 
-* You’re running a Unix (Linux or macOS) system. The code should work on Windows, but it isn’t as well-tested.
-* You have a working Internet connection
-* You have `git` installed
-* You have the latest Rust toolkit, including the `cargo` command
+- You’re running a Unix (Linux or macOS) system. The code should work on Windows, but it isn’t as well-tested.
+- You have a working Internet connection
+- You have `git` installed
+- You have the latest Rust toolkit, including the `cargo` command
 
 ### Install melwalletd and melwallet-cli
 
-```bash
+```shell-session
 cargo install --locked melwalletd melwallet-cli
 ```
 
@@ -29,7 +29,7 @@ We install not just `melwallet-cli`, but also the `melwalletd` package. This is 
 
 In a separate terminal (or tmux buffer), start the headless wallet daemon, and connect to the testnet network:
 
-```shell
+```shell-session
 melwallet-cli start-daemon --network testnet
 ```
 
@@ -51,7 +51,7 @@ You will be prompted for passwords, which will be used to encrypt the wallets' p
 
 You can then list the wallets you created like so
 
-```shell
+```shell-session
 melwallet-cli list
 ```
 
@@ -59,13 +59,14 @@ melwallet-cli list
 
 We can use `faucet` transactions to fund these new testnet wallets. This lets us print MEL out of thin air (and is only available on testnet) for easy testing!&#x20;
 
-<pre class="language-shell"><code class="lang-shell"><strong>melwallet-cli send-faucet -w alice
-</strong># Transaction hash:  9974a514351a0696b6d7e3851da957ff508e44857b4967e3d46b8d16685b9769
-# (wait for confirmation with melwallet-cli wait-confirmation -w alice 9974a514351a0696b6d7e3851da957ff508e44857b4967e3d46b8d16685b9769)
+```shell-session
+melwallet-cli send-faucet -w alice
+```
 
-# optional step if you want to see the transaction being confirmed
-melwallet-cli wait-confirmation -w alice &#x3C;TRANSACTION_HASH>
-</code></pre>
+```shell-session
+Transaction hash:  9974a514351a0696b6d7e3851da957ff508e44857b4967e3d46b8d16685b9769
+(wait for confirmation with melwallet-cli wait-confirmation -w alice 9974a514351a0696b6d7e3851da957ff508e44857b4967e3d46b8d16685b9769)
+```
 
 ### Send some money to Bob <a href="#send-funds" id="send-funds"></a>
 

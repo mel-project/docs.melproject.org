@@ -14,22 +14,22 @@ description: This page describes how to mint MEL with Melminter
 
 Ensure that you have:
 
-* &#x20;An up-to-date `melminter` and `melwalletd` installed:
+- &#x20;An up-to-date `melminter` and `melwalletd` installed:
 
-```
-$ cargo install --locked melminter melwalletd
+```shell-session
+cargo install --locked melminter melwalletd
 ```
 
-* A small amount of `MEL` in your wallet. (See setup instructions [here](../using-wallets/getting-started.md)). Melmint transactions are required to pay transaction fees, just like every other transaction.&#x20;
-  * If you simply want to try this out on testnet, simply send some to yourself via a faucet transaction, as shown [here](../using-wallets/getting-started.md#fund-wallet).
-  * If you wish to participate in mainnet Melminting, please ask for some `MEL` in the #beta-testers channel in our [Discord server](https://discord.gg/UXhxujHH).
+- A small amount of `MEL` in your wallet. (See setup instructions [here](../using-wallets/getting-started.md)). Melmint transactions are required to pay transaction fees, just like every other transaction.&#x20;
+  - If you simply want to try this out on testnet, simply send some to yourself via a faucet transaction, as shown [here](../using-wallets/getting-started.md#fund-wallet).
+  - If you wish to participate in mainnet Melminting, please ask for some `MEL` in the #beta-testers channel in our [Discord server](https://discord.gg/UXhxujHH).
 
 ## Starting the melminter
 
 1. Start `melwalletd` as show [here](../using-wallets/getting-started.md#start-melwalletd).
 2. Run the following:
 
-```shell
+```shell-session
 melminter --payout <SOME_WALLET_ADDRESS>
 ```
 
