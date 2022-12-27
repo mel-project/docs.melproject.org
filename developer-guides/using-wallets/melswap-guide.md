@@ -5,20 +5,21 @@
 In [the last section](getting-started.md) we sent `bob` some MEL. In this section we are going to use that wallet. To follow along make sure you have access to at least 500 MEL.
 
 {% hint style="info" %}
-Fees, exchange rates, and other numbers have been heavily adjusted for simplicity &#x20;
+Fees, exchange rates, and other numbers have been heavily adjusted for simplicity
 {% endhint %}
 
 ```shell-session
-melwallet-cli summary -w bob
-```
+$ melwallet-cli summary -w bob
 
-```
 Network:      testnet
 Address:      t04ncd9j314rt7jth5wmedz8j5tcz9w8cdcdk48ex9t2fkj44ekne0
 Balance:      500.000000  MEL
               500.000000  MEL
 Staked:       0.000000    SYM
 ```
+
+<pre><code><strong>
+</strong></code></pre>
 
 ## Swapping coins <a href="#swapping-coins" id="swapping-coins"></a>
 
@@ -27,7 +28,7 @@ Unlike other blockchains where this functionality is typically on a programmable
 {% hint style="info" %}
 We build a rudimentary DEX into the L1 not primarily for convenience, but as a trustless price oracle for designing on-chain logic, as well as an important part of the Melmint algorithm that stabilizes MEL works.
 
-Nevertheless, you'll see that it's very easy to use!&#x20;
+Nevertheless, you'll see that it's very easy to use!
 {% endhint %}
 
 With Melswap, any user can instantly swap one coin and another for a fixed pool fee of 0.5%. Using `melwallet-cli` we will swap 100 `MEL` for some `SYM` at the market rate.
@@ -65,7 +66,7 @@ Staked:       0.000000    SYM
 
 ### Pools
 
-In order to execute the trade above, we interacted with a **liquidity pool**: a collections of two kinds of assets, in this case `MEL` and `SYM`, deposited on-chain. \*\*\*\* Liquidity pools provide constant-product DEXes like Melswap with always-available buyers and sellers, with an exchange rate that automatically adjusts to satisfy any trade without running out of assets in the pool.&#x20;
+In order to execute the trade above, we interacted with a **liquidity pool**: a collections of two kinds of assets, in this case `MEL` and `SYM`, deposited on-chain. \*\*\*\* Liquidity pools provide constant-product DEXes like Melswap with always-available buyers and sellers, with an exchange rate that automatically adjusts to satisfy any trade without running out of assets in the pool.
 
 {% hint style="info" %}
 Constant-product swapping pools were invented by Uniswap, and the Uniswap v2 documentation remains the best guide to understanding them further.
@@ -114,7 +115,16 @@ Awaiting Confirmation... Confirmed at height 316!
 Block Explorer: https://scan-testnet.themelio.org/blocks/314/b02ed062fc8f9eb6b2fce799e36ad06b86b95a45ef3bd8b98d2ee8a7deae0691
 ```
 
-Looking at the transaction recipient you can see that bob is receiving 1 `MEL~SYM` token in exchange for 50 `MEL` and 25 `SYM`. The `MEL/SYM` exchange rate being `1 MEL / 2 SYM`, the total value of this transaction is 100 `MEL`
+<pre class="language-shell-session"><code class="lang-shell-session">melwallet-cli summary -w bob
+<strong>
+</strong>Wallet name:  bob (unlocked)
+Network:      custom02
+Address:      t11n9ynz8jhcd1k7h6jx4pvsc4m2qvwjhdp5mx03ega05hkcts8j9g
+Balance:      349.50000   MEL
+              25.000000   SYM
+              1.0000000   MEL~SYM
+Staked:       0.000000    SYM
+</code></pre>
 
 ```
 melwallet-cli summary -w bob
