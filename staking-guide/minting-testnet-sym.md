@@ -1,0 +1,2 @@
+# Minting testnet SYM
+
