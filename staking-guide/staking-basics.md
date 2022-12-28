@@ -1,5 +1,5 @@
 ---
-description: This page describes how to get started with staking on our  network
+description: This page describes how to get started with staking on our network
 ---
 
 # Staking Basics
