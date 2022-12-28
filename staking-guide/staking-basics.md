@@ -1,5 +1,5 @@
 ---
-description: This page describes how to get started with staking on our network
+description: This page describes how to get started with staking on our  network
 ---
 
 # Staking Basics
@@ -63,20 +63,25 @@ Once the node starts running, you should see something like this:
 
 Now that the staker node is up and running, it's time to give it some voting power so it can participate in the network's consensus!
 
-```shell-session
-$ melwallet-cli stake <amount-of-SYM> --to-stake <staker-pubkey> --epoch-start now
-TRANSACTION RECIPIENTS
+<pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli stake &#x3C;amount-of-SYM> --to-stake &#x3C;staker-pubkey> --epochs 3
+<strong>
+</strong>TRANSACTION RECIPIENTS
 Address                                                 Amount          Additional data
 t22272fg9r0k8k09qj06drzzjq9e0rw3asxfs1zrnaccwv5j6gq5tg  0.000100 MEL    ""
-network fees)                                          0.000254 MEL
+network fees                                            0.000254 MEL
 
-TODO: some info about the epoch duration
-STAKING EPOCH INFO
-Epoch Start                                             Epoch End
-2023-01-01T00:00:00+00:00                               2023-04-01T00:00:00+00:00  
-Duration: 3 Months (approximate)
-Proceed? [y/N] y
-```
+STAKING EPOCH INFO  
+10000 SYM staking until: DATE (epoch N)
+node 0xdeadbeefcafed00d given voting power from
+  DATE (epoch N)
+  to 
+  DATE (epoch N)
+
+WARNING: your SYM will be locked NOW! You might want to wait until you're closer to NEXT-EP-DATE before staking.
+Proceed? (y/N) y
+
+Are you sure? WARNING: THIS IS NOT REVERSIBLE. (y/N) y
+</code></pre>
 
 You will be prompted to confirm the transaction, fees, and epoch date range -- read this carefully before doing so! You should see an output like this afterwards:
 
