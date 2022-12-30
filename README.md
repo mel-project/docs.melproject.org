@@ -47,7 +47,3 @@ There is also an alpha-quality GUI wallet [Mellis](https://github.com/themeliola
 ### On-chain development
 
 You can deploy on-chain logic using our high-level covenant programming language [Melodeon](https://melodeonlang.org/).
-
-\
-\
-\

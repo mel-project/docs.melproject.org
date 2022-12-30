@@ -60,7 +60,7 @@ melwallet-cli list
 We can use `faucet` transactions to fund these new testnet wallets. This lets us print MEL out of thin air (and is only available on testnet) for easy testing!&#x20;
 
 ```shell-session
-melwallet-cli send-faucet -w alice
+melwallet-cli send-faucet -w alice --currency MEL --amount 10000
 ```
 
 ```shell-session

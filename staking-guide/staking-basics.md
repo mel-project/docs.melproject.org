@@ -35,7 +35,7 @@ We're almost ready to get started. Before we can start staking, we need to first
 
 The first thing we'll need is a key-pair, comprised of a public and private key for the staker node itself. The staker node will be identified by the public key, and the private key will be used internally while processing incoming stake transactions.
 
-```
+```shell-session
 $ melnode --payout-addr <payout-wallet-address>
 ```
 
@@ -48,13 +48,13 @@ By default, `melnode` will auto-generate a new keypair for the staker node and s
 
 Optionally, you can provide an existing keypair as a CLI argument (make sure the private key is stored somewhere safe!) If the provided public key does not exist, `melnode` will autogenerate a new keypair as mentioned above.
 
-```
+```shell-session
 $ melnode --staker-pubkey <path-to-pubkey> --staker-private-key <path-to-private-key>
 ```
 
 Once the node starts running, you should see something like this:
 
-```
+```shell-session
 [2022-12-23T02:09:31Z INFO  melnode] staker melnode starting with pubkey <pubkey>
 ...
 ```
@@ -70,7 +70,7 @@ Address                                                 Amount          Addition
 t22272fg9r0k8k09qj06drzzjq9e0rw3asxfs1zrnaccwv5j6gq5tg  0.000100 MEL    ""
 network fees                                            0.000254 MEL
 
-STAKING EPOCH INFO  
+STAKING EPOCH INFO
 10000 SYM staking until: DATE (epoch N)
 node 0xdeadbeefcafed00d given voting power from
   DATE (epoch N)
