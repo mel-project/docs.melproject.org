@@ -104,16 +104,18 @@ Let’s start melwalletd in testnet mode if it's not already running with `melwa
 
 ```
 melwallet-cli send -w alice --to t7sbbv7zy59cnc2wc2jk52f972crm02004v8eksgpc8qnxnvtwb1kg
-TRANSACTION RECIPIENTS
-Address                                                 Amount          Additional data
-t7sbbv7zy59cnc2wc2jk52f972crm02004v8eksgpc8qnxnvtwb1kg  100.000000 MEL  ""
-t92zte6gh26y5s02g9h31vgmnv0q4vya8paw5vghfe6c5b4hvj28pg  8.187089 MEL    ""
-t92zte6gh26y5s02g9h31vgmnv0q4vya8paw5vghfe6c5b4hvj28pg  8.187089 MEL    ""
- (network fees)                                         0.000395 MEL
-Proceed? [y/N]
+
+# TRANSACTION RECIPIENTS
+# Address                                                 Amount          Additional data
+# t7sbbv7zy59cnc2wc2jk52f972crm02004v8eksgpc8qnxnvtwb1kg  100.000000 MEL  ""
+# t92zte6gh26y5s02g9h31vgmnv0q4vya8paw5vghfe6c5b4hvj28pg  8.187089 MEL    ""
+# t92zte6gh26y5s02g9h31vgmnv0q4vya8paw5vghfe6c5b4hvj28pg  8.187089 MEL    ""
+#  (network fees)                                         0.000395 MEL
+# Proceed? [y/N]
 y
-Transaction hash:  630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b
-(wait for confirmation with melwallet-cli wait-confirmation -w demo 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b)
+
+# Transaction hash:  630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b
+# (wait for confirmation with melwallet-cli wait-confirmation -w demo 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b)
 ```
 
 After this transaction confirms, the 100 MEL will be locked up at the first output of the transaction with hash `630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b` . It can only be spent by a transaction that satisfies the covenant we wrote earlier. (You can even see it on Melscan — the above is a transcript of an actual testnet deployment!)
