@@ -1,7 +1,7 @@
 ---
 description: >-
   This page will guide a user through creating, deploying, and interacting with
-  a Themelio covenants using a simple example.
+  a Themelio covenant using a simple example.
 ---
 
 # Covenant interaction
