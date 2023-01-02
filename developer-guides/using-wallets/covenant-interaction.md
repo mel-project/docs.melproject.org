@@ -32,7 +32,7 @@ To get started we are going to write a very simple "password" covenant which wil
 Please note, this covenant is **not** production ready. We do not recommend you use this covenant to lock up any coins on mainnet, you will likely get frontrun and lose your coins.
 {% endhint %}
 
-Let's start by first hashing our password using the melorun REPL; use `melorun -i` to start it and hash your password by passing it in to the Blake3 function: `blake3("your password here")` (tip: if you want write your password using raw hexadecimal, prepend an \`x\` in front of your string).
+Let's start by first hashing our password using the melorun REPL; use `melorun -i` to start it and hash your password by passing it in to the Blake3 function: `blake3("your password here")` (tip: if you want to write your password using raw hexadecimal, prepend your string with an `x` like this: `x"0123456789abcdef"`). For this example, I'm going to be using the password `Hello world!` which results in the hash `x"793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f4"`.
 
 Next, we create the Melodeon file we're going to use to write our covenant, in this case, we will name it `password.melo`. It can be written with only a few lines of code:
 
@@ -42,17 +42,17 @@ def get_data(): %[] =
 
 ---
 
-unsafe b2n(blake3(get_data() :! %[8])) == b2n(x"db4d31ea5d920d2bca6294e57023e2b34deebac2764a7b0cee2fb9addb3ac33b")
+unsafe b2n(blake3(get_data() :! %[12])) == b2n(x"793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f4")
 ```
 
 Let's look at our covenant in more depth:
 
 * the first section defines a function named `get_data()` which retrieves the byte vector stored in the additional data of the transaction trying to spend the coin
-* the three dashes separating the two main parts of our covenant divide the function definition section of our Melodeon program from the covenant entry point (similar to the `main()` function present in many other programming languages).
-* the last section hashes the transaction's additional data, and checks that it matches the hash of the password we calculated earlier. In this case I am using the hexadecimal string `x"0123456789abcdef"` as my password, which resulted in the hash `x"db4d31ea5d920d2bca6294e57023e2b34deebac2764a7b0cee2fb9addb3ac33b"`
+* the three dashes separating the two main parts of our covenant divide the function definition section of our Melodeon program from the covenant entry point (similar to the `main()` function present in many other programming languages)
+* the last section hashes the transaction's additional data, and checks that it matches the hash of the password we calculated earlier
 
 {% hint style="info" %}
-Because Melodeon programs are bounded, we must specify the length of our password with _`:! $[YOUR_PASSWORD_LENGTH]`_. Make sure you replace the _`8`_ in our example with the length of your password in bytes.
+Because Melodeon programs are bounded, we must specify the length of our password with _`:! $[YOUR_PASSWORD_LENGTH]`_. Make sure you replace the _`12`_ in our example with the length of your password, in bytes.
 {% endhint %}
 
 ## Testing covenants before deployment
@@ -61,7 +61,7 @@ Both melorun and the online playground support specifying the spend context. Thi
 
 You can apply this spend environment with the `-s` flag of melorun, or just use the [playground](https://play.melodeonlang.org/#DgAAAODMzMwxzABlZTHMAGVlMQ).
 
-We'll name our spend context file \`context.yaml\` and it will contain information about a mock transaction. The only value we really care about here is the `additional_data` field, which will contain our password in bytes.
+We'll name our spend context file `context.yaml` and it will contain information about a mock transaction. The only value we really care about here is the `additional_data` field, which will contain our password in bytes; this means that instead of putting `Hello world!` we are going to use it's equivalent in hexadecimal: `48656c6c6f20776f726c6421`.
 
 ```
 spender_outputs:
@@ -69,7 +69,7 @@ spender_outputs:
     covhash: t6jjw53gj6caa9dhqrefytb7pj53rz8pqfnnjxh5m7x64pfjd4h6n1
     denom: MEL
     value: 1337
-    additional_data: 0123456789abcdef
+    additional_data: 48656c6c6f20776f726c6421
 ```
 
 We can now test that everything works as expected using this command: `melorun password.melo -s context.yaml`. If it returns&#x20;
@@ -90,8 +90,8 @@ To do that, we need to first compile our Melodeon program to MelVM bytecode. Thi
 You’ll see something like the following two lines on stdout:
 
 ```
-t7sbbv7zy59cnc2wc2jk52f972crm02004v8eksgpc8qnxnvtwb1kg
-f20103f2010242000050430022f2004300234200224300244200245342002325a1000842002243002542002343002642002642002550a00001f20050430027420027300008430028420028c1430021f020db4d31ea5d920d2bca6294e57023e2b34deebac2764a7b0cee2fb9addb3ac33b43002a42002ac143002942002942002124
+t7m8hrg0vwex2h59a62qm48xr0g1jryatas74ycrhxep85e65x1cv0
+f20103f2010242000050430022f2004300234200224300244200245342002325a1000842002243002542002343002642002642002550a00001f2005043002742002730000c430028420028c1430021f020793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f443002a42002ac143002942002942002124
 ```
 
 The first line is the hash of the covenant in the standard “address” format, while the second line contains the hex-encoded MelVM bytecode.
@@ -103,11 +103,11 @@ The next step is to lock up a coin with this covenant.
 Let’s start melwalletd in testnet mode if it's not already running with `melwallet-cli start-daemon --network testnet` and use melwallet-cli to send 100 testnet `MEL` to the covenant hash we saw earlier:
 
 ```
-melwallet-cli send -w alice --to t7sbbv7zy59cnc2wc2jk52f972crm02004v8eksgpc8qnxnvtwb1kg
+melwallet-cli send -w alice --to t7m8hrg0vwex2h59a62qm48xr0g1jryatas74ycrhxep85e65x1cv0
 
 # TRANSACTION RECIPIENTS
 # Address                                                 Amount          Additional data
-# t7sbbv7zy59cnc2wc2jk52f972crm02004v8eksgpc8qnxnvtwb1kg  100.000000 MEL  ""
+# t7m8hrg0vwex2h59a62qm48xr0g1jryatas74ycrhxep85e65x1cv0  100.000000 MEL  ""
 # t92zte6gh26y5s02g9h31vgmnv0q4vya8paw5vghfe6c5b4hvj28pg  8.187089 MEL    ""
 # t92zte6gh26y5s02g9h31vgmnv0q4vya8paw5vghfe6c5b4hvj28pg  8.187089 MEL    ""
 #  (network fees)                                         0.000395 MEL
@@ -129,13 +129,13 @@ Note that in the following steps, we use bash/zsh syntax for string interpolatio
 Using any wallet (Bob's, Alice's, or even Carol's), run the following melwallet-cli command:
 
 ```
-melwallet-cli send -to t22112s3z287v74fhp4z3kbsjq48y7fxez59tjr0d6xx7p71cxpe5g,100,MEL,0123456789abcdef --force-spend 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0 --add-covenant f20103f2010242000050430022f2004300234200224300244200245342002325a1000842002243002542002343002642002642002550a00001f20050430027420027300008430028420028c1430021f020db4d31ea5d920d2bca6294e57023e2b34deebac2764a7b0cee2fb9addb3ac33b43002a42002ac143002942002942002124
+melwallet-cli send -to t22112s3z287v74fhp4z3kbsjq48y7fxez59tjr0d6xx7p71cxpe5g,100,MEL,asci="Hello world" --force-spend 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0 --add-covenant f20103f2010242000050430022f2004300234200224300244200245342002325a1000842002243002542002343002642002642002550a00001f2005043002742002730000c430028420028c1430021f020793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f443002a42002ac143002942002942002124
 ```
 
 Let’s unpack this command a little. It asks the demo wallet to format a transaction that
 
 * sends 100 `MEL` to `t22112s3z287v74fhp4z3kbsjq48y7fxez59tjr0d6xx7p71cxpe5g`, the address for Bob that was created for this tutorial, here you would put an address that you created
-* adds our password as a hex string (`0123456789abcdef`) to the additional data of our transaction
+* adds our password to the additional data of our transaction and automatically converts it to hexadecimal because we prepended it with `ascii=`
 * spends the covenant-locked coin we just created earlier — the out-of-wallet coin `630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0`
 * supplies the content of the covenant inline as a large hex string
 
