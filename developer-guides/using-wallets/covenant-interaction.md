@@ -32,7 +32,7 @@ To get started we are going to write a very simple "password" covenant which wil
 Please note, this covenant is **not** production ready. We do not recommend you use this covenant to lock up any coins on mainnet, you will likely get frontrun and lose your coins.
 {% endhint %}
 
-Let's start by first hashing our password using the melorun REPL; use `melorun -i` to start it and hash your password by passing it in to the Blake3 function: `blake3("your password here")` (tip: if you want to write your password using raw hexadecimal, prepend your string with an `x` like this: `x"0123456789abcdef"`). For this example, I'm going to be using the password `Hello world!` which results in the hash `x"793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f4"`.
+Let's start by first hashing our password using the melorun REPL; use `melorun -i` to start it and hash your password by passing it in to the Blake3 function: `blake3("your password here")` (tip: if you want to write your password using raw hexadecimal, prepend your string with an `x` like this: `x"48656c6c6f20776f726c6421"`). In this example, I'm going to be using the password `Hello world!` which results in the hash `x"793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f4"`.
 
 Next, we create the Melodeon file we're going to use to write our covenant, in this case, we will name it `password.melo`. It can be written with only a few lines of code:
 
