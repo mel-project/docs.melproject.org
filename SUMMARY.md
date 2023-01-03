@@ -16,7 +16,7 @@
   * [Basic replica node](developer-guides/run-a-full-node/basic-replica-node.md)
 * [Using wallets](developer-guides/using-wallets/README.md)
   * [Getting Started](developer-guides/using-wallets/getting-started.md)
-  * [Melswap guide](developer-guides/using-wallets/melswap-guide.md)
+  * [Swapping Coins](developer-guides/using-wallets/melswap-guide.md)
   * [Covenant interaction](developer-guides/using-wallets/covenant-interaction.md)
 * [Melmint](developer-guides/melmint/README.md)
   * [Melmint overview](developer-guides/melmint/melmint-overview.md)

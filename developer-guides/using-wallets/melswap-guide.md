@@ -1,4 +1,4 @@
-# Melswap guide
+# Swapping Coins
 
 ## Prerequisites
 
@@ -8,15 +8,14 @@ In [the last section](getting-started.md) we sent `bob` some MEL. In this sectio
 Fees, exchange rates, and other numbers have been heavily adjusted for simplicity
 {% endhint %}
 
-```shell-session
-$ melwallet-cli summary -w bob
-
-Network:      testnet
+<pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli summary -w bob
+<strong>
+</strong>Network:      testnet
 Address:      t04ncd9j314rt7jth5wmedz8j5tcz9w8cdcdk48ex9t2fkj44ekne0
 Balance:      500.000000  MEL
               500.000000  MEL
 Staked:       0.000000    SYM
-```
+</code></pre>
 
 ## Swapping coins <a href="#swapping-coins" id="swapping-coins"></a>
 
@@ -45,16 +44,15 @@ Block Explorer: https://scan-testnet.themelio.org/blocks/314/...
 
 As you can see in the `From` and `To` fields, 100 `MEL` is being swapped for 50 `SYM`. After user confirmation, `melwallet-cli` waits for the transaction to be posted to the blockchain then outputs the confirmation height and [melscan](https://scan.themelio.org) URL.
 
-```shell-session
-$ melwallet-cli summary -w bob
-
-Wallet name:  bob (unlocked)
+<pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli summary -w bob
+<strong>
+</strong>Wallet name:  bob (unlocked)
 Network:      custom02
 Address:      t11n9ynz8jhcd1k7h6jx4pvsc4m2qvwjhdp5mx03ega05hkcts8j9g
 Balance:      400.00000   MEL
               50.000000   SYM
 Staked:       0.000000    SYM
-```
+</code></pre>
 
 ### Pools
 
@@ -74,7 +72,7 @@ Liquidity tokens issued: 100.000000 MEL~SYM
 </code></pre>
 
 {% hint style="warning" %}
-Because of the way a constant-product pool works to ensure all trades can be satisfied, large trades that are a significant fraction of the size of the pool will likely receive **extremely** bad prices.
+A constant-product pool like Melswap works to ensure all trades can be satisfied and as such extremely large trades will receive **extremely** bad prices to preserve pool liquidity.
 
 (TODO: Example)
 {% endhint %}
@@ -101,6 +99,8 @@ Awaiting Confirmation... Confirmed at height 316!
 Block Explorer: https://scan-testnet.themelio.org/blocks/314/b02ed062fc8f9eb6b2fce799e36ad06b86b95a45ef3bd8b98d2ee8a7deae0691
 </code></pre>
 
+As you can see bob now has 1 liquidity token called `MEL~SYM`
+
 <pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli summary -w bob
 <strong>
 </strong>Wallet name:  bob (unlocked)
@@ -112,13 +112,9 @@ Balance:      349.50000   MEL
 Staked:       0.000000    SYM
 </code></pre>
 
-<pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli summary -w bob
-<strong>
-</strong>Wallet name:  bob (unlocked)
-Network:      custom02
-Address:      t11n9ynz8jhcd1k7h6jx4pvsc4m2qvwjhdp5mx03ega05hkcts8j9g
-Balance:      350.00000   MEL
-              25.000000   SYM
-              1.0000000   MEL~SYM
-Staked:       0.000000    SYM
-</code></pre>
+{% hint style="danger" %}
+Just like traditional markets, on Themelio there are different risks associated with different asset classes. Please do not invest your money in any asset until you understand the risks, and never risk more than you can afford. For more information about Themelio assets please take a look at (TODO)
+{% endhint %}
+
+
+
