@@ -5,7 +5,7 @@
 In [the last section](getting-started.md) we sent `bob` some MEL. In this section we are going to use that wallet. To follow along make sure you have access to at least 500 MEL.
 
 {% hint style="info" %}
-Fees, exchange rates, and other numbers have been heavily adjusted for simplicity
+Fees, exchange rates, and other numbers are **entirely fictional**!
 {% endhint %}
 
 <pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli summary -w bob
