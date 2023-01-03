@@ -36,7 +36,7 @@ We're almost ready to get started. Before we can start staking, we need to first
 The first thing we'll need is a key-pair, comprised of a public and private key for the staker node itself. The staker node will be identified by the public key, and the private key will be used internally while processing incoming stake transactions.
 
 ```shell-session
-$ melnode --payout-addr <payout-wallet-address>
+$ melnode --staker-wallet <payout-wallet-address>
 ```
 
 The `--payout-addr` value is a mandatory wallet address that will receive the rewards for operating a staker node. Be sure to check that this is correct!
@@ -63,9 +63,10 @@ Once the node starts running, you should see something like this:
 
 Now that the staker node is up and running, it's time to give it some voting power so it can participate in the network's consensus!
 
-<pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli stake &#x3C;amount-of-SYM> --to-stake &#x3C;staker-pubkey> --epochs 3
-<strong>
-</strong>TRANSACTION RECIPIENTS
+```shell-session
+$ melwallet-cli stake <amount-of-SYM> --to-stake <staker-pubkey> --epochs 3
+
+TRANSACTION RECIPIENTS
 Address                                                 Amount          Additional data
 t22272fg9r0k8k09qj06drzzjq9e0rw3asxfs1zrnaccwv5j6gq5tg  0.000100 MEL    ""
 network fees                                            0.000254 MEL
@@ -75,13 +76,13 @@ STAKING EPOCH INFO
 node 0xdeadbeefcafed00d given voting power from
   DATE (epoch N)
   to 
-  DATE (epoch N)
+  DATE (epoch N+3)
 
 WARNING: your SYM will be locked NOW! You might want to wait until you're closer to NEXT-EP-DATE before staking.
 Proceed? (y/N) y
 
 Are you sure? WARNING: THIS IS NOT REVERSIBLE. (y/N) y
-</code></pre>
+```
 
 You will be prompted to confirm the transaction, fees, and epoch date range -- read this carefully before doing so! You should see an output like this afterwards:
 
@@ -93,9 +94,9 @@ Block Explorer: https://scan-testnet.themelio.org/blocks/238/5cc1de4ccbe52ef2883
 
 ## Receiving staking rewards
 
-As a staker node operator, you are eligible for rewards, since you are actively contributing to our network's security and consensus.&#x20;
+As a staker node operator, you are eligible for rewards, since you are actively contributing to our network's security and consensus.
 
-Rewards are paid out to the `--payout-addr` previously provided during the node startup process, and will be sent to the wallet address every block (\~30 seconds). Check the balance of the wallet to verify your rewards were successfully received:
+Rewards are paid out to the `--staker-wallet` previously provided during the node startup process, and will be sent to the wallet address every block (\~30 seconds). Check the balance of the wallet to verify your rewards were successfully received:
 
 ```shell-session
 $ melwallet-cli summary -w bob
@@ -107,8 +108,6 @@ Balance:      500.000000  MEL
 Staked:       100.000000    SYM
 ```
 
-
-
-## Futher Reading
+## Further Reading
 
 This was just a simple tutorial on how to run a staker node on the network. To learn more about the consensus process, continue here (TODO) for more.

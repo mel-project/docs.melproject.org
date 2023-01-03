@@ -8,7 +8,7 @@ This is a basic guide to `melwallet-cli`, Themelio's reference CLI wallet. We wi
 
 ## Setup and Installation
 
-Make sure you have your wallet dependencies set up. If not, follow this short guide [here](getting-started.md)
+Make sure you have your wallet dependencies set up. If not, follow this short guide [here](../../staking-guide/untitled.md) before getting started.
 
 ### Create wallets for Alice and Bob
 
