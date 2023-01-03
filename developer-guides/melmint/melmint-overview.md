@@ -10,7 +10,7 @@ description: >-
 
 Melmint's main job is to make sure `MEL`, our base currency and stablecoin, is pegged to a reliable value. In order to be a useful store of value, `MEL` must not have a volatile price like Bitcoin or Ethereum.
 
-Unlike existing conventional stablecoins, `MEL` does not rely on any external assets like fiats and oracles. Instead, is an oracle-free system that pegs the value of **1 MEL to 1 DOSC.**
+Unlike existing conventional stablecoins, `MEL` does not rely on any external assets like fiats and oracles. Instead, Melmint is an oracle-free system that pegs the value of **1 MEL to 1 DOSC.**
 
 ### What is a DOSC?
 
