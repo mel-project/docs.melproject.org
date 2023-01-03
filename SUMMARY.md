@@ -1,8 +1,15 @@
 # Table of contents
 
+## concepts
+
+* [Overview: the off-chain composability vision](README.md)
+* [Minimal, governance-free L1](concepts/minimal-governance-free-l1.md)
+* [Powerful execution and embeddable thin clients](concepts/powerful-execution-and-embeddable-thin-clients.md)
+* [Sound cryptoeconomics with truly sound money](concepts/sound-cryptoeconomics-with-truly-sound-money.md)
+
 ## Developer guides
 
-* [Overview](README.md)
+* [Overview](<README (1).md>)
 * [Run a full node](developer-guides/run-a-full-node/README.md)
   * [Melnode quick start](developer-guides/run-a-full-node/melnode-quick-start.md)
   * [Setting up a simnet](developer-guides/run-a-full-node/setting-up-a-simnet.md)
