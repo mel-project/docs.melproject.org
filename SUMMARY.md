@@ -9,7 +9,7 @@
 
 ## Developer guides
 
-* [Overview](<README (1).md>)
+* [Overview](README.md)
 * [Run a full node](developer-guides/run-a-full-node/README.md)
   * [Melnode quick start](developer-guides/run-a-full-node/melnode-quick-start.md)
   * [Setting up a simnet](developer-guides/run-a-full-node/setting-up-a-simnet.md)

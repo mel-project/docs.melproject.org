@@ -38,11 +38,17 @@ Next, we create the Melodeon file we're going to use to write our covenant, in t
 
 ```
 def get_data(): %[] =
-    unsafe (vref(env_spender_tx().outputs, 0) :! CoinData).additional_data
+    let coin_data = vref(env_spender_tx().outputs, 0) in
+        if coin_data is CoinData
+        then coin_data.additional_data
+        else fail!
 
 ---
 
-unsafe b2n(blake3(get_data() :! %[12])) == b2n(x"793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f4")
+let password = get_data() in
+    if password is %[12]
+    then b2n(blake3(password)) == b2n(x"793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f4")
+    else 0
 ```
 
 Let's look at our covenant in more depth:
@@ -90,8 +96,8 @@ To do that, we need to first compile our Melodeon program to MelVM bytecode. Thi
 You’ll see something like the following two lines on stdout:
 
 ```
-t7m8hrg0vwex2h59a62qm48xr0g1jryatas74ycrhxep85e65x1cv0
-f20103f2010242000050430022f2004300234200224300244200245342002325a1000842002243002542002343002642002642002550a00001f2005043002742002730000c430028420028c1430021f020793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f443002a42002ac143002942002942002124
+t37ze3bq2tfc3k7d629pm1w10xy7s0qbas7095zctaaxhqrjc6g2t0
+f2010242000050430023f2004300244200234300254200255342002425a1000842002343002642002443002742002742002650a00001f200430022420022c2f2010224a1000542002253f2010424a00001f200a10010f20042002250c2f2010124a10007f2004200225073f2012024a00001f200a00001f200a10007f2010142002250c2f20024a00001f200a10007f2010242002250c2f2010124a00001f200a10007f2010342002250c2f2010124a00001f200a10004f2010342002250a0000142ffff430021420021c2f2010124a1000542002173f2010c24a00001f200a1001142002143002942002930000c43002a42002ac1430028f020793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f443002c42002cc143002b42002b42002824a00001f200
 ```
 
 The first line is the hash of the covenant in the standard “address” format, while the second line contains the hex-encoded MelVM bytecode.
@@ -103,11 +109,11 @@ The next step is to lock up a coin with this covenant.
 Let’s start melwalletd in testnet mode if it's not already running with `melwallet-cli start-daemon --network testnet` and use melwallet-cli to send 100 testnet `MEL` to the covenant hash we saw earlier:
 
 ```
-melwallet-cli send -w alice --to t7m8hrg0vwex2h59a62qm48xr0g1jryatas74ycrhxep85e65x1cv0
+melwallet-cli send -w alice --to t37ze3bq2tfc3k7d629pm1w10xy7s0qbas7095zctaaxhqrjc6g2t0
 
 # TRANSACTION RECIPIENTS
 # Address                                                 Amount          Additional data
-# t7m8hrg0vwex2h59a62qm48xr0g1jryatas74ycrhxep85e65x1cv0  100.000000 MEL  ""
+# t37ze3bq2tfc3k7d629pm1w10xy7s0qbas7095zctaaxhqrjc6g2t0  100.000000 MEL  ""
 # t92zte6gh26y5s02g9h31vgmnv0q4vya8paw5vghfe6c5b4hvj28pg  8.187089 MEL    ""
 # t92zte6gh26y5s02g9h31vgmnv0q4vya8paw5vghfe6c5b4hvj28pg  8.187089 MEL    ""
 #  (network fees)                                         0.000395 MEL
@@ -129,7 +135,7 @@ Note that in the following steps, we use bash/zsh syntax for string interpolatio
 Using any wallet (Bob's, Alice's, or even Carol's), run the following melwallet-cli command:
 
 ```
-melwallet-cli send -to t22112s3z287v74fhp4z3kbsjq48y7fxez59tjr0d6xx7p71cxpe5g,100,MEL,ascii="Hello world" --force-spend 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0 --add-covenant f20103f2010242000050430022f2004300234200224300244200245342002325a1000842002243002542002343002642002642002550a00001f2005043002742002730000c430028420028c1430021f020793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f443002a42002ac143002942002942002124
+melwallet-cli send -to t22112s3z287v74fhp4z3kbsjq48y7fxez59tjr0d6xx7p71cxpe5g,100,MEL,ascii="Hello world" --force-spend 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0 --add-covenant f2010242000050430023f2004300244200234300254200255342002425a1000842002343002642002443002742002742002650a00001f200430022420022c2f2010224a1000542002253f2010424a00001f200a10010f20042002250c2f2010124a10007f2004200225073f2012024a00001f200a00001f200a10007f2010142002250c2f20024a00001f200a10007f2010242002250c2f2010124a00001f200a10007f2010342002250c2f2010124a00001f200a10004f2010342002250a0000142ffff430021420021c2f2010124a1000542002173f2010c24a00001f200a1001142002143002942002930000c43002a42002ac1430028f020793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f443002c42002cc143002b42002b42002824a00001f200
 ```
 
 Let’s unpack this command a little. It asks the demo wallet to format a transaction that
