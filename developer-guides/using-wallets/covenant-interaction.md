@@ -141,7 +141,7 @@ melwallet-cli send -to t22112s3z287v74fhp4z3kbsjq48y7fxez59tjr0d6xx7p71cxpe5g,10
 Let’s unpack this command a little. It asks the demo wallet to format a transaction that
 
 * sends 100 `MEL` to `t22112s3z287v74fhp4z3kbsjq48y7fxez59tjr0d6xx7p71cxpe5g`, the address for Bob that was created for this tutorial, here you would put an address that you created
-* adds our password to the additional data of our transaction and automatically converts it to hexadecimal because we prepended it with `ascii=`
+* adds our password to the additional data of our transaction, specifying that we are using ASCII and not raw hexadecimal
 * spends the covenant-locked coin we just created earlier — the out-of-wallet coin `630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0`
 * supplies the content of the covenant inline as a large hex string
 
