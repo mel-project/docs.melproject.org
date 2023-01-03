@@ -18,9 +18,6 @@ Balance:      500.000000  MEL
 Staked:       0.000000    SYM
 ```
 
-<pre><code><strong>
-</strong></code></pre>
-
 ## Swapping coins <a href="#swapping-coins" id="swapping-coins"></a>
 
 Unlike other blockchains where this functionality is typically on a programmable smart contract, Themelio features a built-in, Uniswap-like decentralized exchange (DEX) called **Melswap**.
@@ -33,12 +30,9 @@ Nevertheless, you'll see that it's very easy to use!
 
 With Melswap, any user can instantly swap one coin and another for a fixed pool fee of 0.5%. Using `melwallet-cli` we will swap 100 `MEL` for some `SYM` at the market rate.
 
-```shell-session
-melwallet-cli swap -w bob --from MEL --to SYM 100.0
-```
-
-```
-SWAPPING
+<pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli swap -w bob --from MEL --to SYM 100.0
+<strong>
+</strong>SWAPPING
 From:  100.000000 MEL
 To:    50.000000  SYM  (approximate)
 Fee:     0.000000 MEL
@@ -47,15 +41,13 @@ Proceed? [y/N] y
 Transaction hash:  ...
 Awaiting Confirmation... Confirmed at height 314!
 Block Explorer: https://scan-testnet.themelio.org/blocks/314/...
-```
+</code></pre>
 
 As you can see in the `From` and `To` fields, 100 `MEL` is being swapped for 50 `SYM`. After user confirmation, `melwallet-cli` waits for the transaction to be posted to the blockchain then outputs the confirmation height and [melscan](https://scan.themelio.org) URL.
 
 ```shell-session
-melwallet-cli summary -w bob
-```
+$ melwallet-cli summary -w bob
 
-```
 Wallet name:  bob (unlocked)
 Network:      custom02
 Address:      t11n9ynz8jhcd1k7h6jx4pvsc4m2qvwjhdp5mx03ega05hkcts8j9g
@@ -74,15 +66,12 @@ Constant-product swapping pools were invented by Uniswap, and the Uniswap v2 doc
 
 To see the current exchange rate and liquidity of any given pool use the `melswap-info` subcommand
 
-```
-melwallet-cli melswap-info --pool MEL/SYM
-```
-
-```
-1 MEL  = 0.5000000000000000 SYM
+<pre><code>melwallet-cli melswap-info --pool MEL/SYM
+<strong>
+</strong>1 MEL  = 0.5000000000000000 SYM
 1 SYM  = 2.0000000000000000 MEL
 Liquidity tokens issued: 100.000000 MEL~SYM
-```
+</code></pre>
 
 {% hint style="warning" %}
 Because of the way a constant-product pool works to ensure all trades can be satisfied, large trades that are a significant fraction of the size of the pool will likely receive **extremely** bad prices.
@@ -94,12 +83,9 @@ Because of the way a constant-product pool works to ensure all trades can be sat
 
 Where does all the liquidity sitting in the pool come from? Melswap incentivizes users to add liquidity to pools by depositing tokens in the pool in exchange for **liquidity tokens**. Liquidity tokens are unique in that they reflect an ownership of a proportion the entire pool, instead of an individual token. Let's deposit a total value of 100 `MEL`in liquidity into the `MEL/SYM` pool:
 
-```
-melwallet-cli liq-deposit -w bob --pool MEL/SYM --value 100 MEL
-```
-
-```
-TRANSACTION RECIPIENTS
+<pre data-overflow="wrap"><code>melwallet-cli liq-deposit -w bob --pool MEL/SYM --value 100 MEL
+<strong>
+</strong>TRANSACTION RECIPIENTS
 
 Reciever Addresses
 t11n9ynz8jhcd1k7h6jx4pvsc4m2qvwjhdp5mx03ega05hkcts8j9g (self) 1.000000 MEL~SYM  ""
@@ -113,9 +99,9 @@ Proceed? [y/N] y
 Transaction hash:  b02ed062fc8f9eb6b2fce799e36ad06b86b95a45ef3bd8b98d2ee8a7deae0691
 Awaiting Confirmation... Confirmed at height 316!
 Block Explorer: https://scan-testnet.themelio.org/blocks/314/b02ed062fc8f9eb6b2fce799e36ad06b86b95a45ef3bd8b98d2ee8a7deae0691
-```
+</code></pre>
 
-<pre class="language-shell-session"><code class="lang-shell-session">melwallet-cli summary -w bob
+<pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli summary -w bob
 <strong>
 </strong>Wallet name:  bob (unlocked)
 Network:      custom02
@@ -126,16 +112,13 @@ Balance:      349.50000   MEL
 Staked:       0.000000    SYM
 </code></pre>
 
-```
-melwallet-cli summary -w bob
-```
-
-```
-Wallet name:  bob (unlocked)
+<pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli summary -w bob
+<strong>
+</strong>Wallet name:  bob (unlocked)
 Network:      custom02
 Address:      t11n9ynz8jhcd1k7h6jx4pvsc4m2qvwjhdp5mx03ega05hkcts8j9g
 Balance:      350.00000   MEL
               25.000000   SYM
               1.0000000   MEL~SYM
 Staked:       0.000000    SYM
-```
+</code></pre>
