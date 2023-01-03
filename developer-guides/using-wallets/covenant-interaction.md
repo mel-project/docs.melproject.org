@@ -58,7 +58,7 @@ Let's look at our covenant in more depth:
 * the last section hashes the transaction's additional data, and checks that it matches the hash of the password we calculated earlier
 
 {% hint style="info" %}
-Because Melodeon programs are bounded, we must specify the length of our password with _`:! $[YOUR_PASSWORD_LENGTH]`_. Make sure you replace the _`12`_ in our example with the length of your password, in bytes.
+Because Melodeon programs are bounded, we must check that the length of our `password` variable is the same length as the password we used when creating the covenant. Make sure you replace the `12` in `if password is %[12]` with the length of _your_ password, in bytes.
 {% endhint %}
 
 ## Testing covenants before deployment
