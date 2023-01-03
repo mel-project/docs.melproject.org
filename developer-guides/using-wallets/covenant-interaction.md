@@ -129,7 +129,7 @@ Note that in the following steps, we use bash/zsh syntax for string interpolatio
 Using any wallet (Bob's, Alice's, or even Carol's), run the following melwallet-cli command:
 
 ```
-melwallet-cli send -to t22112s3z287v74fhp4z3kbsjq48y7fxez59tjr0d6xx7p71cxpe5g,100,MEL,asci="Hello world" --force-spend 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0 --add-covenant f20103f2010242000050430022f2004300234200224300244200245342002325a1000842002243002542002343002642002642002550a00001f2005043002742002730000c430028420028c1430021f020793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f443002a42002ac143002942002942002124
+melwallet-cli send -to t22112s3z287v74fhp4z3kbsjq48y7fxez59tjr0d6xx7p71cxpe5g,100,MEL,ascii="Hello world" --force-spend 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0 --add-covenant f20103f2010242000050430022f2004300234200224300244200245342002325a1000842002243002542002343002642002642002550a00001f2005043002742002730000c430028420028c1430021f020793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f443002a42002ac143002942002942002124
 ```
 
 Let’s unpack this command a little. It asks the demo wallet to format a transaction that
@@ -140,7 +140,9 @@ Let’s unpack this command a little. It asks the demo wallet to format a transa
 * supplies the content of the covenant inline as a large hex string
 
 {% hint style="info" %}
-Note: We must provide the covenant bytecode in our transaction because when we created the coin, we locked it with the covenant through its covenant hash. When we spend the coin, we then need to supply the actual contents of the covenant. This construct, borrowed from Bitcoin’s “pay-to-script-hash”, ensures that bulky covenants do not burden the coin state (and instead only need to be archived in the blockchain history, which does not need frequent access).
+**Note:** We must provide the covenant bytecode in our spending transaction because when we created the coin, we locked it with the covenant by merely referring to the covenant hash.&#x20;
+
+When we spend the coin, we then need to supply the actual contents of the covenant. This construct, borrowed from Bitcoin’s “[pay-to-script-hash](https://en.bitcoin.it/wiki/Pay\_to\_script\_hash)”, ensures that bulky covenants do not burden the coin state (and instead only need to be archived in the blockchain history, which does not need frequent access).
 {% endhint %}
 
 ## Deploying on the mainnet
