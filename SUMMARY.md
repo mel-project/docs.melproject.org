@@ -10,6 +10,7 @@
 ## Developer guides
 
 *
+* [💰 Fund Your Wallet](developer-guides/fund-your-wallet.md)
 * [Run a full node](developer-guides/run-a-full-node/README.md)
   * [Melnode quick start](developer-guides/run-a-full-node/melnode-quick-start.md)
   * [Setting up a simnet](developer-guides/run-a-full-node/setting-up-a-simnet.md)
@@ -28,7 +29,6 @@
 * [Staking guide](staking-guide/README.md)
   * [Staking Basics](staking-guide/staking-basics.md)
   * [Minting testnet SYM](staking-guide/minting-testnet-sym.md)
-  * [Untitled](staking-guide/untitled.md)
 
 ## Resources
 
