@@ -30,9 +30,13 @@ melwallet-cli start-daemon --network testnet
 
 This will save any wallets you create to `~/.themelio-wallets`, but feel free to use any path you want.
 
+## Printing Coins
+For example, to print MEL:
+```shell-session
+$ melwallet-cli send-faucet -w <wallet-name> --currency MEL --amount 10000
+```
 
-## Printing SYM 
-For example, to print SYM:
+To print SYM:
 ```shell-session
 $ melwallet-cli send-faucet -w <wallet-name> --currency SYM --amount 10000
 ```
