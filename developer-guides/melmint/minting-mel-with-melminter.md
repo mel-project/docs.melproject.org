@@ -28,5 +28,7 @@ cargo install --locked melminter
 $ melminter --payout <SOME_WALLET_ADDRESS>
 ```
 
-The first time you run `melminter`, it will ask you to send a particular address a small amount of `MEL` in order to start. This is so that it can pay initial transaction fees. Use the `send` command [like so](../using-wallets/getting-started.md#send-funds).
+The first time you run `melminter`, it will ask you to send a particular address a small amount of `MEL` in order to start. This is so that it can pay initial transaction fees. Use the `send` command [like so](../using-wallets/getting-started.md#send-funds).&#x20;
+
+Running `melminter` will reward you with ERGs, which can be swapped for other currencies like MEL, SYM, or custom tokens via [Melswap](../using-wallets/melswap-guide.md).
 
