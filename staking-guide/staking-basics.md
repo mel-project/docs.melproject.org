@@ -8,15 +8,11 @@ description: This page describes how to get started with staking on our  network
 This tutorial will be done on our testnet, so we can take advantage of printing MEL with faucet transactions.
 {% endhint %}
 
-## Installation and prerequisites
+## Installation and Setup
 
 ### Create and fund a testnet wallet
 
-First, we set up our wallets, following the instructions [here](../developer-guides/using-wallets/getting-started.md), starting from the beginning until you've sent yourself some MEL via a faucet transaction on the testnet, which will be used to pay transaction fees.
-
-### Fund the wallet with SYM as well
-
-We can acquire some SYM by swapping some of our MEL. Follow the guide [here](../developer-guides/using-wallets/melswap-guide.md#swapping-coins) and get some SYM into your wallet.
+First, we set up our wallets, following the instructions [here](../developer-guides/using-wallets/getting-started.md). Make sure to fund your wallet with a good amount of MEL (for transaction fees) and SYM (voting power)!&#x20;
 
 ### Install melnode
 

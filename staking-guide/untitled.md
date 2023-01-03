@@ -36,9 +36,13 @@ melwallet-cli start-daemon --network testnet
 
 This will save any wallets you create to `~/.themelio-wallets`, but feel free to use any path you want.
 
-## Printing Coins
+## Funding your wallet
 
 Now, to get some funds into your wallet, you can use the `send-faucet` transaction, specifying the amount and currency type.
+
+{% hint style="info" %}
+Every transaction will costs a small amount of MEL, so always make sure you have some in your wallets before attempting a transaction
+{% endhint %}
 
 For example, to print MEL:
 
