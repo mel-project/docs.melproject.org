@@ -13,7 +13,7 @@ description: Running a replica node with melnode
 Simply running the `melnode` command without any arguments starts an instance running on the mainnet. You will see output looking something like this:
 
 ```shell-session
-melnode
+$ melnode
 ```
 
 ```shell-session
@@ -44,7 +44,7 @@ melnode
 [2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 19 of length 215 in 0.48ms (insert 0.13ms)
 ```
 
-It will take _quite_ a long time to synchronize all the blocks from the network (usually, around half a day or so).&#x20;
+It will take _quite_ a long time to synchronize all the blocks from the network (usually, around half a day or so).
 
 ### Participating in peering
 
@@ -62,8 +62,8 @@ $ melnode --listen [::1]:41814 --advertise auto
 
 We add two flags:
 
-- `--listen [::1]:41814` listens on port 41814 on all network interfaces
-- `--advertise auto` automatically guesses our public IP address for incoming connections on the P2P network.
+* `--listen [::1]:41814` listens on port 41814 on all network interfaces
+* `--advertise auto` automatically guesses our public IP address for incoming connections on the P2P network.
 
 If this works, you should soon see output like:
 
@@ -80,7 +80,7 @@ indicating that you are helping other nodes connect to the network.
 Replicating testnet blocks is as easy as adding `--network testnet` to any command:
 
 ```shell-session
-melnode --network testnet
+$ melnode --network testnet
 ```
 
 ### Faucets and staking

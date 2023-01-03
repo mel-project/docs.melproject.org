@@ -1,2 +1,2 @@
-# Using wallets
+# 💸 Using wallets
 

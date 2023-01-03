@@ -17,7 +17,7 @@ description: >-
 ### Install melwalletd and melwallet-cli
 
 ```shell-session
-cargo install --locked melwalletd melwallet-cli
+$ cargo install --locked melwalletd melwallet-cli
 ```
 
 {% hint style="info" %}
@@ -29,7 +29,7 @@ We install not just `melwallet-cli`, but also the `melwalletd` package. This is 
 In a separate terminal (or tmux buffer), start the headless wallet daemon, and connect to the testnet network:
 
 ```shell-session
-melwallet-cli start-daemon --network testnet
+$ melwallet-cli start-daemon --network testnet
 ```
 
 `melwalletd` persists and manages wallets and exposes a set of REST endpoints for various wallet operations. You can find more details [here](https://github.com/themeliolabs/melwalletd).

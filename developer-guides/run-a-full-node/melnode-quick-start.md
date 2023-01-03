@@ -1,6 +1,6 @@
 # Melnode quick start
 
-**Full nodes** replicate every consensus-confirmed block, validating their contents and ensuring network security while providing a local cache of the entire blockchain state. Running a full node helps contribute to the security and performance of the network.&#x20;
+**Full nodes** replicate every consensus-confirmed block, validating their contents and ensuring network security while providing a local cache of the entire blockchain state. Running a full node helps contribute to the security and performance of the network.
 
 **Melnode** is the reference implementation of a Themelio full node. This guide will help you set up the environment needed to run Melnode.
 
@@ -8,17 +8,17 @@
 
 ### Minimum
 
-- 1-core CPU
-- 4 GB of RAM
-- at least 200 GB of free storage (SSD not necessary)
-- 10 Mbps download Internet service
+* 1-core CPU
+* 4 GB of RAM
+* at least 200 GB of free storage (SSD not necessary)
+* 10 Mbps download Internet service
 
 ### Recommended
 
-- 4+ core CPU
-- 16 GB of RAM
-- 200+ GB of free storage on a fast device (SSD, RAID array, etc)
-- 50+ Mbps up/download Internet service
+* 4+ core CPU
+* 16 GB of RAM
+* 200+ GB of free storage on a fast device (SSD, RAID array, etc)
+* 50+ Mbps up/download Internet service
 
 ## Install Rust and Cargo
 
@@ -29,7 +29,7 @@ Fortunately, Rust's package manager Cargo is _very_ easy to use, and most likely
 Follow the [instructions](https://doc.rust-lang.org/cargo/getting-started/installation.html) from the official Cargo Book to get started. Make sure that the `cargo` command is available and of the latest version:
 
 ```shell-session
-cargo version
+$ cargo version
 ```
 
 ```
@@ -41,7 +41,7 @@ cargo 1.65.0 (4bc8f24d3 2022-10-20)
 Simply run the following command:
 
 ```shell-session
-cargo install --locked melnode
+$ cargo install --locked melnode
 ```
 
 {% hint style="info" %}

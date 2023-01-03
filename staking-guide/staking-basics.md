@@ -59,10 +59,9 @@ Once the node starts running, you should see something like this:
 
 Now that the staker node is up and running, it's time to give it some voting power so it can participate in the network's consensus!
 
-```shell-session
-$ melwallet-cli stake <amount-of-SYM> --to-stake <staker-pubkey> --epochs 3
-
-TRANSACTION RECIPIENTS
+<pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli stake &#x3C;amount-of-SYM> --to-stake &#x3C;staker-pubkey> --epochs 3
+<strong>
+</strong>TRANSACTION RECIPIENTS
 Address                                                 Amount          Additional data
 t22272fg9r0k8k09qj06drzzjq9e0rw3asxfs1zrnaccwv5j6gq5tg  0.000100 MEL    ""
 network fees                                            0.000254 MEL
@@ -78,7 +77,7 @@ WARNING: your SYM will be locked NOW! You might want to wait until you're closer
 Proceed? (y/N) y
 
 Are you sure? WARNING: THIS IS NOT REVERSIBLE. (y/N) y
-```
+</code></pre>
 
 You will be prompted to confirm the transaction, fees, and epoch date range -- read this carefully before doing so! You should see an output like this afterwards:
 
@@ -94,15 +93,15 @@ As a staker node operator, you are eligible for rewards, since you are actively 
 
 Rewards are paid out to the `--staker-wallet` previously provided during the node startup process, and will be sent to the wallet address every block (\~30 seconds). Check the balance of the wallet to verify your rewards were successfully received:
 
-```shell-session
-$ melwallet-cli summary -w bob
-Wallet name:  bob (unlocked)
+<pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli summary -w bob
+<strong>
+</strong>Wallet name:  bob (unlocked)
 Network:      testnet
 Address:      t04ncd9j314rt7jth5wmedz8j5tcz9w8cdcdk48ex9t2fkj44ekne0
 Balance:      500.000000  MEL
                500.000000  MEL
 Staked:       100.000000    SYM
-```
+</code></pre>
 
 ## Further Reading
 

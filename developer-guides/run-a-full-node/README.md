@@ -1,3 +1,8 @@
-# Run a full node
+---
+description: >-
+  In this section, you will learn how to use Melnode, Themelio's reference node
+  implementation.
+---
 
-In this section, you will learn how to use Melnode, Themelio's reference node implementation.&#x20;
+# 🤖 Run a full node
+
