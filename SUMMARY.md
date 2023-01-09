@@ -10,7 +10,7 @@
 ## Developer guides
 
 *
-* [💰 Fund Your Wallet](staking-guide/untitled.md)
+* [💰 Fund your wallet](staking-guide/untitled.md)
 * [🤖 Run a full node](developer-guides/run-a-full-node/README.md)
   * [Melnode quick start](developer-guides/run-a-full-node/melnode-quick-start.md)
   * [Basic replica node](developer-guides/run-a-full-node/basic-replica-node.md)
@@ -26,6 +26,7 @@
 
 ***
 
+* [🌉 Bridge your coins](bridge-your-coins.md)
 * [👩⚖ Staking guide](staking-guide/README.md)
   * [Staking Basics](staking-guide/staking-basics.md)
 
