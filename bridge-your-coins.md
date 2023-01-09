@@ -14,7 +14,7 @@ The functionality of the bridge is simple:
 * to transfer your coins back to Themelio you would burn your tokens on Ethereum and then provide proof of the burn on the Themelio side, thus unlocking your coins
 
 {% hint style="info" %}
-**Note:** FancyName currently supports moving Themelio coins to Ethereum and back, but not the other way around (e.g. the bridge cannot move ether to Themelio).
+**Note**: FancyName currently supports moving Themelio coins to Ethereum and back, but not the other way around (e.g. it cannot move ether to Themelio).
 {% endhint %}
 
 Now that we have a high-level overview of FancyName, let's get a closer look at its architecture.
@@ -27,7 +27,7 @@ As we mentioned earlier, FancyName is made up of two complementary components, a
 
 A Themelio covenant, somewhat analogous to a Bitcoin script, is a program attached to a coin (UTXO) that takes in a transaction and its execution context and decides whether or not that transaction can spend.
 
-A bridging event is initiated by the locking up of any coin to the Themelio bridge covenant. This covenant locks coins until they are proven to have been burned on the Ethereum network, at which point the proof can be submitted to the covenant to unlock the coins. The covenant is written in Themelio's high-level language, [Melodeon](https://melodeonlang.org), and the source code can be viewed [here](https://github.com/themeliolabs/bridge-covenants).
+A bridging event is initiated by the locking up of any coin to the Themelio bridge covenant. This covenant locks coins until they are proven to have been burned on the Ethereum network, at which point the coins are released. The covenant is written in Themelio's high-level language, [Melodeon](https://melodeonlang.org), and its source code can be viewed [here](https://github.com/themeliolabs/bridge-covenants).
 
 The FancyName covenant keeps track of Ethereum headers using Ethereum's native cryptographic primitives, trustlessly inheriting its security and allowing it to verify the contents of a particular storage mapping in the FancyName smart contracts; this enables it to unlock coins when their corresponding tokens have been burned.
 
@@ -38,11 +38,11 @@ The FancyName covenant keeps track of Ethereum headers using Ethereum's native c
 To lock coins up on the Themelio network, all that needs to be done is send a transaction to the covenant's address where:
 
 * the first output of the transaction contains the coin that will be bridged
-* the recipient Ethereum address is encoded in the first outputs's additional data field.
+* the recipient's Ethereum address is encoded in the first outputs's `additional data` field.
 
 #### Unlocking coins
 
-To unlock coins, a transaction must be sent which attempts to spend the locked coin and has, in the additional data field of its first output, an encoded Merkle proof which proves the equivalent token amount was burned on Ethereum. This proof can be obtained by any Ethereum client.
+To unlock coins, a transaction must be sent which attempts to spend the locked coin and has, in the `additional data` field of its first output, an encoded Merkle proof which proves the equivalent token amount was burned on Ethereum. This proof can be obtained by any Ethereum client.
 
 ### The Ethereum smart contracts
 
@@ -115,7 +115,7 @@ Can burn multiple denominations of `account`'s tokens at a time by using the `tx
 
 ### Rust client implementation
 
-Additionally, to facilitate user interaction with the bridge, a client has been implemented in Rust which abstracts away the complexity querying the chain state and crafting transactions to interface with the bridge components on both networks; safely and conveniently streamlining the process via a simple-to-use CLI application. The source code for this client can be viewed [here](https://github.com/themeliolabs/bridge-cli).
+Additionally, to safely and conveniently streamline interaction with FancyName, a client has been implemented in Rust which abstracts away the complexity of querying the chain state and crafting compliant transactions on both networks. It is packaged as a simple-to-use CLI application whose source code can be viewed [here](https://github.com/themeliolabs/bridge-cli).
 
 {% hint style="info" %}
 Note: currently fancyname-cli requires the user to manually send their locking and unlocking transactions to the Themelio network via the melwallet-cli application; this will be automated away in an upcoming update.
@@ -129,8 +129,8 @@ In order to mint your Themelio tokens on Ethereum, you must first lock your coin
 
 #### burn-tokens
 
-To unlock your Themelio coins, you must first burn their equivalent on the Ethereum network and provide the FancyName covenant with a proof of this burn. To facilitate this process, you can use the command `fancyname-cli burn-tokens --themelio-address THEMELIO_ADDRESS`. Fancyname-cli will take care of crafting the melwallet-cli command which will send the unlocked coin to the Themelio address you provided.
+To unlock your Themelio coins, you must first burn their equivalent on the Ethereum network and provide the FancyName covenant with a proof of this burn. To automate this process, you can use the command `fancyname-cli burn-tokens --themelio-address THEMELIO_ADDRESS`. Fancyname-cli will take care of burning the correct amount of tokens and crafting the melwallet-cli command which will release the unlocked coin to the Themelio address you provided.
 
 ## Next steps
 
-In this guide, we learned about the function and architecture of FancyName and how it is powered by the native security of both Themelio and Ethereum. In the next section we will learn how we can help strengthen the security of the Themelio network ourselves by participating in staking.
+In this guide, we learned about both the function and architecture of FancyName and how it is powered by the native security of both Themelio and Ethereum. In the next section we will learn how we can help strengthen the security of the Themelio network ourselves by participating in staking.
