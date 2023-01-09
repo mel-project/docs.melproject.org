@@ -48,31 +48,18 @@ To unlock coins, a transaction must be sent which attempts to spend the locked c
 
 On the Ethereum network, the bridge is composed of a set of smart contracts which together enable light client verification of Themelio block headers, staker sets, and transactions. This is possible through the use Themelio's underlying cryptographic primitives which allow the smart contracts to trustlessly inherit Themelio's native security. The source code for the FancyName smart contracts can be viewed [here](https://github.com/themeliolabs/bridge-sol).
 
-### Smart contracts API
+### Smart contracts minimal API
 
-#### leafHeights(bytes32 keccakStakesHash) returns (uint256 blockHeight)
-
-This getter function should be used to check if a particular stakes tree datablock has already been verified and stored via `verifyStakes()` so you don't waste gas submitting it again.
-
-* `keccakStakesHash`: the keccak256 hash of a stakes tree datablock
-
-#### verifyStakes(bytes stakes) returns (bool)
+#### verifyStakes(uint256 blockHeight, bytes stakesDatablock, uint256 datablockIndex, bytes32\[] stakesProof) returns (bool)
 
 This function is used for hashing a stakes byte array using blake3 and storing it in contract storage for subsequent verification of Themelio headers.
 
-* `stakes`: a `bytes` array consisting of serialized and concatenated Themelio `StakeDoc`s, which each represent a certain amount of `sym` coins staked on the the themelio network for a specified amount of time by a specific public key. The `StakeDoc`s array is prepended with the amount of total `sym`s staked for the current and next epochs for more efficient verification of headers in the FancyName contracts.
 * `blockHeight`: the block height of the header which will be used to verify the included stakes datablock
 * `stakesDatablock`: a `bytes` consisting of a serialized Themelio stakes tree datablock
 * `datablockIndex`: the index of the datablock within the stakes tree
 * `stakesProof`: the Merkle proof used to prove inclusion of the datablock within `blockHeight` header's stakes hash
 
 Returns `true` if `stakes` were successfully hashed and stored, reverts otherwise.
-
-#### headers(uint256 blockHeight) returns (bytes32 transactionsHash, bytes32 stakesHash)
-
-This getter function should be used to check if a header at a particular height has already been submitted so you don't waste gas submitting it again.
-
-* `blockHeight`: the block height of the header
 
 #### verifyHeader(bytes header, bytes32\[] signers, bytes32\[] signatures) returns (bool success)
 
@@ -104,14 +91,6 @@ Burns tokens owned by `account` with the value and denom specified by the locked
 * `account`: the account owning the tokens to be burned
 * `txHash`: the transaction hash of the Themelio coin to be released (the coin will always be considered the first output of that transaction)
 * `themelioRecipient`: the address to release the burned coin to on the Themelio network
-
-#### burnBatch(address account, bytes32\[] txHashes, bytes32 themelioRecipient)
-
-Can burn multiple denominations of `account`'s tokens at a time by using the `txHashes` array to list the transaction hash of each coin to be burned.
-
-* `account`: the account owning the tokens to be burned
-* `txHashes`: an array of transaction hashes of Themelio coins to be released (the coin will always be considered the first output of that transaction)
-* `themelioRecipient`: the address to release the burns assets to on the Themelio network
 
 ### Rust client implementation
 
