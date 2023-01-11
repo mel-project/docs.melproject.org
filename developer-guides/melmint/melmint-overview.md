@@ -23,7 +23,7 @@ In other words, unlike existing fiat-pegged stablecoins like DAI or USDC, which 
 This means that mechanisms like Bitcoin’s issuance schedule, trusted parties are **NOT** involved at all — no central bank, no oracles, no DAOs, no governance!&#x20;
 {% endhint %}
 
-`MEL` relies on a mechanism called [Melmint](getting-tokens/minting-mel-with-melminter/), which pegs **1 `MEL` to 1 `DOSC`.**&#x20;
+`MEL` relies on a mechanism called [Melmint](getting-tokens/minting-mel-with-melminter.md), which pegs **1 `MEL` to 1 `DOSC`.**&#x20;
 
 
 

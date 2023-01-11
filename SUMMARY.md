@@ -6,6 +6,7 @@
 * [Minimal, governance-free L1](concepts/minimal-governance-free-l1.md)
 * [Powerful execution and embeddable thin clients](concepts/powerful-execution-and-embeddable-thin-clients.md)
 * [Sound cryptoeconomics with truly sound money](concepts/sound-cryptoeconomics-with-truly-sound-money.md)
+* [Consensus and Staking](concepts/consensus-and-staking.md)
 
 ## Developer guides
 
@@ -23,8 +24,8 @@
   * [Token Overview](developer-guides/melmint/token-overview.md)
   * [Introduction to MEL](developer-guides/melmint/melmint-overview.md)
   * [Getting Tokens](developer-guides/melmint/getting-tokens/README.md)
-    * [Melmint Overview](developer-guides/melmint/getting-tokens/minting-mel-with-melminter/README.md)
-      * [Using Melminter](developer-guides/melmint/getting-mel-coins-name-wip/minting-mel-with-melminter/using-melminter.md)
+    * [Melmint Overview](developer-guides/melmint/getting-tokens/minting-mel-with-melminter.md)
+    * [Using Melminter](developer-guides/melmint/getting-tokens/using-melminter.md)
     * [Melmint arbitrage](developer-guides/melmint/getting-tokens/melmint-arbitrage.md)
 
 ***

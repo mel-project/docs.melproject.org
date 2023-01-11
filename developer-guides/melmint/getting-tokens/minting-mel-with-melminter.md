@@ -25,8 +25,8 @@ For example, a DOSC in the year 2000 is the cost of occupying the fastest single
 
 At a high level, running an instance of Melminter lets people contribute information about "the current price of computation" to the network.
 
-To participate in Melmint, you can [run your own](../../getting-mel-coins-name-wip/minting-mel-with-melminter/using-melminter.md) instance of `melminter`, a convenient CLI for minting `ERG` and converting to `MEL`.
+To participate in Melmint, you can [run your own](using-melminter.md) instance of `melminter`, a convenient CLI for minting `ERG` and converting to `MEL`.
 
 ### Further Reading
 
-This was just a quick overview of Melmint. The complete guide on how `MEL` is stabilized, along with what happens under the hood, can be found [here](../../../../concepts/sound-cryptoeconomics-with-truly-sound-money.md) in the conceptual documentation.
+This was just a quick overview of Melmint. The complete guide on how `MEL` is stabilized, along with what happens under the hood, can be found [here](../../../concepts/sound-cryptoeconomics-with-truly-sound-money.md) in the conceptual documentation.
