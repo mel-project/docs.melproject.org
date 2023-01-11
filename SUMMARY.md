@@ -19,12 +19,13 @@
   * [Melnode quick start](developer-guides/run-a-full-node/melnode-quick-start.md)
   * [Basic replica node](developer-guides/run-a-full-node/basic-replica-node.md)
   * [Setting up a local simnet](developer-guides/run-a-full-node/setting-up-a-simnet.md)
-* [🪙 Coins (name WIP)](developer-guides/melmint/README.md)
+* [🪙 Themelio Tokens](developer-guides/melmint/README.md)
+  * [Token Overview](developer-guides/melmint/token-overview.md)
   * [Introduction to MEL](developer-guides/melmint/melmint-overview.md)
-  * [Getting MEL / coins (name WIP)](developer-guides/melmint/getting-mel-coins-name-wip/README.md)
-    * [Melmint Overview](developer-guides/melmint/minting-mel-with-melminter.md)
-      * [Using Melminter](developer-guides/melmint/getting-mel-coins-name-wip/minting-mel-with-melminter/using-melminter.md)
-    * [Melmint arbitrage](developer-guides/melmint/melmint-arbitrage.md)
+  * [Getting Tokens](developer-guides/melmint/getting-tokens/README.md)
+    * [Melmint Overview](developer-guides/melmint/getting-tokens/minting-mel-with-melminter/README.md)
+      * [Using Melminter](developer-guides/melmint/getting-tokens/minting-mel-with-melminter/using-melminter.md)
+    * [Melmint arbitrage](developer-guides/melmint/getting-tokens/melmint-arbitrage.md)
 
 ***
 

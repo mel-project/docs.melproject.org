@@ -2,8 +2,6 @@
 
 ## Installation and Setup
 
-### Prerequisites
-
 Ensure that you have an up-to-date version of `melminter` installed:
 
 ```shell-session
@@ -23,3 +21,15 @@ $ melminter --payout <SOME_WALLET_ADDRESS>
 The first time you run `melminter`, it will ask you to send a particular address a small amount of `MEL` in order to start. This is so that it can pay initial transaction fees. Use the `send` command [like so](../../../using-wallets/getting-started.md#send-funds).&#x20;
 
 Running `melminter` will reward you with ERGs, which can be swapped for other currencies like MEL, SYM, or custom tokens via [Melswap](../../../using-wallets/melswap-guide.md).
+
+
+
+## Caveats
+
+Minting `ERG` and converting into `MEL` is not always profitable. Because of the mechanics of Melmint, **minting is not** **guaranteed to be profitable** unless you either have a top-of-the-line CPU and cheap electricity, or Melmint is off-peg. This is because Melmint is not a proof-of-work consensus system, but rather a _pegging arbitrage_ system that is only really used to restore the `MEL/DOSC`peg.
+
+Transient volatility in the `MEL/ERG` exchange rate may also affect profitability.
+
+`melminter` makes no attempt at guessing whether or not minting is profitable.
+
+`melminter` is a tool that provides a convenient, CLI interface for participating in Melmint by minting `ERG` and converting to `MEL`

@@ -16,7 +16,7 @@ The Melmint mechanism described in the previous section maintains the `MEL/SYM` 
 
 In order to maintain the other pairs, we'll need YOU to make some :moneybag:through arbitrage.
 
-<img src="../../.gitbook/assets/image.png" alt="" data-size="original">
+<img src="../../../.gitbook/assets/image.png" alt="" data-size="original">
 
 ## Using melwallet CLI to autoswap
 
@@ -24,7 +24,7 @@ In order to maintain the other pairs, we'll need YOU to make some :moneybag:thro
 
 Make sure you have the following set up:
 
-* A funded wallet. This is [a guide](../../staking-guide/untitled.md) on how to set that up on testnet if needed
+* A funded wallet. This is [a guide](../../../staking-guide/untitled.md) on how to set that up on testnet if needed
 
 ```shell-session
 $ melwallet-cli autoswap <value> -w <wallet>  

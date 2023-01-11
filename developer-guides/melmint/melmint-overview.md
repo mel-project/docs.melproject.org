@@ -1,17 +1,21 @@
 ---
-description: A brief overview of MEL, our native token
+description: This is a short introduction to MEL, our base currency
 ---
 
 # Introduction to MEL
 
-### Introduction to MEL&#x20;
+### What is MEL?&#x20;
 
 MEL is an endogenous, low-volatility cryptocurrency that provides important functionality such as:
 
 * stable purchasing power, unit of account, and store of value
 * serving as protocol-internal units of value for incentive design.
 
-Unlike existing fiat-pegged stablecoins, which rely on oracles and centralized issuers, MEL relies on an oracle-free system that does not peg MEL to any external asset. Instead, it has a mechanism called Melmint, which pegs **1 MEL to 1 DOSC.**
+### Why is MEL different?&#x20;
+
+MEL is an **endogenous stablecoin.** Unlike existing fiat-pegged stablecoins like DAI or USDC, which rely on oracles and centralized issuers, MEL has an issuance mechanism entirely based on endogenous trust. That means that like Bitcoin’s issuance schedule, no trusted parties are involved at all — no central bank, no oracles, no DAOs.
+
+MEL relies on a mechanism called Melmint, which pegs **1 MEL to 1 DOSC.**
 
 ### What is a DOSC?
 
