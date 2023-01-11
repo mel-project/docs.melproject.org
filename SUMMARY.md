@@ -37,4 +37,4 @@
 
 ## Resources
 
-* [Frequently Asked Questions](resources/frequently-asked-questions.md)
+* [Frequently Asked Questions](resources/page-3.md)

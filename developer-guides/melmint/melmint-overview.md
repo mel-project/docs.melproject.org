@@ -11,7 +11,7 @@ MEL is an endogenous, self-stabilizing cryptocurrency that provides important fu
 * stable purchasing power, unit of account, and store of value
 * serves as a protocol-internal unit of value for incentive design
 
-MEL is the&#x20;
+`MEL` can be treated as a reliable form of stable "default" money that underpins the networks' financial system.&#x20;
 
 ## Why is MEL different?&#x20;
 
@@ -38,7 +38,7 @@ For example, a DOSC in the year 2000 is the cost of occupying the fastest single
 
 
 
-In short, `MEL` can be treated as a reliable form of stable "default" money for the network.&#x20;
+
 
 
 
