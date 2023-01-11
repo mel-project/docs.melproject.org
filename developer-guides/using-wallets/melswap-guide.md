@@ -1,3 +1,7 @@
+---
+description: A guide on swapping coins on Themelio.
+---
+
 # Swapping Coins
 
 ## Prerequisites

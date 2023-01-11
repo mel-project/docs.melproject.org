@@ -1,5 +1,5 @@
 ---
-description: This page shows you how to use melminter to (hopefully) profit via arbitrage
+description: A guide on how to use melminter to (hopefully) profit via arbitrage
 ---
 
 # Melmint arbitrage
@@ -14,7 +14,7 @@ In our case, we have multiple "markets", or liquidity pools that contain asset p
 
 The Melmint mechanism described in the previous section maintains the `MEL/SYM` pair, but does not interact with the other asset pairs.&#x20;
 
-In order to maintain the other pairs, we'll need YOU to make some :moneybag:through arbitrage.
+In order to maintain the other pairs, we'll need YOU to make some :moneybag: through arbitrage.
 
 <img src="../../../.gitbook/assets/image.png" alt="" data-size="original">
 
@@ -30,7 +30,7 @@ Make sure you have the following set up:
 $ melwallet-cli autoswap <value> -w <wallet>  
 ```
 
-Here, `<value>` should be how much money (TODO: clarify this) you want to swap.
+Here, `<value>` should be the particular amount of a token that you want to swap.
 
 This command will automatically execute trades on the "triangular" `MEL/SYM/other` pairs.
 

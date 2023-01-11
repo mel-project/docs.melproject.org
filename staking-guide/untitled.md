@@ -1,11 +1,10 @@
 ---
 description: >-
-  This is a short guide on how to set up and fund your testnet wallet. Using a
-  faucet transaction, unique to our testnet, you can print money out of thin
-  air.
+  A short guide on how to set up and fund your testnet wallet. Using a faucet
+  transaction, unique to our testnet, you can print money out of thin air.
 ---
 
-# 💰 Fund Your Wallet
+# 💰 Fund your wallet
 
 ## Prerequisites
 
