@@ -17,7 +17,7 @@ fancyname-cli to-ethereum -t THEMELIO_WALLET_NAME -e ETHEREUM_WALLET_DIR
 
 # Welcome to fancyname-cli! I'll help guide you through the bridging process.
 # 
-# First, which of the Themelio coins owned by WALLET_NAME do you want to bridge to Ethereum?
+# First, which of the Themelio coins owned by THEMELIO_WALLET_NAME do you want to bridge to Ethereum?
 # (1) 8229.9018201 MEL
 # (2) 14000.0 SYM
 # (3) 98868.4567 CUSTOM-5fc789fa09876c1a0b45dc018aa93b4e
@@ -50,7 +50,7 @@ fancyname-cli to-themelio -e ETHEREUM_WALLET_DIR -t THEMELIO_WALLET_NAME
 #
 # First, let me query FancyName for locked coins. This might take a few seconds.
 # ....
-# Okay, choose one of the following frozen coins to thaw:
+# Okay, choose one of the following locked coins to unlock:
 # (1) 14000.0 SYM
 # (2) 34343434343.34343 MEL
 # (3) 3.14 CUSTOM-ab18c283da41e5cd87e91b5f142e7f4da5c29014c3568140a25e1fe67bceb6c6
