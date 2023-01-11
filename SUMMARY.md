@@ -22,9 +22,9 @@
 * [🪙 Coins (name WIP)](developer-guides/melmint/README.md)
   * [Introduction to MEL](developer-guides/melmint/melmint-overview.md)
   * [Getting MEL / coins (name WIP)](developer-guides/melmint/getting-mel-coins-name-wip/README.md)
-    * [Melmint Overview](developer-guides/melmint/getting-mel-coins-name-wip/minting-mel-with-melminter/README.md)
-      * [Page 1](developer-guides/melmint/getting-mel-coins-name-wip/minting-mel-with-melminter/page-1.md)
-    * [Melmint arbitrage](developer-guides/melmint/getting-mel-coins-name-wip/melmint-arbitrage.md)
+    * [Melmint Overview](developer-guides/melmint/minting-mel-with-melminter.md)
+      * [Using Melminter](developer-guides/melmint/getting-mel-coins-name-wip/minting-mel-with-melminter/using-melminter.md)
+    * [Melmint arbitrage](developer-guides/melmint/melmint-arbitrage.md)
 
 ***
 

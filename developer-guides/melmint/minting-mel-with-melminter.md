@@ -16,7 +16,7 @@ At a high level, running an instance of Melminter lets people contribute informa
 
 Running `melminter` (covered in the next section) provides the minter with a a reward of `ERG`, a Melmint-specific currency.
 
-`ERG` itself is not a very useful currency on its own, so everyone would almost always want to sell it for something more valuable via [Melswap](../../../using-wallets/melswap-guide.md).
+`ERG` itself is not a very useful currency on its own, so everyone would almost always want to sell it for something more valuable via [Melswap](../using-wallets/melswap-guide.md).
 
 ### Caveats
 
@@ -32,4 +32,4 @@ Transient volatility in the `MEL/ERG` exchange rate may also affect profitabilit
 
 ## Further Reading
 
-This was just a quick overview of Melmint. The complete guide on how MEL is stabilized, along with what happens under the hood can be found [here](../../../../concepts/sound-cryptoeconomics-with-truly-sound-money.md) in the conceptual documentation
+This was just a quick overview of Melmint. The complete guide on how MEL is stabilized, along with what happens under the hood can be found [here](../../concepts/sound-cryptoeconomics-with-truly-sound-money.md) in the conceptual documentation
