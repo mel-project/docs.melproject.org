@@ -12,15 +12,19 @@ Make sure you have the required hardware and dependencies installed. Follow this
 
 For local development and testing, we can configure a local "simnet", or a fake network on our local computer.
 
-To do so, we will need to use the `melnode` command with a combination of these three options:
+To do so, we will need to use the `melnode` command with a combination of these three options
 
 * `--bootstrap <bootstrap-address>`
 * `--override genesis <path-to-genesis-config>`
 * `--staker-cfg <path-to-staker-config>`
 
+```shell-session
+$ melnode --bootstrap <bootstrap-ip-address> --override-genesis <path-to-genesis-config> staker-cfg <path-to-staker-config>
+```
+
 ### Bootstrap address
 
-This simply specifies the bootstrap address for our local node. This lets us bootstrap only with ourselves instead of with a remote node on test/mainnet.
+This is an IP address that specifies the bootstrap address for our local node. This lets us bootstrap only with ourselves instead of with a remote node on test/mainnet.
 
 ### Custom Genesis Configuration
 
