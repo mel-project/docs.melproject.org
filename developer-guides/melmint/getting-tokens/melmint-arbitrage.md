@@ -26,9 +26,7 @@ Make sure you have the following set up:
 
 * A funded wallet. This is [a guide](../../../staking-guide/untitled.md) on how to set that up on testnet if needed
 
-### Time to arbitrage!
-
-
+### Time for some arbitrage :money\_mouth:
 
 ```shell-session
 $ melwallet-cli autoswap <value> -w <wallet>  
