@@ -16,15 +16,19 @@ The Melmint mechanism described in the previous section maintains the `MEL/SYM` 
 
 In order to maintain the other pairs, we'll need YOU to make some :moneybag: through arbitrage.
 
-<img src="../../../.gitbook/assets/image (1).png" alt="" data-size="original">
+<img src="../../../.gitbook/assets/image.png" alt="" data-size="original">
 
-## Using melwallet CLI to autoswap
+## Using melwallet CLI to arbitrage
 
 ### Prerequisites
 
 Make sure you have the following set up:
 
 * A funded wallet. This is [a guide](../../../staking-guide/untitled.md) on how to set that up on testnet if needed
+
+### Time to arbitrage!
+
+
 
 ```shell-session
 $ melwallet-cli autoswap <value> -w <wallet>  
@@ -34,4 +38,3 @@ Here, `<value>` should be the particular amount of a token that you want to swap
 
 This command will automatically execute trades on the "triangular" `MEL/SYM/other` pairs.
 
-TODO: explain how to check the results, etc.

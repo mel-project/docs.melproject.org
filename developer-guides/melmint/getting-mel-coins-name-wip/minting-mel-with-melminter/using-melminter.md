@@ -37,13 +37,11 @@ $ melwallet-cli send -w <wallet> --to <address>, <amount>
 
 Afterwards, you should see a TUI like this:
 
-<img src="../../../../.gitbook/assets/image.png" alt="" data-size="original">
+<img src="../../../../.gitbook/assets/image (1).png" alt="" data-size="original">
 
 Running `melminter` will reward you with ERGs, which can be swapped for other currencies like MEL, SYM, or custom tokens via [Melswap](../../../using-wallets/melswap-guide.md). Note the _daily return_ line in the terminal output, which predicts how much computational work (in DOSC) the minter will do in 24 hours, as well as how much MEL that will generate.
 
 ## Caveats
-
-
 
 Minting `ERG` and converting to `MEL` is not always profitable. Because of the mechanics of Melmint, **minting is not** **guaranteed to be profitable** unless you either have a top-of-the-line CPU and cheap electricity, or Melmint is off-peg. This is because Melmint is not a proof-of-work consensus system, but rather a _pegging arbitrage_ system that is only really used to restore the `MEL/DOSC`peg.
 

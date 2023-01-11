@@ -12,8 +12,6 @@ Unlike existing conventional stablecoins, `MEL` does not rely on any external as
 
 At a high level, running an instance of Melminter lets people contribute information about "the current price of computation" to the network.
 
-TODO: talk more about&#x20;
-
 ## Participating in Melmint
 
 To participate in Melmint, you can run your own instance of `melminter`
