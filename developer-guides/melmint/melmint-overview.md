@@ -1,5 +1,5 @@
 ---
-description: A short introduction to MEL, our base currency.
+description: This is a short introduction to MEL, our base currency
 ---
 
 # Introduction to MEL
@@ -13,7 +13,7 @@ MEL is an endogenous, self-stabilizing cryptocurrency that provides important fu
 
 ### Why is MEL different?&#x20;
 
-`MEL` is an **endogenous** stablecoin. **** Unlike existing fiat-pegged stablecoins like DAI or USDC, which rely on oracles and centralized issuers, `MEL` has an issuance mechanism entirely based on endogenous trust. That means that, like Bitcoin’s issuance schedule, no trusted parties are involved at all — no central bank, no oracles, no DAOs.
+MEL is an **endogenous self-stabilizing cryptocurrency.** Unlike existing fiat-pegged stablecoins like DAI or USDC, which rely on oracles and centralized issuers, MEL has an issuance mechanism entirely based on endogenous trust. This means that mechanisms like like Bitcoin’s issuance schedule, no trusted parties are involved at all — no central bank, no oracles, no DAOs.
 
 `MEL` relies on a mechanism called Melmint, which pegs 1 `MEL` to 1 `DOSC`**.**
 

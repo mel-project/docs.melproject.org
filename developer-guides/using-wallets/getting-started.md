@@ -2,7 +2,7 @@
 description: A simple tutorial on how to set up and interact with Themelio wallets
 ---
 
-# Getting Started
+# Quick Start
 
 This is a basic guide to `melwallet-cli`, Themelio's reference CLI wallet. We will be funding two testnet wallets, and sending money from one to another.
 
@@ -47,14 +47,14 @@ Now, we can transfer some MEL from Alice to Bob!
 
 First we unlock Alice's wallet with her password:
 
-```shell
-melwallet-cli unlock -w alice
+```shell-session
+$ melwallet-cli unlock -w alice
 ```
 
 Then, we send over some MEL to Bob's wallet address:
 
-```shell
-melwallet-cli send -w alice --to <BOB_ADDRESS>, 500.0
+```shell-session
+$ melwallet-cli send -w alice --to <BOB_ADDRESS>, 500.0
 ```
 
 Congrats, you've just sent MEL from Alice to bob!
