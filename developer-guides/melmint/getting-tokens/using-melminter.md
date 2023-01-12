@@ -8,8 +8,9 @@ description: This page shows how to participate in Melmint with the melminter CL
 
 Ensure that you have an up-to-date version of `melminter` installed:
 
-<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ cargo install --locked melminter
-</strong></code></pre>
+```shell-session
+$ cargo install --locked melminter
+```
 
 You will need:
 
@@ -24,7 +25,7 @@ If you wish to participate in mainnet Melminting, please ask for some `MEL` in t
 ## Running  melminter
 
 ```shell-session
-$ melminter --payout <SOME_WALLET_ADDRESS>
+$ melminter --payout <payout-wallet-address>
 ```
 
 The first time you run `melminter`, it will ask you to send a particular address a small amount of `MEL` in order to start. This is so that it can pay initial transaction fees. Use the `send` command:
@@ -46,6 +47,6 @@ Minting `ERG` and converting to `MEL` is not always profitable. Because of the m
 
 Transient volatility in the `MEL/ERG` exchange rate may also affect profitability.
 
-melminter makes no attempt at guessing whether or not minting is profitable.
+`melminter` makes no attempt at guessing whether or not minting is profitable.
 
 melminter is a tool that provides a convenient, CLI interface for participating in Melmint by minting `ERG` and converting to `MEL`.

@@ -91,6 +91,10 @@ Awaiting Confirmation... Confirmed at height 238!
 Block Explorer: https://scan-testnet.themelio.org/blocks/238/5cc1de4ccbe52ef288377b8ad12b546223f48939892bba5592d9db2c21eabd77)
 ```
 
+{% hint style="info" %}
+Your staked funds will be **automatically** unstaked at the end of the specified staking window. There is no way to unstake them earlier, so be sure to double or triple check the stake duration!
+{% endhint %}
+
 ## Receiving staking rewards
 
 As a staker node operator, you are eligible for rewards, since you are actively contributing to our network's security and consensus.
