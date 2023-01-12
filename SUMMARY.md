@@ -33,7 +33,7 @@
 * [🌉 FancyName guide](fancyname-guide/README.md)
   * [Bridge your coins](fancyname-guide/bridge-your-coins.md)
   * [Architectural overview](fancyname-guide/architectural-overview.md)
-* [👩⚖ Staking guide](staking-guide/README.md)
+* [🥩 Staking guide](staking-guide/README.md)
   * [Staking Basics](staking-guide/staking-basics.md)
   * [Staking Risks](staking-guide/staking-risks.md)
 
