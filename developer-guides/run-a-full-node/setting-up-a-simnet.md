@@ -19,7 +19,9 @@ To do so, we will need to use the `melnode` command with a combination of these 
 * `--staker-cfg <path-to-staker-config>`
 
 ```shell-session
-$ melnode --bootstrap <bootstrap-ip-address> --override-genesis <path-to-genesis-config> staker-cfg <path-to-staker-config>
+$ melnode --bootstrap <bootstrap-ip-address> \
+      --override-genesis <path-to-genesis-config> \
+      --staker-cfg <path-to-staker-config>
 ```
 
 ### Bootstrap address
@@ -28,7 +30,7 @@ This is an IP address that specifies the bootstrap address for our local node. T
 
 ### Custom Genesis Configuration
 
-To start our own custom network, `melnode` accepts a YAML config file similar to the following:
+This is only needed to start our own custom network, `melnode` accepts a YAML config file similar to the following:
 
 ```yaml
 network: custom02 # anything from custom02..custom08

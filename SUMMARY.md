@@ -35,6 +35,7 @@
   * [Architectural overview](fancyname-guide/architectural-overview.md)
 * [👩⚖ Staking guide](staking-guide/README.md)
   * [Staking Basics](staking-guide/staking-basics.md)
+  * [Staking Risks](staking-guide/staking-risks.md)
 
 ## Resources
 

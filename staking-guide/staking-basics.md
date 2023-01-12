@@ -59,6 +59,10 @@ Once the node starts running, you should see something like this:
 
 Now that the staker node is up and running, it's time to give it some voting power so it can participate in the network's consensus!
 
+{% hint style="danger" %}
+If you are using this guide to stake on mainnet, please read through the [risks of staking](staking-risks.md) real `SYM` first!&#x20;
+{% endhint %}
+
 <pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli stake &#x3C;amount-of-SYM> --to-stake &#x3C;staker-pubkey> --epochs 3
 <strong>
 </strong>TRANSACTION RECIPIENTS
