@@ -1,58 +1,56 @@
 ---
 description: >-
-  A short guide on how to set up and fund your testnet wallet. Using a faucet
-  transaction, unique to our testnet, you can print money out of thin air.
+  Using a faucet transaction unique to our testnet, you can print money out of
+  thin air to fund your testnet wallet.
 ---
 
 # 💰 Fund your wallet
 
 ## Prerequisites
 
-* You’re running a Unix (Linux or macOS) system. The code should work on Windows, but it isn’t as well-tested.
+* You’re running a Unix (Linux or macOS) system (the code should work on Windows, but it isn’t as well-tested)
 * You have a working Internet connection
-* You have `git` installed
+* You have Git installed
 * You have the latest Rust toolkit, including the `cargo` command
 
 ### Install melwalletd and melwallet-cli
 
 ```shell-session
-$ cargo install --locked melwalletd melwallet-cli
+cargo install --locked melwalletd melwallet-cli
 ```
 
 {% hint style="info" %}
-We install not just `melwallet-cli`, but also the `melwalletd` package. This is because `melwallet-cli` is merely a convenient frontend for `melwalletd`, a local daemon that exposes a JSON-RPC interface for managing wallets.
+We install both packages because `melwallet-cli` is merely a convenient frontend _for_ `melwalletd`, a local daemon that exposes a JSON-RPC interface for managing wallets. You can find more details [here](https://github.com/themeliolabs/melwalletd).
 {% endhint %}
 
 ### Start melwallet-cli <a href="#start-melwalletd" id="start-melwalletd"></a>
 
-In a separate terminal (or tmux buffer), start the headless wallet daemon, and connect to the testnet network:
+In a separate terminal, start the headless wallet daemon and connect to the testnet network:
 
 ```shell-session
-$ melwallet-cli start-daemon --network testnet
+melwallet-cli start-daemon --network testnet
 ```
 
-`melwalletd` persists and manages wallets and exposes a set of REST endpoints for various wallet operations. You can find more details [here](https://github.com/themeliolabs/melwalletd).
-
-This will save any wallets you create to `~/.themelio-wallets`, but feel free to use any path you want.
+This command will save any wallets you create to `~/.themelio-wallets`, but feel free to provide any directory you want via the `--wallet-dir` flag.
 
 ## Funding your wallet
 
-Now, to get some funds into your wallet, you can use the `send-faucet` transaction, specifying the amount and currency type.
+You can use the `send-faucet` command to get some funds into your wallet, specifying the amount and currency type.
 
 {% hint style="info" %}
-Every transaction will costs a small amount of MEL, so always make sure you have some in your wallets before attempting a transaction
+Every transaction costs a small amount of `MEL` to send because of the transaction fee, so always make sure you have some `MEL` your wallet before attempting a transaction.
 {% endhint %}
 
-For example, to print MEL:
+For example, to print `MEL`:
 
 ```shell-session
-$ melwallet-cli send-faucet -w <wallet-name> --currency MEL --amount 10000
+melwallet-cli send-faucet -w <wallet-name> --currency MEL --amount 10000
 ```
 
-To print SYM:
+To print `SYM`:
 
 ```shell-session
-$ melwallet-cli send-faucet -w <wallet-name> --currency SYM --amount 10000
+melwallet-cli send-faucet -w <wallet-name> --currency SYM --amount 10000
 ```
 
 That's it! Now you have some testnet money to play with :tada:
