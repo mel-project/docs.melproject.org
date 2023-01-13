@@ -15,9 +15,8 @@ description: >-
 
 ### Install melwalletd and melwallet-cli
 
-```shell-session
-cargo install --locked melwalletd melwallet-cli
-```
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ cargo install --locked melwalletd melwallet-cli
+</strong></code></pre>
 
 {% hint style="info" %}
 We install both packages because `melwallet-cli` is merely a convenient frontend _for_ `melwalletd`, a local daemon that exposes a JSON-RPC interface for managing wallets. You can find more details [here](https://github.com/themeliolabs/melwalletd).
@@ -28,7 +27,7 @@ We install both packages because `melwallet-cli` is merely a convenient frontend
 In a separate terminal, start the headless wallet daemon and connect to the testnet network:
 
 ```shell-session
-melwallet-cli start-daemon --network testnet
+$ melwallet-cli start-daemon --network testnet
 ```
 
 This command will save any wallets you create to `~/.themelio-wallets`, but feel free to provide any directory you want via the `--wallet-dir` flag.
