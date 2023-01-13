@@ -1,5 +1,5 @@
 ---
-description: This is a brief, high-level introduction to Melmint.
+description: This is a brief, high-level introduction to Melmint
 ---
 
 # Melmint Overview
@@ -25,7 +25,7 @@ For example, a DOSC in the year 2000 is the cost of occupying the fastest single
 
 At a high level, running an instance of Melminter lets people contribute information about "the current price of computation" to the network.
 
-To participate in Melmint, you can [run your own](using-melminter.md) instance of melminter, a convenient CLI for minting `ERG` and converting to `MEL`.
+To participate in Melmint, you can [run your own](using-melminter.md) instance of `melminter`, a convenient CLI for minting `ERG` and converting to `MEL`.
 
 ### Further Reading
 

@@ -1,12 +1,12 @@
 ---
-description: This page shows how to participate in Melmint with the melminter CLI
+description: This page shows how to participate in Melmint with the melminter CLI.
 ---
 
 # Using Melminter
 
 ## Installation and Setup
 
-Ensure that you have an up-to-date version of `melminter` installed:
+Ensure that you have an up-to-date version of melminter installed:
 
 ```shell-session
 $ cargo install --locked melminter
@@ -14,12 +14,12 @@ $ cargo install --locked melminter
 
 You will need:
 
-* A small amount of `MEL` in your wallet. (See setup instructions [here](../../using-wallets/getting-started.md)). This is because Melmint transactions are required to pay transaction fees, just like every other transaction.
+* A small amount of `MEL` in your wallet (see setup instructions [here](../../using-wallets/getting-started.md)). This is because Melmint transactions are required to pay transaction fees, just like every other transaction.
 
 {% hint style="info" %}
 If you simply want to try this out on the testnet, you can acquire testnet `MEL` yourself via a faucet transaction, as shown [here](../../using-wallets/getting-started.md#fund-wallet).
 
-If you wish to participate in mainnet Melminting, please ask for some `MEL` in the #beta-testers channel in our [Discord server](https://discord.gg/UXhxujHH).
+If you wish to participate in mainnet melminting, please ask for some `MEL` in the #beta-testers channel in our [Discord server](https://discord.gg/UXhxujHH).
 {% endhint %}
 
 ## Running  melminter
@@ -28,7 +28,7 @@ If you wish to participate in mainnet Melminting, please ask for some `MEL` in t
 $ melminter --payout <payout-wallet-address>
 ```
 
-The first time you run `melminter`, it will ask you to send a particular address a small amount of `MEL` in order to start. This is so that it can pay initial transaction fees. Use the `send` command:
+The first time you run melminter, it will ask you to send a particular address a small amount of `MEL` in order to start. This is so that it can pay initial transaction fees. Use the `send` command:
 
 ```shell-session
 $ melwallet-cli unlock -w <wallet>
@@ -39,7 +39,7 @@ Afterwards, you should see a TUI like this:
 
 <img src="../../../.gitbook/assets/image.png" alt="" data-size="original">
 
-Running `melminter` will reward you with ERGs, which can be swapped for other currencies like MEL, SYM, or custom tokens via [Melswap](../../using-wallets/melswap-guide.md). Note the _daily return_ line in the terminal output, which predicts how much computational work (in DOSC) the minter will do in 24 hours, as well as how much MEL that will generate.
+Running melminter will reward you with `ERG`, which can be swapped for other currencies like `MEL`, `SYM`, or custom tokens via [Melswap](../../using-wallets/melswap-guide.md). Note the _daily return_ line in the terminal output, which predicts how much computational work (in `DOSC`) the minter will do in 24 hours, as well as how much `MEL` that will generate.
 
 ## Caveats
 
@@ -47,6 +47,6 @@ Minting `ERG` and converting to `MEL` is not always profitable. Because of the m
 
 Transient volatility in the `MEL/ERG` exchange rate may also affect profitability.
 
-`melminter` makes no attempt at guessing whether or not minting is profitable.
+melminter makes no attempt at guessing whether or not minting is profitable.
 
 melminter is a tool that provides a convenient, CLI interface for participating in Melmint by minting `ERG` and converting to `MEL`.
