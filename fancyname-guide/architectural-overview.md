@@ -33,9 +33,11 @@ On the Ethereum network, the bridge is composed of a set of smart contracts whic
 
 ### Smart contracts minimal API
 
-#### verifyStakes(uint256 blockHeight, bytes stakesDatablock, uint256 datablockIndex, bytes32\[] stakesProof) returns (bool)
+#### verifyStakes
 
 This function is used for hashing a stakes tree datablock using Blake3 and storing its height in a hash mapping in contract storage for subsequent verification of Themelio headers.
+
+Parameters:
 
 * `blockHeight`: the block height of the header which will be used to verify the included stakes datablock
 * `stakesDatablock`: a `bytes` consisting of a serialized Themelio stakes tree datablock
@@ -44,11 +46,13 @@ This function is used for hashing a stakes tree datablock using Blake3 and stori
 
 Returns `true` if `stakes` were successfully hashed and stored, reverts otherwise.
 
-#### verifyHeader(bytes header, bytes32\[] signers, bytes32\[] signatures) returns (bool success)
+#### verifyHeader
 
 Stores header information for a particular block height once the header has been verified through ed25519 signature verification of stakes worth at least 2/3 of total sym staked for that epoch.
 
 The process of header verification can be completed in multiple transactions in the case of particularly computationally intensive verifications which exceed the block gas limit. In this case, progress is saved in an intermediary state until the header has enough votes for verification.
+
+Parameters:
 
 * `header`: the bincode serialized Themelio block header in `bytes`
 * `signers`: array of 32-byte ed25519 public keys of stakers that have signed `header`, in `bytes32[]`
@@ -56,9 +60,11 @@ The process of header verification can be completed in multiple transactions in 
 
 Returns `true` if the header was successfully verified and stored, reverts otherwise.
 
-#### verifyTx(bytes transaction, uint256 txIndex, uint256 blockHeight, bytes32\[] proof) returns (bool success)
+#### verifyTx
 
 Verifies that `transaction` was included in the header at `blockHeight` by running a proof of inclusion using `proof` and comparing the result with the transactions hash of the header. Once the transaction has been proven to have been included in the block, the value and denomination of the first output of the transaction will be minted and sent to the Ethereum address included in the addition data field of the output.
+
+Parameters:
 
 * `transaction`: the bincode serialized Themelio transaction, in `bytes`
 * `txIndex`: the transaction's index within the block, as `uint256`
@@ -67,9 +73,11 @@ Verifies that `transaction` was included in the header at `blockHeight` by runni
 
 Returns `true` if the header was successfully verified and stored, reverts otherwise.
 
-#### burn(address account, bytes32 txHash, bytes32 themelioRecipient)
+#### burn
 
 Burns tokens owned by `account` with the value and denom specified by the locked Themelio coin with transaction hash `txHash`. If successful the burned coin's status will be updated to be `themelioRecipient`, indicating the coin has been burned and claimed, to allow unlocking on the Themelio network.
+
+Parameters:
 
 * `account`: the account owning the tokens to be burned
 * `txHash`: the transaction hash of the Themelio coin to be released (the coin will always be considered the first output of that transaction)
