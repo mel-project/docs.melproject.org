@@ -24,7 +24,7 @@
 
 For security reasons, until we have reliable reproducible build infrastructure, we stick to releasing source code and do not distribute any official binary packages.
 
-Fortunately, Rust's package manager Cargo is _very_ easy to use, and most likely easier to use than whatever package manager you already use.
+Fortunately, Rust's package manager Cargo is _very_ easy to use, likely easier than whichever package manager you are already accustomed to.
 
 Follow the [instructions](https://doc.rust-lang.org/cargo/getting-started/installation.html) from the official Cargo Book to get started. Make sure that the `cargo` command is available and of the latest version:
 
@@ -44,7 +44,7 @@ $ cargo install --locked melnode
 Don't forget the `--locked` parameter! That ensures that all dependencies are locked to the specific version we specify, which can sometimes be important for correct functionality.
 {% endhint %}
 
-This should kick off a fairly long build process, but eventually you should see something like this, indicating the `melnode` has been installed successfully:
+This should kick off a fairly long build process, but eventually you should see something like this, indicating the melnode has been installed successfully:
 
 ```shell-session
    Compiling themelio-bootstrap v0.6.1
