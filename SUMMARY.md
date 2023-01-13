@@ -9,6 +9,7 @@
 
 ## Developer guides
 
+* [melprot](developer-guides/melprot.md)
 * [Overview](developer-guides/readme.md)
 * [Covenant interaction](developer-guides/covenant-interaction.md)
 * [💰 Wallets](developer-guides/using-wallets/README.md)
