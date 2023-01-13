@@ -87,4 +87,4 @@ $ melnode --network testnet
 
 A distinct feature of the testnet is that **faucets** can be used to generate "free money", which can then be used to test staking and consensus.
 
-A detailed guide to testnet staking can be found TODO.
+A detailed guide to testnet staking can be found [here](../../staking-guide/).
