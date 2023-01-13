@@ -108,21 +108,19 @@ The next step is to lock up a coin with this covenant.
 
 Let’s start melwalletd in testnet mode if it's not already running with `melwallet-cli start-daemon --network testnet` and use melwallet-cli to send 100 testnet `MEL` to the covenant hash we saw earlier:
 
-```
-melwallet-cli send -w alice --to t37ze3bq2tfc3k7d629pm1w10xy7s0qbas7095zctaaxhqrjc6g2t0
-
-# TRANSACTION RECIPIENTS
-# Address                                                 Amount          Additional data
-# t37ze3bq2tfc3k7d629pm1w10xy7s0qbas7095zctaaxhqrjc6g2t0  100.000000 MEL  ""
-# t92zte6gh26y5s02g9h31vgmnv0q4vya8paw5vghfe6c5b4hvj28pg  8.187089 MEL    ""
-# t92zte6gh26y5s02g9h31vgmnv0q4vya8paw5vghfe6c5b4hvj28pg  8.187089 MEL    ""
-#  (network fees)                                         0.000395 MEL
-# Proceed? [y/N]
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli send -w alice --to t37ze3bq2tfc3k7d629pm1w10xy7s0qbas7095zctaaxhqrjc6g2t0
+</strong>TRANSACTION RECIPIENTS
+Address                                                 Amount          Additional data
+t37ze3bq2tfc3k7d629pm1w10xy7s0qbas7095zctaaxhqrjc6g2t0  100.000000 MEL  ""
+t92zte6gh26y5s02g9h31vgmnv0q4vya8paw5vghfe6c5b4hvj28pg  8.187089 MEL    ""
+t92zte6gh26y5s02g9h31vgmnv0q4vya8paw5vghfe6c5b4hvj28pg  8.187089 MEL    ""
+(network fees)                                         0.000395 MEL
+Proceed? [y/N]
 y
 
-# Transaction hash:  630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b
-# (wait for confirmation with melwallet-cli wait-confirmation -w demo 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b)
-```
+Transaction hash:  630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b
+(wait for confirmation with melwallet-cli wait-confirmation -w demo 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b)
+</code></pre>
 
 After this transaction confirms, the 100 `MEL` will be locked up at the first output of the transaction with hash `630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b` . It can only be spent by a transaction that satisfies the covenant we wrote earlier. (You can even see it on Melscan — the above is a transcript of an actual testnet deployment!)
 
@@ -134,8 +132,8 @@ Note that in the following steps, we use bash/zsh syntax for string interpolatio
 
 Using any wallet (Bob's, Alice's, or even Carol's), run the following melwallet-cli command:
 
-```
-melwallet-cli send -to Bob,100,MEL,ascii="Hello world" --force-spend 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0 --add-covenant f2010242000050430023f2004300244200234300254200255342002425a1000842002343002642002443002742002742002650a00001f200430022420022c2f2010224a1000542002253f2010424a00001f200a10010f20042002250c2f2010124a10007f2004200225073f2012024a00001f200a00001f200a10007f2010142002250c2f20024a00001f200a10007f2010242002250c2f2010124a00001f200a10007f2010342002250c2f2010124a00001f200a10004f2010342002250a0000142ffff430021420021c2f2010124a1000542002173f2010c24a00001f200a1001142002143002942002930000c43002a42002ac1430028f020793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f443002c42002cc143002b42002b42002824a00001f200
+```shell-session
+$ melwallet-cli send -to Bob,100,MEL,ascii="Hello world" --force-spend 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0 --add-covenant f2010242000050430023f2004300244200234300254200255342002425a1000842002343002642002443002742002742002650a00001f200430022420022c2f2010224a1000542002253f2010424a00001f200a10010f20042002250c2f2010124a10007f2004200225073f2012024a00001f200a00001f200a10007f2010142002250c2f20024a00001f200a10007f2010242002250c2f2010124a00001f200a10007f2010342002250c2f2010124a00001f200a10004f2010342002250a0000142ffff430021420021c2f2010124a1000542002173f2010c24a00001f200a1001142002143002942002930000c43002a42002ac1430028f020793c10bc0b28c378330d39edace7260af9da81d603b8ffede2706a21eda893f443002c42002cc143002b42002b42002824a00001f200
 ```
 
 Let’s unpack this command a little. It asks the demo wallet to format a transaction that

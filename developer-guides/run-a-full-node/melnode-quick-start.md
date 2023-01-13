@@ -28,13 +28,9 @@ Fortunately, Rust's package manager Cargo is _very_ easy to use, and most likely
 
 Follow the [instructions](https://doc.rust-lang.org/cargo/getting-started/installation.html) from the official Cargo Book to get started. Make sure that the `cargo` command is available and of the latest version:
 
-```shell-session
-$ cargo version
-```
-
-```
-cargo 1.65.0 (4bc8f24d3 2022-10-20)
-```
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ cargo version
+</strong>cargo 1.65.0 (4bc8f24d3 2022-10-20)
+</code></pre>
 
 ## Compile and install melnode
 

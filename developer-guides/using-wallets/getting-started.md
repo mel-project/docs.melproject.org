@@ -14,32 +14,33 @@ Make sure you have your wallet dependencies set up. If not, follow this short [g
 
 In a terminal, create two wallets with melwallet-cli:
 
-```shell
-melwallet-cli create -w alice
-# keep Bob's wallet address handy for the next step!
-melwallet-cli create -w bob
+```shell-session
+$ melwallet-cli create -w alice
+$ melwallet-cli create -w bob
 ```
+
+{% hint style="info" %}
+```
+Keep Bob's wallet address handy for the next step!
+```
+{% endhint %}
 
 You will be prompted for passwords, which will be used to encrypt the wallets' private keys at `~/.themelio-wallets/.secrets.json`, so make sure you pick something strong!
 
 You can then list the wallets you created, like so:
 
 ```shell-session
-melwallet-cli list
+$ melwallet-cli list
 ```
 
 ### Fund Alice's wallet <a href="#fund-wallet" id="fund-wallet"></a>
 
 We can use faucet transactions to fund these new testnet wallets. This lets us print `MEL` out of thin air (only on the testnet) for easy testing!
 
-```shell-session
-melwallet-cli send-faucet -w alice --currency MEL --amount 10000
-```
-
-```shell-session
-Transaction hash:  9974a514351a0696b6d7e3851da957ff508e44857b4967e3d46b8d16685b9769
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli send-faucet -w alice --currency MEL --amount 10000
+</strong>Transaction hash:  9974a514351a0696b6d7e3851da957ff508e44857b4967e3d46b8d16685b9769
 (wait for confirmation with melwallet-cli wait-confirmation -w alice 9974a514351a0696b6d7e3851da957ff508e44857b4967e3d46b8d16685b9769)
-```
+</code></pre>
 
 ### Send some money to Bob <a href="#send-funds" id="send-funds"></a>
 

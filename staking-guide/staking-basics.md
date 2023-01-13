@@ -18,7 +18,7 @@ First, we set up our wallets, following the instructions [here](../developer-gui
 
 Next, you'll need to install `melnode`:
 
-```
+```shell-session
 $ cargo install --locked melnode
 ```
 
@@ -63,8 +63,7 @@ Now that the staker node is up and running, it's time to give it some voting pow
 If you are using this guide to stake on mainnet, please read through the [risks of staking](staking-risks.md) real `SYM` first!&#x20;
 {% endhint %}
 
-<pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli stake &#x3C;amount-of-SYM> --to-stake &#x3C;staker-pubkey> --epochs 3
-<strong>
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli stake &#x3C;amount-of-SYM> --to-stake &#x3C;staker-pubkey> --epochs 3
 </strong>TRANSACTION RECIPIENTS
 Address                                                 Amount          Additional data
 t22272fg9r0k8k09qj06drzzjq9e0rw3asxfs1zrnaccwv5j6gq5tg  0.000100 MEL    ""
@@ -101,8 +100,7 @@ As a staker node operator, you are eligible for rewards, since you are actively 
 
 Rewards are paid out to the `--staker-wallet` previously provided during the node startup process, and will be sent to the wallet address every block (\~30 seconds). Check the balance of the wallet to verify your rewards were successfully received:
 
-<pre class="language-shell-session"><code class="lang-shell-session">$ melwallet-cli summary -w bob
-<strong>
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli summary -w bob
 </strong>Wallet name:  bob (unlocked)
 Network:      testnet
 Address:      t04ncd9j314rt7jth5wmedz8j5tcz9w8cdcdk48ex9t2fkj44ekne0
