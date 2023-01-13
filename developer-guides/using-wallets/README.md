@@ -10,5 +10,5 @@ A wallet is one of Themelio's most important tools. It lets a user:
 
 * buy, sell, store, and swap tokens
 * interact with decentralized apps built on our blockchain
-* control and own their own data - passwords, credentials, and funds are only accessible by the users themselves
+* control and own their data - passwords, credentials, and funds are only accessible by the users themselves
 
