@@ -44,13 +44,13 @@ Every transaction costs a small amount of `MEL` to send because of the transacti
 For example, to print `MEL`:
 
 ```shell-session
-melwallet-cli send-faucet -w <wallet-name> --currency MEL --amount 10000
+$ melwallet-cli send-faucet -w <wallet-name> --currency MEL --amount 10000
 ```
 
 To print `SYM`:
 
 ```shell-session
-melwallet-cli send-faucet -w <wallet-name> --currency SYM --amount 10000
+$ melwallet-cli send-faucet -w <wallet-name> --currency SYM --amount 10000
 ```
 
 That's it! Now you have some testnet money to play with :tada:
