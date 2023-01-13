@@ -1,5 +1,5 @@
 ---
-description: This page describes how to run your own local "simnet" node
+description: Learn how to run your own local "simnet" node.
 ---
 
 # Setting up a local simnet
@@ -26,9 +26,9 @@ $ melnode --bootstrap <bootstrap-ip-address> \
 
 ### Bootstrap address
 
-This is an IP address that specifies the bootstrap address for our local node. This lets us bootstrap only with ourselves instead of with a remote node on test/mainnet.
+This is an IP address that specifies the bootstrap address for our local node. This lets us bootstrap by ourselves instead of with a remote node on the test/mainnet.
 
-### Custom Genesis Configuration
+### Custom genesis configuration
 
 This is only needed to start our own custom network, `melnode` accepts a YAML config file similar to the following:
 
@@ -56,7 +56,7 @@ stakes:
 init_fee_pool: 10000
 ```
 
-### Custom Staker Configuration
+### Custom staker configuration
 
 If we want to run a local custom staker node, `melnode` accepts a YAML config file:
 
