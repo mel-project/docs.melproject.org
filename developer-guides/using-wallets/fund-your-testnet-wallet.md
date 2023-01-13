@@ -4,25 +4,9 @@ description: >-
   thin air to fund your testnet wallet.
 ---
 
-# 💰 Fund your wallet
+# Fund your testnet wallet
 
-## Prerequisites
-
-* You’re running a Unix (Linux or macOS) system (the code should work on Windows, but it isn’t as well-tested)
-* You have a working Internet connection
-* You have Git installed
-* You have the latest Rust toolkit, including the `cargo` command
-
-### Install melwalletd and melwallet-cli
-
-<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ cargo install --locked melwalletd melwallet-cli
-</strong></code></pre>
-
-{% hint style="info" %}
-We install both packages because `melwallet-cli` is merely a convenient frontend _for_ `melwalletd`, a local daemon that exposes a JSON-RPC interface for managing wallets. You can find more details [here](https://github.com/themeliolabs/melwalletd).
-{% endhint %}
-
-### Start melwallet-cli <a href="#start-melwalletd" id="start-melwalletd"></a>
+## Start melwallet-cli <a href="#start-melwalletd" id="start-melwalletd"></a>
 
 In a separate terminal, start the headless wallet daemon and connect to the testnet network:
 

@@ -2,13 +2,13 @@
 description: A simple tutorial on how to set up and interact with Themelio wallets.
 ---
 
-# Quick Start
+# Sending Money
 
 This is a basic guide to melwallet-cli, Themelio's reference implementation CLI wallet. We will be funding two testnet wallets and sending money from one to the other.
 
 ## Setup and Installation
 
-Make sure you have your wallet dependencies set up. If not, follow this short [guide](../../staking-guide/untitled.md) before getting started.
+Make sure you have your wallet dependencies set up. If not, follow this short [guide](fund-your-testnet-wallet.md) before getting started.
 
 ### Create wallets for Alice and Bob
 

@@ -2,24 +2,20 @@
 
 ## concepts
 
-* [Overview: the off-chain composability vision](README.md)
-* [Minimal, governance-free L1](concepts/minimal-governance-free-l1.md)
+* [Minimal, governance-free L1](README.md)
 * [Powerful execution and embeddable thin clients](concepts/powerful-execution-and-embeddable-thin-clients.md)
 * [Sound cryptoeconomics with truly sound money](concepts/sound-cryptoeconomics-with-truly-sound-money.md)
 * [Consensus and Staking](concepts/consensus-and-staking.md)
 
 ## Developer guides
 
-*
-* [💰 Fund your wallet](staking-guide/untitled.md)
-* [💸 Using wallets](developer-guides/using-wallets/README.md)
-  * [Quick Start](developer-guides/using-wallets/getting-started.md)
+* [Overview](developer-guides/readme.md)
+* [Covenant interaction](developer-guides/covenant-interaction.md)
+* [💰 Wallets](developer-guides/using-wallets/README.md)
+  * [Setup and Installation](developer-guides/using-wallets/setup-and-installation.md)
+  * [Fund your testnet wallet](developer-guides/using-wallets/fund-your-testnet-wallet.md)
+  * [Sending Money](developer-guides/using-wallets/getting-started.md)
   * [Swapping Coins](developer-guides/using-wallets/melswap-guide.md)
-  * [Covenant interaction](developer-guides/using-wallets/covenant-interaction.md)
-* [🤖 Run a full node](developer-guides/run-a-full-node/README.md)
-  * [Melnode quick start](developer-guides/run-a-full-node/melnode-quick-start.md)
-  * [Basic replica node](developer-guides/run-a-full-node/basic-replica-node.md)
-  * [Setting up a local simnet](developer-guides/run-a-full-node/setting-up-a-simnet.md)
 * [🪙 Themelio Tokens](developer-guides/melmint/README.md)
   * [Token Overview](developer-guides/melmint/token-overview.md)
   * [Introduction to MEL](developer-guides/melmint/melmint-overview.md)
@@ -27,6 +23,10 @@
     * [Melmint Overview](developer-guides/melmint/getting-tokens/minting-mel-with-melminter.md)
     * [Using Melminter](developer-guides/melmint/getting-tokens/using-melminter.md)
     * [Melmint arbitrage](developer-guides/melmint/getting-tokens/melmint-arbitrage.md)
+* [🤖 Run a full node](developer-guides/run-a-full-node/README.md)
+  * [Melnode quick start](developer-guides/run-a-full-node/melnode-quick-start.md)
+  * [Basic replica node](developer-guides/run-a-full-node/basic-replica-node.md)
+  * [Setting up a local simnet](developer-guides/run-a-full-node/setting-up-a-simnet.md)
 
 ***
 

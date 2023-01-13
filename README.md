@@ -1,49 +1,18 @@
----
-description: >-
-  A high-level overview of the different developer tools available to get
-  started participating in the Themelio ecosystem.
----
+# Minimal, governance-free L1
 
-# Overview
+* Off-chain composability vision requires a robust L1&#x20;
+* Most important feature: endogenous trust
+  * Copy endogenous trust spiel
+* This forms a curious synergy with endogenous trust.
+  * OCC needs ET
+  * ET needs OCC
 
-Themelio is currently in _beta mainnet_: there is a "[mainnet](https://scan.themelio.org/)" with relatively stable and persistent history, but the staking tokens are not publicly available and the protocol is not quite production-ready.
+### The killer feature of blockchains… <a href="#the-killer-feature-of-blockchains" id="the-killer-feature-of-blockchains"></a>
 
-Nevertheless, there is already a rich developer toolkit for interacting with the blockchain.
+Themelio’s entire design is motivated by what we believe is the most important feature of blockchains: **endogenous trust**. That is, _we can trust that a blockchain protocol will behave correctly without trusting any of the people running it_. In blockchains, trust emerges from within the protocol, not from preexisting trust in the parties that run the protocol.
 
-## Themelio's architecture
+Endogenous trust is enabled by cryptoeconomics, the intersection of game theory and cryptography, which powers self-incentivizing mechanisms that, given enough participants, allows us to trust a group’s overall behavior without trusting any individual participant. For example, someone can only securely use a traditional bank if they trust that bank, or at least third-party regulators. But a Bitcoin user doesn’t even need to know which miner ends up processing their transaction, let alone establish any sort of trust with that miner. Instead, because the cryptoeconomics of Bitcoin mining internally rewards good miners and heavily punishes bad miners, our Bitcoin user can confidently trust the Bitcoin network as a whole.
 
-But before diving into the specific tools, it's helpful to keep in mind the overall architecture of Themelio.
+In fact, endogenous trust is the only property unique to public blockchains. Almost all other widely-touted blockchain properties can be found in non-blockchain systems that are often much more efficient than blockchains: BitTorrent has decentralization, Keybase has transparency, and TLS has security, to name a few. Endogenous trust is the key feature that gives blockchain apps superpowers elusive to pre-blockchain systems.
 
-\[ a picture illustrating the whole architecture]
-
-Participants in the Themelio blockchain network itself can be roughly divided into (full) **nodes** and (thin) **clients**. Nodes replicate every block and transaction on the blockchain and help maintain network security. A subset of nodes, **staker nodes**, have SYM locked up and participate in the consensus to decide canonical blockchain history. All other nodes are **replica nodes** that replicate and verify blocks but do not propose new blocks.
-
-Clients do not replicate any blocks, but are able to interact with the blockchain state by asking full nodes. An important design principle is that _clients do not trust full nodes_: full nodes must present proof that the info sent to client is part of canonical blockchain history.
-
-**Apps** are generally built on top of Themelio thin clients. The most basic app is probably a **wallet**, a tool for managing on-chain assets and "manual" interaction with blockchain state. More complex applications can be built by composing on-chain logic with off-chain functionality using trust-minimizing thin clients; this is the cornerstone of Themelio's off-chain composability vision.
-
-## Tooling overview
-
-Currently, the following tools are available:
-
-### Full nodes
-
-Both staker and replica nodes are supported by **melnode**, our official node software. A basic guide is currently available.
-
-Staking requires SYM, which is currently available only on the testnet. You can follow our testnet staking guide to learn how to run a staker node.
-
-### Thin clients
-
-We have a full-featured thin client library available in **melprotocol**, our protocol crate. You can find detailed documentation on docs.rs.&#x20;
-
-Also available is an introductory guide to building your first trustless off-chain app using a Themelio thin client.
-
-### Wallets
-
-We have an official, feature-complete CLI reference wallet called **melwallet-cli**.&#x20;
-
-There is also an alpha-quality GUI wallet [Mellis](https://github.com/themeliolabs/mellis), but features may be missing or broken.
-
-### On-chain development
-
-You can deploy on-chain logic using our high-level covenant programming language [Melodeon](https://melodeonlang.org/).
+\

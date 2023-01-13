@@ -18,7 +18,7 @@ In the first section we used Alice's wallet to request `MEL` using the testnet f
 
 ## Install melorun
 
-```
+```shell-session
 $ cargo install --locked melorun
 ```
 

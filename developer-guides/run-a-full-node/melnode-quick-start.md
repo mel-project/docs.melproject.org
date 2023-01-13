@@ -1,26 +1,30 @@
+---
+description: >-
+  In this section, you will learn how to use Melnode, Themelio's reference node
+  implementation.
+---
+
 # Melnode quick start
 
-**Full nodes** replicate every consensus-confirmed block, validating their contents and ensuring network security while providing a local cache of the entire blockchain state. Running a full node helps contribute to the security and performance of the network.
+## Setup and Installation
 
-**Melnode** is the reference implementation of a Themelio full node. This guide will help you set up the environment needed to run Melnode.
+### Hardware requirements
 
-## Hardware requirements
-
-### Minimum
+#### Minimum
 
 * 1-core CPU
 * 4 GB of RAM
 * at least 200 GB of free storage (SSD not necessary)
 * 10 Mbps download Internet service
 
-### Recommended
+#### Recommended
 
 * 4+ core CPU
 * 16 GB of RAM
 * 200+ GB of free storage on a fast device (SSD, RAID array, etc)
 * 50+ Mbps up/download Internet service
 
-## Install Rust and Cargo
+### Install Rust and Cargo
 
 For security reasons, until we have reliable reproducible build infrastructure, we stick to releasing source code and do not distribute any official binary packages.
 
