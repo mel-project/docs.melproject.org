@@ -8,7 +8,7 @@ As we mentioned earlier, FancyName is made up of two complementary components, a
 
 ## From Themelio to Ethereum
 
-<figure><img src="../.gitbook/assets/bridge_lock.png" alt=""><figcaption><p>Diagram of the burn and mint process.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/bridge_lock.png" alt=""><figcaption><p>Diagram of the freeze and mint process.</p></figcaption></figure>
 
 Here we see that moving assets from Themelio to Ethereum requires four steps:
 
