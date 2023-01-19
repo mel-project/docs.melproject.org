@@ -1,5 +1,5 @@
 ---
-description: A short guide on how to set up and install our wallet CLI.
+description: This is a short guide on how to setup and install our wallet CLI
 ---
 
 # Setup and Installation
@@ -7,7 +7,7 @@ description: A short guide on how to set up and install our wallet CLI.
 ## Prerequisites
 
 * You’re running a Unix (Linux or macOS) system (the code should work on Windows, but it isn’t as well-tested)
-* You have a working internet connection
+* You have a working Internet connection
 * You have Git installed
 * You have the latest Rust toolkit, including the `cargo` command
 

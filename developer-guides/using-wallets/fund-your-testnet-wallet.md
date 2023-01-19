@@ -21,7 +21,7 @@ This command will save any wallets you create to `~/.themelio-wallets`, but feel
 You can use the `send-faucet` command to get some funds into your wallet, specifying the amount and currency type.
 
 {% hint style="info" %}
-Every transaction costs a small amount of `MEL` to send because of the transaction fee, so always make sure you have some `MEL` your wallet before attempting a transaction.
+Every transaction costs a small amount of `MEL` to send because of the transaction fee, so always make sure you have some `MEL` in your wallet before attempting a transaction.
 {% endhint %}
 
 For example, to print `MEL`:
@@ -36,4 +36,4 @@ To print `SYM`:
 $ melwallet-cli send-faucet -w <wallet-name> --currency SYM --amount 10000
 ```
 
-That's it! Now you have some testnet money to play with :tada:
+That's it! Now you have some testnet money to play with. :tada:
