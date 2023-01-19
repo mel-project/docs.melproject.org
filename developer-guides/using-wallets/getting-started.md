@@ -6,9 +6,19 @@ description: A simple tutorial on how to set up and interact with Themelio walle
 
 This is a basic guide to melwallet-cli, Themelio's reference implementation CLI wallet. We will be funding two testnet wallets and sending money from one to the other.
 
-## Setup and Installation
+### Setup and Installation
 
 Make sure you have your wallet dependencies set up. If not, follow this short [guide](fund-your-testnet-wallet.md) before getting started.
+
+### Start melwallet-cli
+
+Use this command to start the headless wallet daemon and connect to the testnet network:
+
+```
+$ melwallet-cli start-daemon --network testnet
+```
+
+This command will save any wallets you create to `~/.themelio-wallets`, but feel free to provide any directory you want via the `--wallet-dir` flag.
 
 ### Create wallets for Alice and Bob
 
