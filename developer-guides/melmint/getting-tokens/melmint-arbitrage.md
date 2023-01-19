@@ -24,7 +24,7 @@ In order to maintain the other pairs, we'll need YOU to make some :moneybag: thr
 
 Make sure you have the following set up:
 
-* A funded wallet. This is [a guide](../../using-wallets/fund-your-testnet-wallet.md) on how to set that up on testnet if needed
+* A funded wallet. This is [a guide](broken-reference) on how to set that up on testnet if needed
 
 ### Time for some arbitrage :money\_mouth:
 

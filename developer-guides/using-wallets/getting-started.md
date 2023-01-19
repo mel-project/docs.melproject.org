@@ -8,7 +8,7 @@ This is a basic guide to melwallet-cli, Themelio's reference implementation CLI 
 
 ### Setup and Installation
 
-Make sure you have your wallet dependencies set up. If not, follow this short [guide](fund-your-testnet-wallet.md) before getting started.
+Make sure you have your wallet dependencies set up. If not, follow this short [guide](broken-reference) before getting started.
 
 ### Start melwallet-cli
 

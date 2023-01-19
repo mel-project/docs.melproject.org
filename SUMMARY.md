@@ -14,7 +14,6 @@
 * [Covenant interaction](developer-guides/covenant-interaction.md)
 * [💰 Wallets](developer-guides/using-wallets/README.md)
   * [Setup and Installation](developer-guides/using-wallets/setup-and-installation.md)
-  * [Fund your testnet wallet](developer-guides/using-wallets/fund-your-testnet-wallet.md)
   * [Sending Money](developer-guides/using-wallets/getting-started.md)
   * [Swapping Coins](developer-guides/using-wallets/melswap-guide.md)
 * [🪙 Themelio Tokens](developer-guides/melmint/README.md)
