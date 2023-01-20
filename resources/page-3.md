@@ -24,7 +24,7 @@ In accordance with Themelio's core values of decentralization and trustlessness,
 
 ### How does `MEL` stabilize itself?&#x20;
 
-`MEL` is cryptographically pegged to a `DOSC` (day of sequential computation) using the Melmint algorithm. The `DOSC` was chosen because it has a relatively stable purchasing power and because it is trustlessly measurable through a sequential proof of work. This, combined with a protocol-internal Uniswap style automated market maker (AMM) provide incentives which allow `MEL` to self-stabilize. Get a more in depth view of the Melmint algorithm [here](../developer-guides/melmint/getting-tokens/minting-mel-with-melminter.md).
+`MEL` is cryptographically pegged to a `DOSC` (day of sequential computation) using the Melmint algorithm. The `DOSC` was chosen because it has a relatively stable purchasing power and because it is trustlessly measurable through a sequential proof of work. This, combined with a protocol-internal Uniswap style automated market maker (AMM), provides incentives which allow `MEL` to self-stabilize. Get a more in depth view of the Melmint algorithm [here](../developer-guides/melmint/getting-tokens/minting-mel-with-melminter.md).
 
 ### How is `MEL` different from other stablecoins like `USDC` or `DAI`?
 
@@ -32,7 +32,10 @@ Apart from not requiring any trust in centralized entities (like `USDC`), `MEL` 
 
 ### What are the risks of putting my money into Themelio? What are the failure scenarios for the network?
 
-\[TODO]
+There are a couple of failure scenarios which we can imagine with regard to the Melmint algorithm:
+
+* A drastic change in `DOSC` value would cause `MEL` to lose its stable purchasing power, although historically this has not happened and is unlikely to in the future due to the definition of a `DOSC` in terms of _time_ rather than _amount_ of computation.
+* A sudden decrease in Themelio market sentiment, in say, a general cryptocurrency crash, could result in an extremely rare scenario where a large amount of `SYM` or `MEL` is simultaneously panic-sold; this would threaten the basis of the Melmint peg but is unlikely to completely dump `MEL` due to Melmint's design. This is especially because, unlike users of `USD` stablecoins, `MEL` users never expected zero exchange-rate risk and are unlikely to completely dump MEL due to a temporary depeg. The economic impact of such a depeg is likely to be around the same order of magnitude as a fiat “currency crisis” — bad, but not catastrophic. Once sufficient liquidity returns to the Melswap `MEL/SYM` market, the peg will gradually be restored.
 
 ### How much does it cost to run a staker node? Is it profitable?
 
