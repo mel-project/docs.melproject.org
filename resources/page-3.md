@@ -1,15 +1,43 @@
 ---
-description: This is your one-stop shop for all commonly asked questions
+description: This is your one-stop shop for all commonly asked questions.
 ---
 
 # Frequently Asked Questions
 
-## Questions
+### What is Themelio?
 
-* How does `MEL` stabilize itself?&#x20;
-* How is `MEL` different from other stablecoins like USDC or DAI?
-* How is Themelio different than other blockchains like Ethereum, Bitcoin, or Solana?
-  * What are the considerations for decentralization, security, and scalability?
-* What are the risks of putting my money into Themelio? What are the failure scenarios for the network?
-* How much does it cost to run a staker node? Is it profitable?
-* How can I get some `MEL`?
+Themelio is a minimal, governance-free L1 blockchain whose core vision consists of enabling a future ecosystem of composable, off-chain dapps. Learn more in our [concepts docs](broken-reference).
+
+### How is Themelio different than other blockchains like Ethereum, Bitcoin, or Solana?
+
+Themelio's entire design is focused on leveraging the under-emphasized killer feature of blockchains, namely, [endogenous trust.](../) It is a protocol whose trust emerges from its immutability and security, not from preexisting trust in the parties that run the protocol.
+
+Themelio is designed to be as minimal as possible, in stark contrast to the philosophies of many other existing L1's, and it does so by utilizing a powerful, but computationally constrained (and decidable) execution environment, as well as by focusing on off-chain composability through the use of [embeddable thin clients](../concepts/powerful-execution-and-embeddable-thin-clients.md).
+
+Additionally, the future of decentralized security needs robust incentives without relying on centralized third-parties for stability; this is where `MEL`, Themelio's native base currency comes in. It provides stable purchasing power, unit of account, store of value, etc. -- without any external oracles or price pegs. Learn more about the cryptoeconomics of `MEL` [here](../concepts/sound-cryptoeconomics-with-truly-sound-money.md).
+
+### What are the considerations for decentralization, security, and scalability?
+
+In accordance with Themelio's core values of decentralization and trustlessness, the core security of the protocol is in the hands of stakers, for which there is no minimum staking amount and low hardware requirements, reducing the barrier to entry. Additionally, though stakers in other chains are often assumed to be honest (and therefore not prone to collusion), Themelio eschews these assumptions and instead uses the rigorous consensus algorithm synkletos, which operates under the assumption that stakers _will_ collude, and bakes this into its own security.
+
+\[TODO: Scalability]
+
+### How does `MEL` stabilize itself?&#x20;
+
+`MEL` is cryptographically pegged to a `DOSC` (day of sequential computation) using the Melmint algorithm. The `DOSC` was chosen because it has a relatively stable purchasing power and because it is trustlessly measurable through a sequential proof of work. This, combined with a protocol-internal Uniswap style automated market maker (AMM) provide incentives which allow `MEL` to self-stabilize. Get a more in depth view of the Melmint algorithm [here](../developer-guides/melmint/getting-tokens/minting-mel-with-melminter.md).
+
+### How is `MEL` different from other stablecoins like `USDC` or `DAI`?
+
+Apart from not requiring any trust in centralized entities (like `USDC`), `MEL` differentiates itself from the crowd by not only being decentralized (like `DAI`), but by _also_ not being pegged to any fiat currencies, which themselves are subject to centralized influence and manipulation.
+
+### What are the risks of putting my money into Themelio? What are the failure scenarios for the network?
+
+\[TODO]
+
+### How much does it cost to run a staker node? Is it profitable?
+
+There is no minimum amount of `SYM` which needs to be staked in order to participate in consensus. Profit from staking comes from transaction fees present in each block. More information on staking can be found [here](../staking-guide/).
+
+### How can I get some `MEL`?
+
+Currently, you can only acquire `MEL` by running a melminter instance or by swapping `SYM` or `ERG` via Melswap. Get more information about acquiring tokens [here](../developer-guides/melmint/getting-tokens/).
