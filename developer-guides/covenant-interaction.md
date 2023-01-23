@@ -131,7 +131,7 @@ Note that in the following steps, we use bash/zsh syntax for string interpolatio
 Using any wallet (Bob's, Alice's, or even Carol's), run the following melwallet-cli command:
 
 ```shell-session
-$ melwallet-cli send -to Bob,100,MEL,ascii="Hello world" \ 
+$ melwallet-cli send --to Bob,100,MEL,ascii="Hello world" \ 
 --force-spend 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0 \
 --add-covenant \
 f2010242000050430023f2004300244200234\
