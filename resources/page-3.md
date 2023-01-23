@@ -6,7 +6,7 @@ description: This is your one-stop shop for all commonly asked questions.
 
 ### What is Themelio?
 
-Themelio is a minimal, governance-free L1 blockchain whose core vision consists of enabling a future ecosystem of composable, off-chain dapps. Learn more in our [concepts docs](broken-reference).
+Themelio is a minimal, governance-free L1 blockchain whose core vision consists of enabling a future ecosystem of secure, composable, off-chain dapps. Learn more in our [concepts docs](broken-reference).
 
 ### How is Themelio different than other blockchains like Ethereum, Bitcoin, or Solana?
 
@@ -18,13 +18,13 @@ Additionally, the future of decentralized security needs robust incentives witho
 
 ### What are the considerations for decentralization, security, and scalability?
 
-In accordance with Themelio's core values of decentralization and trustlessness, the core security of the protocol is in the hands of stakers, for which there is no minimum staking amount and low hardware requirements, reducing the barrier to entry. Additionally, though stakers in other chains are often assumed to be honest (and therefore not prone to collusion), Themelio eschews these assumptions and instead uses the rigorous consensus algorithm synkletos, which operates under the assumption that stakers _will_ collude, and bakes this into its own security.
+In accordance with Themelio's core values of decentralization and trustlessness, the core security of the protocol is in the hands of stakers, for which there is no minimum staking amount and low hardware requirements, reducing the barrier to entry. Additionally, though stakers in other chains are often assumed to be honest (and therefore not prone to collusion), Themelio eschews these assumptions and instead uses the rigorous consensus algorithm Synkletos, which operates under the assumption that stakers _will_ collude, and bakes this into its own security.
 
-\[TODO: Scalability]
+Themelio's philosophy of focusing on off-chain, composable dapps is central to its scaling strategy. This is made possible through the MelVM, a non-Turing-complete virtual machine that nevertheless is able to compute all primitive recursive functions and enables attaching sophisticated covenants to coins. This enables scaling strategies crucial to global adoption, such as full nodes with limited storage space and thin clients that can securely verify much more information than conventional techniques like Bitcoin’s SPV allows, while at the same time avoiding the pitfalls of stateful smart contracts.
 
 ### How does `MEL` stabilize itself?&#x20;
 
-`MEL` is cryptographically pegged to a `DOSC` (day of sequential computation) using the Melmint algorithm. The `DOSC` was chosen because it has a relatively stable purchasing power and because it is trustlessly measurable through a sequential proof of work. This, combined with a protocol-internal Uniswap style automated market maker (AMM), provides incentives which allow `MEL` to self-stabilize. Get a more in depth view of the Melmint algorithm [here](../developer-guides/melmint/getting-tokens/minting-mel-with-melminter.md).
+`MEL` is cryptographically pegged to a `DOSC` (day of sequential computation) using the Melmint algorithm. The `DOSC` was chosen because it has a relatively stable purchasing power and because it is trustlessly measurable through a sequential proof of work. This, combined with a protocol-internal Uniswap-style automated market maker (AMM), provides incentives which allow `MEL` to self-stabilize. Get a more in depth view of the Melmint algorithm [here](../developer-guides/melmint/getting-tokens/minting-mel-with-melminter.md).
 
 ### How is `MEL` different from other stablecoins like `USDC` or `DAI`?
 
