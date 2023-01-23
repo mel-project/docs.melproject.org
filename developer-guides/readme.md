@@ -14,6 +14,10 @@ Nevertheless, there is already a rich developer toolkit for interacting with the
 
 Before diving into the specific tools, it's helpful to keep in mind the overall architecture of Themelio.
 
+{% hint style="danger" %}
+PUT A PICTURE HERE
+{% endhint %}
+
 \[ a picture illustrating the whole architecture]
 
 Participants in the Themelio blockchain network itself can be roughly divided into (full) **nodes** and (thin) **clients**. Nodes replicate every block and transaction on the blockchain and help maintain network security. A subset of nodes, **staker nodes**, have `SYM` locked up and participate in the consensus to decide canonical blockchain history. All other nodes are **replica nodes** that replicate and verify blocks but do not propose new blocks.
@@ -50,4 +54,6 @@ You can deploy on-chain logic using our high-level covenant programming language
 
 ### Melminter
 
+{% hint style="danger" %}
 TODO
+{% endhint %}

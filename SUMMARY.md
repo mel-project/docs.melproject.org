@@ -11,11 +11,11 @@
 
 * [melprot](developer-guides/melprot.md)
 * [Overview](developer-guides/readme.md)
-* [Covenant interaction](developer-guides/covenant-interaction.md)
 * [💰 Wallets](developer-guides/using-wallets/README.md)
   * [Setup and Installation](developer-guides/using-wallets/setup-and-installation.md)
   * [Sending Money](developer-guides/using-wallets/getting-started.md)
-  * [Swapping Coins](developer-guides/using-wallets/melswap-guide.md)
+  * [Swapping Tokens](developer-guides/using-wallets/melswap-guide.md)
+  * [Using Covenants](developer-guides/using-wallets/covenant-interaction.md)
 * [🪙 Themelio Tokens](developer-guides/melmint/README.md)
   * [Token Overview](developer-guides/melmint/token-overview.md)
   * [Introduction to MEL](developer-guides/melmint/melmint-overview.md)

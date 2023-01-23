@@ -1,10 +1,31 @@
 ---
 description: >-
-  A step-by-step guide to creating, deploying, and interacting with Themelio
-  covenants using a simple example.
+  A step-by-step guide to creating, deploying, and interacting with 4 covenants
+  using a simple example.
 ---
 
-# Covenant interaction
+# Using Covenants
+
+{% hint style="danger" %}
+**Todo:** make this focused on _interacting_ with a covenant, not writing one.
+
+Most people will not be writing covenants, but most people will be using covenants&#x20;
+
+Main idea:
+
+* "About covenants", example of an extremely simple covenant (counting), link to other pages for details
+* Manually interacting with this covenant: annoying!
+* In practice: _frontends_ will generate _wallet URLs_.
+  * Eventually, this will be web frontends popping up graphical wallets.
+  * But now, there's a github demo project that generates wallet URLs for
+    * creating counting covenants
+    * incrementing the counter
+  * The wallet URLs can be used by `melwallet-cli open-url melwallet:...`
+{% endhint %}
+
+``
+
+
 
 ## About Themelio covenants
 

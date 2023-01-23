@@ -1,8 +1,8 @@
 ---
-description: A guide on swapping coins on Themelio.
+description: A guide on swapping tokens on Themelio.
 ---
 
-# Swapping Coins
+# Swapping Tokens
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ Balance:      500.000000  MEL
 Staked:       0.000000    SYM
 </code></pre>
 
-## Swapping coins <a href="#swapping-coins" id="swapping-coins"></a>
+## Swapping tokens <a href="#swapping-coins" id="swapping-coins"></a>
 
 Unlike other blockchains where this functionality is typically on a programmable smart contract, Themelio features a built-in, Uniswap-like decentralized exchange (DEX) called **Melswap**.
 
@@ -28,7 +28,7 @@ Unlike other blockchains where this functionality is typically on a programmable
 We embedded a rudimentary DEX into the L1 not primarily for convenience, but as a trustless price oracle for designing on-chain logic; it is also an important component of the Melmint algorithm that stabilizes `MEL`.
 {% endhint %}
 
-With Melswap, any user can instantly swap one coin and another for a fixed pool fee of 0.5%. Using melwallet-cli we will swap 100 `MEL` for some `SYM` at the market rate.
+With Melswap, any user can instantly swap one token and another for a fixed pool fee of 0.5%. Using melwallet-cli we will swap 100 `MEL` for some `SYM` at the market rate.
 
 <pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli swap -w bob --from MEL --to SYM 100.0
 </strong>SWAPPING
@@ -107,10 +107,6 @@ Balance:      349.50000   MEL
               1.0000000   MEL~SYM
 Staked:       0.000000    SYM
 </code></pre>
-
-{% hint style="danger" %}
-Just like traditional markets, on Themelio there are different risks associated with different asset classes. Please do not invest your money into any asset until you understand the risks, and never risk more than you can afford. For more information about Themelio assets please take a look at our [token guide](../melmint/).
-{% endhint %}
 
 
 
