@@ -111,4 +111,4 @@ Staked:       100.000000    SYM
 
 ## Further Reading
 
-This was just a simple tutorial on how to run a staker node on the network. To learn more about the consensus process, continue here (TODO) for more.
+This was just a simple tutorial on how to run a staker node on the network. To learn more about the consensus process, continue here for more details.
