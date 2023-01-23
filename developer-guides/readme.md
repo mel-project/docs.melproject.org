@@ -54,6 +54,4 @@ You can deploy on-chain logic using our high-level covenant programming language
 
 ### Melminter
 
-{% hint style="danger" %}
-TODO
-{% endhint %}
+Help contribute information about the current price of computation to the network while earning Themelio native tokens by running your own instance of [melminter](melmint/getting-tokens/using-melminter.md), a convenient CLI for minting `ERG` and converting to `MEL`.
