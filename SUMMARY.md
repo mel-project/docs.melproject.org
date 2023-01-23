@@ -9,7 +9,12 @@
 
 ## Developer guides
 
-* [melprot](developer-guides/melprot.md)
+* [Your first off-chain composable protocol](developer-guides/your-first-off-chain-composable-protocol/README.md)
+  * [melprot: a quick overview](developer-guides/your-first-off-chain-composable-protocol/melprot-a-quick-overview.md)
+  * [Designing the protocol](developer-guides/your-first-off-chain-composable-protocol/designing-the-protocol.md)
+  * [Project setup](developer-guides/your-first-off-chain-composable-protocol/project-setup.md)
+  * [Name registration](developer-guides/your-first-off-chain-composable-protocol/name-registration.md)
+  * [Name lookup](developer-guides/your-first-off-chain-composable-protocol/name-lookup.md)
 * [Overview](developer-guides/readme.md)
 * [💰 Wallets](developer-guides/using-wallets/README.md)
   * [Setup and Installation](developer-guides/using-wallets/setup-and-installation.md)
