@@ -26,7 +26,7 @@
   * [Introduction to MEL](developer-guides/melmint/melmint-overview.md)
   * [Getting tokens](developer-guides/melmint/getting-tokens/README.md)
     * [Melmint overview](developer-guides/melmint/getting-tokens/minting-mel-with-melminter.md)
-    * [Using Melminter](developer-guides/melmint/getting-tokens/using-melminter.md)
+    * [Using melminter](developer-guides/melmint/getting-tokens/using-melminter.md)
     * [Melmint arbitrage](developer-guides/melmint/getting-tokens/melmint-arbitrage.md)
 * [🤖 Run a full node](developer-guides/run-a-full-node/README.md)
   * [Melnode quick start](developer-guides/run-a-full-node/melnode-quick-start.md)
