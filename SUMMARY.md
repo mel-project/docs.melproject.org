@@ -44,4 +44,4 @@
 
 ## Resources
 
-* [Frequently Asked Questions](resources/page-3.md)
+* [Frequently asked questions](resources/page-3.md)
