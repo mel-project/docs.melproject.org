@@ -2,13 +2,13 @@
 description: A simple tutorial on how to set up and interact with Themelio wallets.
 ---
 
-# Sending money
+# Sending Money
 
-This is a basic guide to `melwallet-cli`, Themelio's reference implementation CLI wallet. We will be funding two testnet wallets and sending money from one to the other.
+This is a basic guide to melwallet-cli, Themelio's reference implementation CLI wallet. We will be funding two testnet wallets and sending money from one to the other.
 
-### Setup and installation
+### Setup and Installation
 
-Make sure you have the wallet dependencies installed. If not, follow [this](getting-started.md#setup-and-installation) short guide before getting started.
+Make sure you have your wallet dependencies set up. If not, follow this short [guide](broken-reference) before getting started.
 
 ### Start melwallet-cli
 
@@ -22,7 +22,7 @@ This command will save any wallets you create to `~/.themelio-wallets`, but feel
 
 ### Create wallets for Alice and Bob
 
-In a terminal, create two wallets with `melwallet-cli`:
+In a terminal, create two wallets with melwallet-cli:
 
 ```shell-session
 $ melwallet-cli create -w alice
@@ -45,7 +45,7 @@ $ melwallet-cli list
 
 ### Fund Alice's wallet <a href="#fund-wallet" id="fund-wallet"></a>
 
-We can use faucet transactions to fund these new testnet wallets. This lets us print MEL out of thin air (only on the testnet) for easy testing!
+We can use faucet transactions to fund these new testnet wallets. This lets us print `MEL` out of thin air (only on the testnet) for easy testing!
 
 <pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli send-faucet -w alice --currency MEL --amount 10000
 </strong>Transaction hash:  9974a514351a0696b6d7e3851da957ff508e44857b4967e3d46b8d16685b9769
@@ -54,7 +54,7 @@ We can use faucet transactions to fund these new testnet wallets. This lets us p
 
 ### Send some money to Bob <a href="#send-funds" id="send-funds"></a>
 
-Now, we can transfer some MEL from Alice to Bob!
+Now, we can transfer some `MEL` from Alice to Bob!
 
 First we unlock Alice's wallet with her password:
 
@@ -62,14 +62,14 @@ First we unlock Alice's wallet with her password:
 $ melwallet-cli unlock -w alice
 ```
 
-Then, we send over some MEL to Bob's wallet address:
+Then, we send over some `MEL` to Bob's wallet address:
 
 ```shell-session
 $ melwallet-cli send -w alice --to <BOB_ADDRESS>,500.0
 ```
 
-Congrats, you've just sent MEL from Alice to bob!
+Congrats, you've just sent `MEL` from Alice to bob!
 
 ### Further Reading
 
-Sending a transaction is just one of the many things you can do with `melwallet-cli`. For more information, check it out on [GitHub](https://github.com/themeliolabs/melwallet-client).
+Sending a transaction is just one of the many things you can do with melwallet-cli. For more information, check it out on [GitHub](https://github.com/themeliolabs/melwallet-client).

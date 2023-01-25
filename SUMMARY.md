@@ -19,7 +19,7 @@
 * [💰 Wallets](developer-guides/using-wallets/README.md)
   * [Setup and installation](developer-guides/using-wallets/setup-and-installation.md)
   * [Sending money](developer-guides/using-wallets/getting-started.md)
-  * [Swapping Tokens](developer-guides/using-wallets/melswap-guide.md)
+  * [Swapping tokens](developer-guides/using-wallets/melswap-guide.md)
   * [Using Covenants](developer-guides/using-wallets/covenant-interaction.md)
 * [🪙 Themelio Tokens](developer-guides/melmint/README.md)
   * [Token Overview](developer-guides/melmint/token-overview.md)
