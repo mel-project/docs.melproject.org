@@ -34,7 +34,7 @@ Currently, the following tools are available:
 
 Both staker and replica nodes are supported by **melnode**, our official node software. A basic guide is currently available.
 
-Staking requires `SYM`, which is currently available only on the testnet. You can follow our testnet staking guide to learn how to run a staker node.
+Staking requires SYM, which is currently available only on the testnet. You can follow our testnet staking guide to learn how to run a staker node.
 
 ### Thin clients
 
@@ -44,7 +44,7 @@ Also available is an introductory guide to building your first trustless, off-ch
 
 ### Wallets
 
-We have an official, feature-complete CLI reference wallet called **melwallet-cli**.
+We have an official, feature-complete CLI reference wallet called `melwallet-cli`.
 
 There is also an alpha-quality GUI wallet, [Mellis](https://github.com/themeliolabs/mellis), but features may be missing or broken.
 
@@ -54,4 +54,4 @@ You can deploy on-chain logic using our high-level covenant programming language
 
 ### Melminter
 
-Help contribute information about the current price of computation to the network while earning Themelio native tokens by running your own instance of [melminter](melmint/getting-tokens/using-melminter.md), a convenient CLI for minting `ERG` and converting to `MEL`.
+Help contribute information about the current price of computation to the network while earning Themelio native tokens by running your own instance of [`melminter`](melmint/getting-tokens/using-melminter.md), a convenient CLI for minting ERG and converting to MEL.
