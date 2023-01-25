@@ -1,14 +1,14 @@
 ---
-description: This page describes how to get started with staking on our  network
+description: This page describes how to get started with staking on our  network.
 ---
 
-# Staking Basics
+# Staking basics
 
 {% hint style="info" %}
 This tutorial will be done on our testnet, so we can take advantage of printing MEL with faucet transactions.
 {% endhint %}
 
-## Installation and Setup
+## Installation and setup
 
 ### Create and fund a testnet wallet
 
@@ -29,7 +29,7 @@ We're almost ready to get started. Before we can start staking, we need to first
 
 ## Running a staker node
 
-The first thing we'll need is a key-pair, comprised of a public and private key for the staker node itself. The staker node will be identified by the public key, and the private key will be used internally while processing incoming stake transactions.
+The first thing we'll need is a key pair, comprised of a public and private key for the staker node itself. The staker node will be identified by the public key, and the private key will be used internally while processing incoming stake transactions.
 
 ```shell-session
 $ melnode --staker-wallet <payout-wallet-address>
@@ -37,12 +37,12 @@ $ melnode --staker-wallet <payout-wallet-address>
 
 The `--payout-addr` value is a mandatory wallet address that will receive the rewards for operating a staker node. Be sure to check that this is correct!
 
-By default, `melnode` will auto-generate a new keypair for the staker node and save them at a default path of `$HOME/.melnode/staker-keys/`. The public and private keys will be saved as:
+By default, `melnode` will auto-generate a new key pair for the staker node and save it at the default path of `$HOME/.melnode/staker-keys/`. The public and private keys will be saved as:
 
 * Public key: `staker-key-ed25519.pub`
 * Private key: `staker-key-ed25519`
 
-Optionally, you can provide an existing keypair as a CLI argument (make sure the private key is stored somewhere safe!) If the provided public key does not exist, `melnode` will autogenerate a new keypair as mentioned above.
+Optionally, you can provide an existing key pair as a CLI argument (make sure the private key is stored somewhere safe). If the provided public key does not exist, `melnode` will autogenerate a new key pair, as mentioned above.
 
 ```shell-session
 $ melnode --staker-pubkey <path-to-pubkey> --staker-private-key <path-to-private-key>
@@ -60,7 +60,7 @@ Once the node starts running, you should see something like this:
 Now that the staker node is up and running, it's time to give it some voting power so it can participate in the network's consensus!
 
 {% hint style="danger" %}
-If you are using this guide to stake on mainnet, please read through the [risks of staking](staking-risks.md) real `SYM` first!&#x20;
+If you are using this guide to stake on mainnet, please read through the [risks of staking](staking-risks.md) real SYM first!&#x20;
 {% endhint %}
 
 <pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli stake &#x3C;amount-of-SYM> --to-stake &#x3C;staker-pubkey> --epochs 3
@@ -109,6 +109,6 @@ Balance:      500.000000  MEL
 Staked:       100.000000    SYM
 </code></pre>
 
-## Further Reading
+## Further reading
 
-This was just a simple tutorial on how to run a staker node on the network. To learn more about the consensus process, continue here for more details.
+This was just a simple tutorial on how to run a staker node on the network. To learn more about the consensus process, continue [here](../concepts/consensus-and-staking.md) for more details.
