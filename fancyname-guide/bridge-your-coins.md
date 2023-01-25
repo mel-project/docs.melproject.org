@@ -10,19 +10,14 @@ To safely and conveniently streamline interaction with FancyName, a client has b
 
 ## Moving Themelio coins to Ethereum
 
-In order to mint your Themelio coins as tokens on Ethereum, you must first lock your coins up on the Themelio network and then send a proof of the lock transaction to the Ethereum network. fancyname-cli takes care of abstracting the entire process away using an interactive CLI session which will guide you through the bridging process, one step at a time.
+In order to mint your Themelio coins as tokens on Ethereum, you must first lock your coins up on the Themelio network and then send a proof of the lock transaction to the Ethereum network. `fancyname-cli` takes care of abstracting the entire process away using an interactive CLI session which will guide you through the bridging process, one step at a time.
 
 <pre class="language-shell-session"><code class="lang-shell-session"><strong>$ fancyname-cli to-ethereum -t &#x3C;themelio-wallet-name> -e &#x3C;ethereum-wallet-dir>
 </strong>
 Welcome to fancyname-cli! I'll help guide you through the bridging process.
 
-First, which of the Themelio coins owned by &#x3C;themelio-wallet-name> do you want to bridge to Ethereum?
-(1) 8229.9018201 MEL
-(2) 14000.0 SYM
-(3) 98868.4567 CUSTOM-5fc789fa09876c1a0b45dc018aa93b4e
-(4) 0.000000001 CUSTOM-c19f246dc018aa93b4e5fcbb30709876
-Choose between coins 1-4:
-<strong>2
+First, what value and denomination of tokens do you want to bridge to Ethereum?
+<strong>14000.0 SYM
 </strong>
 You are choosing to bridge 14000.0 SYM from Themelio to Ethereum.
 The total Ethereum fees will be 0.07273046 ETH.
@@ -37,10 +32,10 @@ Success! Your tokens were successfully minted with transaction hash 0xc4408a8646
 ## Moving Ethereum tokens back to Themelio
 
 {% hint style="info" %}
-**Note**: FancyName currently supports moving Themelio coins to Ethereum and back, but not the other way around (i.e. it can move wrapped mel tokens from Ethereum back to Themelio, but it cannot move ether to Themelio).
+**Note**: FancyName currently supports moving Themelio coins to Ethereum and back, but not the other way around (i.e. it can move wrapped MEL tokens from Ethereum back to Themelio, but it cannot move ETH to Themelio).
 {% endhint %}
 
-To move your assets from Ethereum back to Themelio, you must choose a coin to unlock, burn the equivalent amount on the Ethereum network, and provide the Themelio network with a proof of this burn. To automate this process, we can use an interactive fancyname-cli session which will safely walk you through the process.
+To move your assets from Ethereum back to Themelio, you must choose a coin to unlock, burn the equivalent amount on the Ethereum network, and provide the Themelio network with a proof of this burn. To automate this process, we can use an interactive `fancyname-cli` session which will safely walk you through the process.
 
 <pre class="language-shell-session"><code class="lang-shell-session"><strong>$ fancyname-cli to-themelio -e &#x3C;ethereum-wallet-dir> -t &#x3C;themelio-wallet-name>
 </strong>
@@ -65,4 +60,4 @@ Bridging your tokens, this process may take a couple of minutes.
 Success! Your coin was successfully unlocked with transaction hash 0x4262932c3c65a83ad1d4bcbcb3aef906c76cd9eaa3fb98b5fde7d0ccc88e089a
 </code></pre>
 
-As we can see, the bridging process to and from Themelio has been made as convenient as possible for end users. Now that we know how to interact with FancyName using fancyname-cli, let's take a deeper look at how everything actually works in the next section.
+As we can see, the bridging process to and from Themelio has been made as convenient as possible for end users. Now that we know how to interact with FancyName using `fancyname-cli`, let's take a deeper look at how everything actually works in the next section.
