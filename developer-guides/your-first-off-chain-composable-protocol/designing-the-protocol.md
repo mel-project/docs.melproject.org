@@ -15,6 +15,9 @@ How do you typically design an OCC protocol?
 Follow the steps for the naming protocol
 
 * What needs to be on the blockchain?
+  * Something that you can overwrite / move, given certain permissions
+  * This maps pretty nicely to asset ownership
+* How do you encode this?
   * An "NFT" (token with total supply 1 microunit)
     * The unique token `Denom` is the name of the name
   * The `additional_data` of the only unspent coin with this Denom
