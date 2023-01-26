@@ -11,6 +11,18 @@ How do you typically design an OCC protocol?
 * Then, design the library for interacting with this UTXO graph
   * Don't expose blockchain concepts like "transaction" and "block" unless absolutely necessary (usually, this is only necessary on the "write" side)
   * Never return non-validated information
+
+Follow the steps for the naming protocol
+
+* What needs to be on the blockchain?
+  * An "NFT" (token with total supply 1 microunit)
+    * The unique token `Denom` is the name of the name
+  * The `additional_data` of the only unspent coin with this Denom
+  * This lets you prove that some name is bound to this data, while having trustless identity retention
+  * **But**: you cannot _look up_ names with the `melprot::Client` API
+  * Fix: token with _2_ microunit supply. Initial transaction has two outputs, the second of which is sent to a provably unspendable covenant hash (`0xaaaa....`)
+    * `txhash-1` can always be looked up to find the original registration info
+    * We can then binary-search in the history to find each subsequent name transfer, eventually finding the current binding.
 {% endhint %}
 
 Draw a picture. Talk about how you typically design a low-level protocol like this: think about the coingraph structure!
