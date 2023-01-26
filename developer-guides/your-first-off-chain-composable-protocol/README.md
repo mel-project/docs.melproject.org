@@ -22,4 +22,8 @@ Objectives:
   * What the name is bound to cannot be changed without the consent of its current owner
 * Product: a Rust library for name registration and lookup that any Rust program can easily integrate
   * Must be both efficient and trustless
+* Why not another blockchain??
+  * Deal-breaker: almost impossible to look up names trustlessly on-chain
+  * Easy to look up on chain, but humans are off-chain
+  * Crossing that boundary usually involves sacrificing decentralization/security
 
