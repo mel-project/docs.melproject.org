@@ -16,6 +16,7 @@
   * [Project setup](developer-guides/your-first-off-chain-composable-protocol/project-setup.md)
   * [Name registration](developer-guides/your-first-off-chain-composable-protocol/name-registration.md)
   * [Name lookup](developer-guides/your-first-off-chain-composable-protocol/name-lookup.md)
+  * [Next steps](developer-guides/your-first-off-chain-composable-protocol/next-steps.md)
 * [💰 Wallets](developer-guides/using-wallets/README.md)
   * [Setup and installation](developer-guides/using-wallets/setup-and-installation.md)
   * [Sending money](developer-guides/using-wallets/getting-started.md)
