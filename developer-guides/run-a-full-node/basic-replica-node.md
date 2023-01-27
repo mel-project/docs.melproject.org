@@ -1,14 +1,14 @@
 ---
-description: Running a replica node with melnode
+description: Running a replica node with melnode.
 ---
 
 # Basic replica node
 
-**Replica nodes** simply validate and replicate blocks that the network has already produced. They are the most common type of full node, and running one does not require staking any sort of cryptocurrencies
+**Replica nodes** simply validate and replicate blocks that the network has already produced. They are the most common type of full node, and running one does not require staking any sort of cryptocurrency.
 
 ## On the mainnet
 
-### Starting Melnode
+### Starting melnode
 
 Simply running the `melnode` command without any arguments starts an instance running on the mainnet. You will see output looking something like this:
 
@@ -52,9 +52,9 @@ It will take _quite_ a long time to synchronize all the blocks from the network 
 To participate in peering, you must have a publicly reachable IP address. Most home internet setups do not give you a public IPv4 address!
 {% endhint %}
 
-By default, Melnode doesn't do much other than downloading blocks. The default listening port is just `localhost:41814`, meaning that no other computers can connect to the node.
+By default, `melnode` doesn't do much other than downloading blocks. The default listening port is just `localhost:41814`, meaning that no other computers can connect to the node.
 
-To actually contribute to block propagation on the network, you need to expose Melnode to other networks:
+To actually contribute to block propagation on the network, you need to expose `melnode` to other networks:
 
 ```shell-session
 $ melnode --listen [::1]:41814 --advertise auto
@@ -63,7 +63,7 @@ $ melnode --listen [::1]:41814 --advertise auto
 We add two flags:
 
 * `--listen [::1]:41814` listens on port 41814 on all network interfaces
-* `--advertise auto` automatically guesses our public IP address for incoming connections on the P2P network.
+* `--advertise auto` automatically guesses our public IP address for incoming connections on the P2P network
 
 If this works, you should soon see output like:
 
