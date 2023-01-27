@@ -16,7 +16,7 @@ _Briefly describe the paradigm_
 
 ## On-chain vs. off-chain composability
 
-Almost all legacy blockchains fall into the trap of favoring on-chain composability, where all of the protocol's consumers are native entities like EOA's and smart contracts. This works well for integrating with other on-chain protocols but causes extreme difficulty with off-chain and cross-chain integrations, perpetuating a web3 walled garden which other decentralization and privacy-focused applications are unable to leverage. This is where Themelio comes in.
+Almost all legacy blockchains fall into the trap of favoring on-chain composability, where all of the protocol's consumers are native entities like EOA's and smart contracts. This works well for integrating with other on-chain protocols but causes extreme difficulty with off-chain and cross-chain integrations, perpetuating a web3 walled garden which other decentralization and security-focused applications are unable to leverage. This is where Themelio comes in.
 
 Themelio's vision is built on the _off-chain_ composability paradigm. This paradigm centers off-chain consumers; filesharing apps, websites, privacy protocols, games, etc. are all first class citizens on Themelio. This off-chain compatibility is what gives Themelio its competitive edge: _all_ applications can now inherit the decentralization and security properties of blockchains, with ease.
 
@@ -34,4 +34,10 @@ _Objectives:_
   * _Deal-breaker: almost impossible to look up names trustlessly on-chain_
   * _Easy to look up on chain, but humans are off-chain_
   * _Crossing that boundary usually involves sacrificing decentralization/security_
+
+## Your first off-chain composable app
+
+To better illustrate the concept of off-chain composability, we will be using Themelio to build a trivial naming system that binds random names, like `0xdeadbeef`, to arbitrary, user-controlled data. The main security property of our application will be **identity retention**, i.e., name-to-data mappings which cannot be changed without the consent of their current owner.
+
+To this end we will create our app as a Rust library which abstracts away the name registration and lookup process so that any Rust program can easily integrate this functionality.
 
