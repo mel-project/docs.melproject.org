@@ -1,29 +1,37 @@
 # Your first off-chain composable protocol
 
-_Briefly_ describe the paradigm
+_Briefly describe the paradigm_
 
-* Old "on chain composability" model:&#x20;
-  * protocol's consumers are _on-chain_ entities like accounts, other contracts, etc
-  * integrating with other on-chain protocols: :relaxed:
-  * integrating with anything off-chain or cross-chain: :angry::exploding\_head::angry:
-* New "off chain composability" model:
-  * protocol's consumers are _off-chain_ protocols, apps, etc.
-    * filesharing apps
-    * websites
-    * games
-    * etc
-  * easily gives blockchain-backed secure decentralization to off-chain systems
+* _Old "on chain composability" model:_&#x20;
+  * _protocol's consumers are on-chain entities like accounts, other contracts, etc_
+  * _integrating with other on-chain protocols:_ :relaxed:__
+  * _integrating with anything off-chain or cross-chain:_ :angry:__:exploding\_head:__:angry:__
+* _New "off chain composability" model:_
+  * _protocol's consumers are off-chain protocols, apps, etc._
+    * _filesharing apps_
+    * _websites_
+    * _games_
+    * _etc_
+  * _easily gives blockchain-backed secure decentralization to off-chain systems_
 
-Describe the protocol we're building: a trivial _naming system_ that binds random names like `0xdeadbeef` to arbitrary user-controlled data.
+## On-chain vs. off-chain composability
 
-Objectives:
+Almost all legacy blockchains fall into the trap of favoring on-chain composability, where all of the protocol's consumers are native entities like EOA's and smart contracts. This works well for integrating with other on-chain protocols but causes extreme difficulty with off-chain and cross-chain integrations, perpetuating a web3 walled garden which other decentralization and privacy-focused applications are unable to leverage. This is where Themelio comes in.
 
-* Main security property: **identity retention**
-  * What the name is bound to cannot be changed without the consent of its current owner
-* Product: a Rust library for name registration and lookup that any Rust program can easily integrate
-  * Must be both efficient and trustless
-* Why not another blockchain??
-  * Deal-breaker: almost impossible to look up names trustlessly on-chain
-  * Easy to look up on chain, but humans are off-chain
-  * Crossing that boundary usually involves sacrificing decentralization/security
+Themelio's vision is built on the _off-chain_ composability paradigm. This paradigm centers off-chain consumers; filesharing apps, websites, privacy protocols, games, etc. are all first class citizens on Themelio. This off-chain compatibility is what gives Themelio its competitive edge: _all_ applications can now inherit the decentralization and security properties of blockchains, with ease.
+
+
+
+_Describe the protocol we're building: a trivial naming system that binds random names like `0xdeadbeef` to arbitrary user-controlled data._
+
+_Objectives:_
+
+* _Main security property: **identity retention**_
+  * _What the name is bound to cannot be changed without the consent of its current owner_
+* _Product: a Rust library for name registration and lookup that any Rust program can easily integrate_
+  * _Must be both efficient and trustless_
+* _Why not another blockchain??_
+  * _Deal-breaker: almost impossible to look up names trustlessly on-chain_
+  * _Easy to look up on chain, but humans are off-chain_
+  * _Crossing that boundary usually involves sacrificing decentralization/security_
 
