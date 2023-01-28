@@ -37,7 +37,7 @@ $ melwallet-cli open-url -w <wallet> <url-from-melminter>
 
 Afterwards, you should see a nice TUI like this:
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 Running `melminter` will generate ERG, a temporary token representing computation, and immediately exchange it for MEL. Note the _daily return_ line in the terminal output, which predicts how much computational work (in DOSC) the minter will do in 24 hours, as well as how much MEL that will buy.
 

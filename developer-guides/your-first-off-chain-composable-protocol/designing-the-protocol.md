@@ -29,3 +29,11 @@ Follow the steps for the naming protocol
 {% endhint %}
 
 Draw a picture. Talk about how you typically design a low-level protocol like this: think about the coingraph structure!
+
+
+
+\--- Intuition for designing your own off-chain composable protocol ---
+
+Building an OCC protocol isn't like building a typical SaaS app. It's helpful to think about what needs to go on the blockchain, and what can be done off-chain?&#x20;
+
+Treat the blockchain as something analogous to a billboard. There's limited space to display what you want, and it's probably not cheap to do so. Similarly, a blockchain is relatively costly to store data on, and when bulding an OCC protocol, you should consider the question: "What data absolutely needs to go on the blockchain?". Another way to phrase this is: "What data needs to be globally consistent and transparent to everyone?"
