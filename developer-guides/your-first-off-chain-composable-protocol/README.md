@@ -39,5 +39,9 @@ _Objectives:_
 
 To better illustrate the concept of off-chain composability, we will be using Themelio to build a trivial naming system that binds random names, like `0xdeadbeef`, to arbitrary, user-controlled data. The main security property of our application will be **identity retention**, i.e., name-to-data mappings which cannot be changed without the consent of their current owner.
 
-To this end we will create our app as a Rust library which abstracts away the name registration and lookup process so that any Rust program can easily integrate this functionality.
+To this end we will create our app as a Rust library which abstracts away the name registration and lookup process so that any other Rust project can easily integrate its functionality. The main criteria for our library are that it should be both efficient and trustless.
+
+## Why Themelio and not some other L1?
+
+While it is relatively easy to create a similar application on an alternative L1 blockchain, it will only be able to be queried by other on-chain entities, while integration with any off-chain or cross-chain applications would be essentially impossible without sacrificing either decentralization or security.
 
