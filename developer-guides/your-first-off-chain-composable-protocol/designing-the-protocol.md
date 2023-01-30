@@ -1,3 +1,7 @@
+---
+description: Guidance on the initial design of an off-chain, composable protocol.
+---
+
 # Designing the protocol
 
 {% hint style="info" %}
@@ -28,12 +32,23 @@ Follow the steps for the naming protocol
     * We can then binary-search in the history to find each subsequent name transfer, eventually finding the current binding.
 {% endhint %}
 
-Draw a picture. Talk about how you typically design a low-level protocol like this: think about the coingraph structure!
+_Draw a picture. Talk about how you typically design a low-level protocol like this: think about the coingraph structure!_
 
 
 
-\--- Intuition for designing your own off-chain composable protocol ---
+## Intuition for designing your own off-chain, composable protocol
 
-Building an OCC protocol isn't like building a typical SaaS app. It's helpful to think about what needs to go on the blockchain, and what can be done off-chain?&#x20;
+Building an off-chain, composable (OCC) protocol isn't like building a typical SaaS app. It's helpful to think about what _needs_ to go on the blockchain and what can safely be done off-chain. Here, it's helpful to treat the blockchain as something analogous to a billboard: there is limited space to display what you want, and it's probably not cheap to do so. Similarly, a blockchain is relatively costly to store data on, so, when building an OCC protocol, you should consider the question: "What data absolutely needs to go on the blockchain?". Another way to phrase this is: "What data needs to be globally consistent and transparent to everyone?"
 
-Treat the blockchain as something analogous to a billboard. There's limited space to display what you want, and it's probably not cheap to do so. Similarly, a blockchain is relatively costly to store data on, and when bulding an OCC protocol, you should consider the question: "What data absolutely needs to go on the blockchain?". Another way to phrase this is: "What data needs to be globally consistent and transparent to everyone?"
+Eventually, as the Themelio ecosystem expands and matures, most applications will be able to be built by leveraging existing OCC protocols, in a way similar to the "money legos" paradigm present in current, on-chain defi ecosystems. This means that eventually, integrating blockchain security, decentralization and censorship resistance into an off-chain app will be as easy as integrating a library into your project; all blockchain interactions and RPC calls will be abstracted away similarly to how low-level protocols like TCP/IP are today.
+
+## Encoding critical data into the UTXO graph
+
+Now that we've decided on what application critical data must be stored on-chain, we must figure out how to _encode_ that data into the on-chain UTXO graph in a way that's easy to verify and look up by thin clients.
+
+A few "common tricks" for doing this include:
+
+* self-propagation (i.e. the covenant for each UTXO in this graph requires that all descendants have the same covenant)
+* "NFTs" (coins with unique denominations and a supply as small as 1)
+* provably unspendable coins as "pointers" to transactions (e.g., a coin tied to a mathematically impossible covenant hash, such as `0x00...00`)
+* encoding mappings as trees (Merkle trees, tries, etc.)
