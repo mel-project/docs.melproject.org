@@ -1,3 +1,7 @@
+---
+description: A quick overview of the melprot library.
+---
+
 # melprot: a quick overview
 
 {% hint style="info" %}

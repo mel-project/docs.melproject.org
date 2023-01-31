@@ -57,8 +57,8 @@ A few common "tricks" for doing this include:
 
 Now that we've decided how our on-chain data will be encoded into a UTXO graph, we can focus on writing a library for interacting with this graph. The two main objectives for this library are:
 
-* Never returning non-validated information
-* Not exposing any blockchain concepts like transactions and blocks unless absolutely necessary (usually, this is only necessary on the "write" side)
+* never returning non-validated information
+* not exposing any blockchain concepts like transactions and blocks unless absolutely necessary (usually, this is only necessary on the "write" side)
 
 ## Applying these concepts to a real-world example
 
@@ -68,7 +68,7 @@ Now that we've gone over the general steps required for building an OCC protocol
 
 First things first, we need to decide what parts of our decentralized name service need to be stored on-chain. For this simple app, we mainly require:
 
-* A mapping which can be overwritten or moved, given certain permissions
+* a mapping which can be overwritten or moved, given certain permissions
 
 We see that this property can be neatly obtained via the asset ownership model; this simplifies our design process.
 
