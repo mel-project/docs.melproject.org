@@ -13,7 +13,7 @@
 
 * [Overview](developer-guides/readme.md)
 * [Your first off-chain composable protocol](developer-guides/your-first-off-chain-composable-protocol/README.md)
-  * [melprot: a quick overview](developer-guides/your-first-off-chain-composable-protocol/melprot-a-quick-overview.md)
+  * [Thin client queries: a quick overview](developer-guides/your-first-off-chain-composable-protocol/thin-client-queries-a-quick-overview.md)
   * [Designing the protocol](developer-guides/your-first-off-chain-composable-protocol/designing-the-protocol.md)
   * [Project setup](developer-guides/your-first-off-chain-composable-protocol/project-setup.md)
   * [Name registration](developer-guides/your-first-off-chain-composable-protocol/name-registration.md)

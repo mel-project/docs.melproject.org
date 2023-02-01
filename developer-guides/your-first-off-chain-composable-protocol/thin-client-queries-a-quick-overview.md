@@ -2,7 +2,7 @@
 description: A quick overview of the melprot library.
 ---
 
-# melprot: a quick overview
+# Thin client queries: a quick overview
 
 {% hint style="info" %}
 Here we talk about the main data model of `melprot::Client`&#x20;
@@ -12,6 +12,22 @@ Here we talk about the main data model of `melprot::Client`&#x20;
 * Pervasive caching
 * How UTXO graph exploration works
 {% endhint %}
+
+## melprot::Client: a trustless thin client
+
+The most basic tool for thin-client interaction in Mel is `melprot::Client`, a struct exposed by the melprot Rust crate that implements Mel's P2P protocol. `melprot::Client` is a thin client that can be used to query full nodes for information about blockchain contents.
+
+But unlike a raw RPC client (which does exist as `melprot::NodeRpcClient`), `melprot::Client` internally validates Merkle-tree proofs and staker signatures so that it _avoids trusting any full node_. Everything that `melprot::Client` returns is backed by the decentralized, incentive-based trust of the Mel blockchain, and nothing can be faked by a malicious node or RPC network.
+
+## Basic data model
+
+The data model of `melprot::Client` is largely focused on the **state snapshot**,&#x20;
+
+##
+
+##
+
+##
 
 ## Overview of melprot functionality
 
