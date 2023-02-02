@@ -16,6 +16,10 @@ _Briefly describe the paradigm_
 
 ## On-chain vs. off-chain composability
 
+The best way of understanding **off-chain composability**, Mel's new paradigm for the blockchain ecosystem, is to contrast it with the current blockchain ecosystem.
+
+
+
 Almost all legacy blockchains fall into the trap of favoring on-chain composability, where all of the protocol's consumers are native entities like EOA's and smart contracts. This works well for integrating with other on-chain protocols but causes extreme difficulty with off-chain and cross-chain integrations, perpetuating a web3 walled garden which other decentralization and security-focused applications are unable to leverage. This is where Themelio comes in.
 
 Themelio's vision is built on the _off-chain_ composability paradigm. This paradigm centers off-chain consumers; filesharing apps, websites, privacy protocols, games, etc. are all first class citizens on Themelio. This off-chain compatibility is what gives Themelio its competitive edge: _all_ applications can now inherit the decentralization and security properties of blockchains, with ease.
