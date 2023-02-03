@@ -2,50 +2,50 @@
 
 _Briefly describe the paradigm_
 
-* _Old "on chain composability" model:_&#x20;
-  * _protocol's consumers are on-chain entities like accounts, other contracts, etc_
-  * _integrating with other on-chain protocols:_ :relaxed:__
-  * _integrating with anything off-chain or cross-chain:_ :angry:__:exploding\_head:__:angry:__
-* _New "off chain composability" model:_
-  * _protocol's consumers are off-chain protocols, apps, etc._
-    * _filesharing apps_
-    * _websites_
-    * _games_
-    * _etc_
-  * _easily gives blockchain-backed secure decentralization to off-chain systems_
+- _Old "on chain composability" model:_&#x20;
+  - _protocol's consumers are on-chain entities like accounts, other contracts, etc_
+  - _integrating with other on-chain protocols:_ :relaxed:\_\_
+  - _integrating with anything off-chain or cross-chain:_ :angry:**:exploding_head:**:angry:\_\_
+- _New "off chain composability" model:_
+  - _protocol's consumers are off-chain protocols, apps, etc._
+    - _filesharing apps_
+    - _websites_
+    - _games_
+    - _etc_
+  - _easily gives blockchain-backed secure decentralization to off-chain systems_
 
 ## On-chain vs. off-chain composability
 
-The best way of understanding **off-chain composability**, Mel's new paradigm for the blockchain ecosystem, is to contrast it with the current blockchain ecosystem.
+The best way of understanding **off-chain composability**, Mel's new paradigm for the blockchain ecosystem, is to contrast it with _on-chain composability_, the dominant Web3 development model.
 
+Right now, a "web3 protocol" usually refers to an on-chain smart contract with an on-chain API (in some language like Solidity) that can be called from other contracts. For instance, Compound, ENS, etc. The resulting ecosystem of interoperating, composable smart contracts has turned out to be very successful. New techniques such as rollups and sharding even promise to scale the performance of this ecosystem far beyond that of a conventional blockchain.
 
+But interacting with anything _outside_ this smart contract ecosystem is really difficult. This "web3 boundary problem" goes far deeper than complaints about clunky Web3 UX. It is a pervasive failure of on-chain code (smart contracts) and off-chain code (RPC networks, wallets, frontends, etc) to interact in a way that seamlessly preserves the decentralized, incentive-backed security that is the whole reason why web3 exists. For instance, it's very easy to integrate ENS into an on-chain contract, but much harder to use it as a decentralized replacement to DNS in a way without sacrificing security (e.g. by using DNS gateways) or usability (e.g. forcing everybody to run their own full node to look up names).
 
-Almost all legacy blockchains fall into the trap of favoring on-chain composability, where all of the protocol's consumers are native entities like EOA's and smart contracts. This works well for integrating with other on-chain protocols but causes extreme difficulty with off-chain and cross-chain integrations, perpetuating a web3 walled garden which other decentralization and security-focused applications are unable to leverage. This is where Themelio comes in.
+And scaling blockchains so that more things can be "web3 native" and run on-chain doesn't really fix this. Almost any web3 app has components like frontends, apps, and _human users_ that are are fundamentally off-chain and cannot be running inside any smart contract environment, no matter how fancy that environment is.
 
-Themelio's vision is built on the _off-chain_ composability paradigm. This paradigm centers off-chain consumers; filesharing apps, websites, privacy protocols, games, etc. are all first class citizens on Themelio. This off-chain compatibility is what gives Themelio its competitive edge: _all_ applications can now inherit the decentralization and security properties of blockchains, with ease.
+```
+[picture illustrating this. expanding bubble surrounding more and more of web3, but the boundary of the bubble still sucks]
+```
 
+Off-chain composability, on the other hand, focuses on building a rich Web3 ecosystem outside of the blockchain. The Mel blockchain's role is then to support the decentralized security of this non-blockchain world, by hosting on-chain logic that acts as a trustless and immutable source of truth.
 
+This means that on Mel, _on-chain protocols are designed for off-chain consumers_. Mel's overall data model lacking the entire concept of smart contracts calling each other on one hand. But by using tricks like extensively Merkle-indexing its programmable UTXO graph, it is supremely suited for encoding on-chain logic in a way that is legible and usable off-chain through trustless thin-clients.
 
-_Describe the protocol we're building: a trivial naming system that binds random names like `0xdeadbeef` to arbitrary user-controlled data._
+## What will we build?
 
-_Objectives:_
+In this tutorial, we'll build **Gibbername**, a trivial DNS-like decentralized naming system that would serve as an exemplary citizen of an off-chain composable ecosystem. Gibbername allows you to
 
-* _Main security property: **identity retention**_
-  * _What the name is bound to cannot be changed without the consent of its current owner_
-* _Product: a Rust library for name registration and lookup that any Rust program can easily integrate_
-  * _Must be both efficient and trustless_
-* _Why not another blockchain??_
-  * _Deal-breaker: almost impossible to look up names trustlessly on-chain_
-  * _Easy to look up on chain, but humans are off-chain_
-  * _Crossing that boundary usually involves sacrificing decentralization/security_
+- **Register** a short, human-readable name. You won't be able to pick the name though, it will look something like `sublak-demfet`. (As we'll see, this makes the implementation really simple)
+- **Bind** the name to any data you wish, like a DNS record or JSON document.
+- **Transfer** the name to another persion.
 
-## Your first off-chain composable app
+Like DNS, Gibbername will be very easy to integrate into apps, with a simple Rust library that allows for looking up and managing names. Unlike DNS, though, Gibbername will have three important, blockchain-backed "superpowers":
 
-To better illustrate the concept of off-chain composability, we will be using Themelio to build a trivial naming system that binds random names, like `0xdeadbeef`, to arbitrary, user-controlled data. The main security property of our application will be **identity retention**, i.e., name-to-data mappings which cannot be changed without the consent of their current owner.
+- **Identity retention**: without the consent of the current owner, nobody can change the name-to-data mapping or transfer the name
+- **Censorship resistance**: nobody is able to prevent from name from resolving or prevent the current owner from updating or transferring the name
+- **Permissionlessness**: nobody can stop name registrations
 
-To this end we will create our app as a Rust library which abstracts away the name registration and lookup process so that any other Rust project can easily integrate its functionality. The main criteria for our library are that it should be both efficient and trustless.
+All the above properties need to be upheld despite lookups, transfers, etc are initiated by off-chain code through Mel thin clients rather than on-chain contracts.
 
-## Why Themelio and not some other L1?
-
-While it is relatively easy to create a similar application on an alternative L1 blockchain, it will only be able to be queried by other on-chain entities, while integration with any off-chain or cross-chain applications would be essentially impossible without sacrificing either decentralization or security.
-
+> Hint: will be hard on other blockchains etc
