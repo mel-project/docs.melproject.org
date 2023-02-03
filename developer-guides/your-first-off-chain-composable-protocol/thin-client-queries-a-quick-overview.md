@@ -21,66 +21,24 @@ But unlike a raw RPC client (which does exist as `melprot::NodeRpcClient`), `mel
 
 ## Basic data model
 
-The data model of `melprot::Client` is largely focused on the **state snapshot**,&#x20;
-
-##
-
-##
-
-##
-
-## Overview of melprot functionality
-
-The main way to use `melprot` is through its thin, embeddable light client called `ValClient`. The client exposes a set of functionality for querying the blockchain.
-
-Here's a brief example of how to instantiate the client in your Rust application:
-
-```rust
-let network = NetID::Mainnet;
-let addr: SocketAddr = "bootstrap.melnet.org:12345".parse().unwrap();
-let client = ValClient::connect_melnet2_tcp(network, addr).await?;
-```
-
 ### Snapshots
 
-`ValClient` lets you get a validated, immutable snapshot of the blockchain state at a given height. The snapshot lets you do things like:
-
-* ask for all coins associated with a given covenant hash
-* ask for a specific coin for a given coin ID
-* get a block for a given transaction hash
-* get a transaction for a given transaction hash
-* freely lookup SMT contents in the state (TODO: elaborate?)
-* get historical snapshots for older block heights
-
-Here are a few examples of how to use snapshots:
+The data model of `melprot::Client` is largely focused on the **state snapshot**, which encapsulates _the state of the blockchain at a given height_. For instance, the following code obtains snapshots of the state at different heights, and query&#x20;
 
 ```rust
-let client = ValClient::connect_melnet2_tcp(network, addr).await?;
-let snapshot = client.snapshot().await?;
-
-// get an older snapshot
-let older = snapshot.get_older(BlockHeight(100)).await?;
-
-// get all coins with an associated covenant address
-let coins_for_cov_address = snapshot.get_coins(covenant_hash).await?;
-
-// get information about a stake for a given hash
-let get_stake_info = snapshot.get_stake(stake_hash).await?;
-
-// get a transaction for a given hash
-let tx = snapshot.get_transaction(tx_hash).await?;
-
-// get the raw, validated coin SMT for a given coin ID
-let coin_smt = snapshot.get_smt_value(Substate::Coins, BlockHeight(2500)).await?;
+// get a mainnet Client
+let client = melprot::Client::autoconnect(NetID::Mainnet);
+// get the current snapshot
+let snap_current = client.latest_snapshot().await?;
+// get the snapshot at block height 10000
+let snap_10000 = client.snapshot(BlockHeight(10000)).await?;
+// display how many UTXOs are labeled with foobar_address now vs at block 10000
+println!("address {} has {} UTXOs now but {} UTXOs at block 10000",
+   foobar_address,
+   snap_current.coin_count(foobar_address).await?,
+   snap_10000.coin_count(foobar_address).await?
+);
 ```
 
-### Get Trusted Stakers
-
-`ValClient` also lets you get the entire set of trusted stakers. This is used during the height validation process.&#x20;
-
-```rust
-let staker_set = client.get_trusted_stakers().await?;
-```
-
-
+### Looking up info
 

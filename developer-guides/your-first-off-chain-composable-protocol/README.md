@@ -1,4 +1,18 @@
-# Gibbername: your first off-chain composable protocol
+# Your first off-chain composable protocol
+
+_Briefly describe the paradigm_
+
+- _Old "on chain composability" model:_&#x20;
+  - _protocol's consumers are on-chain entities like accounts, other contracts, etc_
+  - _integrating with other on-chain protocols:_ :relaxed:\_\_
+  - _integrating with anything off-chain or cross-chain:_ :angry:**:exploding_head:**:angry:\_\_
+- _New "off chain composability" model:_
+  - _protocol's consumers are off-chain protocols, apps, etc._
+    - _filesharing apps_
+    - _websites_
+    - _games_
+    - _etc_
+  - _easily gives blockchain-backed secure decentralization to off-chain systems_
 
 ## On-chain vs. off-chain composability
 
@@ -22,15 +36,15 @@ This means that on Mel, _on-chain protocols are designed for off-chain consumers
 
 In this tutorial, we'll build **Gibbername**, a trivial DNS-like decentralized naming system that would serve as an exemplary citizen of an off-chain composable ecosystem. Gibbername allows you to
 
-* **Register** a short, human-readable name. You won't be able to pick the name though, it will look something like `sublak-demfet`. (As we'll see, this makes the implementation really simple)
-* **Bind** the name to any data you wish, like a DNS record or JSON document.
-* **Transfer** the name to another person.
+- **Register** a short, human-readable name. You won't be able to pick the name though, it will look something like `sublak-demfet`. (As we'll see, this makes the implementation really simple)
+- **Bind** the name to any data you wish, like a DNS record or JSON document.
+- **Transfer** the name to another persion.
 
 Like DNS, Gibbername will be very easy to integrate into apps, with a simple Rust library that allows for looking up and managing names. Unlike DNS, though, Gibbername will have three important, blockchain-backed "superpowers":
 
-* **Identity retention**: without the consent of the current owner, nobody can change the name-to-data mapping or transfer the name
-* **Censorship resistance**: nobody is able to prevent from name from resolving or prevent the current owner from updating or transferring the name
-* **Permissionlessness**: nobody can stop name registrations
+- **Identity retention**: without the consent of the current owner, nobody can change the name-to-data mapping or transfer the name
+- **Censorship resistance**: nobody is able to prevent from name from resolving or prevent the current owner from updating or transferring the name
+- **Permissionlessness**: nobody can stop name registrations
 
 All the above properties need to be upheld despite lookups, transfers, etc are initiated by off-chain code through Mel thin clients rather than on-chain contracts.
 
