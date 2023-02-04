@@ -4,7 +4,7 @@
 
 The best way of understanding **off-chain composability**, Mel's new paradigm for the blockchain ecosystem, is to contrast it with the way Web3 is right now. Right now, smart contracts using standard APIs like ERC-20 form a pretty nice interoperable on-chain ecosystem, enabling applications like complex DeFi instruments beyond what's possible with first-generation blockchains like Bitcoin.
 
-But interacting with anything outside this smart contract ecosystem turns out to be _really_ hard. For instance, let's say you want to heard that ENS is decentralized and trustless, so you want to use it to replace DNS in some off-chain decentralized protocol (maybe to name Tor hidden services?).&#x20;
+But interacting with anything outside this smart contract ecosystem turns out to be _really_ hard. For instance, let's say you heard that ENS is decentralized and trustless, so you want to use it to replace DNS in some off-chain decentralized protocol (maybe to name Tor hidden services?).&#x20;
 
 You might think that it'll be a nice drop-in replacement, since it's very easy to integrate ENS into on-chain contracts. But you would be very wrong: the names are stored "illegibly" in the ENS contract state, exposed only through an on-chain contract API. All of your options for calling this API from off-chain code are bad:
 
