@@ -6,7 +6,7 @@ The best way of understanding **off-chain composability**, Mel's new paradigm fo
 
 But interacting with anything outside this smart contract ecosystem turns out to be _really_ hard. For instance, let's say you want to heard that ENS is decentralized and trustless, so you want to use it to replace DNS in some off-chain decentralized protocol (maybe to name Tor hidden services?).&#x20;
 
-You might think that it'll be a nice drop-in replacement, since it's very easy to integrate ENS into on-chain contracts. But in fact, the names are stored "illegibly" in the ENS contract state, exposed only through an on-chain contract API. Your options for calling this API from off-chain code are pretty bad:
+You might think that it'll be a nice drop-in replacement, since it's very easy to integrate ENS into on-chain contracts. But you would be very wrong: the names are stored "illegibly" in the ENS contract state, exposed only through an on-chain contract API. All of your options for calling this API from off-chain code are bad:
 
 * **Sacrifice security:** just call RPC methods on some full node (with something like Web3.js), who you end up trusting completely. Just like with DNS, a centralized third party can now arbitrarily lie to you, censor you, etc. Oops!
 * **Sacrifice scalability**: force all your clients to run their own Ethereum full node, that you then query using the same RPC methods. This is going to be impractical for almost any application.
