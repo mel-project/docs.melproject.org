@@ -13,6 +13,7 @@
 
 * [Overview](developer-guides/readme.md)
 * [Gibbername: your first off-chain composable protocol](developer-guides/gibbername/README.md)
+  * [melprot: a quick intro](developer-guides/gibbername/melprot-a-quick-intro.md)
   * [Design](developer-guides/gibbername/design.md)
   * [Implement](developer-guides/gibbername/implement.md)
   * [Use](developer-guides/gibbername/use.md)
