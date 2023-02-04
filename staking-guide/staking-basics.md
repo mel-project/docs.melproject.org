@@ -39,8 +39,8 @@ The `--payout-addr` value is a mandatory wallet address that will receive the re
 
 By default, `melnode` will auto-generate a new key pair for the staker node and save it at the default path of `$HOME/.melnode/staker-keys/`. The public and private keys will be saved as:
 
-* Public key: `staker-key-ed25519.pub`
-* Private key: `staker-key-ed25519`
+- Public key: `staker-key-ed25519.pub`
+- Private key: `staker-key-ed25519`
 
 Optionally, you can provide an existing key pair as a CLI argument (make sure the private key is stored somewhere safe). If the provided public key does not exist, `melnode` will autogenerate a new key pair, as mentioned above.
 
@@ -87,7 +87,7 @@ You will be prompted to confirm the transaction, fees, and epoch date range -- r
 ```
 Transaction hash: 5cc1de4ccbe52ef288377b8ad12b546223f48939892bba5592d9db2c21eabd77
 Awaiting Confirmation... Confirmed at height 238!
-Block Explorer: https://scan-testnet.themelio.org/blocks/238/5cc1de4ccbe52ef288377b8ad12b546223f48939892bba5592d9db2c21eabd77)
+Block Explorer: https://scan-testnet.Mel.org/blocks/238/5cc1de4ccbe52ef288377b8ad12b546223f48939892bba5592d9db2c21eabd77)
 ```
 
 {% hint style="info" %}

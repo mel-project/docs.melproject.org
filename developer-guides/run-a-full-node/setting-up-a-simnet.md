@@ -14,9 +14,9 @@ For local development and testing, we can configure a local "simnet", or a fake 
 
 To do so, we will need to use the `melnode` command with a combination of these three options
 
-* `--bootstrap <bootstrap-address>`
-* `--override genesis <path-to-genesis-config>`
-* `--staker-cfg <path-to-staker-config>`
+- `--bootstrap <bootstrap-address>`
+- `--override genesis <path-to-genesis-config>`
+- `--staker-cfg <path-to-staker-config>`
 
 ```shell-session
 $ melnode --bootstrap <bootstrap-ip-address> \
@@ -45,7 +45,7 @@ init_coindata:
   # additional data in the UTXO, as a hex string
   additional_data: ""
 # specifies all the stakers with consensus power.
-# we need to specify ourselves in order to produce any blocks; "themelio-crypttool generate-ed25519" (install via cargo) can generate a keypair for us
+# we need to specify ourselves in order to produce any blocks; "Mel-crypttool generate-ed25519" (install via cargo) can generate a keypair for us
 stakes:
   deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef:
     pubkey: 4ce983d241f1d40b0e5b65e0bd1a6877a35acaec5182f110810f1276103c829e
@@ -71,6 +71,4 @@ bootstrap: 127.0.0.1:20000
 payout_addr: t5xw3qvzvfezkb748d3zt929zkbt7szgt6jr3zfxxnewj1rtajpjx0
 # vote for this fee multiplier (higher values charge more fees)
 target_fee_multiplier: 10000
-
 ```
-

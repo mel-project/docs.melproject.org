@@ -1,2 +1,1 @@
-# 🪙 Themelio Tokens
-
+# 🪙 Mel Tokens

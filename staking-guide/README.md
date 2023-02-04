@@ -6,18 +6,18 @@ description: This is an introduction to what staking is, and how to get started.
 
 ## What is staking?
 
-Themelio is considered a "proof-of-stake" blockchain because people can "stake" their money (SYM) on staker nodes.
+Mel is considered a "proof-of-stake" blockchain because people can "stake" their money (SYM) on staker nodes.
 
 ### What do staker nodes do?
 
-Staker nodes directly participate in Themelio's consensus process, or **deciding what data goes onto the blockchain.** These nodes are the ultimate guardians of Themelio's security.&#x20;
+Staker nodes directly participate in Mel's consensus process, or **deciding what data goes onto the blockchain.** These nodes are the ultimate guardians of Mel's security.&#x20;
 
 Staker nodes accrue SYM, which is locked up on-chain, in exchange for a proportional amount of voting power. Once 2/3 of the on-chain votes agree on the same block, a **quorum** is reached, and a block is then confirmed and officially added to the blockchain.
 
 ### Why should I stake?
 
-* You will be contributing to the security of the network by validating blocks
-* :moneybag: You will accrue rewards for staking :moneybag:&#x20;
+- You will be contributing to the security of the network by validating blocks
+- :moneybag: You will accrue rewards for staking :moneybag:&#x20;
 
 ## Getting started with staking
 

@@ -1,5 +1,6 @@
 # Fund Your Wallet
-This is a short guide on how to fund your testnet wallet. Using a faucet transaction, unique to our testnet, you can print money out of thin air. 
+
+This is a short guide on how to fund your testnet wallet. Using a faucet transaction, unique to our testnet, you can print money out of thin air.
 
 ## Prerequisites
 
@@ -26,13 +27,14 @@ In a separate terminal (or tmux buffer), start the headless wallet daemon, and c
 melwallet-cli start-daemon --network testnet
 ```
 
-`melwalletd` persists and manages wallets and exposes a set of REST endpoints for various wallet operations. You can find more details [here](https://github.com/themeliolabs/melwalletd).&#x20;
+`melwalletd` persists and manages wallets and exposes a set of REST endpoints for various wallet operations. You can find more details [here](https://github.com/Mellabs/melwalletd).&#x20;
 
-This will save any wallets you create to `~/.themelio-wallets`, but feel free to use any path you want.
+This will save any wallets you create to `~/.Mel-wallets`, but feel free to use any path you want.
 
+## Printing SYM
 
-## Printing SYM 
 For example, to print SYM:
+
 ```shell-session
 $ melwallet-cli send-faucet -w <wallet-name> --currency SYM --amount 10000
 ```

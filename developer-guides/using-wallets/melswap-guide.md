@@ -1,5 +1,5 @@
 ---
-description: A guide on swapping tokens on Themelio.
+description: A guide on swapping tokens on Mel.
 ---
 
 # Swapping tokens
@@ -22,7 +22,7 @@ Staked:       0.000000    SYM
 
 ## Swapping tokens <a href="#swapping-coins" id="swapping-coins"></a>
 
-Unlike other blockchains where this functionality typically exists in a programmable smart contract, Themelio features a built-in, Uniswap-like decentralized exchange (DEX) called **Melswap**.
+Unlike other blockchains where this functionality typically exists in a programmable smart contract, Mel features a built-in, Uniswap-like decentralized exchange (DEX) called **Melswap**.
 
 {% hint style="info" %}
 We embedded a rudimentary DEX into the L1 not primarily for convenience, but as a trustless price oracle for designing on-chain logic; it is also an important component of the Melmint algorithm that stabilizes MEL.
@@ -39,10 +39,10 @@ Proceed? [y/N] y
 
 Transaction hash:  ...
 Awaiting Confirmation... Confirmed at height 314!
-Block Explorer: https://scan-testnet.themelio.org/blocks/314/...
+Block Explorer: https://scan-testnet.Mel.org/blocks/314/...
 </code></pre>
 
-As you can see in the `From` and `To` fields, 100 MEL is being swapped for 50 SYM. After user confirmation, `melwallet-cli` waits for the transaction to be posted to the blockchain and then outputs the confirmation height and [Melscan](https://scan.themelio.org) URL.
+As you can see in the `From` and `To` fields, 100 MEL is being swapped for 50 SYM. After user confirmation, `melwallet-cli` waits for the transaction to be posted to the blockchain and then outputs the confirmation height and [Melscan](https://scan.Mel.org) URL.
 
 <pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli summary -w bob
 </strong>Wallet name:  bob (unlocked)
@@ -91,7 +91,7 @@ t11n9ynz8jhcd1k7h6jx4pvsc4m2qvwjhdp5mx03ega05hkcts8j9g (self) 25.000000 SYM  (2:
 Proceed? [y/N] y
 Transaction hash:  b02ed062fc8f9eb6b2fce799e36ad06b86b95a45ef3bd8b98d2ee8a7deae0691
 Awaiting Confirmation... Confirmed at height 316!
-Block Explorer: https://scan-testnet.themelio.org/blocks/314/b02ed062fc8f9eb6b2fce799e36ad06b86b95a45ef3bd8b98d2ee8a7deae0691
+Block Explorer: https://scan-testnet.Mel.org/blocks/314/b02ed062fc8f9eb6b2fce799e36ad06b86b95a45ef3bd8b98d2ee8a7deae0691
 </code></pre>
 
 As you can see Bob now has 1 liquidity token called MEL\~SYM
@@ -105,6 +105,3 @@ Balance:      349.50000   MEL
               1.0000000   MEL~SYM
 Staked:       0.000000    SYM
 </code></pre>
-
-
-

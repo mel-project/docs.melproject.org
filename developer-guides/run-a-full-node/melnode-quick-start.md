@@ -1,6 +1,6 @@
 ---
 description: >-
-  In this section, you will learn how to use melnode, Themelio's reference node
+  In this section, you will learn how to use melnode, Mel's reference node
   implementation.
 ---
 
@@ -12,17 +12,17 @@ description: >-
 
 #### Minimum
 
-* 1-core CPU
-* 4 GB of RAM
-* at least 200 GB of free storage (SSD not necessary)
-* 10 Mbps download Internet service
+- 1-core CPU
+- 4 GB of RAM
+- at least 200 GB of free storage (SSD not necessary)
+- 10 Mbps download Internet service
 
 #### Recommended
 
-* 4+ core CPU
-* 16 GB of RAM
-* 200+ GB of free storage on a fast device (SSD, RAID array, etc)
-* 50+ Mbps up/download Internet service
+- 4+ core CPU
+- 16 GB of RAM
+- 200+ GB of free storage on a fast device (SSD, RAID array, etc)
+- 50+ Mbps up/download Internet service
 
 ### Install Rust and Cargo
 
@@ -51,7 +51,7 @@ Don't forget the `--locked` parameter! That ensures that all dependencies are lo
 This should kick off a fairly long build process, but eventually you should see something like this, indicating that `melnode` has been installed successfully:
 
 ```shell-session
-   Compiling themelio-bootstrap v0.6.1
+   Compiling Mel-bootstrap v0.6.1
    Compiling imbl v1.0.1
    Compiling lz4_flex v0.8.2
    Compiling arc-swap v1.5.1

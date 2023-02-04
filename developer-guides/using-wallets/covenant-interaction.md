@@ -13,25 +13,23 @@ Most people will not be writing covenants, but most people will be using covenan
 
 Main idea:
 
-* "About covenants", example of an extremely simple covenant (counting), link to other pages for details
-* Manually interacting with this covenant: annoying!
-* In practice: _frontends_ will generate _wallet URLs_.
-  * Eventually, this will be web frontends popping up graphical wallets.
-  * But now, there's a github demo project that generates wallet URLs for
-    * creating counting covenants
-    * incrementing the counter
-  * The wallet URLs can be used by `melwallet-cli open-url melwallet:...`
-{% endhint %}
+- "About covenants", example of an extremely simple covenant (counting), link to other pages for details
+- Manually interacting with this covenant: annoying!
+- In practice: _frontends_ will generate _wallet URLs_.
+  - Eventually, this will be web frontends popping up graphical wallets.
+  - But now, there's a github demo project that generates wallet URLs for
+    - creating counting covenants
+    - incrementing the counter
+  - The wallet URLs can be used by `melwallet-cli open-url melwallet:...`
+    {% endhint %}
 
 ``
 
+## About Mel covenants
 
+Covenants are Mel’s equivalent of smart contracts in its coin-based model. A covenant, somewhat analogous to a Bitcoin script, is a program attached to a coin (UTXO) that takes in a transaction and its execution context and decides whether or not that transaction can spend.
 
-## About Themelio covenants
-
-Covenants are Themelio’s equivalent of smart contracts in its coin-based model. A covenant, somewhat analogous to a Bitcoin script, is a program attached to a coin (UTXO) that takes in a transaction and its execution context and decides whether or not that transaction can spend.
-
-On the blockchain itself, contracts are written in MelVM, a low-level stack-based “machine” language fulfilling a similar role as EVM in Ethereum. Unlike coin scripts in most other UTXO blockchains, MelVM covenants are general-purpose, meaning that they can arbitrarily control the spending of a coin and are not limited to simple spending conditions like multi-signature requirements. This allows for essentially all on-chain constructs to be built on top of Themelio, such as naming systems, DeFi contracts, etc.
+On the blockchain itself, contracts are written in MelVM, a low-level stack-based “machine” language fulfilling a similar role as EVM in Ethereum. Unlike coin scripts in most other UTXO blockchains, MelVM covenants are general-purpose, meaning that they can arbitrarily control the spending of a coin and are not limited to simple spending conditions like multi-signature requirements. This allows for essentially all on-chain constructs to be built on top of Mel, such as naming systems, DeFi contracts, etc.
 
 ## Prerequisites
 
@@ -45,7 +43,7 @@ $ cargo install --locked melorun
 
 ## Creating a covenant
 
-Though Themelio covenants are written in MelVM, [Melodeon](https://melodeonlang.org) is a high-level language created specifically to facilitate Themelio covenant creation. It compiles to MelVM but is much easier to work with.
+Though Mel covenants are written in MelVM, [Melodeon](https://melodeonlang.org) is a high-level language created specifically to facilitate Mel covenant creation. It compiles to MelVM but is much easier to work with.
 
 To get started we are going to write a very simple "password" covenant which will allow use to lock up coins on the testnet with a precomputed Blake3 hash of our password.
 
@@ -76,9 +74,9 @@ let password = get_data() in
 
 Let's look at our covenant in more depth:
 
-* the first section defines a function named `get_data()` which retrieves the byte vector stored in the additional data of the transaction trying to spend the coin
-* the three dashes separating the two main parts of our covenant divide the function definition section of our Melodeon program from the covenant entry point (similar to the `main()` function present in many other programming languages)
-* the last section hashes the transaction's additional data, and checks that it matches the hash of the password we calculated earlier
+- the first section defines a function named `get_data()` which retrieves the byte vector stored in the additional data of the transaction trying to spend the coin
+- the three dashes separating the two main parts of our covenant divide the function definition section of our Melodeon program from the covenant entry point (similar to the `main()` function present in many other programming languages)
+- the last section hashes the transaction's additional data, and checks that it matches the hash of the password we calculated earlier
 
 {% hint style="info" %}
 Because Melodeon programs are bounded, we must check that the length of our `password` variable is the same length as the password we used when creating the covenant. Make sure you replace the `12` in `if password is %[12]` with the length of _your_ password, in bytes.
@@ -86,7 +84,7 @@ Because Melodeon programs are bounded, we must check that the length of our `pas
 
 ## Testing covenants before deployment
 
-Both melorun and the online playground support specifying the spend context. This is a special, YAML-formatted document that allows you to specify a particular spending transaction without constructing every field of it manually — see its [spec](https://github.com/themeliolabs/melorun). You can apply this spend environment with the `-s` flag of melorun, or just use the [playground](https://play.melodeonlang.org/#DgAAAODMzMwxzABlZTHMAGVlMQ).
+Both melorun and the online playground support specifying the spend context. This is a special, YAML-formatted document that allows you to specify a particular spending transaction without constructing every field of it manually — see its [spec](https://github.com/Mellabs/melorun). You can apply this spend environment with the `-s` flag of melorun, or just use the [playground](https://play.melodeonlang.org/#DgAAAODMzMwxzABlZTHMAGVlMQ).
 
 We'll name our spend context file `context.yaml` and it will contain information about a mock transaction. The only value we really care about here is the `additional_data` field, which will contain our password in bytes; this means that instead of putting `Hello world!` we are going to use it's equivalent in hexadecimal: `48656c6c6f20776f726c6421`.
 
@@ -110,7 +108,7 @@ then the covenant and password in our YAML file match and we're ready to deploy.
 
 ## Deploying on the testnet
 
-The next step now is to test our covenant live on the official [testnet](https://scan-testnet.themelio.org/).
+The next step now is to test our covenant live on the official [testnet](https://scan-testnet.Mel.org/).
 
 To do that, we need to first compile our Melodeon program to MelVM bytecode. This can be done with the `-`c (or `--compile`) flag of melorun; the full command would be `melorun -c password.melo -s context.yaml`.
 
@@ -152,7 +150,7 @@ Note that in the following steps, we use bash/zsh syntax for string interpolatio
 Using any wallet (Bob's, Alice's, or even Carol's), run the following melwallet-cli command:
 
 ```shell-session
-$ melwallet-cli send --to Bob,100,MEL,ascii="Hello world" \ 
+$ melwallet-cli send --to Bob,100,MEL,ascii="Hello world" \
 --force-spend 630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0 \
 --add-covenant \
 f2010242000050430023f2004300244200234\
@@ -176,19 +174,19 @@ eda893f443002c42002cc143002b42002b420\
 
 Let’s unpack this command a little. It asks the demo wallet to format a transaction that
 
-* sends 100 `MEL` to Bob
-* adds our password to the additional data of our transaction, specifying that we are using ASCII and not raw hexadecimal
-* spends the covenant-locked coin we just created earlier — the out-of-wallet coin `630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0`
-* supplies the content of the covenant inline as a large hex string
+- sends 100 `MEL` to Bob
+- adds our password to the additional data of our transaction, specifying that we are using ASCII and not raw hexadecimal
+- spends the covenant-locked coin we just created earlier — the out-of-wallet coin `630024d8f526fa15cb53d40aec440e63ae32c636229696e312e66f311fee7c6b-0`
+- supplies the content of the covenant inline as a large hex string
 
 {% hint style="info" %}
 **Note:** We must provide the covenant bytecode in our spending transaction because when we created the coin, we locked it with the covenant by merely referring to the covenant hash.&#x20;
 
-When we spend the coin, we then need to supply the actual contents of the covenant. This construct, borrowed from Bitcoin’s “[pay-to-script-hash](https://en.bitcoin.it/wiki/Pay\_to\_script\_hash)”, ensures that bulky covenants do not burden the coin state (and instead only need to be archived in the blockchain history, which does not need frequent access).
+When we spend the coin, we then need to supply the actual contents of the covenant. This construct, borrowed from Bitcoin’s “[pay-to-script-hash](https://en.bitcoin.it/wiki/Pay_to_script_hash)”, ensures that bulky covenants do not burden the coin state (and instead only need to be archived in the blockchain history, which does not need frequent access).
 {% endhint %}
 
 ## Deploying on the mainnet
 
 Following the same steps with a mainnet melwalletd and mainnet money, you can deploy the same covenant to lock up “real money” as well, although we recommend you don't deploy this particular covenant to mainnet.
 
-You can see a more in-depth example of covenant for a multi-signature wallet which is ready for production [here](https://guide.melodeonlang.org/9\_deploying\_covenants.html).
+You can see a more in-depth example of covenant for a multi-signature wallet which is ready for production [here](https://guide.melodeonlang.org/9_deploying_covenants.html).

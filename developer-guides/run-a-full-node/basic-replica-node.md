@@ -62,8 +62,8 @@ $ melnode --listen [::1]:41814 --advertise auto
 
 We add two flags:
 
-* `--listen [::1]:41814` listens on port 41814 on all network interfaces
-* `--advertise auto` automatically guesses our public IP address for incoming connections on the P2P network
+- `--listen [::1]:41814` listens on port 41814 on all network interfaces
+- `--advertise auto` automatically guesses our public IP address for incoming connections on the P2P network
 
 If this works, you should soon see output like:
 

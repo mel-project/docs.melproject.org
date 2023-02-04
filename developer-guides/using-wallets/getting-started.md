@@ -1,10 +1,10 @@
 ---
-description: A simple tutorial on how to set up and interact with Themelio wallets.
+description: A simple tutorial on how to set up and interact with Mel wallets.
 ---
 
 # Sending money
 
-This is a basic guide to `melwallet-cli`, Themelio's reference implementation CLI wallet. We will be funding two testnet wallets and sending money from one to the other.
+This is a basic guide to `melwallet-cli`, Mel's reference implementation CLI wallet. We will be funding two testnet wallets and sending money from one to the other.
 
 ### Setup and installation
 
@@ -18,7 +18,7 @@ Use this command to start the headless wallet daemon and connect to the testnet 
 $ melwallet-cli start-daemon --network testnet
 ```
 
-This command will save any wallets you create to `~/.themelio-wallets`, but feel free to provide any directory you want via the `--wallet-dir` flag.
+This command will save any wallets you create to `~/.Mel-wallets`, but feel free to provide any directory you want via the `--wallet-dir` flag.
 
 ### Create wallets for Alice and Bob
 
@@ -30,12 +30,14 @@ $ melwallet-cli create -w bob
 ```
 
 {% hint style="info" %}
+
 ```
 Keep Bob's wallet address handy for the next step!
 ```
+
 {% endhint %}
 
-You will be prompted for passwords, which will be used to encrypt the wallets' private keys at `~/.themelio-wallets/.secrets.json`, so make sure you pick something strong!
+You will be prompted for passwords, which will be used to encrypt the wallets' private keys at `~/.Mel-wallets/.secrets.json`, so make sure you pick something strong!
 
 You can then list the wallets you created, like so:
 
@@ -72,4 +74,4 @@ Congrats, you've just sent MEL from Alice to bob!
 
 ### Further Reading
 
-Sending a transaction is just one of the many things you can do with `melwallet-cli`. For more information, check it out on [GitHub](https://github.com/themeliolabs/melwallet-client).
+Sending a transaction is just one of the many things you can do with `melwallet-cli`. For more information, check it out on [GitHub](https://github.com/Mellabs/melwallet-client).
