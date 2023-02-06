@@ -26,7 +26,11 @@ There is a standard technique for encoding append-only histories in a coin graph
 a picture of a first-output catena chain, probably lifted from literature
 ```
 
-In our case, we can use the `CoinData::additional_data` field of the coins within a Catena chain to record the binding history of a gibbername. The gibbername itself (like `hehheh-hehheh`) would be some form of encoding of the _location of the first link in the chain_,
+In our case, we can use the `CoinData::additional_data` field of the coins within a Catena chain to record the binding history of a gibbername. The gibbername itself (like `hehheh-hehheh`) would be some form of encoding of the _location of the first link in the chain_.
+
+{% hint style="info" %}
+We will discuss how the "gibbername encoding" that maps a gibbername to a unique blockchain location in TODO.
+{% endhint %}
 
 Now, thin clients are able to do the core Gibbername features:
 
@@ -43,7 +47,7 @@ But this has several disadvantages:
 * It doesn't mark Gibbername activity out in the blockchain, making it easy to mistake other transactions as gibbernames
 * Using any regular chain of coins makes it very easy to accidentally rebind or transfer a gibbername. Wallet software would not be able to distinguish Gibbername coins from regular $MEL coins, and would accidentally spend the first and mess up the binding without a lot of manual intervention.
 
-Instead, we use **special transaction metadata** **custom token denomination** to mark Catena chains used by Gibbername. In particular: the _first_ transaction in a Gibbercoin Catena chain must:
+Instead, we use **special transaction metadata** **custom token denomination** to mark Catena chains used by Gibbername. In particular: the _first_ transaction in a Gibbername Catena chain must:
 
 * Have the `Transaction::data` field set to `"gibbername-v1"`
 * Have _one of its outputs_ have denomination `Denom::NewToken` and value `1`.

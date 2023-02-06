@@ -9,7 +9,7 @@ But unlike a raw RPC client (which does exist as `melprot::NodeRpcClient`), `mel
 ## Basic data model
 
 ```
-a picture of the whole data model.
+a picture of the whole data model, looking roughly like:
 
 [snapshot]  ... [snapshot]
      |
@@ -39,7 +39,7 @@ println!("address {} has {} UTXOs now but {} UTXOs at block 10000",
 
 Within a snapshot at a given height, there are many mappings associated with the state of the blockchain at that given height and a variety of methods for conveniently looking them up. Some of the most important ones include:
 
-- `get_coin(id: CoinID)`: given the ID (txhash and index) of a particular coin, return the coin data.
+* `get_coin(id: CoinID)`: given the ID (txhash and index) of a particular coin, return the coin data.
 
 **TODO: FILL THIS IN WITH THE MOST COMMON ONES**
 
@@ -60,14 +60,12 @@ let snap_200 = snap_100.get_older(BlockHeight(200)).await?;
 
 A very common task for thin clients is traversing the **coin graph** of the blockchain, which is the global directed graph of all transactions spending and creating coins. For instance, this is a fragment of the coin graph centered around [a particular mainnet transaction in block 1901450](https://scan.themelio.org/blocks/1901450/674735b7b7e4163f7404715bd6b8433a8db523c52279ad07e2b4e88a6708d873):
 
-&#x20;
-
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 Given a known starting point --- a particular transaction with a known location on the blockchain --- the basic snapshot model detailed above allows easy traversal:
 
-- **Moving backwards in time**: looking up the `CoinID` of a transaction input in a snapshot _older_ than the transaction itself retrieves a `CoinDataHeight` that contains the height in which the transaction input was committed to the blockchain. This gets you the location of a "parent" transaction.
-- **Moving forwards in time**: to look up when an output is spent, a binary search can be done between the state in which the transaction was committed and the present, to see the exact block height at which the output was spent. Then, a snapshot at that height can be used to retrieve the "child" transaction that spent the output.
+* **Moving backwards in time**: looking up the `CoinID` of a transaction input in a snapshot _older_ than the transaction itself retrieves a `CoinDataHeight` that contains the height in which the transaction input was committed to the blockchain. This gets you the location of a "parent" transaction.
+* **Moving forwards in time**: to look up when an output is spent, a binary search can be done between the state in which the transaction was committed and the present, to see the exact block height at which the output was spent. Then, a snapshot at that height can be used to retrieve the "child" transaction that spent the output.
 
 It's certainly possible to manually implement the above, but `melprot` provides to very convenient methods `Client::traverse_back` and `Client::traverse_fwd`. These functions take in a "starting" transaction (block height and transaction hash), as well as a closure to specify _which_ parent or child coin to follow to the next link, and return a `Stream` of `Transaction`s:
 
@@ -87,3 +85,5 @@ while let Some(next) = traversal.next().await? {
 ```
 
 The above example will, starting from the [transaction mentioned previously](https://scan.themelio.org/blocks/1901450/674735b7b7e4163f7404715bd6b8433a8db523c52279ad07e2b4e88a6708d873), traverse its ancestry through the first input until it hits a transaction with no inputs (the first ever transaction in the blockchain!). Graphically, it essentially does this:
+
+<figure><img src="../../.gitbook/assets/output (1).gif" alt=""><figcaption><p>Clicking on the first parent indefinitely</p></figcaption></figure>
