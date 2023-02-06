@@ -216,7 +216,7 @@ pub async fn register(client: &melprot::Client, address: Address, initial_bindin
     let uri = register_name_uri(address, initial_binding);
     println!("send with your wallet: {}", uri);
     // scan through all transactions happening on this address, starting at the block height right before we asked the user to send the transaction. we use an async, Stream-based API
-    let stream = client.stream_transactions_from(current_height);
+    let stream = client.stream_transactions_from(current_height, address);
     while let Some((transaction, height, posn)) = stream.next().await {
         if transaction.data == b"gibbername-v1" {
             return Ok(encode_gibbername(height, posn))
