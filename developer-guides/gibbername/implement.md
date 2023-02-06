@@ -2,9 +2,11 @@
 
 In this page, we go over the details of actually implementing a Gibbername library in Rust.
 
+{% hint style="info" %}
 In the future, cross-language `melprot` bindings will make it possible to implement protocol libraries in other languages, including in-browser JavaScript!
 
-For now, though, Rust is the only supported language. \{% endhint % }
+For now, though, Rust is the only supported language.
+{% endhint %}
 
 ## Project setup
 
@@ -148,7 +150,7 @@ We can now easily build the gibbername lookup function!
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```rust
-pub async fn gibbername_lookup(
+pub async fn lookup(
     client: &melprot::Client,
     gname: &str,
 ) -> anyhow::Result<Option<String>> {
@@ -164,7 +166,31 @@ pub async fn gibbername_lookup(
 
 ## Registering names
 
+Registering names is a little different. Right of the bat we're faced with a problem: we need to _send_ a transaction into the blockchain rather than just reading existing data.
 
+One possible way is to craft a transaction inside our library and send it by directly calling an RPC method on a full node (through something like `melprot::Client::raw_rpc()`). But this is hard, because we must somehow get hold of $MEL to pay transaction fees (possibly by asking the user to send money to some address?). Furthermore, even once we have $MEL, managing the money and the private keys securing it difficult, security-critical task.
+
+Instead, we **ask the user's wallet to send a transaction for us**, and we simply wait until the user finishes doing so. In summary, here are the steps to register a new gibbername:
+
+* Construct a _wallet URI_ using the standard `melwallet:` URI scheme, describing the transaction we need the user to send
+* Wait for the transaction to commit
+* Derive a gibbername from the location at which the transaction was committed
+
+### Constructing the wallet URI
+
+We begin by adding `melwallet_uri` to our Cargo dependencies:
+
+```shell-session
+$ cargo add melwallet_uri
+```
+
+We then write a helper function that generates a Gibbername registration transaction that registers the ownership of the name to a given address:
+
+```rust
+fn register_name_uri(address: Address, initial_binding: &str) -> melwallet_uri::MwUri {
+    melwallet_uri::MwUriBuilder::new().output(0, CoinData{denom: NewCoin::Denom, value: 1.into(), covhash: address, additional_data: initial_binding.as_bytes().into()});
+}
+```
 
 {% hint style="info" %}
 * Project setup
