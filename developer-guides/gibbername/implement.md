@@ -2,11 +2,9 @@
 
 In this page, we go over the details of actually implementing a Gibbername library in Rust.
 
-{% hint style="info" %}
 In the future, cross-language `melprot` bindings will make it possible to implement protocol libraries in other languages, including in-browser JavaScript!
 
-For now, though, Rust is the only supported language.
-{% endhint % }
+For now, though, Rust is the only supported language. \{% endhint % }
 
 ## Project setup
 
@@ -33,9 +31,9 @@ $ cargo add futures-util
 
 The easiest part of Gibbername is looking up the names. This consists of three parts:
 
-- **Decoding the Gibbername** into a _blockchain location_ identifying the start of the Catena chain. This means a block height and a transaction hash.
-- **Obtaining and validating the start transaction** by obtaining a snapshot at the given block height, retrieving the start transaction, and making sure that its `data` field says `"gibbername-v1"`.
-- **Traversing the Catena chain**, following all the custom-token coins, traverse the Catena chain to the most recent element. We'll then have our binding!
+* **Decoding the Gibbername** into a _blockchain location_ identifying the start of the Catena chain. This means a block height and a transaction hash.
+* **Obtaining and validating the start transaction** by obtaining a snapshot at the given block height, retrieving the start transaction, and making sure that its `data` field says `"gibbername-v1"`.
+* **Traversing the Catena chain**, following all the custom-token coins, traverse the Catena chain to the most recent element. We'll then have our binding!
 
 ### The Gibbername encoding
 
@@ -47,6 +45,7 @@ This lets us represent any transaction in the blockchain uniquely with two small
 
 We then need to represent this pair of numbers as a friendly gibbername. Fortunately, we can use `gibbercode`, a crate that encodes a pair of numbers into a gibberish string using the consonants for the first number and the vowels for the second.
 
+{% code overflow="wrap" lineNumbers="true" %}
 ```rust
 /// Decodes a gibbername into a blockchain location.
 fn decode_gibbername(gname: &str) -> anyhow::Result<(BlockHeight, u32)> {
@@ -60,6 +59,7 @@ fn encode_gibbername(height: BlockHeight, index: u32) -> String {
     gibbercode::encode(height.0, index)
 }
 ```
+{% endcode %}
 
 ### Validating the start transaction
 
@@ -67,6 +67,7 @@ Once we have the blockchain location, we need to retrieve the start transaction.
 
 The start transaction should have a `data` field that says `"gibbername-v1"`, as well as one, and just one, output with denomination `Denom::NewToken`, and that output must have value `1`. This is the way we ensure that a given Gibbername is actually valid.
 
+{% code overflow="wrap" lineNumbers="true" %}
 ```rust
 async fn get_start_tx(client: &melprot::Client, gname: &str) -> anyhow::Result<(BlockHeight, TxHash)> {
     let (height, index) = decode_gibbername(gname)?;
@@ -90,22 +91,23 @@ async fn get_start_tx(client: &melprot::Client, gname: &str) -> anyhow::Result<(
 }
 
 ```
+{% endcode %}
 
 ### Traversing the Catena chain
 
 Finally, we can traverse the Catena chain to get the coin containing the final binding:
 
+{% code overflow="wrap" lineNumbers="true" %}
 ```rust
 async fn traverse_catena(
     client: &melprot::Client,
     start_height: BlockHeight,
     start_txhash: TxHash,
 ) -> anyhow::Result<CoinData> {
-    // Collect all transactions in the forward direction using the `traverse_fwd` function
-    // The closure passed to `traverse_fwd` defines the condition for picking the next transaction in the traversal
+    // Traverse the graph in the forward direction using the `traverse_fwd` function. The closure passed to `traverse_fwd` defines the condition for picking the next transaction in the traversal
     // In this case, it returns the first (and unique!) output with either of the following conditions:
-    //  - We are at the starting transaction, so we find the denomination `Denom::NewToken`
-    //  - We are at a later transaction, so we find the custom denomination named after the starting transaction's hash
+    //  - At the beginning find the denomination `Denom::NewToken`
+    //  - Otherwise: find the custom denomination named after the starting transaction's hash
     let traversal: Vec<Transaction> = client
         .traverse_fwd(
             start_height,
@@ -135,20 +137,22 @@ async fn traverse_catena(
         Ok(final)
     } else {
         // Catena chain stops because the custom token was destroyed.
-        //  this means the name is permanently deleted
+        // this means the name is permanently deleted
         anyhow::bail!("name is permanently deleted")
     }
 }
 ```
+{% endcode %}
 
 We can now easily build the gibbername lookup function!
 
+{% code overflow="wrap" %}
 ```rust
 pub async fn gibbername_lookup(
     client: &melprot::Client,
     gname: &str,
 ) -> anyhow::Result<Option<String>> {
-    // find the coin containing the final binding, then access its additional_data field
+    // find the coin containing the final binding
     let (start_height, start_txhash) = get_start_tx(client, gname).await?;
     let coin = traverse_catena(client, start_height, start_txhash).await?;
     // interpret the additional_data field as a UTF-8 string
@@ -156,22 +160,22 @@ pub async fn gibbername_lookup(
     Ok(Some(binding.to_owned()))
 }
 ```
+{% endcode %}
 
 {% hint style="info" %}
-
-- Project setup
-  - Make a library crate with melprot as a dep
-- Lookups
-  - Easiest part
-  - Decode the gibbername as a block height and index
-  - Use that to find the&#x20;
-- Registration
-  - Need to send a transaction of a particular shape
-  - Problem 1: need to prompt the user to send using wallet
-    - Solution: wallet URL
-  - Problem 2: need to know when the transaction has left the wallet
-    - Solution: monitor for activity on the wallet
-- Transfers
-  - Just transfer the "NFT"
-  - Similar approach to registration. Left to the reader (complete code on GitHub)
-    {% endhint %}
+* Project setup
+  * Make a library crate with melprot as a dep
+* Lookups
+  * Easiest part
+  * Decode the gibbername as a block height and index
+  * Use that to find the
+* Registration
+  * Need to send a transaction of a particular shape
+  * Problem 1: need to prompt the user to send using wallet
+    * Solution: wallet URL
+  * Problem 2: need to know when the transaction has left the wallet
+    * Solution: monitor for activity on the wallet
+* Transfers
+  * Just transfer the "NFT"
+  * Similar approach to registration. Left to the reader (complete code on GitHub)
+{% endhint %}
