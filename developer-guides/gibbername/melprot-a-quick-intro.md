@@ -8,9 +8,17 @@ But unlike a raw RPC client (which does exist as `melprot::NodeRpcClient`), `mel
 
 ## Basic data model
 
+```
+a picture of the whole data model.
+
+[snapshot]  ... [snapshot]
+     |
+ [map]  [map] ...
+```
+
 ### Snapshots
 
-The data model of `melprot::Client` is largely focused on the **state snapshot**, which encapsulates _the state of the blockchain at a given height_. For instance, the following code obtains snapshots of the state at different heights, and query
+The data model of `melprot::Client` is largely focused on the **state snapshot**, which is an immutable, trustless view of _the state of the blockchain at a given height_. For instance, the following code obtains snapshots of the state at different heights, and queries how many unspent coins a particular address owns at the two heights.
 
 ```rust
 // get a mainnet Client
@@ -27,4 +35,27 @@ println!("address {} has {} UTXOs now but {} UTXOs at block 10000",
 );
 ```
 
-\
+### Looking up info
+
+Within a snapshot at a given height, there are many mappings associated with the state of the blockchain at that given height and a variety of methods for conveniently looking them up. Some of the most important ones include:
+
+- `get_coin(id: CoinID)`: given the ID (txhash and index) of a particular coin, return the coin data.
+
+**TODO: FILL THIS IN WITH THE MOST COMMON ONES**
+
+### Moving a snapshot back in time
+
+Since snapshots commit to the state of a blockchain at a particular height &mdash; which includes the previous history &mdash; they can be used to verify older claims about blockchain contents but not earlier claims. This is represented in `melprot` by `Snapshot::get_older(height: BlockHeight)`, which can move snapshots backwards in time, but not forwards:
+
+```rust
+// get a snapshot at block height 100
+let snap_100 = client.snapshot(BlockHeight(100)).await?;
+// get a snapshot at block height 50
+let snap_50 = snap_100.get_older(BlockHeight(50)).await?;
+// this fails:
+let snap_200 = snap_100.get_older(BlockHeight(200)).await?;
+```
+
+## Coin graph traversal
+
+A very common task for thin clients is traversing the graph of coins, which is the directed graph of transactions spending and creating coins. For instance
