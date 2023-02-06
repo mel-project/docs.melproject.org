@@ -86,4 +86,4 @@ while let Some(next) = traversal.next().await? {
 }
 ```
 
-The above example will traverse all the way back to the coinbase transaction that created the output that was the highest-valued output of the initial transaction.
+The above example will, starting from the [transaction mentioned previously](https://scan.themelio.org/blocks/1901450/674735b7b7e4163f7404715bd6b8433a8db523c52279ad07e2b4e88a6708d873), traverse its ancestry through the first input until it hits a transaction with no inputs (the first ever transaction in the blockchain!). Graphically, it essentially does this:
