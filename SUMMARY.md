@@ -2,12 +2,7 @@
 
 ## concepts
 
-* [Minimal, governance-free L1](README.md)
-* [Powerful execution and embeddable thin clients](concepts/powerful-execution-and-embeddable-thin-clients.md)
-* [Sound cryptoeconomics with truly sound money](concepts/sound-cryptoeconomics-with-truly-sound-money.md)
-* [Consensus and Staking](concepts/consensus-and-staking/README.md)
-  * [Staking](concepts/consensus-and-staking/staking.md)
-  * [Consensus](concepts/consensus-and-staking/consensus.md)
+* [Overview](README.md)
 
 ## Developer guides
 

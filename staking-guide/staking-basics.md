@@ -12,7 +12,7 @@ This tutorial will be done on our testnet, so we can take advantage of printing 
 
 ### Create and fund a testnet wallet
 
-First, we set up our wallets, following the instructions [here](../developer-guides/using-wallets/getting-started.md). Make sure to fund your wallet with a good amount of MEL (for transaction fees) and SYM (voting power)!&#x20;
+First, we set up our wallets, following the instructions [here](../developer-guides/using-wallets/getting-started.md). Make sure to fund your wallet with a good amount of MEL (for transaction fees) and SYM (voting power)!
 
 ### Install melnode
 
@@ -39,8 +39,8 @@ The `--payout-addr` value is a mandatory wallet address that will receive the re
 
 By default, `melnode` will auto-generate a new key pair for the staker node and save it at the default path of `$HOME/.melnode/staker-keys/`. The public and private keys will be saved as:
 
-- Public key: `staker-key-ed25519.pub`
-- Private key: `staker-key-ed25519`
+* Public key: `staker-key-ed25519.pub`
+* Private key: `staker-key-ed25519`
 
 Optionally, you can provide an existing key pair as a CLI argument (make sure the private key is stored somewhere safe). If the provided public key does not exist, `melnode` will autogenerate a new key pair, as mentioned above.
 
@@ -60,7 +60,7 @@ Once the node starts running, you should see something like this:
 Now that the staker node is up and running, it's time to give it some voting power so it can participate in the network's consensus!
 
 {% hint style="danger" %}
-If you are using this guide to stake on mainnet, please read through the [risks of staking](staking-risks.md) real SYM first!&#x20;
+If you are using this guide to stake on mainnet, please read through the [risks of staking](staking-risks.md) real SYM first!
 {% endhint %}
 
 <pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli stake &#x3C;amount-of-SYM> --to-stake &#x3C;staker-pubkey> --epochs 3
@@ -111,4 +111,4 @@ Staked:       100.000000    SYM
 
 ## Further reading
 
-This was just a simple tutorial on how to run a staker node on the network. To learn more about the consensus process, continue [here](../concepts/consensus-and-staking/) for more details.
+This was just a simple tutorial on how to run a staker node on the network. To learn more about the consensus process, continue [here](broken-reference) for more details.

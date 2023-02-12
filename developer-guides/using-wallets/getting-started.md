@@ -18,7 +18,7 @@ Use this command to start the headless wallet daemon and connect to the testnet 
 $ melwallet-cli start-daemon --network testnet
 ```
 
-This command will save any wallets you create to `~/.Mel-wallets`, but feel free to provide any directory you want via the `--wallet-dir` flag.
+This command will save any wallets you create to `~/.melwalletd`, but feel free to provide any directory you want via the `--wallet-dir` flag.
 
 ### Create wallets for Alice and Bob
 
@@ -30,11 +30,9 @@ $ melwallet-cli create -w bob
 ```
 
 {% hint style="info" %}
-
 ```
 Keep Bob's wallet address handy for the next step!
 ```
-
 {% endhint %}
 
 You will be prompted for passwords, which will be used to encrypt the wallets' private keys at `~/.Mel-wallets/.secrets.json`, so make sure you pick something strong!
