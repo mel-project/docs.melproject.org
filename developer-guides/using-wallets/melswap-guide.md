@@ -42,11 +42,11 @@ Awaiting Confirmation... Confirmed at height 314!
 Block Explorer: https://scan-testnet.Mel.org/blocks/314/...
 </code></pre>
 
-As you can see in the `From` and `To` fields, 100 MEL is being swapped for 50 SYM. After user confirmation, `melwallet-cli` waits for the transaction to be posted to the blockchain and then outputs the confirmation height and [Melscan](https://scan.Mel.org) URL.
+As you can see in the `From` and `To` fields, 100 MEL is being swapped for 50 SYM. After user confirmation, `melwallet-cli` waits for the transaction to be posted to the blockchain and then outputs the confirmation height and [Melscan](https://scan.mel.org) URL.
 
 <pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli summary -w bob
 </strong>Wallet name:  bob (unlocked)
-Network:      custom02
+Network:      testnet
 Address:      t11n9ynz8jhcd1k7h6jx4pvsc4m2qvwjhdp5mx03ega05hkcts8j9g
 Balance:      400.00000   MEL
               50.000000   SYM
