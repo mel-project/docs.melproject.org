@@ -91,7 +91,7 @@ t11n9ynz8jhcd1k7h6jx4pvsc4m2qvwjhdp5mx03ega05hkcts8j9g (self) 25.000000 SYM  (2:
 Proceed? [y/N] y
 Transaction hash:  b02ed062fc8f9eb6b2fce799e36ad06b86b95a45ef3bd8b98d2ee8a7deae0691
 Awaiting Confirmation... Confirmed at height 316!
-Block Explorer: https://scan-testnet.Mel.org/blocks/314/b02ed062fc8f9eb6b2fce799e36ad06b86b95a45ef3bd8b98d2ee8a7deae0691
+Block Explorer: https://scan-testnet.melproject.org/blocks/314/b02ed062fc8f9eb6b2fce799e36ad06b86b95a45ef3bd8b98d2ee8a7deae0691
 </code></pre>
 
 As you can see Bob now has 1 liquidity token called MEL\~SYM
