@@ -98,7 +98,7 @@ As you can see Bob now has 1 liquidity token called MEL\~SYM
 
 <pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli summary -w bob
 </strong>Wallet name:  bob (unlocked)
-Network:      custom02
+Network:      testnet
 Address:      t11n9ynz8jhcd1k7h6jx4pvsc4m2qvwjhdp5mx03ega05hkcts8j9g
 Balance:      349.50000   MEL
               25.000000   SYM
