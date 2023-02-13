@@ -2,7 +2,7 @@
 
 ## concepts
 
-* [Overview](README.md)
+* [Decentralization beyond blockchains](README.md)
 
 ## Developer guides
 
