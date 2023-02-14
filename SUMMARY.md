@@ -3,6 +3,9 @@
 ## concepts
 
 * [Decentralization beyond blockchains](README.md)
+* [Composability and neutrality](concepts/composability-and-neutrality.md)
+* [Secure, verifiable consensus](concepts/secure-verifiable-consensus.md)
+* [Melmint: stabilizing $MEL without an oracle](concepts/melmint-stabilizing-usdmel-without-an-oracle.md)
 
 ## Developer guides
 

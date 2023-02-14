@@ -1,3 +1,7 @@
+---
+description: 'Off-chain composability: our vision for a Web3 far beyond blockchains'
+---
+
 # Decentralization beyond blockchains
 
 ## The current state of Web3
@@ -14,12 +18,26 @@ Moreover, there's a whole world of entirely non-blockchain projects that are arg
 
 We believe that the solution to this problem is a new paradigm for "Web3": **off-chain composability**. Instead of a complex on-chain ecosystem of smart contracts with "frontends" that struggle to interface with them, this will be a largely non-blockchain world with two key properties:
 
-_Off-chain programs trustlessly compose with on-chain programs._ Off-chain programs, whether dApp frontends or whole alt-tech stacks, must integrate on-chain functionality without sacrificing L1 security.&#x20;
+**Off-chain programs trustlessly compose with on-chain programs.** Off-chain programs, whether dApp frontends or whole alt-tech stacks, must integrate on-chain functionality without sacrificing L1 security.&#x20;
 
 For instance, a frontend for a coin mixer can't be censorable by any SaaS provider, and no platform provider should be able to tamper with queries to an on-chain PKI used by an end-to-end encrypted chat program. The "web3 superpowers" end up successfully crossing over the boundaries of the blockchain.
 
-_Decentralized protocols compose into dApps off-chain_. Decentralized protocols with blockchain-backed security should not primarily compose using on-chain constructs such as standardized smart-contract interfaces. Instead, they are composed in off-chain programs like mobile apps and frontends to create a "full-stack" decentralized system.&#x20;
+**Decentralized protocols compose into dApps off-chain.** Decentralized protocols with blockchain-backed security should not primarily compose using on-chain constructs such as standardized smart-contract interfaces. Instead, they are composed in off-chain programs like mobile apps and frontends to create a "full-stack" decentralized system.&#x20;
 
 For example, clients for a decentralized encrypted chat platform with cryptocurrency payments can be built from a Sybil-resistant DHT, a blockchain-backed naming system, a micropayment network, etc, all of which are protocols trustlessly compose with on-chain logic to provide robust decentralized security. But none of these systems need to have interoperating on-chain logic.&#x20;
+
+_Explain how this solves all the issues_
+
+## Mel: a clean-slate L1 for off-chain composability
+
+Mel is a new L1 blockchain designed completely from scratch. It focuses on one task: being the keystone of decentralized security that enables an off-chain composable Web3.
+
+This affects every aspect of Mel's unique design, which we'll dive into in subsequent pages:
+
+* The synergy between composability and neutrality in its data model: We use a stripped-down TXO-based model optimized for trustless off-chain queries that is intended to be simple enough to be _governance-free_ and thus robustly neutral. This turns out to both support and require a vibrant off-chain composable ecosystem.
+* The consensus game: Mel's proof-of-stake consensus has two important features, both crucial to reliable off-chain thin-clients. First, it uses unique _collusion-resistant incentives_, ensuring long-run safety without external governance intervening. Second, it produces _long-range consensus proofs_ that minimizes "weak subjectivity" problems and allows for deeply embedded thin clients to stay economically secure.
+* The mechanism, Melmint, behind the native currency MEL: Without any oracles or external trust, Melmint stabilizes MEL's value against the _cost of sequential computation time_, one of the few purchasing-power-stable indices that can be trustlessly defined and measured. This makes MEL as trustless as BTC and ETH, while still being a useful unit of account that avoids typical cryptocurrency price swings. It turns out that this is key to building off-chain composable financial systems.
+
+&#x20;
 
 ##
