@@ -57,9 +57,17 @@ For instance, a frontend for a coin mixer can't be censorable by any SaaS provid
 
 For example, clients for a decentralized encrypted chat platform with cryptocurrency payments can be built from a Sybil-resistant DHT, a blockchain-backed naming system, a micropayment network, etc, all of which are protocols trustlessly compose with on-chain logic to provide robust decentralized security. But none of these systems need to have interoperating on-chain logic.&#x20;
 
-_Explain how this solves all the issues_
+<figure><img src="https://lh4.googleusercontent.com/nFaHg6RtvtYZ1KY056l_SPLlzLVwpRsR8rXJ2-eCL8EdQf2oRO50ikgBEuit83N5aXWiln7UfTvjvVBxAo4Xx1aLKU2vJvXNC4FTf_9dwJjrBXtJ_brvgFP_vRhXWKUi-tty52nS1tneyXty8MCDn_3kXA=s2048" alt=""><figcaption><p>A “tech tree” of a Mel-powered world</p></figcaption></figure>
+
+_TODO: Explain how this solves all the issues_
 
 ## 3/4 - Why do we need another blockchain?
+
+
+
+&#x20;
+
+## 4/4 - Up next: how Mel frees web3
 
 Mel is a new L1 blockchain designed completely from scratch. It focuses on one task: being the keystone of decentralized security that enables an off-chain composable Web3.
 
@@ -68,9 +76,3 @@ This affects every aspect of Mel's unique design, which we'll dive into in subse
 * The synergy between composability and neutrality in its data model: We use a stripped-down TXO-based model optimized for trustless off-chain queries that is intended to be simple enough to be _governance-free_ and thus robustly neutral. This turns out to both support and require a vibrant off-chain composable ecosystem.
 * The consensus game: Mel's proof-of-stake consensus has two important features, both crucial to reliable off-chain thin-clients. First, it uses unique _collusion-resistant incentives_, ensuring long-run safety without external governance intervening. Second, it produces _long-range consensus proofs_ that minimizes "weak subjectivity" problems and allows for deeply embedded thin clients to stay economically secure.
 * The mechanism, Melmint, behind the native currency MEL: Without any oracles or external trust, Melmint stabilizes MEL's value against the _cost of sequential computation time_, one of the few purchasing-power-stable indices that can be trustlessly defined and measured. This makes MEL as trustless as BTC and ETH, while still being a useful unit of account that avoids typical cryptocurrency price swings. It turns out that this is key to building off-chain composable financial systems.
-
-&#x20;
-
-## 4/4 - Up next: how Mel frees web3
-
-##
