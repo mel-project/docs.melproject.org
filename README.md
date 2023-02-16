@@ -43,17 +43,17 @@ We believe that the way to free Web3 is a new paradigm for Web3: **off-chain com
 
 This will be a largely non-blockchain world with two key properties:
 
-**Off-chain programs trustlessly compose with on-chain programs.** Off-chain programs, whether dApp frontends or whole alt-tech stacks, must integrate on-chain functionality without sacrificing L1 security.&#x20;
+1. **Off-chain programs trustlessly compose with on-chain programs.** Off-chain programs, whether dApp frontends or whole alt-tech stacks, must integrate on-chain functionality without sacrificing L1 security.&#x20;
 
 For instance, a frontend for a coin mixer can't be censorable by any SaaS provider, and no platform provider should be able to tamper with queries to an on-chain PKI used by an end-to-end encrypted chat program. The "web3 superpowers" end up successfully crossing over the boundaries of the blockchain.
 
-**Decentralized protocols compose into dApps off-chain.** Decentralized protocols with blockchain-backed security should not primarily compose using on-chain constructs such as standardized smart-contract interfaces. Instead, they are composed in off-chain programs like mobile apps and frontends to create a "full-stack" decentralized system.&#x20;
+2. **Decentralized protocols compose into dApps off-chain.** Decentralized protocols with blockchain-backed security should not primarily compose using on-chain constructs such as standardized smart-contract interfaces. Instead, they are composed in off-chain programs like mobile apps and frontends to create a "full-stack" decentralized system.&#x20;
 
 For example, clients for a decentralized encrypted chat platform with cryptocurrency payments can be built from a Sybil-resistant DHT, a blockchain-backed naming system, a micropayment network, etc, all of which are protocols trustlessly compose with on-chain logic to provide robust decentralized security. But none of these systems need to have interoperating on-chain logic.&#x20;
 
 <figure><img src="https://lh4.googleusercontent.com/nFaHg6RtvtYZ1KY056l_SPLlzLVwpRsR8rXJ2-eCL8EdQf2oRO50ikgBEuit83N5aXWiln7UfTvjvVBxAo4Xx1aLKU2vJvXNC4FTf_9dwJjrBXtJ_brvgFP_vRhXWKUi-tty52nS1tneyXty8MCDn_3kXA=s2048" alt=""><figcaption><p>A “tech tree” of a Mel-powered world</p></figcaption></figure>
 
-_TODO: Explain how this solves all the issues_
+In Mel's ecosystem, trustless light clients take Web3 superpowers out of the on-chain box, then decentralized secure protocols pass the superpowers to user-facing apps. Web3 is freed from the blockchain box, so much so that users and developers of the end applications **never even need to think about the blockchain**.&#x20;
 
 ## 3/4 - Why do we need a new blockchain?
 
@@ -68,8 +68,6 @@ It turns out that ease of off-chain composability requires many design trade-off
 **"Moar TPS!!"**: This makes on-chain things fast and cheap, essentially making a bigger box for bigger contracts. However, thin clients are way harder to run, and the much bigger nodes lead to centralization.
 
 Unfortunately, current blockchains, especially fancy new ones, double down on one or more features, trading away off-chain composability for an on-chain ecosystem. That's why we made a new L1 from scratch, optimizing every part of Mel for being the **decentralized security keystone** that enables an off-chain composable Web3.
-
-
 
 ## 4/4 - Up next: how Mel frees web3
 
