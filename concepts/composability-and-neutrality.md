@@ -4,5 +4,5 @@ description: >-
   "code-is-law" neutrality
 ---
 
-# Composability and neutrality
+# Data model and neutrality
 
