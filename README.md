@@ -4,7 +4,7 @@ description: 'Off-chain composability: our vision for a Web3 far beyond blockcha
 
 # Web3 beyond blockchains
 
-## 1/4 - Web3 is trapped on-chain
+## Web3 is trapped on-chain
 
 Web3 looks like it's heading into a bright future. By combining incentives and cryptography, blockchains have achieved unprecedented decentralization and security, and general-purpose L1s like Ethereum now host growing ecosystems of interoperable decentralized protocols. There's everything from DeFi staples like the Compound lending platform to fascinatingly novel experiments like the cryptography game Dark Forest. Key technical problems like execution scalability now have breakthrough solutions like rollups and zero-knowledge proofs. And even the UX is steadily improving, allowing more and more regular users to join the "crypto" world.
 
@@ -30,9 +30,7 @@ Compared to blockchain apps, nearly all non-DeFi dApps struggle to gain adoption
 
 And of course, mainstream internet users at the mercy of abusive Web2 desperately need Web3 censorship resistance, decentralization, and user-aligned incentives! But most of them don't know much more about Web3 beyond "crypto trading"...
 
-
-
-## 2/4 - Mel frees web3
+## Mel frees web3
 
 We believe that the way to free Web3 is a new paradigm for Web3: **off-chain composability**. Current blockchains host complex on-chain ecosystems of smart contracts with "frontends" that struggle to interface with them. Instead, we envision **full-stack** off-chain dApps leveraging Mel as the **web3 superpower** **component**, not as a platform.
 
@@ -55,7 +53,7 @@ For example, clients for a decentralized encrypted chat platform with cryptocurr
 
 In Mel's ecosystem, trustless light clients take Web3 superpowers out of the on-chain box, then decentralized secure protocols pass the superpowers to user-facing apps. Web3 is freed from the blockchain box, so much so that users and developers of the end applications **never even need to think about the blockchain**.&#x20;
 
-## 3/4 - Why do we need a new blockchain?
+## Why do we need a new blockchain?
 
 But why do we need a new blockchain to implement off-chain Web3? Can't we build this world on an established blockchain like Ethereum?
 
@@ -69,7 +67,7 @@ It turns out that ease of off-chain composability requires many design trade-off
 
 Unfortunately, current blockchains, especially fancy new ones, double down on one or more features, trading away off-chain composability for an on-chain ecosystem. That's why we made a new L1 from scratch, optimizing every part of Mel for being the **decentralized security keystone** that enables an off-chain composable Web3.
 
-## 4/4 - Up next: how Mel frees web3
+## Up next: how Mel frees web3
 
 We'll dive into how key components of Mel are designed for off-chain composability (specifically, **producing** and **exporting** Web3 superpowers) in subsequent pages:
 
