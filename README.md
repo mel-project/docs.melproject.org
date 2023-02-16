@@ -69,33 +69,17 @@ It turns out that ease of off-chain composability requires many design trade-off
 
 #### VM improvements
 
-Easy opcodes for cool stuff like ZK
-
-Saves gas costs, making contracts happy
-
-Breaks thin client compatibility
-
-Governance threatens neutrality
+These provide easy opcodes for cool stuff like ZK and make smart contracts happy by saving gas costs. However, the governance involved both breaks thin client compatibility and threatens neutrality
 
 #### Standard contract APIs
 
-Decouples contract interface with impl
-
-Powers many ecosystems (ERC-20 DeFi etc)
-
-Disparate impls complicate off-chain verification
-
-Buggy/centralized contracts introduce systemic risk
+Decoupling contract interface from implementation, these APIs power many on-chain ecosystems (ERC-20 DeFi etc). However, the disparate implementations complicate off-chain verification, and buggy/centralized contracts introduce systemic security risks.
 
 #### "Moar" TPS
 
-Makes on-chain things fast and cheap
+This makes on-chain things fast and cheap, essentially making a bigger box for bigger contracts. However, thin clients are way harder to run, and bigger nodes lead to centralization.
 
-Bigger box for bigger contracts
 
-Clients are way harder to run
-
-Bigger nodes => centralization
 
 Unfortunately, existing blockchains double down on these features, trading away off-chain composability for an on-chain ecosystem. That's why we made a new L1 from scratch, optimizing every part of Mel for being the **decentralized security keystone** that enables an off-chain composable Web3.
 
