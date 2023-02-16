@@ -16,13 +16,13 @@ But on a closer look, there's a big problem: **web3's revolution is trapped insi
 
 Nowhere is the lack of "Web3 superpowers" clearer than in dApp frontends: off-chain programs used to interact with on-chain systems by inherently off-chain humans and devices. The typical dApp frontend is nakedly a Web2 service, with a centralized server hosting a webpage (like [app.uniswap.org](https://app.u)) calling a centralized SaaS service to interact with on-chain smart contracts on the user's behalf.&#x20;
 
-Unsurprisingly, users are at the mercy of the same sort of unaccountable centralized power we see in Web2 — just witness how a single regulatory agency (OFAC) easily cut off access to a widely-used protocol (Tornado Cash) simply by putting pressure on a few service providers (Infura, etc).
+Unsurprisingly, users are at the mercy of the same sort of unaccountable centralized power we see in Web2 — just witness how a single regulatory agency (OFAC) easily [cut off access](https://cointelegraph.com/news/alchemy-and-infura-block-access-to-tornado-cash-as-vitalik-buterin-weighs-in-on-debate) to a widely-used protocol (Tornado Cash) simply by putting pressure on a few service providers (Infura, etc).
 
-All of the smart contracts involved in not only Tornado Cash, but also Wormhole and Merit Circle, ran safely and correctly. But the apps—which include inherently off-chain frontends, infrastructure, etc—did not.
+All of the smart contracts involved in not only Tornado Cash, but also [Wormhole](https://www.coindesk.com/tech/2022/02/02/blockchain-bridge-wormhole-suffers-possible-exploit-worth-over-250m/) and [Merit Circle](https://www.coindesk.com/business/2022/06/14/gaming-dao-merit-circle-ygg-terminate-relationship/), ran safely and correctly. But the apps—which include inherently off-chain frontends, infrastructure,  governance, etc—did not.
 
 ### Non-blockchain Web3
 
-Moreover, there's a whole world of entirely non-blockchain projects that are arguably Web3 protocols — "alt-tech" protocols sharing the same goal of fixing Web2's problems with decentralized cryptography: Tor, Freenet, Matrix, and the like.&#x20;
+Moreover, there's a whole world of entirely non-blockchain projects that are arguably Web3 protocols — "alt-tech" protocols sharing the same goal of fixing Web2's problems with decentralized cryptography: [Tor](https://www.torproject.org/), [I2P](https://geti2p.net/en/), [Matrix](https://matrix.org/), and the like.&#x20;
 
 Compared to blockchain apps, nearly all non-DeFi dApps struggle to gain adoption due to the difficulty of successfully combining decentralization, usability, and security, a need that blockchains seem ideally suited to satisfy. Yet puzzlingly, we don't see much blockchain adoption in these projects that truly need decentralized security.
 
@@ -40,12 +40,6 @@ We believe that the way to free Web3 is a new paradigm for Web3: **off-chain com
 
 
 <figure><img src="https://lh5.googleusercontent.com/qYoe5Gvu51c5Jhu_Cr6Z0DmBbQs5bFHov_mx6EuAAVLtaaczghWcmpFIgjXUq3MiJ_bRA23gRIn_7Kd9ynvb10h8aPiinRqbBWQGV_A4R8L-IRbp_HrVs81sD_vEfas5ooQjLs0iuk-tO29Njh2NeASesA=s2048" alt=""><figcaption></figcaption></figure>
-
-
-
-
-
-
 
 This will be a largely non-blockchain world with two key properties:
 
@@ -67,21 +61,13 @@ But why do we need a new blockchain to implement off-chain Web3? Can't we build 
 
 It turns out that ease of off-chain composability requires many design trade-offs in all the aspects of a blockchain, and features for on-chain ecosystems hamper both **exporting** and **producing** Web3 superpowers. As examples:
 
-#### VM improvements
+**VM improvements**: These provide easy opcodes for cool stuff like ZK and make smart contracts happy by saving gas costs. However, the governance involved both breaks thin client compatibility and threatens neutrality
 
-These provide easy opcodes for cool stuff like ZK and make smart contracts happy by saving gas costs. However, the governance involved both breaks thin client compatibility and threatens neutrality
+**Standard contract APIs**: Decoupling contract interface from implementation, these APIs power many on-chain ecosystems (ERC-20 DeFi etc). However, the disparate implementations complicate off-chain verification, and buggy/centralized contracts introduce systemic security risks.
 
-#### Standard contract APIs
+**"Moar TPS!!"**: This makes on-chain things fast and cheap, essentially making a bigger box for bigger contracts. However, thin clients are way harder to run, and the much bigger nodes lead to centralization.
 
-Decoupling contract interface from implementation, these APIs power many on-chain ecosystems (ERC-20 DeFi etc). However, the disparate implementations complicate off-chain verification, and buggy/centralized contracts introduce systemic security risks.
-
-#### "Moar" TPS
-
-This makes on-chain things fast and cheap, essentially making a bigger box for bigger contracts. However, thin clients are way harder to run, and bigger nodes lead to centralization.
-
-
-
-Unfortunately, existing blockchains double down on these features, trading away off-chain composability for an on-chain ecosystem. That's why we made a new L1 from scratch, optimizing every part of Mel for being the **decentralized security keystone** that enables an off-chain composable Web3.
+Unfortunately, current blockchains, especially fancy new ones, double down on one or more features, trading away off-chain composability for an on-chain ecosystem. That's why we made a new L1 from scratch, optimizing every part of Mel for being the **decentralized security keystone** that enables an off-chain composable Web3.
 
 
 
@@ -89,7 +75,7 @@ Unfortunately, existing blockchains double down on these features, trading away 
 
 We'll dive into how key components of Mel are designed for off-chain composability (specifically, **producing** and **exporting** Web3 superpowers) in subsequent pages:
 
-* The synergy between composability and neutrality in Mel's data model: We use a stripped-down TXO-based model optimized for trustless off-chain queries that is intended to be simple enough to be _governance-free_ and thus robustly neutral. This turns out to both support and require a vibrant off-chain composable ecosystem.
-* The consensus game: Mel's proof-of-stake consensus has two important features, both crucial to reliable off-chain thin-clients. First, it uses unique _collusion-resistant incentives_, ensuring long-run safety without external governance intervening. Second, it produces _long-range consensus proofs_ that minimizes "weak subjectivity" problems and allows for deeply embedded thin clients to stay economically secure.
-* The mechanism, Melmint, behind the native currency MEL: Without any oracles or external trust, Melmint stabilizes MEL's value against the _cost of sequential computation time_, one of the few purchasing-power-stable indices that can be trustlessly defined and measured. This makes MEL as trustless as BTC and ETH, while still being a useful unit of account that avoids typical cryptocurrency price swings. It turns out that this is key to building off-chain composable financial systems.
+* The synergy between Mel's composable data model and governance-free neutrality
+* The collusion-resistant, light-client-friendly consensus game
+* The native currency MEL, stabilized without oracles by the Melmint mechanism&#x20;
 
