@@ -61,18 +61,51 @@ For example, clients for a decentralized encrypted chat platform with cryptocurr
 
 _TODO: Explain how this solves all the issues_
 
-## 3/4 - Why do we need another blockchain?
+## 3/4 - Why do we need a new blockchain?
+
+But why do we need a new blockchain to implement off-chain Web3? Can't we build this world on an established blockchain like Ethereum?
+
+It turns out that ease of off-chain composability requires many design trade-offs in all the aspects of a blockchain, and features for on-chain ecosystems hamper both **exporting** and **producing** Web3 superpowers. As examples:
+
+#### VM improvements
+
+Easy opcodes for cool stuff like ZK
+
+Saves gas costs, making contracts happy
+
+Breaks thin client compatibility
+
+Governance threatens neutrality
+
+#### Standard contract APIs
+
+Decouples contract interface with impl
+
+Powers many ecosystems (ERC-20 DeFi etc)
+
+Disparate impls complicate off-chain verification
+
+Buggy/centralized contracts introduce systemic risk
+
+#### "Moar" TPS
+
+Makes on-chain things fast and cheap
+
+Bigger box for bigger contracts
+
+Clients are way harder to run
+
+Bigger nodes => centralization
+
+Unfortunately, existing blockchains double down on these features, trading away off-chain composability for an on-chain ecosystem. That's why we made a new L1 from scratch, optimizing every part of Mel for being the **decentralized security keystone** that enables an off-chain composable Web3.
 
 
-
-&#x20;
 
 ## 4/4 - Up next: how Mel frees web3
 
-Mel is a new L1 blockchain designed completely from scratch. It focuses on one task: being the keystone of decentralized security that enables an off-chain composable Web3.
+We'll dive into how key components of Mel are designed for off-chain composability (specifically, **producing** and **exporting** Web3 superpowers) in subsequent pages:
 
-This affects every aspect of Mel's unique design, which we'll dive into in subsequent pages:
-
-* The synergy between composability and neutrality in its data model: We use a stripped-down TXO-based model optimized for trustless off-chain queries that is intended to be simple enough to be _governance-free_ and thus robustly neutral. This turns out to both support and require a vibrant off-chain composable ecosystem.
+* The synergy between composability and neutrality in Mel's data model: We use a stripped-down TXO-based model optimized for trustless off-chain queries that is intended to be simple enough to be _governance-free_ and thus robustly neutral. This turns out to both support and require a vibrant off-chain composable ecosystem.
 * The consensus game: Mel's proof-of-stake consensus has two important features, both crucial to reliable off-chain thin-clients. First, it uses unique _collusion-resistant incentives_, ensuring long-run safety without external governance intervening. Second, it produces _long-range consensus proofs_ that minimizes "weak subjectivity" problems and allows for deeply embedded thin clients to stay economically secure.
 * The mechanism, Melmint, behind the native currency MEL: Without any oracles or external trust, Melmint stabilizes MEL's value against the _cost of sequential computation time_, one of the few purchasing-power-stable indices that can be trustlessly defined and measured. This makes MEL as trustless as BTC and ETH, while still being a useful unit of account that avoids typical cryptocurrency price swings. It turns out that this is key to building off-chain composable financial systems.
+
