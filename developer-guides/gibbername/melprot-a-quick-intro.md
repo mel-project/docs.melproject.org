@@ -60,7 +60,7 @@ let snap_200 = snap_100.get_older(BlockHeight(200)).await?;
 
 A very common task for thin clients is traversing the **coin graph** of the blockchain, which is the global directed graph of all transactions spending and creating coins. For instance, this is a fragment of the coin graph centered around [a particular mainnet transaction in block 1901450](https://scan.themelio.org/blocks/1901450/674735b7b7e4163f7404715bd6b8433a8db523c52279ad07e2b4e88a6708d873):
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 Given a known starting point --- a particular transaction with a known location on the blockchain --- the basic snapshot model detailed above allows easy traversal:
 

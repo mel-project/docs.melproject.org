@@ -16,7 +16,7 @@ The Melmint mechanism described in the previous section maintains the MEL/SYM pa
 
 In order to maintain the other pairs, we'll need YOU to make some :moneybag: through arbitrage.
 
-<img src="../../../.gitbook/assets/image (1).png" alt="" data-size="original">
+<img src="../../../.gitbook/assets/image (1) (1).png" alt="" data-size="original">
 
 ## Using melwallet CLI to arbitrage
 
