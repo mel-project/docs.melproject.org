@@ -14,4 +14,6 @@ Check out the old docs on our [TXO-based data model](https://docs.themelio.org/b
 
 ## Mel's data model: coins with superpowers
 
+The **data model** of a blockchain
+
 ## Synergy with governance-free neutrality
