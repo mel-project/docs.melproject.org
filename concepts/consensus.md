@@ -77,4 +77,28 @@ Towards this end, we have a "carrot" and a "stick".
 
 Unlike most blockchains, Mel studiously avoids non-coordination assumptions in its consensus incentives. This means that it's _totally fine for rational stakers to collude_ and attempt to extract monopoly profits, or worse. Decentralization becomes more a matter of fault tolerance and ensuring that the average staker is economically rational, rather than trying to make collusion impossible, making the consensus oligopoly situations that often occur with both PoS and PoW much less scary.
 
-The way Mel does this is a little surprising: we _give stakers all the tools they need to collude in a fee cartel_. In a system distantly inspired by EIP-1559, stakers vote on a uniform minimum fee level that all stakers must charge, in a system designed to simulate a "despotic" blockchain controlled entirely by a rational profit-maximizing monopoly --- who would turns out to actually behave in a trustworthy manner. This way, incentives to collude to extract more fees
+The way Mel does this is a little surprising: we _give stakers all the tools they need to collude in a fee cartel_. In a system distantly inspired by EIP-1559, stakers vote on a uniform minimum fee level that all stakers must charge, in a system designed to simulate a "despotic" blockchain controlled entirely by a rational profit-maximizing monopoly --- who would turns out to actually behave in a trustworthy manner. This way, incentives to collude to extract more fees disappear, the equilibrium fee is the same no matter the level of collusion, and a whole lot of game-theoretical gnarliness surrounding pathological strategies in not-quite-collusion conditions (e.g. just a few dominant stakers) disappears.
+
+Furthermore, our fee model turns to have the additional benefit of funding staker income almost entirely through fees rather than inflation, making staker income much more closely aligned with the interests of actual users of the blockchain rather than "SYM go up" or even "block reward go up".
+
+### Stick: slashing and nuking
+
+Like in other PoS systems, misbehaving stakers are punished by _slashing_ their stake. Anybody observing a staker misbehaving in a provable way (say, by signing two conflicting blocks for the same height) can submit a transaction that slashes their stake. This is also the reason for the mandatory "inactive epoch" before unstaking: to give a chance for slashing evidence to be submitted before the staker leaves.
+
+Two important features separate Mel slashing from most other systems.
+
+First, _slashing totally destroys the stake, redistributing it among other stakers_. Unlike blockchains like Ethereum that attempt to differentially penalize slashing based on how likely it is that it's part of coordinated attack, any slashing in Mel splits up the entire stake to the other stakers. Not only does this simplify the incentives and increase security, it gives an incentive for stakers to police each other, as they all stand to profit if a staker is slashed!
+
+Second, there is _nuking_, an exceptional action similar but not quite like slashing, where more than 1/3 of the voting power has behaved maliciously. In this case, it is not possible to slash them on-chain anymore, since the malicious stakers can simply censor anybody who attempts to expose them.
+
+Instead, _all nodes and clients are programmed to shut down_ if given proof of nuking. This makes attacking the network successfully without quickly shutting down the network extremely difficult even with the cooperation of all consensus participants, making the set of adversaries who would benefit from breaking consensus safety much smaller.
+
+If even despite this threat nuking happens, a manual hard-fork recovery would indeed be necessary, but coordinating this would be much easier because people would be forced to recover the nuked network; there is simply no option to go along with the attack. Or in Vitalik's words, successful consensus attacks ["default to chaos" rather than "default to victory"](https://vitalik.ca/general/2020/08/17/philosophy.html).
+
+## Summary
+
+Mel's consensus is a combination of a fixed-term proof-of-stake, a Byzantine fault-tolerant consensus algorithm, and a collusion-tolerant fee economy with strict slashing and "nuking".
+
+Proof-of-stake decides who gets to participate in consensus, and the consensus algorithm decides how blocks are created and provides immediate finality. The consensus game incentivizes stakers to create blocks reliably, with the "carrot" of a collusion-tolerant fee economy and the "stick" of strict slashing and nuking.
+
+The combination of these three elements provides strong economic security against long-term consensus attacks, while also making light clients easy to write and blockchain upgrades easy to implement.
