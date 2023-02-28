@@ -11,18 +11,3 @@ You may want to check out:
 * A [forum post](https://forum.themelio.org/t/some-thoughts-on-melmint-stability/29) on how Melmint can stay stable in all sorts of weird circumstances
 {% endhint %}
 
-
-
-## What MEL is
-
-
-
-## How MEL works
-
-
-
-## Why MEL is stable
-
-
-
-## How MEL contributes to the occ vision
