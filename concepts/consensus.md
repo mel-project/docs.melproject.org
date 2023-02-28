@@ -26,7 +26,7 @@ To illustrate this, let's look at example. Here, Stacy is a staker node, and Ali
 
 This somewhat weirdly constrained staking system has to important consequences:
 
-- Although stakes can be locked at any time, the _voting power distribution only changes at epoch boundaries_. This turns out to be crucial for [mitigating "weak subjectivity" and enabling scalable and trustless light clients](light-clients.md).
+- Although stakes can be locked at any time, the _vote weights only change at epoch boundaries_. This turns out to be crucial for [mitigating "weak subjectivity" and enabling scalable and trustless light clients](light-clients.md).
 - _Each stake is "inactive" for 1 epoch before unlocking_ --- epoch 10 in our illustrated example. This is important for economic security, as we will discuss shortly in the section on incentives.
 
 ## The BFT consensus itself
@@ -50,3 +50,17 @@ Mel therefore does not use a longest-chain algorithm. Instead, we use an _immedi
 This solves all the finality problems related to off-chain composability, especially when combined with the next point --- off-chain verifiable proofs that a particular block is canonical.
 
 ### Detached consensus proofs
+
+Every Mel block committed to history has a **consensus proof** --- signatures from stakers whose aggregate vote share for the epoch that the block belongs to exceeds 2/3 of the total vote share.
+
+The interesting thing is that these proofs are _detached_ from the precise mechanism in which the BFT consensus works. The consensus algorithm does not need to produce the consensus proof: it may simply guarantee that all honest participants arrive at the same belief for each block. Each staker can then just "ask around" after the consensus produces a result, and given that the BFT consensus is correct, it's guaranteed that they will eventually gather a consensus proof and be able to broadcast the block to the wider Mel network.
+
+In short, there's a three-step process for creating a block in Mel:
+
+1. the stakers, among themselves, run a BFT to decide the block
+2. an "asking around" gossip produces a consensus proof
+3. the block, with a consensus proof attached, is broadcast throughout the Mel network and becomes part of history.
+
+This means that nobody other than the stakers need to care about the precise way the BFT works. In particular, _changing the consensus algorithm doesn't need a governance upgrade to the blockchain validation rules_, which is important given [Mel's governance-free ethos](governance-free-neutrality.md) and the steady innovation seen in BFT consensus algorithms. For instance, through the history of the Mel betanet we started with a rough implementation of HotStuff, moved to the extremely simple and elegant Streamlet consensus, then to a different instantiation, ["Streamlette"](https://github.com/mel-project/streamlette), optimized for deciding one block in an immediate-finality setting.
+
+Moreover, the simplicity of the consensus proof makes it really easy to verify by off-chain apps other than blockchain nodes. A light client that has the vote weights for the current epochs (which can be known [near-trustlessly](light-clients.md)) can easily verify a claim that a certain block is canonical, by simply checking the signatures in the consensus proof and adding the corresponding weights. This makes fully consensus-verifying light clients much easier to write than those for PoS algorithms with complex finalization rules (say, Ethereum), or even longest-chain proof-of-work blockchains.
