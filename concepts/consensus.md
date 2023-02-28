@@ -23,3 +23,30 @@ The SYM --- known as an individual **stake** --- is then locked up until the end
 To illustrate this, let's look at example. Here, Stacy is a staker node, and Alice is someone who staked 100 SYM at block height 900,000 for epochs 5..10, designating Stacy as the beneficiary:
 
 <figure><img src="../.gitbook/assets/stake-diagram.png" alt=""></figure>
+
+This somewhat weirdly constrained staking system has to important consequences:
+
+- Although stakes can be locked at any time, the _voting power distribution only changes at epoch boundaries_. This turns out to be crucial for [mitigating "weak subjectivity" and enabling scalable and trustless light clients](light-clients.md).
+- _Each stake is "inactive" for 1 epoch before unlocking_ --- epoch 10 in our illustrated example. This is important for economic security, as we will discuss shortly in the section on incentives.
+
+## The BFT consensus itself
+
+Given the list of consensus participants produced through proof-of-stake, a consensus protocol still needs to run to actually produce any blocks. The two important properties of Mel's consensus protocol, Synkletos, are its _immediate finality_ and _detached consensus proofs_.
+
+### Immediate finality
+
+Most blockchains use some form of "longest-chain" consensus, such as [Nakamoto consensus](https://decentralizedthoughts.github.io/2021-10-15-Nakamoto-Consensus/). There, anyone can grow the blockchain by building more blocks on existing blocks and broadcasting them, forming a continually growing "block tree". We then simply define the canonical blockchain as the "longest" or "heaviest" branch of this tree by some metric of long or heavy, and design incentives so that people build on what they see as the canonical chain --- this then leads to the canonical branch being overwhelmingly longer than the others.
+
+<figure><img src="../.gitbook/assets/longest-chain.png" alt=""></figure>
+
+Although elegant and highly resilient to temporary network faults, longest-chain consensus has a pretty big problem: lack of **finality**. You can never be sure that what you think is the canonical chain actually is the longest chain, since there _always could be a longer chain that you haven't discovered yet_, due to network lag, a malicious ISP, or other reasons. There's thus no objective, immutable blockchain history.
+
+In practice, this problem mostly affects recent blocks, which often get "reorganized" when other recent branches turn out to be longer, and _most_ of the time waiting for a while (say for an hour) before trusting a block's content makes the chances of a subsequent reorganization past its height exceedingly unlikely. But the problem is that there's no way to define how long "a while" is --- especially when dealing with possibly malicious networks rather than simply lag.
+
+This an especially bad problem for any apps that need to autonomously verify on-chain data from off-chain or other blockchains --- crucial to Mel's off-chain composable vision! All of these apps need to either handle the complex state rollback needed to deal with block reorganizations, or introduce large artificial latencies to wait for blocks to be old enough, which may or may not be long enough depending on factors (network latency and security) outside of the app's control.
+
+Mel therefore does not use a longest-chain algorithm. Instead, we use an _immediately final_ BFT consensus. This means that once a block appears on the blockchain, it is permanently canonical and can _never be reverted_.
+
+This solves all the finality problems related to off-chain composability, especially when combined with the next point --- off-chain verifiable proofs that a particular block is canonical.
+
+### Detached consensus proofs
