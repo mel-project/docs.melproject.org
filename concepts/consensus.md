@@ -6,7 +6,7 @@ In broad strokes:
 
 - Mel uses a _fixed-term proof of stake_ to decide consensus participants, known as **stakers**. Stakers must stake SYM, a special PoS token, for integer multiples of 200,000-block (~70-day) **epochs**, and changes in the effective list of stakers only happen on epoch boundaries.
 - Each block is decided by a Byzantine fault-tolerant (BFT) consensus algorithm that eventually produces a **consensus proof** --- signatures from stakers owning at least 2/3 of the staked SYM. This produces _immediate finality_, meaning the block can never be reverted, and Mel can never have "block reorgs". Interestingly, the exact consensus algorithm used is not part of the core protocol rules and anything can be used as long as it produces consensus proofs of the right format; the current implementation, however, uses Streamlette, an extremely simple consensus derived from Streamlet.
-- The **consensus game** --- the cryptoeconomic mechanism incentivizing consensus correctness --- generally trades off other properties (like capital efficiency) for robust long-term economic security. The "carrot" of a _collusion-resistant fee economy_ allows stakers to extract value primarily through "benign collusion" on fees rather than block rewards or misbehavior. Strict **slashing**, including a catastrophic form known as "nuking", act as unusually powerful "sticks" against staker misbehavior.
+- The **consensus game** --- the cryptoeconomic mechanism incentivizing consensus correctness --- generally trades off other properties (like capital efficiency) for robust long-term economic security. The "carrot" of a _collusion-tolerant fee economy_ allows stakers to extract value primarily through "benign collusion" on fees rather than block rewards or misbehavior. Strict **slashing**, including a catastrophic form known as "nuking", act as unusually powerful "sticks" against staker misbehavior.
 
 ## Staking and epochs
 
@@ -15,7 +15,7 @@ To select who gets to participate in consensus, Mel uses a proof-of-stake system
 How does this work in practice? blockchain history is divided into 200,000-block epochs, conventionally numbered from 0. For example, block 12,345 is in epoch 0, while block 1,968,968 is in epoch 9. Anyone can stake (lock up) a particular SYM for a fixed number epochs, during which this SYM will give a designated staker voting power. This is done by sending a special transaction (of type `TxKind::Stake`, see TodoYellowPaper) with a SYM-denominated output, with the following metadata:
 
 - the _beneficiary staker public key_ that uniquely identifies the staker who receives voting power
-- the _starting epoch_ of this stake, or the first epoch in which this stake contribvutes to the staker's voting power
+- the _starting epoch_ of this stake, or the first epoch in which this stake contributes to the staker's voting power
 - the _post-end epoch of this stake_, or the epoch _after_ the last epoch that the stake contributes to the staker's voting power.
 
 The SYM --- known as an individual **stake** --- is then locked up until the end of the the post-end epoch; after the start of the starting epoch and before the start of the post-end epoch, the staker has voting power.
@@ -24,7 +24,7 @@ To illustrate this, let's look at example. Here, Stacy is a staker node, and Ali
 
 <figure><img src="../.gitbook/assets/stake-diagram.png" alt=""></figure>
 
-This somewhat weirdly constrained staking system has to important consequences:
+This somewhat weirdly constrained staking system has two important consequences:
 
 - Although stakes can be locked at any time, the _vote weights only change at epoch boundaries_. This turns out to be crucial for [mitigating "weak subjectivity" and enabling scalable and trustless light clients](light-clients.md).
 - _Each stake is "inactive" for 1 epoch before unlocking_ --- epoch 10 in our illustrated example. This is important for economic security, as we will discuss shortly in the section on incentives.
@@ -64,3 +64,17 @@ In short, there's a three-step process for creating a block in Mel:
 This means that nobody other than the stakers need to care about the precise way the BFT works. In particular, _changing the consensus algorithm doesn't need a governance upgrade to the blockchain validation rules_, which is important given [Mel's governance-free ethos](governance-free-neutrality.md) and the steady innovation seen in BFT consensus algorithms. For instance, through the history of the Mel betanet we started with a rough implementation of HotStuff, moved to the extremely simple and elegant Streamlet consensus, then to a different instantiation, ["Streamlette"](https://github.com/mel-project/streamlette), optimized for deciding one block in an immediate-finality setting.
 
 Moreover, the simplicity of the consensus proof makes it really easy to verify by off-chain apps other than blockchain nodes. A light client that has the vote weights for the current epochs (which can be known [near-trustlessly](light-clients.md)) can easily verify a claim that a certain block is canonical, by simply checking the signatures in the consensus proof and adding the corresponding weights. This makes fully consensus-verifying light clients much easier to write than those for PoS algorithms with complex finalization rules (say, Ethereum), or even longest-chain proof-of-work blockchains.
+
+## Consensus game
+
+While staking decides _who_ gets to create blocks and the consensus algorithm _how_ they create blocks, the consensus game is the incentives behind _why_ anyone would create blocks.
+
+The overall theme of Mel's consensus game is a overwhelming focus on maximizing economic security, especially long-term economic security. This because with governance delegitimized, we cannot really rely on "the community will fork away the bad guys" as a normal-case defense against consensus attacks (though, as we'll see, it's still used as a defense-in-depth for extreme cases). Upholding consensus security needs to be the profitable thing to do for stakers in a wide variety of circumstances.
+
+Towards this end, we have a "carrot" and a "stick".
+
+### Carrot: collusion-tolerant fee economy
+
+Unlike most blockchains, Mel studiously avoids non-coordination assumptions in its consensus incentives. This means that it's _totally fine for rational stakers to collude_ and attempt to extract monopoly profits, or worse. Decentralization becomes more a matter of fault tolerance and ensuring that the average staker is economically rational, rather than trying to make collusion impossible, making the consensus oligopoly situations that often occur with both PoS and PoW much less scary.
+
+The way Mel does this is a little surprising: we _give stakers all the tools they need to collude in a fee cartel_. In a system distantly inspired by EIP-1559, stakers vote on a uniform minimum fee level that all stakers must charge, in a system designed to simulate a "despotic" blockchain controlled entirely by a rational profit-maximizing monopoly --- who would turns out to actually behave in a trustworthy manner. This way, incentives to collude to extract more fees
