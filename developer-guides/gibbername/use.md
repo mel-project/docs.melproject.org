@@ -1,6 +1,6 @@
 # Use
 
-Now that we've finished writing our `gibbername` crate, we'll demonstrate actually using it in a project. We will build `gibbername-cli`, a trivial wrapper around the library that lets you lookup and register names on the command line. Using it willl look something like
+Now that we've finished writing our `gibbername` crate, we'll demonstrate actually using it in a project. We will build `gibbername-cli`, a trivial wrapper around the library that lets you look up and register names on the command line. Using it willl look something like
 
 ```shell-session
 $ gibbername-cli lookup tofnal-qujjay-seh
