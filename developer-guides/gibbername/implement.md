@@ -16,15 +16,12 @@ The first step of implementing Gibbername is to create a new Rust library with t
 $ cargo new --lib gibbername
      Created library `gibbername` package
 $ cd gibbername
-$ cargo add melprot
-    Updating crates.io index
-    Adding melprot v0.1.0 to dependencies.
 ```
 
-We'll also be using the future-combinators from the `futures-util` library:
+We'll also be adding some dependencies. These will show up in the `Cargo.toml`:
 
 ```shell-session
-$ cargo add futures-util
+$ cargo add futures-util anyhow gibbercode hex melprot melstructs stdcode tmelcrypt
     Updating crates.io index
       Adding futures-util v0.3.26 to dependencies.
 ```
@@ -45,7 +42,7 @@ Instead, we encode a unique blockchain location as two numbers: the _block heigh
 
 This lets us represent any transaction in the blockchain uniquely with two smallish numbers. For instance, the transaction with the "smallest" hash in block `100000` would be represented as `100000,0`.
 
-We then need to represent this pair of numbers as a friendly gibbername. Fortunately, we can use `gibbercode`, a crate that encodes a pair of numbers into a gibberish string using the consonants for the first number and the vowels for the second.
+We then need to represent this pair of numbers as a friendly Gibbername. Fortunately, we can use `gibbercode`, a crate that encodes a pair of numbers into a gibberish string using the consonants for the first number and the vowels for the second.
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```rust
@@ -67,31 +64,44 @@ fn encode_gibbername(height: BlockHeight, index: u32) -> String {
 
 Once we have the blockchain location, we need to retrieve the start transaction. This can be done using `melprot`'s `Snapshot::get_transaction_by_posn()` function.
 
-The start transaction should have a `data` field that says `"gibbername-v1"`, as well as one, and just one, output with denomination `Denom::NewToken`, and that output must have value `1`. This is the way we ensure that a given Gibbername is actually valid.
+The start transaction should have a `data` field that says `"gibbername-v1"`, as well as one, and just one, output with denomination `Denom::NewCustom`, and that output must have value `1`. This is the way we ensure that a given Gibbername is actually valid.
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```rust
-async fn get_start_tx(client: &melprot::Client, gname: &str) -> anyhow::Result<(BlockHeight, TxHash)> {
-    let (height, index) = decode_gibbername(gname)?;
-    let snapshot = blockchain.snapshot(height);
-    let start_tx = snapshot.get_transaction_by_posn(index).await?;
-    // check the data field
-    if start_tx.data != b"gibbername-v1" {
-        anyhow::bail!("invalid data in start transaction");
-    }
-    // check the outputs
-    let newtok_outputs: Vec<_> = start_tx
-        .outputs
-        .iter()
-        .filter(|output| output.denom == Denom::NewToken)
-        .collect();
-    if newtok_outputs.len() == 1 && newtok_outputs[0].value == 1 {
-        Ok((height, start_tx.hash()))
+async fn get_and_validate_start_tx(
+    client: &melprot::Client,
+    gibbername: &str,
+) -> anyhow::Result<(BlockHeight, TxHash)> {
+    let (height, index) = decode_gibbername(gibbername).expect("failed to decode {gibbername}");
+    let snapshot = client.snapshot(height).await?;
+    let txhash = snapshot.get_transaction_by_posn(index as usize).await?;
+
+    // validate the transaction now
+    if let Some(txhash) = txhash {
+        let tx = snapshot
+            .get_transaction(txhash)
+            .await?
+            .expect("expected transaction to exist, because txhash exists");
+
+        // check the data
+        if &tx.data[..] != b"gibbername-v1" {
+            anyhow::bail!("invalid data in the start transaction: {:?}", tx.data);
+        }
+
+        let new_outputs = tx
+            .outputs
+            .iter()
+            .filter(|output| output.denom == Denom::NewCustom)
+            .collect::<Vec<&CoinData>>();
+        if new_outputs.len() == 1 && new_outputs[0].value == CoinValue(1) {
+            Ok((height, tx.hash_nosigs()))
+        } else {
+            anyhow::bail!("invalid start transaction outputs");
+        }
     } else {
-        anyhow::bail!("invalid tx outputs");
+        anyhow::bail!("could not find starting transaction for the given gibbername: {gibbername}");
     }
 }
-
 ```
 {% endcode %}
 
@@ -101,48 +111,58 @@ Finally, we can traverse the Catena chain to get the coin containing the final b
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```rust
-async fn traverse_catena(
+async fn traverse_catena_chain(
     client: &melprot::Client,
     start_height: BlockHeight,
     start_txhash: TxHash,
 ) -> anyhow::Result<CoinData> {
-    // Traverse the graph in the forward direction using the `traverse_fwd` function. The closure passed to `traverse_fwd` defines the condition for picking the next transaction in the traversal
-    // In this case, it returns the first (and unique!) output with either of the following conditions:
-    //  - At the beginning find the denomination `Denom::NewToken`
-    //  - Otherwise: find the custom denomination named after the starting transaction's hash
-    let traversal: Vec<Transaction> = client
-        .traverse_fwd(
-            start_height,
-            start_txhash,
-            |txn: &Transaction| {
-                txn.outputs
-                    .iter()
-                    .find(|cd| (txn.hash() == start_txhash && cd.denom == Denom::NewToken)
-                        || cd.denom == Denom::Custom(start_txhash))
-            },
-        )
-        .collect()
-        .await?;
 
-    // Get the last transaction in the traversal
-    let last_transaction = traversal
-        .last()
-        .context("the traversal is empty?!")?;
+    // First, we get a collection of transactions from our starting height and txhash. 
+    // We also include a closure that tells us to look for the transaction output that follow our Gibbername rules (a Denom that's either Custom(<start_txhash>) or NewCustom)
+    let traversal = client
+        .traverse_fwd(start_height, start_txhash, move |tx: &Transaction| {
+            tx.outputs.iter().position(|coin_data| {
+                (tx.hash_nosigs() == start_txhash && coin_data.denom == Denom::NewCustom)
+                    || coin_data.denom == Denom::Custom(start_txhash)
+            })
+        })
+        .expect("failed to traverse forward")
+        .collect::<Vec<Transaction>>()
+        .await;
 
-    // Return an output with denomination `Denom::NewToken` if it exists
-    // If not, the name is considered to be permanently deleted
-    if let Some(final) = last_transaction
+    // If the traversal is empty, it means either:
+    // 1. The current height and txhash represent the end of the traversal
+    // 2. We couldn't find anything for the given height and txhash
+    if traversal.is_empty() {
+        let snap = client.snapshot(start_height).await?;
+        let tx = snap
+            .get_transaction(start_txhash)
+            .await?
+            .context("No transaction with given hash")?;
+        let coin = tx
+            .outputs
+            .iter()
+            .find(|coin| coin.denom == Denom::NewCustom);
+
+        match coin {
+            Some(coin_data) => return Ok(coin_data.clone()),
+            None => anyhow::bail!("No valid gibbercoins found"),
+        }
+    }
+    
+    // Return the last coin in the traversal if it exists
+    let last_tx = traversal.last().expect("the traversal is empty");
+    if let Some(last_tx_coin) = last_tx
         .outputs
         .iter()
-        .find(|cd| cd.denom == Denom::NewToken)
+        .find(|coin_data| coin_data.denom == Denom::Custom(start_txhash))
     {
-        Ok(final)
+        Ok(last_tx_coin.clone())
     } else {
-        // Catena chain stops because the custom token was destroyed.
-        // this means the name is permanently deleted
-        anyhow::bail!("name is permanently deleted")
+        anyhow::bail!("the name was permanently deleted");
     }
 }
+
 ```
 {% endcode %}
 
@@ -150,16 +170,12 @@ We can now easily build the gibbername lookup function!
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```rust
-pub async fn lookup(
-    client: &melprot::Client,
-    gname: &str,
-) -> anyhow::Result<Option<String>> {
-    // find the coin containing the final binding
-    let (start_height, start_txhash) = get_start_tx(client, gname).await?;
-    let coin = traverse_catena(client, start_height, start_txhash).await?;
-    // interpret the additional_data field as a UTF-8 string
-    let binding = String::from_utf8_lossy(&coin.additional_data);
-    Ok(Some(binding.to_owned()))
+pub async fn lookup(client: &melprot::Client, gibbername: &str) -> anyhow::Result<String> {
+    let (start_height, start_txhash) = get_and_validate_start_tx(client, gibbername).await?;
+    let last_coin = traverse_catena_chain(client, start_height, start_txhash).await?;
+    let binding = String::from_utf8_lossy(&last_coin.additional_data);
+
+    Ok(binding.into_owned())
 }
 ```
 {% endcode %}
@@ -172,62 +188,73 @@ One possible way is to craft a transaction inside our library and send it by dir
 
 Instead, we **ask the user's wallet to send a transaction for us**, and we simply wait until the user finishes doing so. In summary, here are the steps to register a new gibbername:
 
-* Construct a _wallet URI_ using the standard `melwallet:` URI scheme, describing the transaction we need the user to send
-* Prompt the user to "open" this URI with their wallet
-  * Right now, we will prompt the user to do so manually.
-  * Eventually, a graphical "Gibbername registrar app" should integrate with OS-specific URI-opening functionality.
-* Wait for the transaction to commit and derive a gibbername from the location at which the transaction was committed
-
-### Constructing the wallet URI
-
-We begin by adding `melwallet_uri` to our Cargo dependencies:
-
-```shell-session
-$ cargo add melwallet_uri
-```
-
-We then write a helper function that generates a Gibbername registration transaction that registers the ownership of the name to a given address:
-
-{% code overflow="wrap" lineNumbers="true" %}
-```rust
-fn register_name_uri(address: Address, initial_binding: &str) -> melwallet_uri::MwUri {
-    melwallet_uri::MwUriBuilder::new()
-        .output(0, CoinData {
-            denom: NewCoin::Denom,
-            value: 1.into(),
-            covhash: address,
-            additional_data: initial_binding.as_bytes().into(),
-        })
-        .data(b"gibbername-v1")
-        .build()
-}
-```
-{% endcode %}
-
 ### Prompt and wait for the transaction
 
 We can now write a function to send the transaction and wait for it to commit in the blockchain.
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```rust
-/// Prompts the user to register a gibbername, bound to the given initial binding, and blocks until the gibbername is registered, returning the gibbername.
-pub async fn register(client: &melprot::Client, address: Address, initial_binding: &str) -> anyhow::Result<String> {
-    let current_height = client.latest_snapshot().header().height;
-    let uri = register_name_uri(address, initial_binding);
-    println!("send with your wallet: {}", uri);
-    // scan through all transactions happening on this address, starting at the block height right before we asked the user to send the transaction. we use an async, Stream-based API
-    let stream = client.stream_transactions_from(current_height, address);
-    while let Some((transaction, height, posn)) = stream.next().await {
-        if transaction.data == b"gibbername-v1" {
-            return Ok(encode_gibbername(height, posn))
+pub async fn register(
+    client: &melprot::Client,
+    address: Address,
+    initial_binding: &str,
+) -> anyhow::Result<String> {
+    let height = client.latest_snapshot().await?.current_header().height;
+    let wallet_name = "last";
+    let cmd = register_name_cmd(wallet_name, address, initial_binding)?;
+    
+    // ask the user to send this command in melwallet-cli
+    println!("Send this command with your wallet: {}", cmd);
+
+    // scan through all transactions involving this address, starting at the block height right before we asked the user to send the transacton
+    let mut stream = client.stream_transactions_from(height, address).boxed();
+    while let Some((transaction, height)) = stream.next().await {
+        if &transaction.data[..] == b"gibbername-v1" {
+            let txhash = transaction.hash_nosigs();
+            let posn = client
+                .snapshot(height)
+                .await?
+                .current_block()
+                .await?
+                .abbreviate()
+                .txhashes
+                .iter()
+                .position(|hash| *hash == txhash)
+                .expect("No transaction with matching hash in this block.");
+
+            let gibbername = encode_gibbername(height, posn as u32)?;
+            return Ok(gibbername);
         }
     }
-    unreachable!() // the stream is never supposed to terminate
+    unreachable!()
 }
 ```
 {% endcode %}
 
-We are now done with registering names! :rocket:
+```rust
+// A small helper function to create the wallet command for registering a name.
+fn register_name_cmd(
+    wallet_name: &str,
+    address: Address,
+    initial_binding: &str,
+) -> anyhow::Result<String> {
+    let cmd = format!(
+        "melwallet-cli send -w {} --to {},{},{},\"{}\" --hex-data {}",
+        wallet_name,
+        address,
+        0.000001,
+        "\"(NEWCUSTOM)\"",
+        hex::encode(initial_binding),
+        hex::encode("gibbername-v1")
+    );
+
+    Ok(cmd)
+}
+```
+
+When this function is called, the user will be prompted to manually send a transaction with our wallet CLI:`melwallet-cli`. We will continuously stream incoming transactions until we find the one we sent.
+
+We are now able to register a name with an arbitrary binding! :rocket:
 
 ## Transferring names
 
@@ -235,4 +262,14 @@ Transferring names is left as an exercise to the reader.&#x20;
 
 {% hint style="info" %}
 **Hint**: you'll need to construct a wallet URI to extend the Catena chain and prompt the user, just like with registration. If you're truly stuck, there's always our GitHub example code :smile:
+{% endhint %}
+
+{% hint style="info" %}
+Wallet URIs are still under construction, but they will replace the current UX of sending transactions directly. Here's a quick preview of what they will look like:
+
+* Construct a _wallet URI_ using the standard `melwallet:` URI scheme, describing the transaction we need the user to send
+* Prompt the user to "open" this URI with their wallet
+  * Right now, we will prompt the user to do so manually.
+  * Eventually, a graphical "Gibbername registrar app" should integrate with OS-specific URI-opening functionality.
+* Wait for the transaction to commit and derive a gibbername from the location at which the transaction was committed
 {% endhint %}
