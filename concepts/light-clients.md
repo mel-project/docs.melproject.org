@@ -10,10 +10,10 @@ Trustless light clients are possible due to two things: extensive **state commit
 
 Every Mel block has a short **header** that commits to the contents of that block and previous history, but also the entire _state_ of the blockchain. The detailed data format can be seen in the TodoYellowPaper, but on a high level, the Mel block header contains the root hashes for the following **sparse Merkle trees** (SMTs) that commit to on-chain state:
 
-* Block number of a previous block -> its hash
-* [Unspent coin](data-model.md) IDs (transaction hash and index) -> coin contents and the height at which it was committed
-* [Covenant](data-model.md) hash -> number of unspent coins with that covenant
-* A list of all _frozen_ [stakes](consensus.md) (whether active or inactive)
+- Block number of a previous block -> its hash
+- [Unspent coin](data-model.md) IDs (transaction hash and index) -> coin contents and the height at which it was committed
+- [Covenant](data-model.md) hash -> number of unspent coins with that covenant
+- A list of all _frozen_ [stakes](consensus.md) (whether active or inactive)
 
 SMTs are a key-value mapping structure that has an important property: they can produce succinct proofs, checkable by anyone with the root hash, that a certain key is mapped to a certain value (proof of inclusion), or that a certain key is absent from the mapping (proof of exclusion).
 
@@ -22,6 +22,7 @@ What this means is that when a light client asks a full node, say, to list all t
 This is useful beyond simple queries made by e.g. wallets. In fact, we can design [highly flexible _coin graph traversal_ APIs](../developer-guides/gibbername/melprot-a-quick-intro.md) on top of these verified SMT queries, allowing trustless and efficient manipulation of all sorts of on-chain data:
 
 {% code overflow="wrap" %}
+
 ```rust
 // Traverse through the first parent, its first parent, etc of 674735b7b7e4163f7404715bd6b8433a8db523c52279ad07e2b4e88a6708d873 indefinitely, until a coinbase transaction is hit
 let client = melprot::Client::autoconnect(NetID::Mainnet);
@@ -37,6 +38,7 @@ while let Some(next) = traversal.next().await? {
    println!("transaction found: {:?}", next);
 }
 ```
+
 {% endcode %}
 
 Of course, all this magic is possible only if we assume that the client already knows the latest block header. That requires a secure bootstrapping procedure.
@@ -60,12 +62,12 @@ This gives us an elegant recursive algorithm to derive the current stake set, as
 
 To get the active stakes of epoch N:
 
-* If we already know it, we are done. (base case)
-* Otherwise,
-  * We get the active stakes of epoch N-1
-  * We ask for the last block header of the epoch N-1, verifying the consensus proof with the active stakes we just obtained
-  * We ask for the list of all stakes locked by the end of epoch N-1, verifying it against the commitment in the block header
-  * We filter the list for stakes that will be active in epoch N, and return that.
+- If we already know it, we are done. (base case)
+- Otherwise,
+  - We get the active stakes of epoch N-1
+  - We ask for the last block header of the epoch N-1, verifying the consensus proof with the active stakes we just obtained
+  - We ask for the list of all stakes locked by the end of epoch N-1, verifying it against the commitment in the block header
+  - We filter the list for stakes that will be active in epoch N, and return that.
 
 ### "Ultraweak subjectivity"
 

@@ -34,12 +34,12 @@ Furthermore, coin-based transactions can generally be processed more efficiently
 
 A full specification is found in the yellow paper (TODO), but from a high level a Mel coin contains the following:
 
-* A **value**, like 100
-* A **token denomination**, like MEL, SYM, or a custom token
-* A **covenant hash**, referring to the covenant that locks this coin by hash
-* Arbitrary **additional data**, usually used to pass arguments to covenants
+- A **value**, like 100
+- A **token denomination**, like MEL, SYM, or a custom token
+- A **covenant hash**, referring to the covenant that locks this coin by hash
+- Arbitrary **additional data**, usually used to pass arguments to covenants
 
-An interesting fact is that we never embed covenants directly into coins, but only refer to them by hash. This is because the _spending_ transaction actually needs to supply the covenant — a technique borrowed from Bitcoin's ["pay by script hash"](https://en.bitcoin.it/wiki/Pay\_to\_script\_hash) that avoids bloating the blockchain state with code before it is run.
+An interesting fact is that we never embed covenants directly into coins, but only refer to them by hash. This is because the _spending_ transaction actually needs to supply the covenant — a technique borrowed from Bitcoin's ["pay by script hash"](https://en.bitcoin.it/wiki/Pay_to_script_hash) that avoids bloating the blockchain state with code before it is run.
 
 ## Querying coins
 
