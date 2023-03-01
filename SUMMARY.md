@@ -12,7 +12,7 @@
 * [Covenants + Melodeon](concepts/covenants-+-melodeon.md)
 * [Light clients](concepts/light-clients.md)
 * [Network architecture](concepts/network-architecture.md)
-* [Network protocol](concepts/network-protocol.md)
+* [Melnet: the P2P layer](concepts/melnet-the-p2p-layer.md)
 * [What belongs on chain?](concepts/what-belongs-on-chain.md)
 * [The Mel-powered future](concepts/the-mel-powered-future.md)
 

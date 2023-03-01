@@ -15,4 +15,4 @@ In Mel, participants in the network can be divided into three roles:
 * _Validator_ is highly misleading, since the main purpose of consensus is not to "validate" blocks, but to produce and decide on them. In fact, "validation" describes the job of normal full nodes much better!
 {% endhint %}
 
-The staker and replica nodes form a P2P gossip network using the [HTTP-based melnet protocol](network-protocol.md); light clients can also talk the same protocol to query these nodes.\
+The staker and replica nodes form a P2P gossip network using the [HTTP-based melnet protocol](melnet-the-p2p-layer.md); light clients can also talk the same protocol to query these nodes.\
