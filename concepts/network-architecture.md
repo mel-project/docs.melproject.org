@@ -11,8 +11,8 @@ In Mel, participants in the network can be divided into three roles:
 {% hint style="info" %}
 **Note**: "stakers" are called "validators" in most other blockchains. We intentionally use a different word because:
 
-* _Staker_ normalizes self-staking rather than pooled staking, and makes it clear that delegating stake to a staker is equivalent in trust to giving them a loan.
-* _Validator_ is highly misleading, since the main purpose of consensus is not to "validate" blocks, but to produce a  them.&#x20;
+* _Staker_ normalizes self-staking rather than pooled staking, and makes it clear that delegating stake to a staker is similar in trust to giving them a loan.
+* _Validator_ is highly misleading, since the main purpose of consensus is not to "validate" blocks, but to produce and decide on them. In fact, "validation" describes the job of normal full nodes much better!
 {% endhint %}
 
 The staker and replica nodes form a P2P gossip network using the [HTTP-based melnet protocol](network-protocol.md); light clients can also talk the same protocol to query these nodes.\
