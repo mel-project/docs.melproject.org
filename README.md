@@ -10,8 +10,6 @@ Web3 looks like it's heading into a bright future. By combining incentives and c
 
 But on a closer look, there's a big problem: **web3's revolution is trapped inside blockchains**. Smart contracts running on blockchains may have the strong neutrality, decentralization, and censorship-resistance that Web3 promises, but everywhere else, Web2's problems seem to crop up with a vengeance.
 
-<figure><img src="https://lh6.googleusercontent.com/5hjXD0MECAaWMoCLmJtvB2F_K0RfC4lhbdnZdTL44c7MROXfLVF45yngnX6F46UmZKfgLTSL971M4gcVMDbc0zBIVXe_z2q5xkiTeMnHpzCsPP2dwR4XrqCIzPUtLDhWUPenVhi-65S2WqErjE1ee0T1wQ=s2048" alt=""><figcaption></figcaption></figure>
-
 ### Web3 gateways
 
 Nowhere is the lack of "Web3 superpowers" clearer than in dApp frontends: off-chain programs used to interact with on-chain systems by inherently off-chain humans and devices. The typical dApp frontend is nakedly a Web2 service, with a centralized server hosting a webpage (like [app.uniswap.org](https://app.u)) calling a centralized SaaS service to interact with on-chain smart contracts on the user's behalf.&#x20;
@@ -34,10 +32,7 @@ And of course, mainstream internet users at the mercy of abusive Web2 desperatel
 
 We believe that the way to free Web3 is a new paradigm for Web3: **off-chain composability**. Current blockchains host complex on-chain ecosystems of smart contracts with "frontends" that struggle to interface with them. Instead, we envision **full-stack** off-chain dApps leveraging Mel as the **web3 superpower** **component**, not as a platform.
 
-\
-
-
-<figure><img src="https://lh5.googleusercontent.com/qYoe5Gvu51c5Jhu_Cr6Z0DmBbQs5bFHov_mx6EuAAVLtaaczghWcmpFIgjXUq3MiJ_bRA23gRIn_7Kd9ynvb10h8aPiinRqbBWQGV_A4R8L-IRbp_HrVs81sD_vEfas5ooQjLs0iuk-tO29Njh2NeASesA=s2048" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 This will be a largely non-blockchain world with two key properties:
 
