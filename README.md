@@ -67,11 +67,11 @@ It turns out that ease of off-chain composability requires many design trade-off
 
 Unfortunately, current blockchains, especially fancy new ones, double down on one or more features, trading away off-chain composability for an on-chain ecosystem. That's why we made a new L1 from scratch, optimizing every part of Mel for being the **decentralized security keystone** that enables an off-chain composable Web3.
 
-## Up next: how Mel frees web3
+## An overview of the docs
 
-We'll dive into how key components of Mel are designed for off-chain composability (specifically, **producing** and **exporting** Web3 superpowers) in subsequent pages:
+Throughout this website, you'll find
 
-* The synergy between Mel's composable data model and governance-free neutrality
-* The collusion-resistant, light-client-friendly consensus game
-* The native currency MEL, stabilized without oracles by the Melmint mechanism&#x20;
+* A wiki on key Mel concepts from our TXO-based data model to Melnet, our HTTP-based P2P layer
+* Guides on developer-oriented tasks like [building an off-chain composable protocol](developer-guides/gibbername/) and [minting MEL](developer-guides/melmint/getting-tokens/using-melminter.md)
+* Resources like a [FAQ](resources/page-3.md) and [yellow paper](resources/yellow-paper.md)
 
