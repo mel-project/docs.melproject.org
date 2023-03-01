@@ -252,7 +252,16 @@ fn register_name_cmd(
 }
 ```
 
-When this function is called, the user will be prompted to manually send a transaction with our wallet CLI:`melwallet-cli`. We will continuously stream incoming transactions until we find the one we sent.
+When this function is called, the user will be prompted to manually send a transaction with our wallet CLI:`melwallet-cli`. We will continuously stream incoming transactions until we find the one we sent. This process will be as follows:
+
+```shell-session
+$ cargo install --locked melwallet-client melwalletd
+...
+$ melwallet-cli unlock -w <wallet-name>
+
+# this will be generated for you
+$ melwalet-cli send -w <wallet-name> --to <wallet-addr>,<0.000001>,"(NEWCUSTOM)",<initial-binding-hex> --hex-data <gibbername-v1-hex>
+```
 
 We are now able to register a name with an arbitrary binding! :rocket:
 
