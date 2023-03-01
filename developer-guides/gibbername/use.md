@@ -106,11 +106,9 @@ use futures_lite::future::block_on;
 
 fn main() -> anyhow::Result<()> {
     let args: Cli = argh::from_env();
-
     // keep around a client
-    let client = futures_lite::future::block_on(
-        melprot::Client::autoconnect(NetID::Testnet)
-    )?;
+    let client = block_on(melprot::Client::autoconnect(NetID::Testnet))?;
+
     match args.command {
         Command::Lookup(lookup) => {
             // we don't need a futures runtime, block_on is fine
@@ -143,7 +141,6 @@ Now we run the `melwallet-cli` command which will register our gibbername:
 
 Finally, we can look up the binding we set in our `register` command using `lookup`:
 
-```
-$ cargo run -- lookup zewses
-hello CLI
-```
+<pre><code><strong>$ cargo run -- lookup zewses
+</strong>hello CLI
+</code></pre>
