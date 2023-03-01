@@ -39,9 +39,8 @@ println!("address {} has {} UTXOs now but {} UTXOs at block 10000",
 
 Within a snapshot at a given height, there are many mappings associated with the state of the blockchain at that given height and a variety of methods for conveniently looking them up. Some of the most important ones include:
 
-* `get_coin(id: CoinID)`: given the ID (txhash and index) of a particular coin, return the coin data.
-
-**TODO: FILL THIS IN WITH THE MOST COMMON ONES**
+* `get_coin(id: CoinID)`: given the ID (transaction hash and index) of a particular coin, return the coin data.
+* `get_transaction(txhash: TxHash)`: given a transaction hash, return the `Transaction` if it exists.
 
 ### Moving a snapshot back in time
 
@@ -71,6 +70,7 @@ It's certainly possible to manually implement the above, but `melprot` provides 
 
 ```rust
 let client = melprot::Client::autoconnect(NetID::Mainnet);
+
 let traversal = client.traverse_back(
    BlockHeight(1901450),
    "674735b7b7e4163f7404715bd6b8433a8db523c52279ad07e2b4e88a6708d873".parse()?,
@@ -78,7 +78,8 @@ let traversal = client.traverse_back(
       // find the first input
       tx.outputs.get(0)
    }
-);
+).boxed();
+
 while let Some(next) = traversal.next().await? {
    println!("transaction found: {:?}", next);
 }
@@ -86,4 +87,4 @@ while let Some(next) = traversal.next().await? {
 
 The above example will, starting from the [transaction mentioned previously](https://scan.themelio.org/blocks/1901450/674735b7b7e4163f7404715bd6b8433a8db523c52279ad07e2b4e88a6708d873), traverse its ancestry through the first input until it hits a transaction with no inputs (the first ever transaction in the blockchain!). Graphically, it essentially does this:
 
-<figure><img src="../../.gitbook/assets/output (1).gif" alt=""><figcaption><p>Clicking on the first parent indefinitely</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/output.gif" alt=""><figcaption><p>Clicking on the first parent indefinitely</p></figcaption></figure>

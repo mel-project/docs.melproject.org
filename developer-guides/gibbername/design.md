@@ -50,13 +50,13 @@ But this has several disadvantages:
 Instead, we use **special transaction metadata** **custom token denomination** to mark Catena chains used by Gibbername. In particular: the _first_ transaction in a Gibbername Catena chain must:
 
 * Have the `Transaction::data` field set to `"gibbername-v1"`
-* Have _one of its outputs_ have denomination `Denom::NewToken` and value `1`.
+* Have _one of its outputs_ have denomination `Denom::NewCustom` and value `1`.
 
 Subsequently, the canonical Catena chain is defined as the unique chain of coins that have denomination `Denom::Custom(<transaction hash of the first transaction>)`.
 
 This exploits two nice features of Mel's transaction model:
 
-* A coin with `Denom::NewToken` creates a new, unique token denomination named after the hash of its parent transaction.
+* A coin with `Denom::NewCustom` creates a new, unique token denomination named after the hash of its parent transaction.
 * A coin with value `1` can no longer be subdivided by spending transactions. There's thus always only going to be one unspent coin in the world with the right denomination, making a unique Catena chain.
 
 ```
