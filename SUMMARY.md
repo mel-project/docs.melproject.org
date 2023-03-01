@@ -6,11 +6,12 @@
 - [Data model](concepts/data-model.md)
 - [Consensus](concepts/consensus.md)
 - [MEL: trustless sound money](concepts/melmint.md)
-- [Network protocol](concepts/network-protocol.md)
 - [Governance-free neutrality](concepts/governance-free-neutrality.md)
 - [Mel vs. modular blockchains](concepts/mel-vs.-modular-blockchains.md)
 - [Covenants + Melodeon](concepts/covenants-+-melodeon.md)
 - [Light clients](concepts/light-clients.md)
+- [Network architecture](concepts/network-architectur.md)
+- [Network protocol](concepts/network-protocol.md)
 - [What belongs on chain?](concepts/what-belongs-on-chain.md)
 - [The Mel-powered future](concepts/the-mel-powered-future.md)
 
