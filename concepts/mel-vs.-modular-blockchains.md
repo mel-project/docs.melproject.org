@@ -1,2 +1,0 @@
-# Mel vs. modular blockchains
-

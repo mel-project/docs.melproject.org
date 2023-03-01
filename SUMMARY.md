@@ -8,13 +8,11 @@
 * [Consensus](concepts/consensus.md)
 * [MEL: trustless sound money](concepts/melmint.md)
 * [Governance-free neutrality](concepts/governance-free-neutrality.md)
-* [Mel vs. modular blockchains](concepts/mel-vs.-modular-blockchains.md)
-* [Covenants + Melodeon](concepts/covenants-+-melodeon.md)
+* [Covenants](concepts/covenants.md)
 * [Light clients](concepts/light-clients.md)
 * [Network architecture](concepts/network-architecture.md)
 * [Melnet: the P2P layer](concepts/melnet-the-p2p-layer.md)
 * [What belongs on-chain?](concepts/what-belongs-on-chain.md)
-* [The Mel-powered future](concepts/the-mel-powered-future.md)
 
 ## Developer guides
 
@@ -55,3 +53,4 @@
 
 * [Yellow Paper](resources/yellow-paper.md)
 * [Frequently asked questions](resources/page-3.md)
+* [MelVM spec](resources/melvm-spec.md)
