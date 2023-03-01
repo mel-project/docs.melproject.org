@@ -34,30 +34,30 @@ We will discuss how the "gibbername encoding" that maps a gibbername to a unique
 
 Now, thin clients are able to do the core Gibbername features:
 
-* **Lookup**: The latest, unspent entry in the chain will contain the latest piece of data bound to that gibbername.
-* **Bind**: To bind the name to a different piece of data, a new item can simply be added at the end of the Catena chain.
-* **Transfer**: Whoever can spend the last item of the Catena chain "owns" the name and has exclusive access to rebind the name or transfer it to a different owner. Rebindings are just a special kind of transfer that repeats the same address as the last binding. (The "permission" is specified in the covenant hash, or "address", embedded in the last coin)
+- **Lookup**: The latest, unspent entry in the chain will contain the latest piece of data bound to that gibbername.
+- **Bind**: To bind the name to a different piece of data, a new item can simply be added at the end of the Catena chain.
+- **Transfer**: Whoever can spend the last item of the Catena chain "owns" the name and has exclusive access to rebind the name or transfer it to a different owner. Rebindings are just a special kind of transfer that repeats the same address as the last binding. (The "permission" is specified in the covenant hash, or "address", embedded in the last coin)
 
 ### How to uphold invariants?
 
-How do we ensure that the owner of a Gibbername actually continues the Catena chain? We _could_ just define the Catena chain as always continuing from the first output and place no constraints at all --- this will give us a canonical interpretation of _any_ transaction as a gibbername and its subsequent first child, first grandchild, etc as a Gibbername binding history.
+How do we ensure that the owner of a Gibbername actually continues the Catena chain? We _could_ just define the Catena chain as always continuing from the first output and place no constraints at all &mdash; this will give us a canonical interpretation of _any_ transaction as a gibbername and its subsequent first child, first grandchild, etc as a Gibbername binding history.
 
 But this has several disadvantages:
 
-* It doesn't mark Gibbername activity out in the blockchain, making it easy to mistake other transactions as gibbernames
-* Using any regular chain of coins makes it very easy to accidentally rebind or transfer a gibbername. Wallet software would not be able to distinguish Gibbername coins from regular $MEL coins, and would accidentally spend the first and mess up the binding without a lot of manual intervention.
+- It doesn't mark Gibbername activity out in the blockchain, making it easy to mistake other transactions as gibbernames
+- Using any regular chain of coins makes it very easy to accidentally rebind or transfer a gibbername. Wallet software would not be able to distinguish Gibbername coins from regular $MEL coins, and would accidentally spend the first and mess up the binding without a lot of manual intervention.
 
 Instead, we use **special transaction metadata** **custom token denomination** to mark Catena chains used by Gibbername. In particular: the _first_ transaction in a Gibbername Catena chain must:
 
-* Have the `Transaction::data` field set to `"gibbername-v1"`
-* Have _one of its outputs_ have denomination `Denom::NewCustom` and value `1`.
+- Have the `Transaction::data` field set to `"gibbername-v1"`
+- Have _one of its outputs_ have denomination `Denom::NewCustom` and value `1`.
 
 Subsequently, the canonical Catena chain is defined as the unique chain of coins that have denomination `Denom::Custom(<transaction hash of the first transaction>)`.
 
 This exploits two nice features of Mel's transaction model:
 
-* A coin with `Denom::NewCustom` creates a new, unique token denomination named after the hash of its parent transaction.
-* A coin with value `1` can no longer be subdivided by spending transactions. There's thus always only going to be one unspent coin in the world with the right denomination, making a unique Catena chain.
+- A coin with `Denom::NewCustom` creates a new, unique token denomination named after the hash of its parent transaction.
+- A coin with value `1` can no longer be subdivided by spending transactions. There's thus always only going to be one unspent coin in the world with the right denomination, making a unique Catena chain.
 
 ```
 picture illustrating the result

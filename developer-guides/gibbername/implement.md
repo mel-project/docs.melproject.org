@@ -30,13 +30,13 @@ $ cargo add futures-util anyhow gibbercode hex melprot melstructs stdcode tmelcr
 
 The easiest part of Gibbername is looking up the names. This consists of three parts:
 
-* **Decoding the Gibbername** into a _blockchain location_ identifying the start of the Catena chain. This means a block height and a transaction hash.
-* **Obtaining and validating the start transaction** by obtaining a snapshot at the given block height, retrieving the start transaction, and making sure that its `data` field says `"gibbername-v1"`.
-* **Traversing the Catena chain**, following all the custom-token coins, traverse the Catena chain to the most recent element. We'll then have our binding!
+- **Decoding the Gibbername** into a _blockchain location_ identifying the start of the Catena chain. This means a block height and a transaction hash.
+- **Obtaining and validating the start transaction** by obtaining a snapshot at the given block height, retrieving the start transaction, and making sure that its `data` field says `"gibbername-v1"`.
+- **Traversing the Catena chain**, following all the custom-token coins, traverse the Catena chain to the most recent element. We'll then have our binding!
 
 ### The Gibbername encoding
 
-How can we squeeze a blockchain location --- which identifies a transaction and its location --- into a short "gibberish string" like `xoxqax-lobteh`? After all, unique transaction hashes are very long and unwieldy.
+How can we squeeze a blockchain location &mdash; which identifies a transaction and its location &mdash; into a short "gibberish string" like `xoxqax-lobteh`? After all, unique transaction hashes are very long and unwieldy.
 
 Instead, we encode a unique blockchain location as two numbers: the _block height_ and the _transaction position_. This position is the 0-indexed position of the transaction within all the transactions in that block sorted by hash.
 
@@ -45,6 +45,7 @@ This lets us represent any transaction in the blockchain uniquely with two small
 We then need to represent this pair of numbers as a friendly Gibbername. Fortunately, we can use `gibbercode`, a crate that encodes a pair of numbers into a gibberish string using the consonants for the first number and the vowels for the second.
 
 {% code overflow="wrap" lineNumbers="true" %}
+
 ```rust
 /// Decodes a gibbername into a blockchain location.
 fn decode_gibbername(gname: &str) -> anyhow::Result<(BlockHeight, u32)> {
@@ -58,6 +59,7 @@ fn encode_gibbername(height: BlockHeight, index: u32) -> String {
     gibbercode::encode(height.0, index)
 }
 ```
+
 {% endcode %}
 
 ### Validating the start transaction
@@ -67,6 +69,7 @@ Once we have the blockchain location, we need to retrieve the start transaction.
 The start transaction should have a `data` field that says `"gibbername-v1"`, as well as one, and just one, output with denomination `Denom::NewCustom`, and that output must have value `1`. This is the way we ensure that a given Gibbername is actually valid.
 
 {% code overflow="wrap" lineNumbers="true" %}
+
 ```rust
 async fn get_and_validate_start_tx(
     client: &melprot::Client,
@@ -103,6 +106,7 @@ async fn get_and_validate_start_tx(
     }
 }
 ```
+
 {% endcode %}
 
 ### Traversing the Catena chain
@@ -110,6 +114,7 @@ async fn get_and_validate_start_tx(
 Finally, we can traverse the Catena chain to get the coin containing the final binding:
 
 {% code overflow="wrap" lineNumbers="true" %}
+
 ```rust
 async fn traverse_catena_chain(
     client: &melprot::Client,
@@ -117,7 +122,7 @@ async fn traverse_catena_chain(
     start_txhash: TxHash,
 ) -> anyhow::Result<CoinData> {
 
-    // First, we get a collection of transactions from our starting height and txhash. 
+    // First, we get a collection of transactions from our starting height and txhash.
     // We also include a closure that tells us to look for the transaction output that follow our Gibbername rules (a Denom that's either Custom(<start_txhash>) or NewCustom)
     let traversal = client
         .traverse_fwd(start_height, start_txhash, move |tx: &Transaction| {
@@ -149,7 +154,7 @@ async fn traverse_catena_chain(
             None => anyhow::bail!("No valid gibbercoins found"),
         }
     }
-    
+
     // Return the last coin in the traversal if it exists
     let last_tx = traversal.last().expect("the traversal is empty");
     if let Some(last_tx_coin) = last_tx
@@ -164,11 +169,13 @@ async fn traverse_catena_chain(
 }
 
 ```
+
 {% endcode %}
 
 We can now easily build the gibbername lookup function!
 
 {% code overflow="wrap" lineNumbers="true" %}
+
 ```rust
 pub async fn lookup(client: &melprot::Client, gibbername: &str) -> anyhow::Result<String> {
     let (start_height, start_txhash) = get_and_validate_start_tx(client, gibbername).await?;
@@ -178,6 +185,7 @@ pub async fn lookup(client: &melprot::Client, gibbername: &str) -> anyhow::Resul
     Ok(binding.into_owned())
 }
 ```
+
 {% endcode %}
 
 ## Registering names
@@ -193,6 +201,7 @@ Instead, we **ask the user's wallet to send a transaction for us**, and we simpl
 We can now write a function to send the transaction and wait for it to commit in the blockchain.
 
 {% code overflow="wrap" lineNumbers="true" %}
+
 ```rust
 pub async fn register(
     client: &melprot::Client,
@@ -202,7 +211,7 @@ pub async fn register(
     let height = client.latest_snapshot().await?.current_header().height;
     let wallet_name = "last";
     let cmd = register_name_cmd(wallet_name, address, initial_binding)?;
-    
+
     // ask the user to send this command in melwallet-cli
     println!("Send this command with your wallet: {}", cmd);
 
@@ -229,6 +238,7 @@ pub async fn register(
     unreachable!()
 }
 ```
+
 {% endcode %}
 
 ```rust
@@ -276,9 +286,9 @@ Transferring names is left as an exercise to the reader.&#x20;
 {% hint style="info" %}
 Wallet URIs are still under construction, but they will replace the current UX of sending transactions directly. Here's a quick preview of what they will look like:
 
-* Construct a _wallet URI_ using the standard `melwallet:` URI scheme, describing the transaction we need the user to send
-* Prompt the user to "open" this URI with their wallet
-  * Right now, we will prompt the user to do so manually.
-  * Eventually, a graphical "Gibbername registrar app" should integrate with OS-specific URI-opening functionality.
-* Wait for the transaction to commit and derive a gibbername from the location at which the transaction was committed
-{% endhint %}
+- Construct a _wallet URI_ using the standard `melwallet:` URI scheme, describing the transaction we need the user to send
+- Prompt the user to "open" this URI with their wallet
+  - Right now, we will prompt the user to do so manually.
+  - Eventually, a graphical "Gibbername registrar app" should integrate with OS-specific URI-opening functionality.
+- Wait for the transaction to commit and derive a gibbername from the location at which the transaction was committed
+  {% endhint %}

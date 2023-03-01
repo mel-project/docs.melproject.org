@@ -6,7 +6,7 @@ description: "Szaldi: the trustless Mel->Ethereum light-client relay."
 
 Szaldi is a **Mel/Ethereum relay contract**. It is essentially trustless and based on light-client verification on both sides.
 
-Szaldi enables the transfer of Mel-native assets like MEL and SYM to Ethereum (or any other EVM chain) and back. This allows usage of Mel assets in the Ethereum ecosystem --- for example, wMEL (wrapped MEL) can easily be plugged into the existing DeFi ecosystem as a novel, low-volatility asset.
+Szaldi enables the transfer of Mel-native assets like MEL and SYM to Ethereum (or any other EVM chain) and back. This allows usage of Mel assets in the Ethereum ecosystem &mdash; for example, wMEL (wrapped MEL) can easily be plugged into the existing DeFi ecosystem as a novel, low-volatility asset.
 
 Szaldi is 100% autonomous and decentralized. It's not a custodial bridge where you have to trust the bridge operators, nor do we rely on an external set of validators. Our relay leverages the native security of both underlying chains.
 

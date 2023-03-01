@@ -39,8 +39,8 @@ println!("address {} has {} UTXOs now but {} UTXOs at block 10000",
 
 Within a snapshot at a given height, there are many mappings associated with the state of the blockchain at that given height and a variety of methods for conveniently looking them up. Some of the most important ones include:
 
-* `get_coin(id: CoinID)`: given the ID (transaction hash and index) of a particular coin, return the coin data.
-* `get_transaction(txhash: TxHash)`: given a transaction hash, return the `Transaction` if it exists.
+- `get_coin(id: CoinID)`: given the ID (transaction hash and index) of a particular coin, return the coin data.
+- `get_transaction(txhash: TxHash)`: given a transaction hash, return the `Transaction` if it exists.
 
 ### Moving a snapshot back in time
 
@@ -61,10 +61,10 @@ A very common task for thin clients is traversing the **coin graph** of the bloc
 
 <figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-Given a known starting point --- a particular transaction with a known location on the blockchain --- the basic snapshot model detailed above allows easy traversal:
+Given a known starting point &mdash; a particular transaction with a known location on the blockchain &mdash; the basic snapshot model detailed above allows easy traversal:
 
-* **Moving backwards in time**: looking up the `CoinID` of a transaction input in a snapshot _older_ than the transaction itself retrieves a `CoinDataHeight` that contains the height in which the transaction input was committed to the blockchain. This gets you the location of a "parent" transaction.
-* **Moving forwards in time**: to look up when an output is spent, a binary search can be done between the state in which the transaction was committed and the present, to see the exact block height at which the output was spent. Then, a snapshot at that height can be used to retrieve the "child" transaction that spent the output.
+- **Moving backwards in time**: looking up the `CoinID` of a transaction input in a snapshot _older_ than the transaction itself retrieves a `CoinDataHeight` that contains the height in which the transaction input was committed to the blockchain. This gets you the location of a "parent" transaction.
+- **Moving forwards in time**: to look up when an output is spent, a binary search can be done between the state in which the transaction was committed and the present, to see the exact block height at which the output was spent. Then, a snapshot at that height can be used to retrieve the "child" transaction that spent the output.
 
 It's certainly possible to manually implement the above, but `melprot` provides to very convenient methods `Client::traverse_back` and `Client::traverse_fwd`. These functions take in a "starting" transaction (block height and transaction hash), as well as a closure to specify _which_ parent or child coin to follow to the next link, and return a `Stream` of `Transaction`s:
 

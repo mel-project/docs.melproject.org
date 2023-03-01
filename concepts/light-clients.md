@@ -2,7 +2,7 @@
 
 **Light clients** in Mel are participants that don't replicate the blockchain history or state. Instead, when they want to query on-chain information, they ask any [full node](network-architecture.md) for that information.
 
-The key thing to remember is that _light clients are trustless_ --- they ask a full node for information, but they do not trust the full node not to lie to them. This is absolutely central to enabling scalable off-chain composability, since most off-chain apps would not want to replicate blockchain history.
+The key thing to remember is that _light clients are trustless_ &mdash; they ask a full node for information, but they do not trust the full node not to lie to them. This is absolutely central to enabling scalable off-chain composability, since most off-chain apps would not want to replicate blockchain history.
 
 Trustless light clients are possible due to two things: extensive **state commitments** that allow a light client to verify proofs of blockchain data with only the latest block header, and a **bootstrapping** mechanism that lets clients retrieve the latest block hash while only trusting the [consensus mechanism](consensus.md).
 
@@ -41,7 +41,7 @@ Of course, all this magic is possible only if we assume that the client already 
 
 ## Bootstrapping light clients
 
-Before doing any queries, a light client must know the latest block header. Of course, the client can't just ask the full node for this info --- the full node could lie and subvert all the security guarantees of Mel!
+Before doing any queries, a light client must know the latest block header. Of course, the client can't just ask the full node for this info &mdash; the full node could lie and subvert all the security guarantees of Mel!
 
 Instead, the client follows a two-step procedure:
 
@@ -68,6 +68,10 @@ To get the active stakes of epoch N:
 
 ### "Ultraweak subjectivity"
 
-There is a subtle attack on the sort of consensus-participant-updating bootstrapping procedure described. If a light client is very out of date (say, it only knows the initial stake set and not anything subsequent), an attacker can collude with _old stakers who have completely unstaked_ to sign malicious claims about block headers --- including epoch-end block headers --- and completely mislead a client as to the current state of the blockchain.
+There is a subtle attack on the sort of consensus-participant-updating bootstrapping procedure described. If a light client is very out of date (say, it only knows the initial stake set and not anything subsequent), an attacker can collude with _old stakers who have completely unstaked_ to sign malicious claims about block headers &mdash; including epoch-end block headers &mdash; and completely mislead a client as to the current state of the blockchain.
 
-This problem, called "weak subjectivity", is common to PoS blockchains. It only works on old clients, since incentives ([slashing](consensus.md)) defend against collusion with newer stakers who still have money at stake.
+This problem, called ["weak subjectivity"](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/weak-subjectivity/) since it makes the canonical current block "subjective", is common to PoS blockchains. It only works on old clients, since incentives ([slashing](consensus.md)) defend against collusion with newer stakers who still have money at stake.
+
+Mel's long consensus epochs defends against this. All stakers must stake for at least epoch, and their stakes must lie inactive but locked for at least another epoch. This means that even in the worst case, where every staker stakes for the shortest possible period, only clients that have been offline for more than two epochs are vulnerable to weak subjectivity --- that is a whopping _140 days_.
+
+This is far beyond the typical weak-subjectivity period of other PoS blockchains (e.g. Ethereum has 2 weeks), and probably longer that any reasonable light-client app would stay offline. In a sense, we can say that Mel has "ultraweak subjectivity".
