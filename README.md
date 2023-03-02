@@ -67,6 +67,6 @@ Unfortunately, current blockchains, especially fancy new ones, double down on on
 Throughout this website, you'll find
 
 * A wiki on key Mel concepts from our [TXO-based data model](concepts/data-model.md) to [Melnet](concepts/melnet-the-p2p-layer.md), our HTTP-based P2P layer
-* Guides on developer-oriented tasks like [building an off-chain composable protocol](developer-guides/gibbername/) and [minting MEL](developer-guides/getting-tokens/using-melminter.md)
+* Guides on developer-oriented tasks like [building an off-chain composable protocol](developer-guides/gibbername/) and [minting MEL](developer-guides/melmint/getting-tokens/using-melminter.md)
 * Resources like a [FAQ](resources/page-3.md) and [yellow paper](resources/yellow-paper.md)
 

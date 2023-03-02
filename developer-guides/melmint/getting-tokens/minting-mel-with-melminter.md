@@ -5,7 +5,7 @@ description: This is a brief, high-level introduction to Melmint.
 # Melmint overview
 
 {% hint style="info" %}
-The wiki has a [more in-depth discussion of MEL and Melmint](../../concepts/melmint.md).
+The wiki has a [more in-depth discussion of MEL and Melmint](../../../concepts/melmint.md).
 {% endhint %}
 
 ## Introduction

@@ -20,7 +20,7 @@ Mel's philosophy of focusing on off-chain, composable dapps is central to its sc
 
 ### How does MEL stabilize itself?
 
-MEL is cryptographically pegged to a DOSC (day of sequential computation) using the Melmint algorithm. The DOSC was chosen because it has a relatively stable purchasing power and because it is trustlessly measurable through a sequential proof of work. This, combined with a protocol-internal Uniswap-style automated market maker (AMM), provides incentives which allow MEL to self-stabilize. Get a more in depth view of the Melmint algorithm [here](../developer-guides/getting-tokens/minting-mel-with-melminter.md).
+MEL is cryptographically pegged to a DOSC (day of sequential computation) using the Melmint algorithm. The DOSC was chosen because it has a relatively stable purchasing power and because it is trustlessly measurable through a sequential proof of work. This, combined with a protocol-internal Uniswap-style automated market maker (AMM), provides incentives which allow MEL to self-stabilize. Get a more in depth view of the Melmint algorithm [here](../developer-guides/melmint/getting-tokens/minting-mel-with-melminter.md).
 
 ### How is MEL different from other stablecoins like USDC or DAI?
 
@@ -39,4 +39,4 @@ There is no minimum amount of SYM which needs to be staked in order to participa
 
 ### How can I get some MEL?
 
-Currently, you can only acquire MEL by running a `melminter` instance or by swapping SYM or ERG via Melswap. Get more information about acquiring tokens [here](../developer-guides/getting-tokens/).
+Currently, you can only acquire MEL by running a `melminter` instance or by swapping SYM or ERG via Melswap. Get more information about acquiring tokens [here](../developer-guides/melmint/getting-tokens/).
