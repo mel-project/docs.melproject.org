@@ -4,20 +4,26 @@ description: This is an introduction to what staking is, and how to get started.
 
 # 🥩 Staking guide
 
+{% hint style="warning" %}
+Staking is **not yet officially supported** on the mainnet or testnet.
+
+An official guide to staking will be out in Q2 2023. You may have trouble following this guide until then.
+{% endhint %}
+
 ## What is staking?
 
 Mel is considered a "proof-of-stake" blockchain because people can "stake" their money (SYM) on staker nodes.
 
 ### What do staker nodes do?
 
-Staker nodes directly participate in Mel's consensus process, or **deciding what data goes onto the blockchain.** These nodes are the ultimate guardians of Mel's security.&#x20;
+Staker nodes directly participate in Mel's consensus process, or **deciding what data goes onto the blockchain.** These nodes are the ultimate guardians of Mel's security.
 
 Staker nodes accrue SYM, which is locked up on-chain, in exchange for a proportional amount of voting power. Once 2/3 of the on-chain votes agree on the same block, a **quorum** is reached, and a block is then confirmed and officially added to the blockchain.
 
 ### Why should I stake?
 
-- You will be contributing to the security of the network by validating blocks
-- :moneybag: You will accrue rewards for staking :moneybag:&#x20;
+* You will be contributing to the security of the network by validating blocks
+* :moneybag: You will accrue rewards for staking :moneybag:
 
 ## Getting started with staking
 

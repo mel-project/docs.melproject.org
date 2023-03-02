@@ -4,6 +4,10 @@ description: This is a brief, high-level introduction to Melmint.
 
 # Melmint overview
 
+{% hint style="info" %}
+The wiki has a [more in-depth discussion of MEL and Melmint](../../concepts/melmint.md).
+{% endhint %}
+
 ## Introduction
 
 Melmint is the our key mechanism for stabilizing MEL, Mel's base currency. MEL avoids the volatile price of traditional cryptocurrencies like BTC and ETH, making it a much better store of value and unit of account.

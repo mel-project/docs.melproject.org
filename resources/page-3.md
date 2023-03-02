@@ -4,17 +4,13 @@ description: This is your one-stop shop for all commonly asked questions.
 
 # Frequently asked questions
 
+{% hint style="info" %}
+This FAQ is intended to be perpetually WIP. Feel free to add your own Q\&A's in a pull request!
+{% endhint %}
+
 ### What is Mel?
 
-Mel is a minimal, governance-free L1 blockchain whose core vision consists of enabling a future ecosystem of secure, composable, off-chain dapps. Learn more in our [concepts docs](broken-reference/).
-
-### How is Mel different than other blockchains like Ethereum, Bitcoin, or Solana?
-
-Mel's entire design is focused on leveraging the under-emphasized killer feature of blockchains, namely, [endogenous trust.](broken-reference) It is a protocol whose trust emerges from its immutability and security, not from preexisting trust in the parties that run the protocol.
-
-Mel is designed to be as minimal as possible, in stark contrast to the philosophies of many other existing L1's, and it does so by utilizing a powerful, but computationally constrained (and decidable) execution environment, as well as by focusing on off-chain composability through the use of [embeddable thin clients](broken-reference).
-
-Additionally, the future of decentralized security needs robust incentives without relying on centralized third-parties for stability; this is where MEL, Mel's native base currency comes in. It provides stable purchasing power, unit of account, store of value, etc. -- without any external oracles or price pegs. Learn more about the cryptoeconomics of MEL [here](broken-reference).
+Mel is a minimal, governance-free L1 blockchain whose core vision consists of enabling a future ecosystem of secure, composable, off-chain dapps. Learn more in our [intro](../).
 
 ### What are the considerations for decentralization, security, and scalability?
 
@@ -24,7 +20,7 @@ Mel's philosophy of focusing on off-chain, composable dapps is central to its sc
 
 ### How does MEL stabilize itself?
 
-MEL is cryptographically pegged to a DOSC (day of sequential computation) using the Melmint algorithm. The DOSC was chosen because it has a relatively stable purchasing power and because it is trustlessly measurable through a sequential proof of work. This, combined with a protocol-internal Uniswap-style automated market maker (AMM), provides incentives which allow MEL to self-stabilize. Get a more in depth view of the Melmint algorithm [here](../developer-guides/melmint/getting-tokens/minting-mel-with-melminter.md).
+MEL is cryptographically pegged to a DOSC (day of sequential computation) using the Melmint algorithm. The DOSC was chosen because it has a relatively stable purchasing power and because it is trustlessly measurable through a sequential proof of work. This, combined with a protocol-internal Uniswap-style automated market maker (AMM), provides incentives which allow MEL to self-stabilize. Get a more in depth view of the Melmint algorithm [here](../developer-guides/getting-tokens/minting-mel-with-melminter.md).
 
 ### How is MEL different from other stablecoins like USDC or DAI?
 
@@ -43,4 +39,4 @@ There is no minimum amount of SYM which needs to be staked in order to participa
 
 ### How can I get some MEL?
 
-Currently, you can only acquire MEL by running a `melminter` instance or by swapping SYM or ERG via Melswap. Get more information about acquiring tokens [here](../developer-guides/melmint/getting-tokens/).
+Currently, you can only acquire MEL by running a `melminter` instance or by swapping SYM or ERG via Melswap. Get more information about acquiring tokens [here](../developer-guides/getting-tokens/).

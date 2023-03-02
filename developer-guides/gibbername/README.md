@@ -14,10 +14,6 @@ You might think that it'll be a nice drop-in replacement, since it's very easy t
 
 Furthermore, this "on/off-chain boundary problem" persists regardless of how much blockchains scale and how far we make protocols "crypto-native". Any web3 ecosystem has components like frontends, apps, and _human users_ that fundamentally live off-chain while needing to securely talk to on-chain.
 
-```
-[picture illustrating this. expanding bubble surrounding more and more of web3, but the boundary of the bubble still sucks]
-```
-
 We need to solve this problem to have a truly successful Web3, with a rich ecosystem of secure decentralized protocols and apps outside of the blockchain. This requires a new kind of blockchain — Mel — that actually supports use as an off-chain root of trust. Features like a simple-to-implement protocol, a governance-free development model, and embeddable thin clients cooperate let off-chain programs efficiently utilize on-chain security.
 
 More interestingly, on-chain logic for decentralized protocols plays a very different role. Instead of interoperating with on-chain code, _on-chain protocols are written for off-chain consumers_. Mel's overall data model lacks the entire concept of smart contracts calling each other, but it is supremely suited for encoding on-chain logic in a way that is legible and usable off-chain.

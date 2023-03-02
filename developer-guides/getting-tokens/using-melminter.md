@@ -14,10 +14,10 @@ $ cargo install --locked melminter
 
 You will need:
 
-* A small amount of MEL in your wallet (see setup instructions [here](../../using-wallets/getting-started.md)). This is because Melmint transactions are required to pay transaction fees, just like every other transaction.
+* A small amount of MEL in your wallet (see setup instructions [here](../using-wallets/getting-started.md)). This is because Melmint transactions are required to pay transaction fees, just like every other transaction.
 
 {% hint style="info" %}
-If you simply want to try this out on the testnet, you can acquire testnet MEL yourself via a faucet transaction, as shown [here](../../using-wallets/getting-started.md#fund-wallet).
+If you simply want to try this out on the testnet, you can acquire testnet MEL yourself via a faucet transaction, as shown [here](../using-wallets/getting-started.md#fund-wallet).
 
 If you wish to participate in mainnet melminting, please ask for some MEL in the #beta-testers channel in our [Discord server](https://discord.gg/UXhxujHH).
 {% endhint %}
@@ -28,16 +28,9 @@ If you wish to participate in mainnet melminting, please ask for some MEL in the
 $ melminter --payout <payout-wallet-address>
 ```
 
-The first time you run `melminter`, it will ask you to send a particular address a small amount of MEL in order to start. This is so that it can pay initial transaction fees. Simply paste the `melwallet:`  URL given to you by `melminter`:
+The first time you run `melminter`, it will ask you to send a particular address a small amount of MEL in order to start. This is so that it can pay initial transaction fees. Send that money, and after around 30 seconds you'll see a nice TUI show up:
 
-```shell-session
-$ melwallet-cli unlock -w <wallet>
-$ melwallet-cli open-url -w <wallet> <url-from-melminter>
-```
-
-Afterwards, you should see a nice TUI like this:
-
-<figure><img src="../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 Running `melminter` will generate ERG, a temporary token representing computation, and immediately exchange it for MEL. Note the _daily return_ line in the terminal output, which predicts how much computational work (in DOSC) the minter will do in 24 hours, as well as how much MEL that will buy.
 
