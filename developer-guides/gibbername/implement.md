@@ -277,11 +277,13 @@ We are now able to register a name with an arbitrary binding! :rocket:
 Transferring names is left as an exercise to the reader.
 
 {% hint style="info" %}
-**Hint**: you'll need to construct a wallet URI to extend the Catena chain and prompt the user, just like with registration. If you're truly stuck, there's always our GitHub example code :smile:
+**Hint**: you'll need to construct a wallet wallet to extend the Catena chain and prompt the user, just like with registration. If you're truly stuck, there's always [our GitHub example](https://github.com/mel-project/gibbername) code :smile:
 {% endhint %}
 
 {% hint style="info" %}
-Wallet URIs are still under construction, but they will replace the current UX of sending transactions directly. Here's a quick preview of what they will look like:
+****[**Wallet URIs**](https://forum.melproject.org/t/some-thoughts-on-wallet-apis-and-payment-protocols/55#option-3-specify-a-wallet-protocol-around-a-custom-url-scheme-5) are still under construction, but they will replace the current UX of asking the user to type a `melwallet-cli`  command.&#x20;
+
+Here's a quick preview of what they will look like:
 
 * Construct a _wallet URI_ using the standard `melwallet:` URI scheme, describing the transaction we need the user to send
 * Prompt the user to "open" this URI with their wallet

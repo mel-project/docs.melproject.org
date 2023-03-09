@@ -29,24 +29,8 @@ In such a system, lookups can _entirely be done off-chain_ and massively scale. 
 
 ### Human-readable names
 
-
+Instead of using blockchain locations as the name, we can use an on-chain data structure to keep track of human-readable names. This data structure will be a certain "shape" in the coin graph, just like a Catena chain, but encoding a key-value graph instead (e.g. [Bitforest](https://rboutaba.cs.uwaterloo.ca/Papers/Conferences/2018/DongCNSM18.pdf)). Upholding this invariant would require writing a Melodeon covenant.
 
 ### Better registration UX
 
-
-
-{% hint style="info" %}
-* Recap of what Gibbername allows us to do
-  * Register, transfer, and look up names from any Rust program, without clunky dependencies
-  * Totally trustless, no RPC network or full node is trusted!
-* How would a production naming system work?
-  * Moving things even more off-chain
-    * Only have the hash on-chain
-      * Use a P2P network (e.g. a DHT) to store the actual name binding
-      * Lets us also get rid of the -1 state spam, as long as we can sacrifice proofs of nonexistence
-  * Binding human-readable names
-    * Use a tree structure.
-    * A little complicated, for another day
-  * Better wallet integration UX
-    * Graphical frontends and graphical wallets: a much nicer workflow
-{% endhint %}
+Once we have mature GUI wallets with "wallet URI" support, as well as immutable frontend hosting, we will be able to write a simple webpage where people can manage their gibbername names.
