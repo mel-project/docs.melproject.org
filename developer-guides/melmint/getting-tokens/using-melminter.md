@@ -9,16 +9,11 @@ description: This page shows how to participate in Melmint with the melminter CL
 Ensure that you have an up-to-date version of `melminter` installed:
 
 ```shell-session
-$ cargo install --locked melminter melwalletd
+$ cargo install --locked melminter
 ```
 
 You will need:
 
-*   the `melwalletd` daemon running:
-
-    ```shell-session
-    $ melwalletd --wallet-dir ~/.themelio-wallets --network <network>
-    ```
 * A small amount of MEL in your wallet (see setup instructions [here](../../using-wallets/getting-started.md)). This is because Melmint transactions are required to pay transaction fees, just like every other transaction.
 
 {% hint style="info" %}
