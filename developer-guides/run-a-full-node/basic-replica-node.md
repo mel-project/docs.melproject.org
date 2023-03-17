@@ -44,6 +44,10 @@ $ melnode
 [2022-12-12T16:40:48Z DEBUG melnode::storage::storage] applied block 19 of length 215 in 0.48ms (insert 0.13ms)
 ```
 
+{% hint style="warning" %}
+There is an optional flag `--index-coins` that is recommended. Certain coin-related RPCs will be disabled if this flag is not set. Do note that the indexer will take up extra memory.
+{% endhint %}
+
 It will take _quite_ a long time to synchronize all the blocks from the network (usually, around half a day or so).
 
 ### Participating in peering
