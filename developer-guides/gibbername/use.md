@@ -7,6 +7,8 @@ $ gibbername-cli lookup tofnal-qujjay-seh
 hello world my dudes this is what's bound to the name lol
 ```
 
+You can find a complete example in our [GitHub repo](https://github.com/mel-project/gibbername-cli).
+
 ## Project setup
 
 Let's start by creating a new binary crate:
