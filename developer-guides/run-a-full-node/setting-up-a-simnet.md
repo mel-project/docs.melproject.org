@@ -12,21 +12,21 @@ Make sure you have the required hardware and dependencies installed. Follow this
 
 For local development and testing, we can configure a local "simnet", or a fake network on our local computer.
 
-To do so, we will need to use the `melnode` command with a combination of these three options
-
-- `--bootstrap <bootstrap-address>`
-- `--override genesis <path-to-genesis-config>`
-- `--staker-cfg <path-to-staker-config>`
+The easiest way to do so is with our [`melsimnet`](https://github.com/mel-project/melnode/blob/master/src/bin/melsimnet.rs) binary.
 
 ```shell-session
-$ melnode --bootstrap <bootstrap-ip-address> \
-      --override-genesis <path-to-genesis-config> \
-      --staker-cfg <path-to-staker-config>
+cargo run --bin melsimnet -- create -s 1. -s 2. -s 3. -s 4.
 ```
+Running this command will generate several (4 in this case) files and scripts to run the staker nodes in your custom local network. This means that staker 1 will have voting power equivalent to 1 SYM and staker 2 will have 2 SYM, etc.
 
-### Bootstrap address
+Let's go through what this all means:
 
-This is an IP address that specifies the bootstrap address for our local node. This lets us bootstrap by ourselves instead of with a remote node on the test/mainnet.
+1. `run-staker-*.sh` - run an individual staker node
+2. `run-all.sh` - run all of the staker nodes on a custom local network
+3. `staker-*.yaml*` - defines the config for an individual staker node (explained below)
+4. `genesis.yaml` - defines the genesis config for the custom local network (explained below)
+
+After running some (or all) of the nodes, you'll be able to interact with the nodes via wallet client/daemon, melscan, even direct HTTP calls.
 
 ### Custom genesis configuration
 
