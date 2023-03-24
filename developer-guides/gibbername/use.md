@@ -21,7 +21,7 @@ $ cd gibbername-cli
 We add `melprot`, `melstructs`, `anyhow` for error handling,`argh` for lightweight argument parsing, and `futures-lite` for bare-bones async support:
 
 ```toml
-$ cargo add melprot melstructs argh futures-lite
+$ cargo add melprot melstructs anyhow argh futures-lite
     Updating crates.io index
       Adding melprot v0.1.0 to dependencies.
       Adding melstructs v0.3.2 to dependencies.
@@ -57,6 +57,7 @@ struct Cli {
     command: Command,
 }
 
+#[derive(FromArgs, PartialEq, Debug)]
 #[argh(subcommand)]
 enum Command {
     Lookup(Lookup),
@@ -75,11 +76,14 @@ struct Lookup {
 #[argh(subcommand, name = "register")]
 /// Register a name
 struct Register {
-    #[argh(option)]
+    #[argh(option, description = "the Mel address of the gibbername owner")]
     owner: Address,
 
-    #[argh(option)]
-    binding: String
+    #[argh(option, description = "the data to be bound to the gibbername")]
+    binding: String,
+
+    #[argh(option, description = "the name of the wallet sending the transaction")]
+    wallet_name: String,
 }
 
 
@@ -109,7 +113,9 @@ use futures_lite::future::block_on;
 fn main() -> anyhow::Result<()> {
     let args: Cli = argh::from_env();
     // keep around a client
-    let client = block_on(melprot::Client::autoconnect(NetID::Testnet))?;
+    let client = block_on(
+        melprot::Client::autoconnect(NetID::Testnet)
+    )?;
 
     match args.command {
         Command::Lookup(lookup) => {
@@ -119,7 +125,7 @@ fn main() -> anyhow::Result<()> {
         }
         Command::Register(register) => {
             // gibbername will prompt the user
-            let name = block_on(gibbername::register(&client, register.owner, &register.binding))?;
+            let name = block_on(gibbername::register(&client, register.owner, &register.binding, &register.wallet_name))?;
             println!("registered {:?}", name);
         }
     };
@@ -131,7 +137,7 @@ fn main() -> anyhow::Result<()> {
 
 We now have a complete program! We can test run it with `cargo run`:
 
-<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ cargo run -- register --owner t1cj51xmq3dxn91z8exz3vhbk2wc8g9enh3kzsbmd3zzy6yx1memyg --binding 'hello CLI'
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ cargo run -- register --owner t1cj51xmq3dxn91z8exz3vhbk2wc8g9enh3kzsbmd3zzy6yx1memyg --binding 'hello CLI' --wallet-name my-wallet
 </strong>Send this command with your wallet: melwallet-cli send -w last --to t1cj51xmq3dxn91z8exz3vhbk2wc8g9enh3kzsbmd3zzy6yx1memyg,0.000001,"(NEWCUSTOM)","68656c6c6f20434c49" --hex-data 6769626265726e616d652d7631
 </code></pre>
 
