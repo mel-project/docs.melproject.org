@@ -48,16 +48,20 @@ We then need to represent this pair of numbers as a friendly Gibbername. Fortuna
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```rust
+use melstructs::{Address, BlockHeight, CoinData, CoinValue, Denom, Transaction, TxHash};
+
 /// Decodes a gibbername into a blockchain location.
 fn decode_gibbername(gname: &str) -> anyhow::Result<(BlockHeight, u32)> {
-    let (height_num, index) = gibbercode::decode(&str)?;
-    Ok((height_num.into(), index as u32))
+    let (height, index) = gibbercode::decode(gname);
+    Ok((BlockHeight(height as u64), index as u32))
 }
 
-/// Encodes a blockchain location into a gibbername.
-fn encode_gibbername(height: BlockHeight, index: u32) -> String {
-    // get the u64 out of the BlockHeight
-    gibbercode::encode(height.0, index)
+/// Encodes the given height and index into a gibbername.
+fn encode_gibbername(height: BlockHeight, index: u32) -> anyhow::Result<String> {
+    Ok(gibbercode::encode(
+        u128::try_from(height.0)?,
+        u128::try_from(index)?,
+    ))
 }
 ```
 {% endcode %}
@@ -73,7 +77,7 @@ The start transaction should have a `data` field that says `"gibbername-v1"`, as
 /// Gets and validates the starting transaction of the gibbername chain.
 /// Validation involves checking the transaction for the following properties:
 /// 1. The `data` field says "gibbername-v1"
-/// 2. The transaction has a single output with the [Denom::NewCoin] denomination
+/// 2. The transaction has a single output with the [themelio_structs::Denom::NewCoin] denomination
 ///    with a value of 1
 async fn get_and_validate_start_tx(
     client: &melprot::Client,
@@ -118,6 +122,9 @@ Finally, we can traverse the Catena chain to get the coin containing the final b
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```rust
+use anyhow::Context;
+use futures_util::StreamExt;
+
 async fn traverse_catena_chain(
     client: &melprot::Client,
     start_height: BlockHeight,
@@ -177,6 +184,7 @@ We can now easily build the gibbername lookup function!
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```rust
+/// Returns the data bound to the given gibbername if there is any.
 pub async fn lookup(client: &melprot::Client, gibbername: &str) -> anyhow::Result<String> {
     let (start_height, start_txhash) = get_and_validate_start_tx(client, gibbername).await?;
     let last_coin = traverse_catena_chain(client, start_height, start_txhash).await?;
@@ -205,12 +213,10 @@ pub async fn register(
     client: &melprot::Client,
     address: Address,
     initial_binding: &str,
+    wallet_name: &str,
 ) -> anyhow::Result<String> {
     let height = client.latest_snapshot().await?.current_header().height;
-    let wallet_name = "last";
     let cmd = register_name_cmd(wallet_name, address, initial_binding)?;
-
-    // ask the user to send this command in melwallet-cli
     println!("Send this command with your wallet: {}", cmd);
 
     // scan through all transactions involving this address, starting at the block height right before we asked the user to send the transacton
@@ -218,7 +224,7 @@ pub async fn register(
     while let Some((transaction, height)) = stream.next().await {
         if &transaction.data[..] == b"gibbername-v1" {
             let txhash = transaction.hash_nosigs();
-            let posn = client
+            let (posn, _) = client
                 .snapshot(height)
                 .await?
                 .current_block()
@@ -226,7 +232,8 @@ pub async fn register(
                 .abbreviate()
                 .txhashes
                 .iter()
-                .position(|hash| *hash == txhash)
+                .enumerate()
+                .find(|(_, hash)| **hash == txhash)
                 .expect("No transaction with matching hash in this block.");
 
             let gibbername = encode_gibbername(height, posn as u32)?;
@@ -259,14 +266,15 @@ fn register_name_cmd(
 }
 ```
 
-When this function is called, the user will be prompted to manually send a transaction with our wallet CLI:`melwallet-cli`. We will continuously stream incoming transactions until we find the one we sent. This process will be as follows:
+When this function is called, the user will be prompted to manually send a transaction with our wallet CLI: `melwallet-cli`. We will continuously stream incoming transactions until we find the one we sent. This process will be as follows:
 
 ```shell-session
 $ cargo install --locked melwallet-client melwalletd
-...
+$ melwalletd --wallet-dir <wallet-dir>
+$ melwallet-cli create -w <wallet-name>
 $ melwallet-cli unlock -w <wallet-name>
 
-# this will be generated for you
+# now you can paste and run the command given to you by the gibbername library
 $ melwalet-cli send -w <wallet-name> --to <wallet-addr>,<0.000001>,"(NEWCUSTOM)",<initial-binding-hex> --hex-data <gibbername-v1-hex>
 ```
 
