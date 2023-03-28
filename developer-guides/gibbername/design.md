@@ -20,7 +20,7 @@ More specifically, for every gibbername, we need to somehow store an on-chain bl
 
 ### How to encode the on-chain info?
 
-There is a standard technique for encoding append-only histories in a coin graph: a **Catena chain** (TODO LINK). A Catena chain is simply a chain of transactions, each one spending a particular output coin (say, the first) of the previous one. Metadata on the coins or transactions then encodes the append-only log, and the transaction hash of the first element uniquely identifies the whole chain.
+There is a standard technique for encoding append-only histories in a coin graph: a **Catena chain**. A Catena chain is simply a chain of transactions, each one spending a particular output coin (say, the first) of the previous one. Metadata on the coins or transactions then encodes the append-only log, and the transaction hash of the first element uniquely identifies the whole chain.
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-03-28 at 20-02-27 Gibbername - diagrams.net.png" alt=""><figcaption><p>The Catena chain after <code>register</code> and <code>transfer</code> operations</p></figcaption></figure>
 
