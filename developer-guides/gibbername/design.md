@@ -59,8 +59,6 @@ This exploits two nice features of Mel's transaction model:
 - A coin with `Denom::NewCustom` creates a new, unique token denomination named after the hash of its parent transaction.
 - A coin with value `1` can no longer be subdivided by spending transactions. There's thus always only going to be one unspent coin in the world with the right denomination, making a unique Catena chain.
 
-```
-picture illustrating the result
-```
+<figure><img src="../.gitbook/assets/Gibbername.png" alt=""><figcaption>Diagram of the Catena Chain after `register` and `transfer` operations</figcaption></figure>
 
 Gibbername transactions are now very obvious (allowing, say, Melscan to offer a global Gibbername listing), and wallets will no longer accidentally spend Gibbername-related coins because they have their own denomination.
