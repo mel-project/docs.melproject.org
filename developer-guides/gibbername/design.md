@@ -22,9 +22,7 @@ More specifically, for every gibbername, we need to somehow store an on-chain bl
 
 There is a standard technique for encoding append-only histories in a coin graph: a **Catena chain** (TODO LINK). A Catena chain is simply a chain of transactions, each one spending a particular output coin (say, the first) of the previous one. Metadata on the coins or transactions then encodes the append-only log, and the transaction hash of the first element uniquely identifies the whole chain.
 
-```
-a picture of a first-output catena chain, probably lifted from literature
-```
+<figure><img src="../../.gitbook/assets/Screenshot 2023-03-28 at 20-02-27 Gibbername - diagrams.net.png" alt=""><figcaption><p>The Catena chain after <code>register</code> and <code>transfer</code> operations</p></figcaption></figure>
 
 In our case, we can use the `CoinData::additional_data` field of the coins within a Catena chain to record the binding history of a gibbername. The gibbername itself (like `hehheh-hehheh`) would be some form of encoding of the _location of the first link in the chain_.
 
@@ -58,7 +56,5 @@ This exploits two nice features of Mel's transaction model:
 
 * A coin with `Denom::NewCustom` creates a new, unique token denomination named after the hash of its parent transaction.
 * A coin with value `1` can no longer be subdivided by spending transactions. There's thus always only going to be one unspent coin in the world with the right denomination, making a unique Catena chain.
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-03-28 at 20-02-27 Gibbername - diagrams.net.png" alt=""><figcaption><p>The Catena chain after <code>register</code> and <code>transfer</code> operations</p></figcaption></figure>
 
 Gibbername transactions are now very obvious (allowing, say, Melscan to offer a global Gibbername listing), and wallets will no longer accidentally spend Gibbername-related coins because they have their own denomination.
