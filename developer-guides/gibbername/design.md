@@ -29,7 +29,7 @@ a picture of a first-output catena chain, probably lifted from literature
 In our case, we can use the `CoinData::additional_data` field of the coins within a Catena chain to record the binding history of a gibbername. The gibbername itself (like `hehheh-hehheh`) would be some form of encoding of the _location of the first link in the chain_.
 
 {% hint style="info" %}
-We will discuss how the "gibbername encoding" that maps a gibbername to a unique blockchain location in TODO.
+We will discuss _how_ the "gibbername encoding" that maps a gibbername to a unique blockchain location works in the [implementation section](implement.md#the-gibbername-encoding).
 {% endhint %}
 
 Now, thin clients are able to do the core Gibbername features:
