@@ -103,7 +103,7 @@ Any stablecoin can easily hold a peg when the stablecoin is too expensive --- ju
 
 In our case, MEL's value is backed by the _value that can be extracted by inflating sym_. We call this value the **implicit reserve** of Melmint. Because inflating SYM is essentially a tax on all holders of SYM, the implicit reserve is very roughly the market capitalization of SYM. We can therefore say that **SYM backs MEL**.
 
-Thus, to be stable in a worst-case scenario where everybody wants to sell their mels, the **MEL marketcap must stay below the SYM marketcap**. Fortunately, as the [original Melmint paper shows](https://docs.themelio.org/assets/MEL.pdf) that's likely to be the case in any reasonable economic conditions.
+Thus, to be stable in a worst-case scenario where everybody wants to sell their mels, the **MEL marketcap must stay below the SYM marketcap**. Fortunately, as the [original Melmint paper shows](https://docs.themelio.org/assets/mel.pdf) that's likely to be the case in any reasonable economic conditions.
 
 ## Failure scenarios
 
