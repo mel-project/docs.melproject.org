@@ -59,8 +59,6 @@ The first step in Melmint is for minters --- which can be anybody --- to mint **
 
 #### Proving work
 
-Minters create erg through a DoscMint transaction, something detailed in the \[yellow paper]\(\{{< relref path="../specifications/yellow.md#applying-special-actions" >\}} "Yellow Paper").
-
 In summary, the `data` field of a DoscMint transaction contains two values: a _difficulty exponent_ $$z$$, as well as a _proof_ $$\pi$$. This uses MelPoW, a non-interactive proof-of-sequential-work system whose details aren't important for this document, but in short, $$(D,\pi)$$ is a proof that roughly $$2^z$$ nested hashes have been computed on the _seed_ $$\chi$$, which consists of the first input to the transaction, hashed together with the block hash of the block in which that first input was confirmed.
 
 The key property here is that _the minter cannot predict_ $$\chi$$ _before the first input to the transaction is confirmed_. This means that the minter must have finished the $$2^z$$ hashes after the first input has confirmed, but before the DoscMint transaction itself has confirmed. We now have a time interval, and therefore a _trustless measure of the minter's speed in hashes per second_.
