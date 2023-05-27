@@ -14,7 +14,7 @@ description: A short guide on how to set up and install our wallet CLI.
 ## Install melwalletd and melwallet-cli
 
 ```shell-session
-$ cargo install --locked melwalletd melwallet-cli
+$ cargo install --locked melwalletd melwallet-client
 ```
 
 {% hint style="info" %}
