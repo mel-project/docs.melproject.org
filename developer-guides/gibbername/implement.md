@@ -289,7 +289,7 @@ Transferring names is left as an exercise to the reader.
 {% endhint %}
 
 {% hint style="info" %}
-****[**Wallet URIs**](https://forum.melproject.org/t/some-thoughts-on-wallet-apis-and-payment-protocols/55#option-3-specify-a-wallet-protocol-around-a-custom-url-scheme-5) are still under construction, but they will replace the current UX of asking the user to type a `melwallet-cli`  command.&#x20;
+[**Wallet URIs**](https://forum.melproject.org/t/some-thoughts-on-wallet-apis-and-payment-protocols/55#option-3-specify-a-wallet-protocol-around-a-custom-url-scheme-5) are still under construction, but they will replace the current UX of asking the user to type a `melwallet-cli`  command.&#x20;
 
 Here's a quick preview of what they will look like:
 

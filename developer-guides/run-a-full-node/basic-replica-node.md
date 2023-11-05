@@ -66,8 +66,8 @@ $ melnode --listen [::1]:41814 --advertise auto
 
 We add two flags:
 
-- `--listen [::1]:41814` listens on port 41814 on all network interfaces
-- `--advertise auto` automatically guesses our public IP address for incoming connections on the P2P network
+* `--listen [::1]:41814` listens on port 41814 on all network interfaces
+* `--advertise auto` automatically guesses our public IP address for incoming connections on the P2P network
 
 If this works, you should soon see output like:
 
@@ -91,4 +91,4 @@ $ melnode --network testnet
 
 A distinct feature of the testnet is that **faucets** can be used to generate "free money", which can then be used to test staking and consensus.
 
-A detailed guide to testnet staking can be found [here](../../staking-guide/).
+A detailed guide to testnet staking can be found [here](broken-reference).

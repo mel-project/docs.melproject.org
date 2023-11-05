@@ -41,9 +41,6 @@
 * [🌉 Szaldi guide](szaldi-guide/README.md)
   * [Bridge your coins](szaldi-guide/bridge-your-coins.md)
   * [Architectural overview](szaldi-guide/architectural-overview.md)
-* [🥩 Staking guide](staking-guide/README.md)
-  * [Staking basics](staking-guide/staking-basics.md)
-  * [Staking risks](staking-guide/staking-risks.md)
 
 ## Resources
 

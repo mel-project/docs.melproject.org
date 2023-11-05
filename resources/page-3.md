@@ -35,7 +35,7 @@ There are a couple of failure scenarios which we can imagine with regard to the 
 
 ### How much does it cost to run a staker node? Is it profitable?
 
-There is no minimum amount of SYM which needs to be staked in order to participate in consensus. Profit from staking comes from transaction fees present in each block. More information on staking can be found [here](../staking-guide/).
+There is no minimum amount of SYM which needs to be staked in order to participate in consensus. Profit from staking comes from transaction fees present in each block. More information on staking can be found [here](broken-reference).
 
 ### How can I get some MEL?
 
