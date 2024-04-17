@@ -21,13 +21,13 @@ melwallet-cli --wallet-path ./bob.json create --network testnet
 
 {% hint style="info" %}
 
-The wallet secrets are stored as *unencrypted* json documents on disk. Users and applications should take care to encrypt as needed.
+The wallets with their secrets are stored as *unencrypted* json documents on disk. Users and applications should take care to encrypt as needed.
 
 {% endhint %}
 
 ## Fund Alice's wallet <a href="#fund-wallet" id="fund-wallet"></a>
 
-Let's use the faucet to print testnet MEL, to fund our new testnet wallets. This command sends 1000 MELs to wallet `alice` and waits until the transaction is confirmed:
+Let's use the faucet to print testnet MEL to fund our new testnet wallets. This command sends 1000 MELs to wallet `alice` and waits until the transaction is confirmed:
 
 ```shell-session
 melwallet-cli --wallet-path ./alice.json send-faucet --wait
@@ -35,13 +35,26 @@ melwallet-cli --wallet-path ./alice.json send-faucet --wait
 
 ## Send some money to Bob <a href="#send-funds" id="send-funds"></a>
 
-Now, we transfer some MEL from alice to bob:
+Now, we transfer some MEL from alice to bob. First, obtain bob's address using
 
 ```shell-session
-melwallet-cli --wallet-path ./alice send --to <BOB_ADDRESS>,500.0 --wait
+melwallet-cli --wallet-path ./bob.json summary
 ```
 
-This command sends `500.0` MEL from alice to bob and waits for the transaction to confirm. When it returns, you've successfully sent MEL to bob!
+You should get output similar to
+```
+Network:  testnet
+Address:  t7v9tegt6bm6dv9t6e56ktdap3ych5htw83wa69z0shwa7nt3xbkn0
+Balances:
+```
+
+Send the money to bob:
+
+```shell-session
+melwallet-cli --wallet-path ./alice.json send --to <BOB_ADDRESS>,500.0 --wait
+```
+
+This command sends `500.0` MEL from alice to bob and waits for the transaction to confirm. When it returns, you have successfully sent MEL to bob!
 
 ## Further reading
 

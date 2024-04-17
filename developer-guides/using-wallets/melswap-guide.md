@@ -31,8 +31,9 @@ We embedded a rudimentary DEX into the L1 not primarily for convenience, but as 
 
 With Melswap, any user can instantly swap one token for another for a fixed pool fee of 0.5%. Using `melwallet-cli`, we swap 100 MEL for some SYM at the market rate:
 
-<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli --wallet-path ./bob.json swap --value 100.0 --from MEL --to SYM --wait
-</strong>SWAPPING
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>melwallet-cli --wallet-path ./bob.json swap --value 100.0 --from MEL --to SYM --wait
+</strong>
+SWAPPING
 From:  100.000000 MEL
 To:    50.000000  SYM  (approximate)
 Fee:     0.000000 MEL
@@ -43,7 +44,7 @@ Proceed? [y/N] y
 Transaction 3717d9d6a93f2e5c4c420745dccbb72d9ed109285362f6a45785e6f73cd8ef58 confirmed!
 </code></pre>
 
-<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli --wallet-path ./bob.json summary
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>melwallet-cli --wallet-path ./bob.json summary
 </strong>
 Network:  testnet
 Address:  t7v9tegt6bm6dv9t6e56ktdap3ych5htw83wa69z0shwa7nt3xbkn0
@@ -62,8 +63,9 @@ Constant-product swapping pools are most notably implemented by Uniswap, and the
 
 To see the current exchange rate and liquidity of any given pool:
 
-<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ mmelwallet-cli --wallet-path ./bob.json pool MEL/SYM
-</strong>1 MEL  = 0.5000000000000000 SYM
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>melwallet-cli --wallet-path ./bob.json pool MEL/SYM
+</strong>
+1 MEL  = 0.5000000000000000 SYM
 1 SYM  = 2.0000000000000000 MEL
 </code></pre>
 
@@ -75,7 +77,7 @@ A constant-product pool like Melswap works to ensure all trades can be satisfied
 
 Where does all the liquidity sitting in the pool come from? Melswap incentivizes users to add liquidity to pools by depositing tokens in the pool in exchange for **liquidity tokens**. Liquidity tokens are unique in that they reflect an ownership of a proportion of the entire pool, instead of an individual token. Let's deposit a total value of 100 MEL in liquidity into the MEL/SYM pool:
 
-<pre class="language-shell-session" data-overflow="wrap"><code class="lang-shell-session"><strong>$ melwallet-cli --wallet-path ./bob.json liq-deposit 1.0 SYM 2.0 MEL --wait
+<pre class="language-shell-session" data-overflow="wrap"><code class="lang-shell-session"><strong>melwallet-cli --wallet-path ./bob.json liq-deposit 0.0 SYM 100.0 MEL --wait
 </strong>
 Proceed? [y/N] y
 ..................
@@ -84,7 +86,7 @@ Transaction 19b882d37f66cce058dea501c2acffe1cdac8b00e7424e27ad92c864f27ba56d con
 
 `bob` now has 1 liquidity token for the MEL/SYM pool, called `CUSTOM-526bd177e93a854e08216aff6b48cf7f3ae7b4cbd202fdfde39271d1ad90a3bd`.
 
-<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ melwallet-cli --wallet-path ./bob.json summary
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>melwallet-cli --wallet-path ./bob.json summary
 </strong>
 Network:      testnet
 Address:      t11n9ynz8jhcd1k7h6jx4pvsc4m2qvwjhdp5mx03ega05hkcts8j9g
