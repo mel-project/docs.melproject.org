@@ -48,7 +48,7 @@ For example, clients for a decentralized encrypted chat platform with cryptocurr
 
 In Mel's ecosystem, trustless light clients take Web3 superpowers out of the on-chain box, then decentralized secure protocols pass the superpowers to user-facing apps. Web3 is freed from the blockchain box, so much so that users and developers of the end applications **never even need to think about the blockchain**.&#x20;
 
-A great example of a member of this sort of protocol ecosystem is Earendil ([https://earendil.network](https://earendil.network\),)), a decentralized, strongly censorship-resistant communication protocol we are building into core communication system for the Mel ecosystem.
+A great example of a member of this sort of protocol ecosystem is Earendil (<https://earendil.network>), a decentralized, strongly censorship-resistant communication protocol we are building into core communication system for the Mel ecosystem.
 
 ## Why do we need a new blockchain?
 
