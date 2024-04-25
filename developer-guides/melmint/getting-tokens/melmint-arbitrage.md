@@ -27,10 +27,10 @@ Make sure you have the following set up:
 ### Time for some arbitrage :money\_mouth:
 
 ```shell-session
-$ melwallet-cli autoswap <value> -w <wallet>  
+$ melwallet-cli --wallet-path <path to wallet> autoswap <value>  
 ```
 
-Here, `<value>` should be the particular amount of a token that you want to swap.
+`<value>` is the amount of MEL  that you want to automatically swap for arbitrage.
 
-This command will automatically execute trades on the "triangular" MEL/SYM/other pairs.
+This command will automatically execute trades on the "triangular" MEL/SYM/ERG pairs.
 
