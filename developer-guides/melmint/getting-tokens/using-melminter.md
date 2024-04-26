@@ -19,7 +19,7 @@ You will need:
 {% hint style="info" %}
 If you simply want to try this out on the testnet, you can acquire testnet MEL yourself via a faucet transaction, as shown [here](../../using-wallets/getting-started.md#fund-wallet).
 
-If you wish to participate in mainnet melminting, please ask for some MEL in the #beta-testers channel in our [Discord server](https://discord.gg/UXhxujHH).
+If you wish to participate in mainnet melminting, please ask for some MEL in the #mel channel of our [Discord server](https://discord.com/invite/qfg35paESn).
 {% endhint %}
 
 ## Running  melminter
