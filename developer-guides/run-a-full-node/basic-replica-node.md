@@ -4,17 +4,19 @@ description: Running a replica node with melnode.
 
 # Basic replica node
 
-**Replica nodes** simply validate and replicate blocks that the network has already produced. They are the most common type of full node, and running one does not require staking any sort of cryptocurrency.
+**Replica nodes** simply validate and replicate blocks that the network has already produced. They are the most common type of full node, and running one does not require staking anything.
 
 ## On the mainnet
 
 ### Starting melnode
 
-Simply running the `melnode` command without any arguments starts an instance running on the mainnet. You will see output looking something like this:
+Running the `melnode` command without any arguments starts an instance running on the mainnet. 
 
 ```shell-session
-$ melnode
+melnode
 ```
+
+You will see output looking like this:
 
 ```shell-session
 [2022-12-12T16:40:48Z INFO  melnode] melnode v0.13.2 initializing...
@@ -48,7 +50,7 @@ $ melnode
 There is an optional flag `--index-coins` that is recommended. Certain coin-related RPCs will be disabled if this flag is not set. Do note that the indexer will take up extra memory.
 {% endhint %}
 
-It will take _quite_ a long time to synchronize all the blocks from the network (usually, around half a day or so).
+It will take _quite_ a long time to synchronize all the blocks from the network (usually 10+ hours as of April 2024).
 
 ### Participating in peering
 
@@ -56,12 +58,12 @@ It will take _quite_ a long time to synchronize all the blocks from the network 
 To participate in peering, you must have a publicly reachable IP address. Most home internet setups do not give you a public IPv4 address!
 {% endhint %}
 
-By default, `melnode` doesn't do much other than downloading blocks. The default listening port is just `localhost:41814`, meaning that no other computers can connect to the node.
+By default, `melnode` doesn't do much other than downloading blocks. The default listening port is `localhost:41814`: since this is on localhost, no other computers can connect to the node.
 
 To actually contribute to block propagation on the network, you need to expose `melnode` to other networks:
 
 ```shell-session
-$ melnode --listen [::1]:41814 --advertise auto
+melnode --listen [::1]:41814 --advertise auto
 ```
 
 We add two flags:
@@ -81,14 +83,12 @@ indicating that you are helping other nodes connect to the network.
 
 ### Basic functionality
 
-Replicating testnet blocks is as easy as adding `--network testnet` to any command:
+To replicate testnet blocks, add `--network testnet` to any `melnode` command:
 
 ```shell-session
-$ melnode --network testnet
+melnode --network testnet
 ```
 
 ### Faucets and staking
 
-A distinct feature of the testnet is that **faucets** can be used to generate "free money", which can then be used to test staking and consensus.
-
-A detailed guide to testnet staking can be found [here](broken-reference).
+A distinct feature of the testnet is that **faucets** can be used to generate "free money", which can then be used to test consensus and staking (future feature).
