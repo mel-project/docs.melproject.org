@@ -1,8 +1,8 @@
 # melprot: a quick intro
 
-## melprot::Client: a trustless thin client
+## melprot::Client: a trustless light client
 
-The most basic tool for thin-client interaction in Mel is `melprot::Client`, a struct exposed by the melprot Rust crate that implements Mel's P2P protocol. `melprot::Client` is a thin client that can be used to query full nodes for information about blockchain contents.
+The most basic tool for light-client interaction in Mel is `melprot::Client`, a struct exposed by the melprot Rust crate that implements Mel's P2P protocol. `melprot::Client` is a light client that can be used to query full nodes for information about blockchain contents.
 
 But unlike a raw RPC client (which does exist as `melprot::NodeRpcClient`), `melprot::Client` internally validates Merkle-tree proofs and staker signatures so that it _avoids trusting any full node_. Everything that `melprot::Client` returns is backed by the decentralized, incentive-based trust of the Mel blockchain, and nothing can be faked by a malicious node or RPC network.
 
@@ -57,7 +57,7 @@ let snap_200 = snap_100.get_older(BlockHeight(200)).await?;
 
 ## Coin graph traversal
 
-A very common task for thin clients is traversing the **coin graph** of the blockchain, which is the global directed graph of all transactions spending and creating coins. For instance, this is a fragment of the coin graph centered around [a particular mainnet transaction in block 1901450](https://scan.themelio.org/blocks/1901450/674735b7b7e4163f7404715bd6b8433a8db523c52279ad07e2b4e88a6708d873):
+A very common task for light clients is traversing the **coin graph** of the blockchain, which is the global directed graph of all transactions spending and creating coins. For instance, this is a fragment of the coin graph centered around [a particular mainnet transaction in block 1901450](https://scan.themelio.org/blocks/1901450/674735b7b7e4163f7404715bd6b8433a8db523c52279ad07e2b4e88a6708d873):
 
 <figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 

@@ -15,9 +15,9 @@ For now, though, Rust is the only supported language.
 The first step of implementing Gibbername is to create a new Rust library with the `melprot` dependency:
 
 ```shell-session
-$ cargo new --lib gibbername
+cargo new --lib gibbername
      Created library `gibbername` package
-$ cd gibbername
+cd gibbername
 ```
 
 We'll also be adding some dependencies. These will show up in the `Cargo.toml`:

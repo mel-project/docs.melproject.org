@@ -20,7 +20,7 @@ Szaldi is 100% autonomous and decentralized. It's not a custodial bridge where y
 
 The functionality of the relay is simple:
 
-* **Wrapping assets** from Mel to Ethereum: Mel assets (e.g. MEL) are locked up into a special covenant. A thin-client proof of the locking Mel transaction is then submitted to an Ethereum smart contract, which then prints ERC-1155 tokens (e.g. wMEL).
-* **Unwrapping assets** like wMEL on Ethereum back to Mel: ERC-1155 wrapped tokens are burnt with the Ethereum smart contract. A thin-client proof of the burn transaction is then used to unlock the locked assets on the Mel side.
+* **Wrapping assets** from Mel to Ethereum: Mel assets (e.g. MEL) are locked up into a special covenant. A light-client proof of the locking Mel transaction is then submitted to an Ethereum smart contract, which then prints ERC-1155 tokens (e.g. wMEL).
+* **Unwrapping assets** like wMEL on Ethereum back to Mel: ERC-1155 wrapped tokens are burnt with the Ethereum smart contract. A light-client proof of the burn transaction is then used to unlock the locked assets on the Mel side.
 
 In the next section we will look at step-by-step instructions on how we can use Szaldi to move our Mel assets to the Ethereum network and after we will take a deeper look at Szaldi's architecture and design.
