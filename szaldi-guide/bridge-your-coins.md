@@ -12,7 +12,7 @@ To safely and conveniently streamline interaction with Szaldi, a client has been
 
 In order to mint your Mel coins as tokens on Ethereum, you must first lock your coins up on the Mel network and then send a proof of the lock transaction to the Ethereum network. `Szaldi-cli` takes care of abstracting the entire process away using an interactive CLI session which will guide you through the bridging process, one step at a time.
 
-<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ Szaldi-cli to-ethereum -t &#x3C;Mel-wallet-name> -e &#x3C;ethereum-wallet-dir>
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>Szaldi-cli to-ethereum -t &#x3C;Mel-wallet-name> -e &#x3C;ethereum-wallet-dir>
 </strong>
 Welcome to Szaldi-cli! I'll help guide you through the bridging process.
 
@@ -37,7 +37,7 @@ Success! Your tokens were successfully minted with transaction hash 0xc4408a8646
 
 To move your assets from Ethereum back to Mel, you must choose a coin to unlock, burn the equivalent amount on the Ethereum network, and provide the Mel network with a proof of this burn. To automate this process, we can use an interactive `Szaldi-cli` session which will safely walk you through the process.
 
-<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ Szaldi-cli to-Mel -e &#x3C;ethereum-wallet-dir> -t &#x3C;Mel-wallet-name>
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>Szaldi-cli to-Mel -e &#x3C;ethereum-wallet-dir> -t &#x3C;Mel-wallet-name>
 </strong>
 Welcome to Szaldi-cli! I'll help guide you through the bridging process.
 

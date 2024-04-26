@@ -41,7 +41,7 @@ Follow the [instructions](https://doc.rust-lang.org/cargo/getting-started/instal
 Simply run the following command:
 
 ```shell-session
-$ cargo install --locked melnode
+cargo install --locked melnode
 ```
 
 {% hint style="info" %}

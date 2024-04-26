@@ -128,7 +128,7 @@ fn main() -> anyhow::Result<()> {
 ```
 
 ## Testing
-
+TODO
 We now have a complete program! We can test run it with `cargo run`:
 
 <pre class="language-shell-session"><code class="lang-shell-session"><strong>$ cargo run -- register --owner t1cj51xmq3dxn91z8exz3vhbk2wc8g9enh3kzsbmd3zzy6yx1memyg --binding 'hello CLI' --wallet-name my-wallet

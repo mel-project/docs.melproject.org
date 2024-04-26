@@ -9,7 +9,7 @@ description: This page shows how to participate in Melmint with the melminter CL
 Ensure that you have an up-to-date version of `melminter` installed:
 
 ```shell-session
-$ cargo install --locked melminter
+cargo install --locked melminter
 ```
 
 You will need:
@@ -25,7 +25,7 @@ If you wish to participate in mainnet melminting, please ask for some MEL in the
 ## Running  melminter
 
 ```shell-session
-$ melminter --payout <payout-wallet-address>
+melminter --payout <payout-wallet-address>
 ```
 
 The first time you run `melminter`, it will ask you to send a particular address a small amount of MEL in order to start. This is so that it can pay initial transaction fees. Send that money, and after around 30 seconds you'll see a nice TUI show up:

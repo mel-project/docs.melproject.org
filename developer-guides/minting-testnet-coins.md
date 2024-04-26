@@ -36,7 +36,7 @@ This will save any wallets you create to `~/.Mel-wallets`, but feel free to use 
 For example, to print SYM:
 
 ```shell-session
-$ melwallet-cli send-faucet -w <wallet-name> --currency SYM --amount 10000
+melwallet-cli send-faucet -w <wallet-name> --currency SYM --amount 10000
 ```
 
 That's it! Now you have some testnet money to play with. To learn more about swapping, take a look at our quick [Melswap guide](../developer-guides/using-wallets/melswap-guide.md).
