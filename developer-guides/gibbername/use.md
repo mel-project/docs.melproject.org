@@ -3,7 +3,7 @@
 Now that we've finished writing our `gibbername` crate, we'll demonstrate actually using it in a project. We will build `gibbername-cli`, a trivial wrapper around the library that lets you look up and register names on the command line. Using it willl look something like
 
 ```shell-session
-$ gibbername-cli lookup tofnal-qujjay-seh
+gibbername-cli lookup tofnal-qujjay-seh
 hello world my dudes this is what's bound to the name lol
 ```
 
@@ -14,20 +14,14 @@ You can find a complete example in our [GitHub repo](https://github.com/mel-proj
 Let's start by creating a new binary crate:
 
 ```shell
-$ cargo new gibbername-cli
-$ cd gibbername-cli
+cargo new gibbername-cli
+cd gibbername-cli
 ```
 
 We add `melprot`, `melstructs`, `anyhow` for error handling,`argh` for lightweight argument parsing, and `futures-lite` for bare-bones async support:
 
 ```toml
-$ cargo add melprot melstructs anyhow argh futures-lite
-    Updating crates.io index
-      Adding melprot v0.1.0 to dependencies.
-      Adding melstructs v0.3.2 to dependencies.
-      Adding anyhow v1.0.69 to dependencies.
-      Adding argh v0.1.10 to dependencies.
-      Adding futures-lite 1.12.0 to dependencies.
+cargo add melprot melstructs anyhow argh futures-lite
 ```
 
 We also need to add a dependency on Gibbername itself. This will be a "path" dependency to wherever, locally, you put the Gibbername crate:

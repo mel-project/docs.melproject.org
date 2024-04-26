@@ -16,16 +16,13 @@ The first step of implementing Gibbername is to create a new Rust library with t
 
 ```shell-session
 cargo new --lib gibbername
-     Created library `gibbername` package
 cd gibbername
 ```
 
 We'll also be adding some dependencies. These will show up in the `Cargo.toml`:
 
 ```shell-session
-$ cargo add futures-util anyhow gibbercode hex melprot melstructs stdcode tmelcrypt
-    Updating crates.io index
-      Adding futures-util v0.3.26 to dependencies.
+cargo add futures-util anyhow gibbercode hex melprot melstructs stdcode tmelcrypt
 ```
 
 ## Looking up names
@@ -197,7 +194,7 @@ pub async fn lookup(client: &melprot::Client, gibbername: &str) -> anyhow::Resul
 
 ## Registering names
 
-Registering names is a little different. Right of the bat we're faced with a problem: we need to _send_ a transaction into the blockchain rather than just reading existing data.
+Registering names is a little different: we need to _send_ a transaction into the blockchain rather than just reading existing data.
 
 One possible way is to craft a transaction inside our library and send it by directly calling an RPC method on a full node (through something like `melprot::Client::raw_rpc()`). But this is hard, because we must somehow get hold of $MEL to pay transaction fees (possibly by asking the user to send money to some address?). Furthermore, even once we have $MEL, managing the money and the private keys securing it difficult, security-critical task.
 
