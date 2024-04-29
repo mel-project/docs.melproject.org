@@ -3,7 +3,7 @@
 Now that we've finished writing our `gibbername` crate, we'll demonstrate actually using it in a project. We will build `gibbername-cli`, a trivial wrapper around the library that lets you look up and register names on the command line. Using it willl look something like
 
 ```shell-session
-gibbername-cli lookup tofnal-qujjay-seh
+gibbername-cli lookup tofnal-seh
 hello world my dudes this is what's bound to the name lol
 ```
 
@@ -41,12 +41,15 @@ melstructs = "0.3.2"
 We write a basic scaffold that parses the arguments with `argh`:
 
 ```rust
-use argh::FromArgs;
+se argh::FromArgs;
+use futures_lite::future::block_on;
 use melstructs::{Address, NetID};
 
 #[derive(FromArgs, PartialEq, Debug)]
 /// Look up a name in the Gibbername registry.
 struct Cli {
+    #[argh(option, description = "either 'mainnet' or 'testnet'")]
+    network: NetID,
     #[argh(subcommand)]
     command: Command,
 }
@@ -55,7 +58,7 @@ struct Cli {
 #[argh(subcommand)]
 enum Command {
     Lookup(Lookup),
-    Register(Register)
+    Register(Register),
 }
 
 #[derive(FromArgs, PartialEq, Debug)]
@@ -70,21 +73,21 @@ struct Lookup {
 #[argh(subcommand, name = "register")]
 /// Register a name
 struct Register {
-    #[argh(option, description = "the Mel address of the gibbername owner")]
+    #[argh(option, description = "mel address of the gibbername owner")]
     owner: Address,
 
-    #[argh(option, description = "the data to be bound to the gibbername")]
+    #[argh(option, description = "data to be bound to the gibbername")]
     binding: String,
 
-    #[argh(option, description = "the name of the wallet sending the transaction")]
-    wallet_name: String,
+    #[argh(option, description = "path to the wallet sending the transaction")]
+    wallet_path: String,
 }
 
-
 fn main() -> anyhow::Result<()> {
+    env_logger::init();
     let args: Cli = argh::from_env();
     // keep around a client
-    let client = melprot::Client::autoconnect(NetID::Mainnet);
+    let client = block_on(melprot::Client::autoconnect(args.network))?;
     match args.command.as_ref() {
         Command::Lookup(lookup) => {
             todo!()
@@ -128,21 +131,20 @@ fn main() -> anyhow::Result<()> {
 ```
 
 ## Testing
-TODO
 We now have a complete program! We can test run it with `cargo run`:
 
-<pre class="language-shell-session"><code class="lang-shell-session"><strong>$ cargo run -- register --owner t1cj51xmq3dxn91z8exz3vhbk2wc8g9enh3kzsbmd3zzy6yx1memyg --binding 'hello CLI' --wallet-name my-wallet
-</strong>Send this command with your wallet: melwallet-cli send -w last --to t1cj51xmq3dxn91z8exz3vhbk2wc8g9enh3kzsbmd3zzy6yx1memyg,0.000001,"(NEWCUSTOM)","68656c6c6f20434c49" --hex-data 6769626265726e616d652d7631
+<pre class="language-shell-session"><code class="lang-shell-session"><strong>cargo run -- --network mainnet register --owner x7v9tegt6b99xv9t6e56kabap3ych5htw83wa69z0shwa7ms3xbkn7 --binding "hello world" --wallet-path ./alice.json
+</strong>Send this command with your wallet: melwallet-cli --wallet-path ./alice.json send --to x7v9tegt6b99xv9t6e56kabap3ych5htw83wa69z0shwa7ms3xbkn7,0.000001,"(NEWCUSTOM)","68656c6c6f20776f726c64" --hex-data 6769626265726e616d652d7631
 </code></pre>
 
-Now we run the `melwallet-cli` command which will register our gibbername:
+Now, run the `melwallet-cli` command which will register our gibbername:
 
-<pre><code><strong>$ melwallet-cli send -w last --to t1cj51xmq3dxn91z8exz3vhbk2wc8g9enh3kzsbmd3zzy6yx1memyg,0.000001,"(NEWCUSTOM)","68656c6c6f20434c49" --hex-data 6769626265726e616d652d7631
-</strong>registered "zewses"
+<pre><code><strong>melwallet-cli --wallet-path ./alice.json send --to x7v9tegt6b99xv9t6e56kabap3ych5htw83wa69z0shwa7ms3xbkn7,0.000001,"(NEWCUSTOM)","68656c6c6f20776f726c64" --hex-data 6769626265726e616d652d7631
+</strong>registered "segnet-tes"
 </code></pre>
 
 Finally, we can look up the binding we set in our `register` command using `lookup`:
 
-<pre><code><strong>$ cargo run -- lookup zewses
-</strong>hello CLI
+<pre><code><strong>cargo run -- --network mainnet lookup segnet-tes
+</strong>hello world
 </code></pre>
