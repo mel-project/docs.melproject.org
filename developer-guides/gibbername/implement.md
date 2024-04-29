@@ -245,13 +245,13 @@ pub async fn register(
 ```rust
 // A small helper function to create the wallet command for registering a name.
 fn register_name_cmd(
-    wallet_name: &str,
+    wallet_path: &str,
     address: Address,
     initial_binding: &str,
 ) -> anyhow::Result<String> {
     let cmd = format!(
-        "melwallet-cli send -w {} --to {},{},{},\"{}\" --hex-data {}",
-        wallet_name,
+        "melwallet-cli --wallet-path {} send --to {},{},{},\"{}\" --hex-data {}",
+        wallet_path,
         address,
         0.000001,
         "\"(NEWCUSTOM)\"",
@@ -263,19 +263,7 @@ fn register_name_cmd(
 }
 ```
 
-When this function is called, the user will be prompted to manually send a transaction with our wallet CLI: `melwallet-cli`. We will continuously stream incoming transactions until we find the one we sent. This process will be as follows:
-
-```shell-session
-$ cargo install --locked melwallet-client melwalletd
-$ melwalletd --wallet-dir <wallet-dir>
-$ melwallet-cli create -w <wallet-name>
-$ melwallet-cli unlock -w <wallet-name>
-
-# now you can paste and run the command given to you by the gibbername library
-$ melwalet-cli send -w <wallet-name> --to <wallet-addr>,<0.000001>,"(NEWCUSTOM)",<initial-binding-hex> --hex-data <gibbername-v1-hex>
-```
-
-We are now able to register a name with an arbitrary binding! :rocket:
+When this function is called, the user will be prompted to manually send a transaction with our wallet CLI: `melwallet-cli`. We will continuously stream incoming transactions until we find the one we sent. We are now able to register a name with an arbitrary binding! :rocket:
 
 ## Transferring names
 
@@ -285,7 +273,7 @@ Transferring names is left as an exercise to the reader.
 **Hint**: you'll need to construct a wallet wallet to extend the Catena chain and prompt the user, just like with registration. If you're truly stuck, there's always [our GitHub example](https://github.com/mel-project/gibbername) code :smile:
 {% endhint %}
 
-{% hint style="info" %}
+<!-- {% hint style="info" %}
 [**Wallet URIs**](https://forum.melproject.org/t/some-thoughts-on-wallet-apis-and-payment-protocols/55#option-3-specify-a-wallet-protocol-around-a-custom-url-scheme-5) are still under construction, but they will replace the current UX of asking the user to type a `melwallet-cli`  command.&#x20;
 
 Here's a quick preview of what they will look like:
@@ -295,4 +283,4 @@ Here's a quick preview of what they will look like:
   * Right now, we will prompt the user to do so manually.
   * Eventually, a graphical "Gibbername registrar app" should integrate with OS-specific URI-opening functionality.
 * Wait for the transaction to commit and derive a gibbername from the location at which the transaction was committed
-{% endhint %}
+{% endhint %} -->

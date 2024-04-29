@@ -20,7 +20,7 @@ Participants in the Mel blockchain network itself can be roughly divided into (f
 
 Clients do not replicate any blocks, but are able to interact with the blockchain state by asking full nodes. An important design principle is that _clients do not trust full nodes_: full nodes must present proof that the info sent to the client is part of canonical blockchain history.
 
-**Apps** are generally built _on top of_ Mel thin clients. The most basic app is probably a **wallet**, a tool for managing on-chain assets and "manual" interaction with blockchain state. More complex applications can be built by composing on-chain logic with off-chain functionality using trust-minimizing thin clients; this is the cornerstone of Mel's off-chain composability vision.
+**Apps** are generally built _on top of_ Mel light clients. The most basic app is probably a **wallet**, a tool for managing on-chain assets and "manual" interaction with blockchain state. More complex applications can be built by composing on-chain logic with off-chain functionality using trust-minimizing light clients; this is the cornerstone of Mel's off-chain composability vision.
 
 ## Tooling overview
 
@@ -32,11 +32,11 @@ Both staker and replica nodes are supported by **melnode**, our official node so
 
 Staking requires SYM, which is currently available only on the testnet. You can follow our testnet staking guide to learn how to run a staker node.
 
-### Thin clients
+### light clients
 
-We have a full-featured thin client library available in **melprotocol**, our protocol crate. You can find detailed documentation on docs.rs.
+We have a full-featured light client library available in **melprotocol**, our protocol crate. You can find detailed documentation on docs.rs.
 
-Also available is an introductory guide to building your first trustless, off-chain app using a Mel thin client.
+Also available is an introductory guide to building your first trustless, off-chain app using a Mel light client.
 
 ### Wallets
 

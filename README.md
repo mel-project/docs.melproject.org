@@ -56,11 +56,11 @@ But why do we need a new blockchain to implement off-chain Web3? Can't we build 
 
 It turns out that ease of off-chain composability requires many design trade-offs in all the aspects of a blockchain, and features for on-chain ecosystems hamper both **exporting** and **producing** Web3 superpowers. As examples:
 
-**VM improvements**: These provide easy opcodes for cool stuff like ZK and make smart contracts happy by saving gas costs. However, the governance involved both breaks thin client compatibility and threatens neutrality
+**VM improvements**: These provide easy opcodes for cool stuff like ZK and make smart contracts happy by saving gas costs. However, the governance involved both breaks light client compatibility and threatens neutrality
 
 **Standard contract APIs**: Decoupling contract interface from implementation, these APIs power many on-chain ecosystems (ERC-20 DeFi etc). However, the disparate implementations complicate off-chain verification, and buggy/centralized contracts introduce systemic security risks.
 
-**"Moar TPS!!"**: This makes on-chain things fast and cheap, essentially making a bigger box for bigger contracts. However, thin clients are way harder to run, and the much bigger nodes lead to centralization.
+**"Moar TPS!!"**: This makes on-chain things fast and cheap, essentially making a bigger box for bigger contracts. However, light clients are way harder to run, and the much bigger nodes lead to centralization.
 
 Unfortunately, current blockchains, especially fancy new ones, double down on one or more features, trading away off-chain composability for an on-chain ecosystem. That's why we made a new L1 from scratch, optimizing every part of Mel for being the **decentralized security keystone** that enables an off-chain composable Web3.
 
