@@ -27,7 +27,7 @@ The wallets with their secrets are stored as *unencrypted* json documents on dis
 
 ## Fund Alice's wallet <a href="#fund-wallet" id="fund-wallet"></a>
 
-Let's use the faucet to print testnet MEL to fund our new testnet wallets. This command sends 1000 MELs to wallet `alice` and waits until the transaction is confirmed:
+Let's use the faucet to print testnet MEL to fund our new testnet wallets. This command sends 1000 MEL to wallet `alice` and waits until the transaction is confirmed:
 
 ```shell-session
 melwallet-cli --wallet-path ./alice.json send-faucet --wait
