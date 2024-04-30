@@ -41,14 +41,14 @@ There are two main steps to actually pegging the MEL to DOSC: _erg-minting_ and 
 
 Erg-minting involves allowing anybody to use a special transaction type (`DoscMint`) to prove that they completed a certain amount of sequential proof-of-work. This transaction then generates $$k$$ "erg" for each DOSC of work done. $$k$$ here is not a constant, but an exponentially increasing conversion factor --- while 1 DOSC of work may generate $$10$$ erg today, it might generate $$100$$ erg a year from now. Due to this rapid inflation, erg act as an on-chain, tokenized representation of _recent_ sequential work.
 
-The central mechanism uses **Melswap**, a built-in, Uniswap-like decentralized exchange that supports all Mel-based tokens. Its objective is to _peg 1 MEL to 1 DOSC worth of SYM_, using a feedback loop that prints mels and buys syms or vice-versa. Recall that SYM is Mel's separate, proof-of-stake token. First, we read two exchange rates off of Melswap:
+The central mechanism uses **Melswap**, a built-in, Uniswap-like decentralized exchange that supports all Mel-based tokens. Its objective is to _peg 1 MEL to 1 DOSC worth of SYM_, using a feedback loop that prints MEL and buys SYM or vice-versa. Recall that SYM is Mel's separate, proof-of-stake token. First, we read two exchange rates off of Melswap:
 
 * $$s$$: how much SYM can 1 MEL buy
 * $$t$$: how much SYM can 1 erg buy
 
 Then, Melswap targets an exchange rate of 1 MEL = $$tk$$ SYM --- that is, 1 DOSC ($$k$$ erg) worth of syms. When this $$s=tk$$ peg fails to hold, we use _inflation_ to back it:
 
-* **Mel too cheap**: This is the blue box in the picture, where $$s<tk$$. In this case, Melmint continually prints syms out of thin air, using them to buy MEL, which are subsequently destroyed. This artificially increases the demand for MEL, increasing its purchasing power until $$s=tk$$.
+* **Mel too cheap**: This is the blue box in the picture, where $$s<tk$$. In this case, Melmint continually prints SYM out of thin air, using them to buy MEL, which are subsequently destroyed. This artificially increases the demand for MEL, increasing its purchasing power until $$s=tk$$.
 * **Mel too expensive**: This is the red box in the picture, where $$s>tk$$. Here, Melmint would instead print mels, using them to buy syms. This increases the supply of MEL, decreasing its price until $$s=tk$$.
 
 We now take a look at each individual step in this process:
@@ -91,7 +91,7 @@ For example, consider a Melswap market with the following exchange rates:
 * $$1$$ ERG = $$1.5$$ SYM
 * $$k=1.5$$
 
-Here, "1 DOSC worth of SYM" would be "1.5 erg worth of SYM", or $$1.5\times 1.5 = 2.25$$ SYM. Yet the current market exchange rate is only $$2$$ SYM, meaning that _mels are too cheap_.
+Here, "1 DOSC worth of SYM" would be "1.5 erg worth of SYM", or $$1.5\times 1.5 = 2.25$$ SYM. Yet the current market exchange rate is only $$2$$ SYM, meaning that _MEL is too cheap_.
 
 Thus, to support the peg, every block Melmint will print up some SYM to buy up MEL, until the peg holds.
 
