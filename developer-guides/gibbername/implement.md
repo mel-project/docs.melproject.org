@@ -270,7 +270,7 @@ When this function is called, the user will be prompted to manually send a trans
 Transferring names is left as an exercise to the reader.
 
 {% hint style="info" %}
-**Hint**: you'll need to construct a wallet wallet to extend the Catena chain and prompt the user, just like with registration. If you're truly stuck, there's always [our GitHub example](https://github.com/mel-project/gibbername) code :smile:
+**Hint**: you'll need to construct a wallet to extend the Catena chain and prompt the user, just like with registration. If you're truly stuck, there's always [our GitHub example](https://github.com/mel-project/gibbername) code :smile:
 {% endhint %}
 
 <!-- {% hint style="info" %}

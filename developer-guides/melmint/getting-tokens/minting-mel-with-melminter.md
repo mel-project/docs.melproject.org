@@ -39,4 +39,4 @@ Melmint's stability depends on a community of traders profiting from arbitrage b
 
 ## Further Reading
 
-This was just a quick overview of Melmint. The complete guide on how MEL is stabilized, along with what happens under the hood, can be found [here](broken-reference) in the conceptual documentation.
+This was just a quick overview of Melmint. The complete guide on how MEL is stabilized, along with what happens under the hood, can be found [here](../../../concepts/melmint.md) in the conceptual documentation.

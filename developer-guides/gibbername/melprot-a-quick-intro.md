@@ -44,7 +44,7 @@ Within a snapshot at a given height, there are many mappings associated with the
 
 ### Moving a snapshot back in time
 
-Since snapshots commit to the state of a blockchain at a particular height — which includes the previous history — they can be used to verify older claims about blockchain contents but not earlier claims. This is represented in `melprot` by `Snapshot::get_older(height: BlockHeight)`, which can move snapshots backwards in time, but not forwards:
+Since snapshots commit to the state of a blockchain at a particular height — which includes the previous history — they can be used to verify older claims about blockchain contents but not later claims. This is represented in `melprot` by `Snapshot::get_older(height: BlockHeight)`, which can move snapshots backwards in time, but not forwards:
 
 ```rust
 // get a snapshot at block height 100

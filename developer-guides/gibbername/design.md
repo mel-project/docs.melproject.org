@@ -5,7 +5,7 @@
 Designing a off-chain composable, Mel-backed protocol is roughly a three-step process:
 
 1. **What needs to be on the blockchain?** In the mature off-chain composability ecosystem of the future, most of the time you don't need to put anything on the blockchain yourself. For example, given an anonymous communication network and a secure naming system, an I2P-like anonymous web hosting platform can be built by combining the two protocols. But for the low-level primitives we need to build right now (like Gibbername), generally something needs to be on-chain.
-2. **How to encode the on-chain info in a \_light-client legible**\_\*\* fashion?\*\* We need to then figure out how to encode the on-chain info in the on-chain coin graph in a way that, given the `melprot` data model, can easily and trustlessly be queried by off-chain programs.
+2. **How to encode the on-chain info in a _light-client legible_ fashion?** We need to then figure out how to encode the on-chain info in the on-chain coin graph in a way that, given the `melprot` data model, can easily and trustlessly be queried by off-chain programs.
 3. **How to uphold invariants in the on-chain data?** Often, we need to force the on-chain data to be of a certain shape in order for our encoding to work. This generally requires either writing Melodeon covenants or exploiting some trick of Mel's coin model.
 
 Let's follow this process for Gibbername!
