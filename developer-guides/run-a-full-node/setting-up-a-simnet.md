@@ -12,7 +12,7 @@ Make sure you have the required hardware and dependencies installed. Follow this
 
 For local development and testing, we can configure a local "simnet", or a fake network on our local computer.
 
-The easiest way to do so is with our [`melsimnet`](https://github.com/mel-project/melnode/blob/master/src/bin/melsimnet.rs) binary.
+The easiest way to do so is with our [`melsimnet`](https://github.com/mel-project/melnode/blob/master/src/bin/melsimnet.rs) binary. In the `melnode` directory:
 
 ```shell-session
 cargo run --bin melsimnet -- create -s 1. -s 2. -s 3. -s 4.
@@ -26,7 +26,56 @@ Let's go through what this all means:
 3. `staker-*.yaml*` - defines the config for an individual staker node (explained below)
 4. `genesis.yaml` - defines the genesis config for the custom local network (explained below)
 
-After running some (or all) of the nodes, you'll be able to interact with the nodes via wallet client/daemon, melscan, even direct HTTP calls.
+After running some (or all) of the nodes, you'll be able to interact with the nodes via `melwallet-client`, `melminter`, or even direct HTTP calls.
+
+```shell-session
+./run-all.sh
+```
+Should produce logs like:
+```
+[2024-05-11T14:28:09Z INFO  melnode] melnode v0.20.7 initializing...
+[2024-05-11T14:28:09Z DEBUG melnode::storage::storage] about to sqlite
+[2024-05-11T14:28:09Z DEBUG melnode::storage::storage] sqlite initted
+[2024-05-11T14:28:09Z DEBUG melnode::storage::storage] about to mesha
+[2024-05-11T14:28:09Z DEBUG melnode::args] node storage opened
+[2024-05-11T14:28:09Z INFO  melnode] bootstrapping with [127.0.0.1:2000]
+[2024-05-11T14:28:09Z DEBUG melnode::node] starting to listen at 127.0.0.1:2000
+[2024-05-11T14:28:19Z DEBUG melnode::staker] starting consensus for 1...
+[2024-05-11T14:28:19Z WARN  melnode::staker] mempool not at the right height, trying again
+[2024-05-11T14:28:29Z DEBUG melnode::staker] starting consensus for 1...
+[2024-05-11T14:28:29Z DEBUG melstf::state] changing fee multiplier 100 by 1
+[2024-05-11T14:28:29Z DEBUG melnode::staker] proposed state has 0 transactions
+[2024-05-11T14:28:32Z DEBUG melnode::staker] 1/127.0.0.1:5000 DECIDED on a block with 240 bytes within 3.155822014s
+[2024-05-11T14:28:32Z DEBUG melstf::state] applied a batch of 0 txx to #<c99d36b369d0fc1bd494b84db635c5964e8359fafff00a1732d19090c3595e41> => #<c99d36b369d0fc1bd494b84db635c5964e8359fafff00a1732d19090c3595e41>
+[2024-05-11T14:28:32Z DEBUG melstf::state] changing fee multiplier 100 by 1
+[2024-05-11T14:28:32Z DEBUG melnode::storage::storage] applied block 1 / 64e3f33aa793f118ef09fa8aa72a7f6b7b5831dba1f8052d8ac1506e04883a09 in 5.01ms (history insertion 2.42ms)
+[2024-05-11T14:28:32Z DEBUG melnode::staker] 1/127.0.0.1:5000 COMMITTED the newly decided block within 3.164806678s
+```
+
+### melwallet-cli, melminter
+To use melwallet or melminter on your local simnet, first set the `MELBOOTSTRAP` environment variable to a hard-coded block height and header hash to bootstrap clients on this network:
+```
+export MELBOOTSTRAP=<network-name>:<block-height>:<header-hash>
+```
+You can find all the information needed from the node logs. From the logs above, you can set:
+```
+export MELBOOTSTRAP=custom02:1:64e3f33aa793f118ef09fa8aa72a7f6b7b5831dba1f8052d8ac1506e04883a09
+```
+
+To use the wallet, run `melwallet-cli` with the `--bootstrap` flag to specify the socket address for connecting to the local node:
+```
+melwallet-cli --wallet-path my-wallet.json --bootstrap 127.0.0.1:2000 create
+```
+
+Similarly with `melminter`:
+```
+melminter --bootstrap 127.0.0.1:2000 --payout <wallet-address>
+```
+
+Local simnets all support faucet transactions:
+```
+melwallet-cli --wallet-path my-wallet.json --bootstrap 127.0.0.1:2000 send-faucet --wait
+```
 
 ### Custom genesis configuration
 
