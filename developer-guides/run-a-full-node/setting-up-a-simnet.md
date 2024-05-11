@@ -64,7 +64,7 @@ export MELBOOTSTRAP=custom02:1:64e3f33aa793f118ef09fa8aa72a7f6b7b5831dba1f8052d8
 
 To use the wallet, run `melwallet-cli` with the `--bootstrap` flag to specify the socket address for connecting to the local node:
 ```
-melwallet-cli --wallet-path my-wallet.json --bootstrap 127.0.0.1:2000 create
+melwallet-cli --wallet-path my-wallet.json --bootstrap 127.0.0.1:2000 create --network custom02
 ```
 
 Similarly with `melminter`:
