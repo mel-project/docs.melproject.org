@@ -1,8 +1,8 @@
 ---
-description: "A post-blockchain vision for Web3"
+description: "A post-blockchain  Web3"
 ---
 
-# A post-blockchain vision for Web3
+# A post-blockchain Web3
 
 ## "Web3" is trapped in itself
 
@@ -16,7 +16,7 @@ This problem is usually posed as "mainstream crypto adoption", and the usual sol
 
 Mel is a blockchain engineered for a Web3 paradigm shift.
 
-Instead of smart-contract dApps running on a world computer, we envision what we call a post-blockchain Web3 –- an internet-scale ecosystem with full-stack decentralized security. Mel is the embedded security component for this ecosystem, _not an app platform_.
+Instead of smart-contract dApps running on a world computer, we envision what we call a **post-blockchain Web3** –- an internet-scale ecosystem with full-stack decentralized security. Mel is the embedded security component for this ecosystem, _not an app platform_.
 
 <figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
