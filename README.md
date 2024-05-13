@@ -1,44 +1,30 @@
 ---
-description: 'Off-chain composability: our vision for a Web3 far beyond blockchains'
+description: "A post-blockchain vision for Web3"
 ---
 
-# Web3 beyond blockchains
+# A post-blockchain vision for Web3
 
-## Web3 is trapped on-chain
+## "Web3" is trapped in itself
 
-Web3 looks like it's heading into a bright future. By combining incentives and cryptography, blockchains have achieved unprecedented decentralization and security, and general-purpose L1s like Ethereum now host growing ecosystems of interoperable decentralized protocols. There's everything from DeFi staples like the Compound lending platform to fascinatingly novel experiments like the cryptography game Dark Forest. Key technical problems like execution scalability now have breakthrough solutions like rollups and zero-knowledge proofs. And even the UX is steadily improving, allowing more and more regular users to join the "crypto" world.
+The web3/crypto community has an incredibly powerful vision of secure user autonomy and coordination. And it's not without foundation --- blockchains and web3 protocols have a combination of _unique superpowers_ that no previous network protocol achieve: censorship resistance, decentralized trust, and user-aligned incentives.
 
-But on a closer look, there's a big problem: **web3's revolution is trapped inside blockchains**. Smart contracts running on blockchains may have the strong neutrality, decentralization, and censorship-resistance that Web3 promises, but everywhere else, Web2's problems seem to crop up with a vengeance.
+But we don't actually see a true "Web3": a successor to Web2 with radically better user autonomy and coordination. The current crypto world is viciously meta: with the notable exception of collectibles like NFTs and memecoins, most crypto apps are about speculating on tokenized shares of crypto apps. DeFi, for example, mostly finances speculation on tokens (many of which belong to DeFi projects!), rather than anything outside the crypto sphere. It's as absurd as if the primary use of web2 tech was to host brokerages where people can speculate on web2 tech company stocks.
 
-### Web3 gateways
+This problem is usually posed as "mainstream crypto adoption", and the usual solution everyone peddles is some combination of "better UX" and shoehorning external systems into the self-referential crypto ecosystem (like "real-world assets"). But we've tried this for the better half of a decade, and it's not working.
 
-Nowhere is the lack of "Web3 superpowers" clearer than in dApp frontends: off-chain programs used to interact with on-chain systems by inherently off-chain humans and devices. The typical dApp frontend is nakedly a Web2 service, with a centralized server hosting a webpage (like [app.uniswap.org](https://app.u)) calling a centralized SaaS service to interact with on-chain smart contracts on the user's behalf.&#x20;
+## Mel: freeing crypto superpowers from crypto
 
-Unsurprisingly, users are at the mercy of the same sort of unaccountable centralized power we see in Web2 — just witness how a single regulatory agency (OFAC) easily [cut off access](https://cointelegraph.com/news/alchemy-and-infura-block-access-to-tornado-cash-as-vitalik-buterin-weighs-in-on-debate) to a widely-used protocol (Tornado Cash) simply by putting pressure on a few service providers (Infura, etc).
+Mel is a blockchain engineered for a Web3 paradigm shift.
 
-All of the smart contracts involved in not only Tornado Cash, but also [Wormhole](https://www.coindesk.com/tech/2022/02/02/blockchain-bridge-wormhole-suffers-possible-exploit-worth-over-250m/) and [Merit Circle](https://www.coindesk.com/business/2022/06/14/gaming-dao-merit-circle-ygg-terminate-relationship/), ran safely and correctly. But the apps—which include inherently off-chain frontends, infrastructure,  governance, etc—did not.
-
-### Non-blockchain Web3
-
-Moreover, there's a whole world of entirely non-blockchain projects that are arguably Web3 protocols — "alt-tech" protocols sharing the same goal of fixing Web2's problems with decentralized cryptography: [Tor](https://www.torproject.org/), [I2P](https://geti2p.net/en/), [Matrix](https://matrix.org/), and the like.&#x20;
-
-Compared to blockchain apps, nearly all non-DeFi dApps struggle to gain adoption due to the difficulty of successfully combining decentralization, usability, and security, a need that blockchains seem ideally suited to satisfy. Yet puzzlingly, we don't see much blockchain adoption in these projects that truly need decentralized security.
-
-### Mainstream Web2
-
-And of course, mainstream internet users at the mercy of abusive Web2 desperately need Web3 censorship resistance, decentralization, and user-aligned incentives! But most of them don't know much more about Web3 beyond "crypto trading"...
-
-## Mel frees web3
-
-We believe that the way to free Web3 is a new paradigm for Web3: **off-chain composability**. Current blockchains host complex on-chain ecosystems of smart contracts with "frontends" that struggle to interface with them. Instead, we envision **full-stack** off-chain dApps leveraging Mel as the **web3 superpower** **component**, not as a platform.
+Instead of smart-contract dApps running on a world computer, we envision what we call a post-blockchain Web3 –- an internet-scale ecosystem with full-stack decentralized security. Mel is the embedded security component for this ecosystem, _not an app platform_.
 
 <figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-This will be a largely non-blockchain world with two key properties:
+This means a largely non-blockchain world with two key properties:
 
 1. **Off-chain programs trustlessly compose with on-chain programs.** Off-chain programs, whether dApp frontends or whole alt-tech stacks, must integrate on-chain functionality without sacrificing L1 security.&#x20;
 
-For instance, a frontend for a coin mixer can't be censorable by any SaaS provider, and no platform provider should be able to tamper with queries to an on-chain PKI used by an end-to-end encrypted chat program. The "web3 superpowers" end up successfully crossing over the boundaries of the blockchain.
+For instance, a frontend for an anonymously published blog can't be censorable by any SaaS provider, and no platform provider should be able to tamper with queries to an on-chain PKI used by an end-to-end encrypted chat program. The "web3 superpowers" end up successfully crossing over the boundaries of the blockchain.
 
 2. **Decentralized protocols compose into dApps off-chain.** Decentralized protocols with blockchain-backed security should not primarily compose using on-chain constructs such as standardized smart-contract interfaces. Instead, they are composed in off-chain programs like mobile apps and frontends to create a "full-stack" decentralized system.&#x20;
 
@@ -46,29 +32,20 @@ For example, clients for a decentralized encrypted chat platform with cryptocurr
 
 <figure><img src="https://lh4.googleusercontent.com/nFaHg6RtvtYZ1KY056l_SPLlzLVwpRsR8rXJ2-eCL8EdQf2oRO50ikgBEuit83N5aXWiln7UfTvjvVBxAo4Xx1aLKU2vJvXNC4FTf_9dwJjrBXtJ_brvgFP_vRhXWKUi-tty52nS1tneyXty8MCDn_3kXA=s2048" alt=""><figcaption><p>A “tech tree” of a Mel-powered world</p></figcaption></figure>
 
-In Mel's ecosystem, trustless light clients take Web3 superpowers out of the on-chain box, then decentralized secure protocols pass the superpowers to user-facing apps. Web3 is freed from the blockchain box, so much so that users and developers of the end applications **never even need to think about the blockchain**.&#x20;
-
-A great example of a member of this sort of protocol ecosystem is Earendil (<https://earendil.network>), a decentralized, strongly censorship-resistant communication protocol we are building into core communication system for the Mel ecosystem.
-
 ## Why do we need a new blockchain?
 
-But why do we need a new blockchain to implement off-chain Web3? Can't we build this world on an established blockchain like Ethereum?
+Why do we need a new blockchain to build out this vision?
 
-It turns out that ease of off-chain composability requires many design trade-offs in all the aspects of a blockchain, and features for on-chain ecosystems hamper both **exporting** and **producing** Web3 superpowers. As examples:
+This is because Mel is a clean-slate design revolving around one key feature --- **trustless, powerful light clients**.
 
-**VM improvements**: These provide easy opcodes for cool stuff like ZK and make smart contracts happy by saving gas costs. However, the governance involved both breaks light client compatibility and threatens neutrality
+This means that code running on apps outside the blockchain can _know what's going inside the blockchain_ without trusting RPC providers like Infura. We can finally take crypto superpowers out of the on-chain ecosystem and into the real world, where people, apps, and devices actually live --- without stuffing the real world onto the on-chain world!
 
-**Standard contract APIs**: Decoupling contract interface from implementation, these APIs power many on-chain ecosystems (ERC-20 DeFi etc). However, the disparate implementations complicate off-chain verification, and buggy/centralized contracts introduce systemic security risks.
-
-**"Moar TPS!!"**: This makes on-chain things fast and cheap, essentially making a bigger box for bigger contracts. However, light clients are way harder to run, and the much bigger nodes lead to centralization.
-
-Unfortunately, current blockchains, especially fancy new ones, double down on one or more features, trading away off-chain composability for an on-chain ecosystem. That's why we made a new L1 from scratch, optimizing every part of Mel for being the **decentralized security keystone** that enables an off-chain composable Web3.
+Mel will be used as a piece of _low-level internet infrastructure_, just like the Internet Protocol or DNS. Decentralized secure protocols then pass the superpowers to user-facing apps, and a great example is Earendil (<https://earendil.network>), a decentralized, uniquely censorship-resistant communication protocol we are building as the core communication system for the Mel ecosystem.
 
 ## An overview of the docs
 
 Throughout this website, you'll find
 
-* A wiki on key Mel concepts from our [TXO-based data model](concepts/data-model.md) to [Melnet](concepts/melnet-the-p2p-layer.md), our HTTP-based P2P layer
-* Guides on developer-oriented tasks like [building an off-chain composable protocol](developer-guides/gibbername/) and [minting MEL](developer-guides/melmint/getting-tokens/using-melminter.md)
-* Resources like a [FAQ](resources/page-3.md) and [yellow paper](resources/yellow-paper.md)
-
+- A wiki on key Mel concepts from our [TXO-based data model](concepts/data-model.md) to [Melnet](concepts/melnet-the-p2p-layer.md), our HTTP-based P2P layer
+- Guides on developer-oriented tasks like [building an off-chain composable protocol](developer-guides/gibbername/) and [minting MEL](developer-guides/melmint/getting-tokens/using-melminter.md)
+- Resources like a [FAQ](resources/page-3.md) and [yellow paper](resources/yellow-paper.md)
